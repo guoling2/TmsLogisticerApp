@@ -1,0 +1,67 @@
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>订单列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/list']" >订单列表</a></span> ·
+      <span>当前订单</span></div>
+    </div>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto" (click)="motifychangeroute(400,400)"><i class="fas fa-pencil-alt"></i> 送货调整</button>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="createmyshipmentorder()"><i class="fas fa-plus"></i> 下达</button>
+    <button ejs-button cssClass="e-outline mat-auto"   (click)="printordertag(500,1120)"><i class="fas fa-print"></i> 货签打印</button>
+  </div>
+</div>
+
+
+<form  [formGroup]="searchp" class="listfrom-new">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="OrderTrackServerId" />
+        </label>
+        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="DestCity" />
+        </label>
+        <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
+      </mat-form-field>
+    </div>
+<!--    <app-biz-mylogistiscstore2   mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>-->
+    <div fxFlex="22">
+      <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId"  ></app-biz-mylogistiscstore2>
+    </div>
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <select matNativeControl  formControlName="LosigticTrackStatued">
+            <option label="--状态选择 --"></option>
+            <option value="1" selected>未下达</option>
+            <option value="2">已下达</option>
+          </select>
+        </label>
+        <span  matPrefix style="color: #888">下达状态：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="10">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
+</form>
+<mat-tab-group #tabgroup  color="warn" dynamicHeight="false" disableRipple="true"  (selectedTabChange)="tabchanged($event)"  class="tabbox-new">
+  <mat-tab label="同城订单">
+    <app-logistic-order-data-list #gdi1></app-logistic-order-data-list>
+  </mat-tab>
+  <mat-tab label="长途订单">
+    <app-logistic-order-data-list #gdi2></app-logistic-order-data-list>
+  </mat-tab>
+  <!--  <mat-tab label="未签收"></mat-tab>-->
+
+</mat-tab-group>
+
+

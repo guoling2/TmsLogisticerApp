@@ -1,0 +1,67 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a>  / <b>详细信息</b></div>
+  </div>
+  <div class="contenttex-r">
+    <ng-container *ngIf="outsideShipmentGroup?.IsSend==false">
+      <button ejs-button cssClass="e-info mat-width" class="mat-reject"
+              appTmssaveconfirm  comfirmMessage="确认删除派车单吗?"  (onSuggest)="Del($event)"  [extendata]="outsideShipmentGroup.ShipmentGroupId">删单</button>
+      <button ejs-button cssClass="e-info mat-width" class="mat-green"  (click)="Send(outsideShipmentGroup.ShipmentGroupId)">发运</button>
+      <!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
+    </ng-container>
+  </div>
+</div>
+<div  class="bendbox">
+<ng-container *ngIf="outsideShipmentGroup">
+  <mat-tab-group>
+   <mat-tab label="运输信息">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="24">
+            派车单号：<ejs-textbox  placeholder="派车单号" ngModel="{{outsideShipmentGroup.ShipmentGroupId}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            承运商：<ejs-textbox   ngModel="{{outsideShipmentGroup.TrincName}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            承运商联系人：<ejs-textbox   ngModel="" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            联系电话：<ejs-textbox   ngModel="" readonly></ejs-textbox>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="24">
+            配载类型：<ejs-textbox   ngModel="{{outsideShipmentGroup.TaskTypeDesc}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            车型：<ejs-textbox   ngModel="{{outsideShipmentGroup.VehicelTypeDesc}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            车牌号：<ejs-textbox   ngModel="{{outsideShipmentGroup.CarryingToolName}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            司机：<ejs-textbox   ngModel="{{outsideShipmentGroup.DriverName}}" readonly></ejs-textbox>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="100">
+            备注：<ejs-textbox  multiline="true" rows="2" ngModel="{{outsideShipmentGroup.Mark}}" readonly></ejs-textbox>
+          </div>
+        </div>
+  <div>
+  <!--运输品相-->
+  <app-biz-logisticitemdetail #logisticitemcom IputDataGridCss="margin_t_10" ShipmentGroupId="{{outsideShipmentGroup.ShipmentGroupId}}"></app-biz-logisticitemdetail>
+  </div>
+
+  <div class="totalbox">
+    <span>创建人：{{outsideShipmentGroup.CreateUserName}}</span>
+    <span>创建时间：{{outsideShipmentGroup.CreateDateTime}}</span>
+    <span>发车时间：{{outsideShipmentGroup.SendCarTime}}</span>
+  </div>
+    </mat-tab>
+    <mat-tab label="财务信息">
+      <app-biz-logisticfinance [ShipmentGroupId]="outsideShipmentGroup.ShipmentGroupId"></app-biz-logisticfinance>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>
+</div>

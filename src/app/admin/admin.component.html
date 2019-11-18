@@ -1,0 +1,51 @@
+<mat-sidenav-container [class.boxed]="layoutMode">
+
+  <mat-sidenav class="customizer" [position]="customizerSidenavAlign" mode="over" #customizer >
+  </mat-sidenav>
+
+  <mat-sidenav class="sidenav" [position]="sidenavAlign" [mode]="sidenavMode" [opened]="sidenavOpen" #sidenav>
+    <app-brand class="stbui-background-material"></app-brand>
+    <app-tms-navigation></app-tms-navigation>
+  </mat-sidenav>
+
+  <div class="sidenav-container" fxLayout="column">
+   <!--<app-head [customizer]="customizer" [sidenav]="sidenav" [ngClass]="settings.colorClasses.header"-->
+             <!--*ngIf="settings.layout.header=='below'"></app-head>-->
+
+    <app-head [customizer]="customizer" [sidenav]="sidenav" class="stbui-background-material"></app-head>
+    <div class="main-container" #scrollContainer>
+      <app-alert  #alert></app-alert>
+      <ejs-toast #toasttype id='toasttype' [position]="position"   [showCloseButton]="true"></ejs-toast>
+      <!--增加可以切换tab的功能-->
+<!--      <nav mat-tab-nav-bar>-->
+<!--        <a mat-tab-link-->
+<!--           *ngFor="let link of navLinks"-->
+<!--           [routerLink]="link.module"-->
+<!--           routerLinkActive #rla="routerLinkActive"-->
+<!--           [active]="rla.isActive">-->
+<!--          {{link.title}}-->
+<!--        </a>-->
+<!--      </nav>-->
+
+      <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+
+<!--      <ng-container *ngIf="isAuthorized">-->
+<!--      <ngb-tabset [activeId]="activeTabUrl"  (tabChange)="onTabChange($event)">-->
+<!--        <ngb-tab *ngFor="let tab of tabs ; let index = index"  [id]="tab.url">-->
+<!--          <ng-template ngbTabTitle>-->
+<!--            <span>{{tab.name}}</span>-->
+<!--            <span (click)="closeTab(index, $event)">&times;</span>-->
+<!--          </ng-template>-->
+<!--          <ng-template ngbTabContent>-->
+<!--            <router-outlet></router-outlet>-->
+<!--          </ng-template>-->
+<!--        </ngb-tab>-->
+<!--      </ngb-tabset>-->
+<!--      </ng-container>-->
+    </div>
+
+    <app-footer class="stbui-background-material"></app-footer>
+    <!--<stbui-footer *ngIf="settings.layout.footer=='below'"></stbui-footer>-->
+  </div>
+
+</mat-sidenav-container>
