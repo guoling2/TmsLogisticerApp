@@ -45,13 +45,13 @@
 </form>
 
 <mat-tab-group  #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
-    <mat-tab label="未接订单">
+    <mat-tab label="订单待接">
       <app-order-data-list #gdi1 [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
-    <mat-tab label="信息反馈">
+    <mat-tab label="车辆预约">
       <app-order-data-list #gdi2 [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
-    <mat-tab label="反馈截止" [hidden]="true">
+    <mat-tab label="货物出厂" [hidden]="true">
       <app-order-data-list #gdi3 [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
 </mat-tab-group>

@@ -13,7 +13,7 @@ export class NavigationModel {
           title: '主页',
           type: 'item',
           icon: 'home',
-          url: '/home'
+          url: '/biz/home'
         },
         {
           id: 'ui',
@@ -372,23 +372,24 @@ export class NavigationModel {
             },
           ]
         },
+
         {
-          id: 'fnmanager',
-          title: '报价管理',
+          id: 'fncharge',
+          title: '费用记账',
           type: 'collapse',
           icon: 'work',
           children: [
             {
-              id: 'fnmanager01',
-              title: '费用模板',
+              id: 'fncharge01',
+              title: '费用记录',
               type: 'item',
-              url: '/biz/logisticprice-management/price-template-list'
+              url: '/biz/fncharge/newCharge'
             },
             {
-              id: 'fnmanager01',
-              title: '计费数据',
+              id: 'fnmanager02',
+              title: '费用查询',
               type: 'item',
-              url: '/biz/logisticprice-management/price-value-list'
+              url: '/biz/fncharge/listview'
             }
           ]
         },

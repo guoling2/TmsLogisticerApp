@@ -8,6 +8,7 @@ import {AuthorizationCanGuard} from './auth/authorization.can.guard';
 
 
 
+
 // const routes: Routes = [
 //   { path: '', redirectTo: '/pages/blog', pathMatch: 'full' },
 //   { path: 'home', loadChildren: './home/home.module#HomeModule' },
@@ -53,14 +54,14 @@ import {AuthorizationCanGuard} from './auth/authorization.can.guard';
 const routes: Routes = [
 
   { path: '', component: AdminComponent },
-  { path: 'home', component: AdminComponent },
+  { path: 'home',  component: AdminComponent, canActivate: [AuthorizationGuard], canLoad: [AuthorizationCanGuard], loadChildren: './pages/home/home.module#HomeModule'},
   {
     path: 'biz',
     canActivate: [AuthorizationGuard],
     canLoad: [AuthorizationCanGuard],
     component: AdminComponent,
     children: [
-
+      // { path: 'home', loadChildren: './pages/home/home.module#HomeModule' },
       { path: 'weixinorder', loadChildren: './pages/weixinorder/weixinorder.module#WeixinOrderModule' },
       { path: 'myorder', loadChildren: './pages/myorder/logistcimyorder.module#LogistcimyorderModule' },
       { path: 'shipment', loadChildren: './pages/shipment/shipment.module#ShipmentModule' },
@@ -72,6 +73,7 @@ const routes: Routes = [
       { path: 'vehicle-management', loadChildren: './pages/vehiclemanagement/vehicle-management.module#VehicleManagementModule' },
       { path: 'carriers-management', loadChildren: './pages/carriersmanagement/carriers-manger.module#CarriersMangerModule' },
       { path: 'logisticprice-management', loadChildren: './pages/logisticpricemanagement/logisticprice.module#LogisticpriceModule' },
+      { path: 'fncharge', loadChildren: './pages/fncharge/fncharge.module#FnchargeModule' },
 
     ]
   },

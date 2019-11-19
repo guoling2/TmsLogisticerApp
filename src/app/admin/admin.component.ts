@@ -66,7 +66,10 @@ export class AdminComponent implements OnInit {
       if (auth === false) {
         this.router.navigateByUrl('/login');
       } else {
-        this.tabs = this.tabService.tabs;
+
+       // this.router.navigateByUrl('/biz/home');
+
+        //this.tabs = this.tabService.tabs;
 
         // this.router.events.subscribe(event => {
         //   if (event instanceof NavigationEnd) {
