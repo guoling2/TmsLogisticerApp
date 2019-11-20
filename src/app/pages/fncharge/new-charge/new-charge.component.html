@@ -1,1 +1,60 @@
-<p>new-charge works!</p>
+费用记录  费用记账/费用记录
+<form id="customerid" [formGroup]="form" >
+  <mat-form-field>
+    <label><input matInput placeholder="结算单号" formControlName="A"></label>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-select  placeholder="发生网点">
+      <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">
+        {{store.StoreName}}
+      </mat-option>
+    </mat-select>
+    <mat-error>网点<strong>是必须的</strong></mat-error>
+    <mat-hint align="start">请选择<strong>发生网点</strong></mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label><input matInput placeholder="收/付款对象" formControlName=""></label>
+    <mat-error>收/付款对象是<strong>必须的</strong></mat-error>
+    <mat-hint align="start">请输入<strong>收/付款对象</strong></mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select  placeholder="费用项目">
+<!--      <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">-->
+<!--        {{store.StoreName}}-->
+<!--      </mat-option>-->
+    </mat-select>
+    <mat-error>费用项目<strong>是必须的</strong></mat-error>
+    <mat-hint align="start">请选择<strong>费用项目</strong></mat-hint>
+  </mat-form-field>
+
+
+
+    <div class="e-float-input">
+      <ejs-numerictextbox  floatLabelType="Auto" placeholder="发生金额" format="n3" decimals="3" validateDecimalOnType="true" value="0" min="0"></ejs-numerictextbox>
+      <span class="e-float-line"></span>
+    </div>
+
+  <mat-select >
+   <option value="1">收入</option>
+    <option value="-1" selected>支出</option>
+  </mat-select>
+</form>
+
+
+
+
+
+   [收入/支出]
+结算方式
+付款方式
+开票资料
+受票方
+开票金额
+税率
+发票类型
+开票项目
+税号

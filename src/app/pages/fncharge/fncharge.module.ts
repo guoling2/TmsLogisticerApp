@@ -6,6 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonbizmoduleModule} from '../common/commonbizmodule.module';
+import {LogistictoreModule} from "../../buinesscomponent/logistore/logistictore.module";
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonbizmoduleModule,
     RouterModule.forChild(routes),
+    LogistictoreModule,
   ]
 })
 export class FnchargeModule { }

@@ -8,10 +8,11 @@ import { LogisticstoreallComponent } from './logisticstoreall/logisticstoreall.c
 import { StoreleaveComponent } from './storeleave/storeleave.component';
 import { StoretypeComponent } from './storetype/storetype.component';
 import { Mylogistiscstore2Component } from './mylogisticstore/sub/mylogistiscstore2/mylogistiscstore2.component';
+import { MlogisticstoreallComponent } from './logisticstoreall/sub/mlogisticstoreall.component';
 
 @NgModule({
-  declarations: [MylogisticstoreComponent, LogisticstoreallComponent, StoreleaveComponent, StoretypeComponent, Mylogistiscstore2Component],
-  exports: [MylogisticstoreComponent, LogisticstoreallComponent, StoreleaveComponent, StoretypeComponent, Mylogistiscstore2Component],
+  declarations: [MylogisticstoreComponent, LogisticstoreallComponent, StoreleaveComponent, StoretypeComponent, Mylogistiscstore2Component, MlogisticstoreallComponent],
+  exports: [MylogisticstoreComponent, LogisticstoreallComponent, StoreleaveComponent, StoretypeComponent, Mylogistiscstore2Component, MlogisticstoreallComponent],
   imports: [
     CommonModule,
     FormsModule,
