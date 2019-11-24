@@ -338,7 +338,6 @@ export class NavigationModel {
 
           ]
         },
-
         {
           id: 'fa-pay',
           title: '结算与交账',
@@ -372,7 +371,6 @@ export class NavigationModel {
             },
           ]
         },
-
         {
           id: 'fncharge',
           title: '费用记账',
@@ -418,6 +416,12 @@ export class NavigationModel {
               url: '/biz/materials/pagination2'
             },
             {
+              id: 'invoiceprofile',
+              title: '开票资料',
+              type: 'item',
+              url: '/biz/base/invoiceprofile'
+            },
+            {
               id: 'modal',
               title: '客户资料',
               type: 'item',
@@ -430,7 +434,7 @@ export class NavigationModel {
               url: '/biz/carriers-management/carriers'
             },
             {
-              id: 'Carrierprofile',
+              id: 'outdriver',
               title: '外租车',
               type: 'item',
               url: '/biz/vehicle-management/outdriver-list'

@@ -72,8 +72,14 @@ export class EnterpriseOrderServiceService {
   //     .pipe(
   //       tap(heroes => console.log(heroes)));
 
-    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId,
-      orderBackReason);
+    const resl = {
+      ClosedReason: orderBackReason,
+         OrderPreparedLogisticId: orderPreparedLogisticId
+      };
+    return this.tmshttpclientService.PostAsJson(resl,
+      '/api/EnterpriseOrder/UnAcceptOrder');
+    // return this.httpclient.post<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId,
+    //   resl);
 
   }
 }

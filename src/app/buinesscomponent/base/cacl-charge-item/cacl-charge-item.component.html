@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-label>{{displaylabel}}</mat-label>
+  <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect">
+    <mat-option *ngFor="let store of datasource" [value]="store.ItemDesc">
+      {{store.ItemDesc}}
+    </mat-option>
+  </mat-select>
+      <mat-error>{{displaylabel}}<strong>是必须的</strong></mat-error>
+</mat-form-field>
+

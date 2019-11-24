@@ -5,6 +5,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {TrackNumberManagerComponent} from './tracknumber/track-number-manager.component';
 import {SharedModule} from '../../shared/shared.module';
 import { GengerctracknumComponent } from './tracknumber/command/gengerctracknum/gengerctracknum.component';
+import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.component';
 
 
 
@@ -38,6 +39,6 @@ const routes: Routes = [
     RouterModule
    ],
   entryComponents: [GengerctracknumComponent],
-  declarations: [TrackNumberManagerComponent, GengerctracknumComponent]
+  declarations: [TrackNumberManagerComponent, GengerctracknumComponent, InvoiceprofileComponent]
 })
 export class BizBaseModuleModule { }

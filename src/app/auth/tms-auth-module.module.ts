@@ -33,7 +33,7 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
 
   console.log(environment.production);
 
-  return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
+  //return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
 
   if (environment.production) {
 
@@ -115,7 +115,7 @@ export class TmsAuthModuleModule {
       unauthorized_route: configResult.customConfig.unauthorized_route,
       log_console_warning_active: false,
       log_console_debug_active: false,
-      max_id_token_iat_offset_allowed_in_seconds: 30,
+      max_id_token_iat_offset_allowed_in_seconds: 100,
       history_cleanup_off: true
 
     };

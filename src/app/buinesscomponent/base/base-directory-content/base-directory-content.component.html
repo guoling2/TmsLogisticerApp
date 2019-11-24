@@ -1,0 +1,9 @@
+
+<mat-form-field>
+  <mat-label>{{displaylabel}}</mat-label>
+  <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect">
+    <mat-option *ngFor="let store of logistticstores" [value]="store.ContentText">
+      {{store.ContentText}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

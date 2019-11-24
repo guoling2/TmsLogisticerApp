@@ -1,15 +1,25 @@
 
 
-<form [formGroup]="saveform">
+<!--<form [formGroup]="saveform">-->
 
-  <mat-form-field class="{{matformclass}}">
-    <label>
-      <mat-select [formControlName]="SettingFormControlName" placeholder="{{placeholder}}"  >
-        <option value="" selected></option>
-        <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
-      </mat-select>
-    </label>
-    <span  matPrefix style="color: #888">{{displaylabel}}：&nbsp;</span>
-  </mat-form-field>
+<mat-form-field>
+  <mat-label>{{displaylabel}}</mat-label>
+  <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect">
+    <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">
+      {{store.StoreName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-</form>
+
+
+<!--  <mat-form-field class="{{matformclass}}">-->
+<!--    <label>-->
+<!--      <mat-select  placeholder="{{placeholder}}"  >-->
+<!--        <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>-->
+<!--      </mat-select>-->
+<!--    </label>-->
+<!--    <span  matPrefix style="color: #888">{{displaylabel}}：&nbsp;</span>-->
+<!--  </mat-form-field>-->
+
+<!--</form>-->

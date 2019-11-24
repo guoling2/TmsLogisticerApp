@@ -1,56 +1,51 @@
 费用记录  费用记账/费用记录
+
+<button mat-button color="primary" (click)="savedata()">保存</button>
+
 <form id="customerid" [formGroup]="form" >
   <mat-form-field>
-    <label><input matInput placeholder="结算单号" formControlName="A"></label>
+    <input matInput placeholder="结算单号" formControlName="SettleId" readonly="true">
   </mat-form-field>
 
 
-  <mat-form-field>
-    <mat-select  placeholder="发生网点">
-      <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">
-        {{store.StoreName}}
-      </mat-option>
-    </mat-select>
-    <mat-error>网点<strong>是必须的</strong></mat-error>
-    <mat-hint align="start">请选择<strong>发生网点</strong></mat-hint>
-  </mat-form-field>
+  <app-biz-mylogistiscstore2 formControlName="Settleorg"  displaylabel="结算网点"></app-biz-mylogistiscstore2>
+
+
 
   <mat-form-field>
-    <label><input matInput placeholder="收/付款对象" formControlName=""></label>
+    <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
     <mat-error>收/付款对象是<strong>必须的</strong></mat-error>
-    <mat-hint align="start">请输入<strong>收/付款对象</strong></mat-hint>
+    <mat-hint align="start">请填写<strong>收/付款对象</strong></mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-select  placeholder="费用项目">
-<!--      <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">-->
-<!--        {{store.StoreName}}-->
-<!--      </mat-option>-->
-    </mat-select>
-    <mat-error>费用项目<strong>是必须的</strong></mat-error>
-    <mat-hint align="start">请选择<strong>费用项目</strong></mat-hint>
-  </mat-form-field>
+  <app-biz-cacl-charge-item formControlName="ChargeItem"  displaylabel="费用项目"></app-biz-cacl-charge-item>
+
 
 
 
     <div class="e-float-input">
-      <ejs-numerictextbox  floatLabelType="Auto" placeholder="发生金额" format="n3" decimals="3" validateDecimalOnType="true" value="0" min="0"></ejs-numerictextbox>
+      <ejs-numerictextbox  formControlName="ChargeAmt" floatLabelType="Auto" placeholder="发生金额"
+                           format="n3" decimals="3" validateDecimalOnType="true" value="0" min="0"></ejs-numerictextbox>
       <span class="e-float-line"></span>
     </div>
 
-  <mat-select >
-   <option value="1">收入</option>
-    <option value="-1" selected>支出</option>
-  </mat-select>
+
+
+  <mat-form-field>
+    <mat-select   formControlName="Chargedirection">
+      <mat-option value="true">收入</mat-option>
+      <mat-option value="false">支出</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+   <app-biz-basedirectorycontent  displaylabel="结算方式" GroupType="CaclType" formControlName="CaclType" ></app-biz-basedirectorycontent>
+
+  <app-biz-basedirectorycontent  displaylabel="付款方式" GroupType="PayMoneyType" formControlName="PayMoneyType" ></app-biz-basedirectorycontent>
 </form>
 
 
 
 
-
-   [收入/支出]
-结算方式
-付款方式
 开票资料
 受票方
 开票金额
