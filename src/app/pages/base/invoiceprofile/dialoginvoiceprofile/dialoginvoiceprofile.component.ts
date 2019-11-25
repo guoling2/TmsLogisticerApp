@@ -1,18 +1,17 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {DataStateChangeEventArgs, GridComponent} from '@syncfusion/ej2-angular-grids';
-import {OidcSecurityService} from 'angular-auth-oidc-client';
-import {Commonsetting} from '../../../help/commonsetting';
-import {Basereportconfig} from '../../../services/base/basereportconfig';
-import {Basereportservice} from '../../../services/base/basereportservice';
+import {Basereportservice} from '../../../../services/base/basereportservice';
+import {DataStateChangeEventArgs, GridComponent, RecordDoubleClickEventArgs} from '@syncfusion/ej2-angular-grids';
+import {Commonsetting} from '../../../../help/commonsetting';
+import {Basereportconfig} from '../../../../services/base/basereportconfig';
 import {MatDialogRef} from '@angular/material';
 
 @Component({
-  selector: 'app-invoiceprofile',
-  templateUrl: './invoiceprofile.component.html',
-  styleUrls: ['./invoiceprofile.component.css']
+  selector: 'app-dialoginvoiceprofile',
+  templateUrl: './dialoginvoiceprofile.component.html',
+  styleUrls: ['./dialoginvoiceprofile.component.css']
 })
-export class InvoiceprofileComponent implements OnInit {
+export class DialoginvoiceprofileComponent implements OnInit {
 
   gridheight: number;
   searchp: FormGroup;
@@ -20,7 +19,7 @@ export class InvoiceprofileComponent implements OnInit {
   public grid: GridComponent;
 
 
-  constructor(private fb: FormBuilder, private service: Basereportservice) { }
+  constructor(private fb: FormBuilder, private service: Basereportservice, public dialogRef: MatDialogRef<DialoginvoiceprofileComponent>) { }
 
   ngOnInit() {
 
@@ -58,4 +57,8 @@ export class InvoiceprofileComponent implements OnInit {
 
   }
 
+  choseinvoice(template: any) {
+
+    this.dialogRef.close(template);
+  }
 }

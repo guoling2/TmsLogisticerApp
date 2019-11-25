@@ -1,17 +1,11 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>开票资料</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
-  </div>
-</div>
 <form class="listfrom" [formGroup]="searchp" >
   <mat-form-field class="col-md-3">
     <input matInput formControlName="Invoicetitle" />
     <span  matPrefix style="color: #888">开票户头：&nbsp;</span>
   </mat-form-field>
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+  <button ejs-button cssClass="e-info mat-width" (click)="dialogRef.close()">关闭</button>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='false'
@@ -19,9 +13,16 @@
           [enableHover]="false"
           allowPaging='false'  class="contlistbox">
   <e-columns >
-    <e-column field='Id' headerText='序号'  width=80></e-column>
+
     <e-column field='Invoicetype' headerText='开票类型'  width=120></e-column>
-    <e-column field='Taxno' headerText='税号'  width=180></e-column>
+    <e-column field='Taxno' headerText='税号'  width=180>
+      <ng-template #template let-data>
+        <ejs-tooltip #tooltip content='点击选择这个开票户头'  position="BottomCenter" style="padding-left:0!important;padding-right:0!important;">
+          <button ejs-button cssClass="e-flat" [isPrimary]="true" style="padding-left:0!important;padding-right:0!important;"
+                  (click)="choseinvoice(data)">{{data.Taxno}}</button>
+        </ejs-tooltip>
+      </ng-template>
+    </e-column>
     <e-column field='Invoicetitle' headerText='开票户头' textAlign="left"  width='200'></e-column>
     <e-column field='Bankname' headerText='开户银行' textAlign="left"  width='160'></e-column>
     <e-column field='Bankaccountno' headerText='银行账号'  textAlign="left" width=160></e-column>
@@ -29,7 +30,3 @@
     <e-column field='CreateDateTime' headerText='创建日期'  textAlign="left" width=150></e-column>
   </e-columns>
 </ejs-grid>
-
-
-
-

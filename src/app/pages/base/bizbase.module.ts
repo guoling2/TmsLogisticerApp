@@ -6,21 +6,26 @@ import {TrackNumberManagerComponent} from './tracknumber/track-number-manager.co
 import {SharedModule} from '../../shared/shared.module';
 import { GengerctracknumComponent } from './tracknumber/command/gengerctracknum/gengerctracknum.component';
 import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.component';
+import { DialoginvoiceprofileComponent } from './invoiceprofile/dialoginvoiceprofile/dialoginvoiceprofile.component';
+import { OpeninvoiceprofileDirective } from './invoiceprofile/dialoginvoiceprofile/openinvoiceprofile.directive';
 
 
 
 
 const routes: Routes = [
   {
-    'path': 'tacknumber',
-    'component': TrackNumberManagerComponent},
+    path: 'tacknumber',
+    component: TrackNumberManagerComponent},
   {
-  'path': 'stores',
-     'loadChildren': './logisticStore/logisticstore.module#LogisticstoreModule'
+    path: 'invoiceprofile',
+    component: InvoiceprofileComponent},
+  {
+  path: 'stores',
+     loadChildren: './logisticStore/logisticstore.module#LogisticstoreModule'
   },
   {
-    'path': 'logisticroute',
-    'loadChildren': './logisticRoute/logistic-route.module#LogisticRouteModule'
+    path: 'logisticroute',
+    loadChildren: './logisticRoute/logistic-route.module#LogisticRouteModule'
   },
 ];
 
@@ -36,9 +41,10 @@ const routes: Routes = [
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
-   ],
-  entryComponents: [GengerctracknumComponent],
-  declarations: [TrackNumberManagerComponent, GengerctracknumComponent, InvoiceprofileComponent]
+    RouterModule,
+    OpeninvoiceprofileDirective
+  ],
+  entryComponents: [GengerctracknumComponent,DialoginvoiceprofileComponent],
+  declarations: [TrackNumberManagerComponent, GengerctracknumComponent, InvoiceprofileComponent, DialoginvoiceprofileComponent, OpeninvoiceprofileDirective]
 })
 export class BizBaseModuleModule { }

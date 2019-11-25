@@ -8,7 +8,7 @@
   </mat-form-field>
 
 
-  <app-biz-mylogistiscstore2 formControlName="Settleorg"  displaylabel="结算网点"></app-biz-mylogistiscstore2>
+  <app-biz-mylogistiscstore2  [saveform]="form" formControlName="Settleorg"  displaylabel="结算网点" SettingFormControlName="Settleorg"></app-biz-mylogistiscstore2>
 
 
 
@@ -21,9 +21,24 @@
   <app-biz-cacl-charge-item formControlName="ChargeItem"  displaylabel="费用项目"></app-biz-cacl-charge-item>
 
 
+  <mat-form-field>
+    <mat-select  placeholder="计费方式"  formControlName="Methodtype">
+      <mat-option value="件">件</mat-option>
+      <mat-option value="重量(吨)">重量(吨)</mat-option>
+      <mat-option value="体积(方)">体积(方)</mat-option>
+      <mat-option value="次">次</mat-option>
+    </mat-select>
+    <mat-error >请选择一种计费方式</mat-error>
+  </mat-form-field>
+
+  <div class="e-float-input">
+    <ejs-numerictextbox  formControlName="Methodcount" floatLabelType="Auto" placeholder="计费数量"
+                         format="n0" decimals="3" validateDecimalOnType="true" value="1" min="1"></ejs-numerictextbox>
+    <span class="e-float-line"></span>
+  </div>
 
 
-    <div class="e-float-input">
+  <div class="e-float-input">
       <ejs-numerictextbox  formControlName="ChargeAmt" floatLabelType="Auto" placeholder="发生金额"
                            format="n3" decimals="3" validateDecimalOnType="true" value="0" min="0"></ejs-numerictextbox>
       <span class="e-float-line"></span>
@@ -36,20 +51,61 @@
       <mat-option value="true">收入</mat-option>
       <mat-option value="false">支出</mat-option>
     </mat-select>
+    <mat-error>请选择收支方向</mat-error>
   </mat-form-field>
 
    <app-biz-basedirectorycontent  displaylabel="结算方式" GroupType="CaclType" formControlName="CaclType" ></app-biz-basedirectorycontent>
 
   <app-biz-basedirectorycontent  displaylabel="付款方式" GroupType="PayMoneyType" formControlName="PayMoneyType" ></app-biz-basedirectorycontent>
+
+  <mat-slide-toggle formControlName="IsOpenInvoice">开票资料</mat-slide-toggle>
+  <ng-container *ngIf="form.value.IsOpenInvoice">
+   <h3>开票资料</h3>
+
+    <mat-form-field>
+    <input matInput placeholder="受票方" formControlName="Invoiceparty">
+    </mat-form-field>
+    <button ejs-button cssClass="e-small" appOpeninvoiceprofile (onSuggest)="getsystemprofile($event)"><i class="fas fa-search"></i></button>
+
+    <mat-form-field>
+      <mat-select  placeholder="发票类型"  formControlName="Invoicetype">
+        <mat-option value="1">增值税专用发票</mat-option>
+        <mat-option value="2">普通发票</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['Invoicetype'].hasError('required')">请选择一种发票类型</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="税号" formControlName="Partytaxno">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select  placeholder="税率"  formControlName="Taxrate">
+        <mat-option>--</mat-option>
+        <mat-option value="0.09">9%</mat-option>
+        <mat-option value="0.1">10%</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['Taxrate'].hasError('required')">请选择一种税率</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="开票项目" formControlName="FnTrxItem">
+      <mat-hint align="end">请填写开票项目，运输，仓储 等</mat-hint>
+      <mat-error *ngIf="form.controls['FnTrxItem'].hasError('required')">请填写开票项目</mat-error>
+    </mat-form-field>
+
+
+    <div class="e-float-input">
+      <ejs-numerictextbox   floatLabelType="Auto" placeholder="开票金额" readonly
+                           format="n3" decimals="3" validateDecimalOnType="true" [value]="form.value.ChargeAmt" min="0"></ejs-numerictextbox>
+      <span class="e-float-line"></span>
+    </div>
+
+  </ng-container>
 </form>
 
 
 
 
-开票资料
-受票方
-开票金额
-税率
-发票类型
-开票项目
-税号
+
+

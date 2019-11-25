@@ -100,6 +100,10 @@ export class Basereportconfig {
    * 转运外包派车之后的查询
    */
   public  static  Report_outsendlistafterlist = 'outsendlistafter';
+  /**
+   * 开票资料维护
+   */
+  public  static  Report_customertaxlist ='customertaxlist'
 }
 
 /**
@@ -112,4 +116,14 @@ export  class EnterpriseCustomer {
   public  static  Report_EnterpriseOrderList = 'EnterpriseOrderList';
 
   public  static  Report_EnterpriseAcceptDepotList = 'AcceptDepotList';
+}
+
+/**
+ * 财务方面的报表
+ */
+export  class FinanceReport {
+  /**
+   * 查看自己创建 申请的单子
+   */
+  public  static  Report_DailyChargeSettleItemForSubmitUser = 'DailyChargeSettleItemForSubmitUser';
 }

@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonbizmoduleModule} from '../common/commonbizmodule.module';
 import {LogistictoreModule} from "../../buinesscomponent/logistore/logistictore.module";
 import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
+import {BizBaseModuleModule} from '../base/bizbase.module';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 
@@ -18,6 +20,10 @@ const routes: Routes = [
     component: NewChargeComponent
   },
   {
+    path: 'user-detail/:id',
+    component: UserDetailComponent
+  },
+  {
     path: 'listview',
     component: ListviewComponent
   }
@@ -25,7 +31,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NewChargeComponent, ListviewComponent],
+  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -35,6 +41,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LogistictoreModule,
     BasedataModule,
+    BizBaseModuleModule,
   ]
 })
 export class FnchargeModule { }

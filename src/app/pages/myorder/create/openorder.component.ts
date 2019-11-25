@@ -389,7 +389,7 @@ export class OpenMyorderComponent implements OnInit {
   }
 
   // 选择客户  1 发货 2收货
-  choecustomer($event: MouseEvent, number: number, height: string, width: string) {
+  choecustomer($event: MouseEvent, numberx: number, height: string, width: string) {
 
 
     if ($event.clientX === 0) {
@@ -401,7 +401,7 @@ export class OpenMyorderComponent implements OnInit {
       height: height,
       width: width,
       disableClose: false,
-      data: number
+      data: numberx
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -37,9 +37,10 @@ export class BaseDirectoryContentComponent implements OnInit, ControlValueAccess
 
   ngOnInit() {
 
-    this.baseDirectoryContentService.SearchByGroup(this.GroupType).subscribe(a=>{
+    this.baseDirectoryContentService.SearchByGroup(this.GroupType).subscribe(a => {
 
-      this.logistticstores=a;
+      this.logistticstores = a;
+
     });
   }
 
