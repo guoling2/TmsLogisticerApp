@@ -64,7 +64,7 @@ export class AdminComponent implements OnInit {
 
       this.isAuthorized = auth;
       if (auth === false) {
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/login?login=1');
       } else {
 
        // this.router.navigateByUrl('/biz/home');

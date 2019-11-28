@@ -3,6 +3,7 @@ import {AuthorizationResult, AuthorizationState, OidcSecurityService} from 'angu
 
 import {filter, take} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {TmsoidcSecurityServivceService} from '../tmsoidc-security-servivce.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class CallBackComponent implements OnInit, OnDestroy {
 
   checksession: boolean;
 
-  constructor( public oidcSecurityService: OidcSecurityService, private  router: Router) {
+  constructor(private tmsoidcSecurityServivceService:TmsoidcSecurityServivceService, public oidcSecurityService: OidcSecurityService, private  router: Router) {
 
 
     console.log('CallBackComponent');
@@ -52,10 +53,9 @@ export class CallBackComponent implements OnInit, OnDestroy {
 
   private doCallbackLogicIfRequired() {
     console.log('window.location.hash');
-    console.log(window.location.hash);
-    if (window.location.hash) {
-      this.oidcSecurityService.authorizedImplicitFlowCallback();
-    }
+    console.log(window.location);
+    // Will do a callback, if the url has a code and state parameter.
+    this.oidcSecurityService.authorizedCallbackWithCode(window.location.toString());
   }
 
   ngOnInit() {
@@ -88,6 +88,8 @@ export class CallBackComponent implements OnInit, OnDestroy {
         // Redirects the user.
 
       //  console.log(redirectUrl);
+        this.tmsoidcSecurityServivceService.NeedLogout=false;
+
         this.router.navigate(['/home']);
         break;
       case AuthorizationState.forbidden:

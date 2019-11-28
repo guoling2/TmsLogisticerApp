@@ -30,6 +30,9 @@ public  ChargeAmt:number;
 /// </summary>
 public  Chargedirection:boolean;
 
+
+
+
 /// <summary>
 /// 结算方式
 /// </summary>
@@ -77,4 +80,6 @@ public  Invoicetype :number;
 /// 开票项目
 /// </summary>
 public  FnTrxItem  :string;
+
+public Mark:string;
 }

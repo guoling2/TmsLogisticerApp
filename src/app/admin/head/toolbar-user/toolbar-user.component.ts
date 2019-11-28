@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {EmitService} from '../../../help/emit-service';
 import {MenuChangeEvent} from '../../../models/menuchangeevent.module';
+import {OidcSecurityCommon} from 'angular-auth-oidc-client/lib/services/oidc.security.common';
 
 
 @Component({
@@ -56,7 +57,13 @@ export class ToolbarUserComponent implements OnInit {
   }
   logout() {
 
+    alert('登出');
+
+   //const idtoken= this.oidcSecurityCommon.idToken;
+   // /connect/endsession?id_token_hint=...&post_logout_redirect_uri=https://myapp.com
     this._oidcSecurityService.logoff();
+  //  this._oidcSecurityService.resetAuthorizationData(true);
+
   }
 
   changebiz ( number: number ) {

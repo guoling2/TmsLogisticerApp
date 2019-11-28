@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {TmsResponseModle} from '../../models/tms-response.module';
 import {tap} from 'rxjs/operators';
 import {DailyChargeSettleRequest} from '../../models/fncharge/daily-charge-settle-request';
+import {DailyChargeSettleDetail} from '../../models/fncharge/daily-charge-settle-detail';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class DailyChargeSettleItemService {
 
 
 
-    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/查询地址1/Delete'+ dataid)
+    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/DailyChargeSettle/Delete/'+ dataid)
       .pipe(
         tap(heroes => console.log(heroes)));
   }
@@ -42,6 +43,15 @@ export class DailyChargeSettleItemService {
       .pipe(
         tap(heroes => console.log(heroes)));
   }
+
+
+
+  public  Submit(settleId:string): Observable<TmsResponseModle> {
+
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/DailyChargeSettle/Submit/'+settleId,null)
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
   /**
    * 修改
    */
@@ -49,16 +59,16 @@ export class DailyChargeSettleItemService {
 
 
 
-    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/查询地址1/Update'+ data.SettleId, data)
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/DailyChargeSettle/Update/'+ data.SettleId, data)
       .pipe(
         tap(heroes => console.log(heroes)));
   }
   /**
    * 明细
    */
-  public  Detail(Id: string ): Observable<DailyChargeSettleRequest> {
+  public  Detail(Id: string ): Observable<DailyChargeSettleDetail> {
 
-    return this.httpclient.get<DailyChargeSettleRequest>(this.appConfiguration.Server + '/api/查询地址1/Detail?Id=' + Id)
+    return this.httpclient.get<DailyChargeSettleDetail>(this.appConfiguration.Server + '/api/DailyChargeSettle/detail/' + Id)
       .pipe(
         tap(heroes => console.log(heroes)));
   }

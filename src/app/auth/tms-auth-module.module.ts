@@ -13,6 +13,7 @@ import {environment} from '../../environments/environment';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './auth-interceptor';
 import {AppConfiguration} from './config/app-configuration';
+import {TmsoidcSecurityServivceService} from './tmsoidc-security-servivce.service';
 
 
 export const HttpInterceptorProviders = [
@@ -76,7 +77,8 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
     AuthorizationGuard,
     AuthorizationCanGuard,
     HttpInterceptorProviders,
-    AppConfiguration
+    AppConfiguration,
+    TmsoidcSecurityServivceService
   ],
 })
 export class TmsAuthModuleModule {
@@ -100,6 +102,7 @@ export class TmsAuthModuleModule {
 
 
 
+    //configResult.customConfig.ss
     const openIDImplicitFlowConfiguration: OpenIdConfiguration = {
       stsServer: configResult.customConfig.stsServer,
       redirect_url: baseurl + configResult.customConfig.redirect_url,
@@ -113,7 +116,7 @@ export class TmsAuthModuleModule {
       post_login_route: configResult.customConfig.startup_route,
       forbidden_route: '/forbidden',
       unauthorized_route: configResult.customConfig.unauthorized_route,
-      log_console_warning_active: false,
+      log_console_warning_active:  false,
       log_console_debug_active: false,
       max_id_token_iat_offset_allowed_in_seconds: 100,
       history_cleanup_off: true

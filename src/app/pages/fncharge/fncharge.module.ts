@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewChargeComponent } from './new-charge/new-charge.component';
-import { ListviewComponent } from './listview/listview.component';
+import { NewChargeComponent } from './user-new-charge/new-charge.component';
+import { ListviewComponent } from './user-listview/listview.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -10,6 +10,8 @@ import {LogistictoreModule} from "../../buinesscomponent/logistore/logistictore.
 import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
 import {BizBaseModuleModule} from '../base/bizbase.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UpdatechargeComponent } from './user-update-charge/updatecharge.component';
+import { UserchargeComponent } from './sub/usercharge/usercharge.component';
 
 
 
@@ -24,6 +26,10 @@ const routes: Routes = [
     component: UserDetailComponent
   },
   {
+    path: 'user-edit/:id',
+    component: UpdatechargeComponent
+  },
+  {
     path: 'listview',
     component: ListviewComponent
   }
@@ -31,17 +37,17 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent],
+  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
     CommonbizmoduleModule,
-    RouterModule.forChild(routes),
     LogistictoreModule,
     BasedataModule,
     BizBaseModuleModule,
+    RouterModule.forChild(routes),
   ]
 })
 export class FnchargeModule { }

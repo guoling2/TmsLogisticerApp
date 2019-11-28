@@ -1,1 +1,42 @@
-<p>user-detail works!</p>
+
+<ng-container *ngIf="dailycharge">
+
+<button mat-button color="primary" [disabled]="!allsubit" appTmssaveconfirm comfirmMessage="确定提交财务吗？" (onSuggest)=bizclick($event) extendata="submit" >提交</button>
+<button mat-button color="primary" [disabled]="!alldel"  appTmssaveconfirm comfirmMessage="确定删除吗？" (onSuggest)=bizclick($event) extendata="del">删除</button>
+<!--<button mat-button color="primary" (click)="bizclick('print')">打印</button>-->
+<!--<button mat-button color="primary" (click)="bizclick('mupdate')">修改</button>-->
+  <button mat-button color="primary" [disabled]="!alledit" (click)="bizclick({ActionFlag: true ,ExtendData: 'edit'})">修改</button>
+<button mat-button color="primary"  (click)="bizclick({ActionFlag: true ,ExtendData: 'refresh'})">刷新</button>
+
+
+
+  结算单号:{{dailycharge.SettleId}}
+  {{dailycharge.SettleorgName}}
+  {{dailycharge.Chargeparty}}
+  {{dailycharge.ChargeItem}}
+  {{dailycharge.ChargeAmt}}
+  {{dailycharge.Chargedirection===true?'收':'支'}}
+  {{dailycharge.CaclType}}
+  {{dailycharge.PayMoneyType}}
+  {{dailycharge.Methodtype}}
+  {{dailycharge.Methodcount}}
+
+  <ng-container *ngIf="dailycharge.IsOpenInvoice">
+    开票
+  </ng-container>
+
+  {{dailycharge.CreateUserName}}
+  {{dailycharge.CreateDateTime}}
+  {{dailycharge.ProcessStatuedDesc}}
+  {{dailycharge.Mark}}
+  {{dailycharge.Invoiceparty}}
+  {{dailycharge.Invoiceamt}}
+  {{dailycharge.Taxrate}}
+  {{dailycharge.Invoicetype}}
+  {{dailycharge.InvoicetypeDesc}}
+  {{dailycharge.FnTrxItem}}
+  {{dailycharge.Partytaxno}}
+
+</ng-container>
+
+
