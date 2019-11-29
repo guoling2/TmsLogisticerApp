@@ -7,7 +7,9 @@ import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../.
 import {DropDownListComponent} from '@syncfusion/ej2-angular-dropdowns';
 import {TmsresponseStatusCode} from '../../../../../models/tms-response.module';
 import {TextBoxComponent} from '@syncfusion/ej2-angular-inputs';
-
+import {DateTimePickerComponent} from 'ej-angular2';
+import {DateTimePicker} from '@syncfusion/ej2-calendars';
+import format from 'date-fns/format';
 @Component({
   selector: 'app-order-accept',
   templateUrl: './order-accept.component.html',
@@ -22,12 +24,18 @@ export class OrderAcceptComponent implements OnInit {
 
   @ViewChild('tihuonumbertxt', {static: false}) public tihuonumbertxt: TextBoxComponent;
 
+  @ViewChild('submitdatetime', {static: false}) public submitdatetime: DateTimePicker;
+
+  public PlanCarTime: Date;
+
   constructor(private enterpriseOrderServiceService: EnterpriseOrderServiceService,
               public dialogRef: MatDialogRef<OrderAcceptComponent>,
               private logisticStoreServiceService: LogisticStoreServiceService,
               @Inject(MAT_DIALOG_DATA) public selectrows: Object[]) { }
 
   ngOnInit() {
+
+    //this.PlanCarTime=new Date();
 
     this.logisticStoreServiceService.StoreQuery().subscribe((value: LogisticStore[]) => {
       this.logistticstores = value;
@@ -40,9 +48,20 @@ export class OrderAcceptComponent implements OnInit {
 
    // console.log(this.listObj.value);
 
+   // alert(this.submitdatetime.value);
+
+   // console.log(this.submitdatetime.value);
+
+    let cartime='';
+   // alert(this.PlanCarTime);
+
+     if(this.PlanCarTime!==undefined){
+       cartime= format(this.PlanCarTime, 'yyyy-MM-dd HH:mm:ss');
+     }
     this.selectrows.forEach((a, index) => {
       this.enterpriseOrderServiceService.AcceptOrder({
         OrderPreparedLogisticId: a['OrderPreparedLogisticId'],
+        PlanCarTime:cartime,
         BeginLogisticStoreId: this.listObj.value === null ? '' : this.listObj.value.toString(),
         NotifyCarNumber: this.tihuonumbertxt.value
 

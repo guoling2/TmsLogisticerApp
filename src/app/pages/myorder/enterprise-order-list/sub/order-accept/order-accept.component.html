@@ -9,6 +9,11 @@
     [popupHeight]='200'
     [fields]='logisticstorefiled' ></ejs-dropdownlist>
   </div>
+  <div>
+    预计提货时间:
+    <ejs-datetimepicker #submitdatetime [(value)]="PlanCarTime" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
+    如果当前没有安排时间，可后续在车辆预约中填写
+  </div>
   <div style="margin-top:10px">
    提货车牌号:
   <ejs-textbox #tihuonumbertxt placeholder='' ></ejs-textbox>

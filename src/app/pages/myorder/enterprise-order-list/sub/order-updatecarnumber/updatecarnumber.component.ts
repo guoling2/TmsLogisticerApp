@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Unacceptorderrequest} from '../order-unaccept/unacceptorderrequest';
 import {EnterpriseOrderServiceService} from '../../../../../services/CustomerOrder/enterprise-order-service.service';
+import format from "date-fns/format";
+import {TmsresponseStatusCode} from '../../../../../models/tms-response.module';
 
 @Component({
   selector: 'app-updatecarnumber',
@@ -11,6 +13,9 @@ import {EnterpriseOrderServiceService} from '../../../../../services/CustomerOrd
 export class UpdatecarnumberComponent implements OnInit {
   carnumber: string;
 
+  public PlanCarTime: Date;
+
+  public  errormsg='';
   constructor(private enterpriseOrderServiceService: EnterpriseOrderServiceService, public dialogRef: MatDialogRef<UpdatecarnumberComponent>,
               @Inject(MAT_DIALOG_DATA) public data: string[]) { }
 
@@ -22,10 +27,23 @@ export class UpdatecarnumberComponent implements OnInit {
   save() {
 
     console.log(this.data);
-    this.enterpriseOrderServiceService.MotifyCarNumber(
-      {OrderPreparedLogisticIds: this.data, Carnumber: this.carnumber}).subscribe(a => {
 
-      this.dialogRef.close(a);
+
+    if(this.PlanCarTime==undefined){
+      this.errormsg="提货时间不能为空";
+    }
+    this.enterpriseOrderServiceService.MotifyCarNumber(
+      {
+        OrderPreparedLogisticIds: this.data,
+        Carnumber: this.carnumber,
+        PlanCarTime:format(this.PlanCarTime, 'yyyy-MM-dd HH:mm:ss')}).subscribe(a => {
+
+          if(a.StatusCode!=TmsresponseStatusCode.Succeed()){
+            this.errormsg=a.Error.ErrorMsg;
+          }else{
+            this.dialogRef.close(a);
+          }
+
 
     });
 

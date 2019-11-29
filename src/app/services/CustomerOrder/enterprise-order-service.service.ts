@@ -46,6 +46,9 @@ export class EnterpriseOrderServiceService {
    */
   public AcceptOrder(enterpriseOrderRequest: AcceptEnterpriseOrderRequest): Observable<TmsResponseModle> {
 
+    console.log('enterpriseOrderRequest');
+    console.log(enterpriseOrderRequest);
+
     return this.tmshttpclientService.PostAsJson(enterpriseOrderRequest,
        '/api/EnterpriseOrder/AcceptOrder');
 

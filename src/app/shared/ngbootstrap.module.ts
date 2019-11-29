@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgbModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAlert, NgbAlertModule, NgbModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [],
-  exports: [NgbTabsetModule]
+  imports: [NgbTabsetModule, NgbAlertModule],
+  exports: [NgbTabsetModule,NgbAlertModule]
 })
 export class NgbootstrapModule { }
