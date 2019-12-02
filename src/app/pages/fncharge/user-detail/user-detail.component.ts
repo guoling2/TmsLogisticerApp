@@ -95,7 +95,7 @@ export class UserDetailComponent implements OnInit {
     this.dailyChargeSettleItemService.Detail(orderId).subscribe(a=>{
       console.log(a);
 
-      if (a.ProcessStatued<2) {
+      if (a.ProcessStatued>=1) {
         this.alledit = false;
 
         this.allsubit = false;

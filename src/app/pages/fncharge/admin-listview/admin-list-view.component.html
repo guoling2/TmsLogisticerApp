@@ -1,0 +1,40 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>日常结算</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+
+
+  <mat-form-field>
+    <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<div>
+  <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定退单吗？" (onSuggest)=orderaction($event) extendata="0"  *ngIf="SelectTabIndex==0">退单</button>
+
+  <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1"  *ngIf="SelectTabIndex==0">接单</button>
+
+  <button ejs-button cssClass="e-info mat-width"  (click)="orderaction({ActionFlag:true,ExtendData:'2'  })" *ngIf="SelectTabIndex==1">开票</button>
+
+  <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="1" *ngIf="SelectTabIndex==1">开票结束</button>
+</div>
+<mat-tab-group  [(selectedIndex)]="SelectTabIndex" #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
+  <mat-tab label="未接单">
+    <app-fnchaege-acceptnode-datagrid #gdi1 [gridheight]="gridheight" ></app-fnchaege-acceptnode-datagrid>
+  </mat-tab>
+  <mat-tab label="财务开票">
+   <app-biz-openinvoicedatagrid #gdi2 [gridheight]="gridheight"></app-biz-openinvoicedatagrid>
+  </mat-tab>
+  <mat-tab label="财务冲销">
+
+  </mat-tab>
+
+</mat-tab-group>
+
+
+
+

@@ -23,9 +23,13 @@ export class UserchargeComponent implements OnInit {
   @Input()
   public ActionType:number;
 
+
+  public settleId:string;
+
   constructor(private router: Router,public emitService: EmitService,private dailyChargeSettleItemService:DailyChargeSettleItemService,private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
 
   ngOnInit() {
+
 
     this.form.get('IsOpenInvoice').valueChanges.subscribe(($event) => {
 

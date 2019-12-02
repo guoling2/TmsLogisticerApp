@@ -362,7 +362,12 @@ export class NavigationModel {
               type: 'item',
               url: '/biz/logisticprice-management/price-template-list'
             },
-
+            {
+              id: 'DailySettle',
+              title: '日常结算',
+              type: 'item',
+              url: '/biz/fncharge/admin-list'
+            },
             {
               id: 'FnAccountTransAudit',
               title: '交款审核',

@@ -80,7 +80,7 @@ export class EnterpriseOrderServiceService {
          OrderPreparedLogisticId: orderPreparedLogisticId
       };
     return this.tmshttpclientService.PostAsJson(resl,
-      '/api/EnterpriseOrder/UnAcceptOrder');
+      '/api/EnterpriseOrder/CancelOrder');
     // return this.httpclient.post<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId,
     //   resl);
 

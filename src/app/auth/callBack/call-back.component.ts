@@ -75,7 +75,7 @@ export class CallBackComponent implements OnInit, OnDestroy {
   }
 
   private onAuthorizationResultComplete(authorizationResult: AuthorizationResult) {
-    console.log('Auth result received:' + authorizationResult);
+    console.log('Auth result received:' + authorizationResult+new Date());
     console.log(authorizationResult);
 
     switch (authorizationResult.authorizationState) {

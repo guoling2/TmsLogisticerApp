@@ -12,6 +12,9 @@ import {BizBaseModuleModule} from '../base/bizbase.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UpdatechargeComponent } from './user-update-charge/updatecharge.component';
 import { UserchargeComponent } from './sub/usercharge/usercharge.component';
+import { AdminListViewComponent } from './admin-listview/admin-list-view.component';
+import { AcceptNodeDataGridComponent } from './admin-listview/sub/accept-node-data-grid/accept-node-data-grid.component';
+import { OpeninvoicedatagridComponent } from './admin-listview/sub/openinvoicedatagrid/openinvoicedatagrid.component';
 
 
 
@@ -32,12 +35,16 @@ const routes: Routes = [
   {
     path: 'listview',
     component: ListviewComponent
-  }
+  },
+  {
+    path: 'admin-list',
+    component: AdminListViewComponent
+  },
 ];
 
 
 @NgModule({
-  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent],
+  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, AcceptNodeDataGridComponent, OpeninvoicedatagridComponent],
   imports: [
     CommonModule,
     SharedModule,

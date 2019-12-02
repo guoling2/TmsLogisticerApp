@@ -1,6 +1,6 @@
 <form id="customerid" [formGroup]="form" >
   <mat-form-field>
-    <input matInput placeholder="结算单号" formControlName="SettleId" readonly="true">
+    <input matInput placeholder="费用单号" formControlName="SettleId" readonly="true" >
   </mat-form-field>
 
 
@@ -53,6 +53,8 @@
   <app-biz-basedirectorycontent  displaylabel="结算方式" GroupType="CaclType" formControlName="CaclType" ></app-biz-basedirectorycontent>
 
   <app-biz-basedirectorycontent  displaylabel="付款方式" GroupType="PayMoneyType" formControlName="PayMoneyType" ></app-biz-basedirectorycontent>
+
+
 
   <mat-slide-toggle formControlName="IsOpenInvoice">开票资料</mat-slide-toggle>
   <ng-container *ngIf="form.value.IsOpenInvoice">

@@ -126,4 +126,12 @@ export  class FinanceReport {
    * 查看自己创建 申请的单子
    */
   public  static  Report_DailyChargeSettleItemForSubmitUser = 'DailyChargeSettleItemForSubmitUser';
+  /**
+   * 查看申请的单子
+   */
+  public  static  Report_DailyChargeSettleItemForAdminAtSubmit = 'DailyChargeSettleItemForAdminAtSubmit';
+  /**
+   * 查看需要开票流程的单子
+   */
+  public  static  Report_DailyChargeSettleItemForAdminAtInvoice = 'DailyChargeSettleItemForAdminAtInvoice';
 }
