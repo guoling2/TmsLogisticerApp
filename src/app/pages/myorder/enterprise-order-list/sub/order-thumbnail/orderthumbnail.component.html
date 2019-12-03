@@ -1,0 +1,17 @@
+<p>订单概要</p>
+
+
+<h3>客户单号：{{ordermodel.CustomerOrderId}}</h3>
+提货仓库：{{ordermodel.OrigincustomPhysicalDeotName}} {{ordermodel.OrigincustomVirualDeotName}}
+
+总件数：{{ordermodel.TotalCount}}   总重量：{{ordermodel.TotalWeight}} (T) {{ordermodel.TotalVolume}}
+
+重货重量： {{ordermodel.OrderZhWeight}}（T） 重货体积：{{ordermodel.OrderZhVol}}（M3） 抛货重量:{{ordermodel.OrderPhWeight}}(T)  抛货体积:{{ordermodel.OrderPhVol}}(M3)
+收货客户： {{ordermodel.Destcustomname}}
+收货联系：{{ordermodel.Destlinkman}}/{{ordermodel.Desttel}}
+到货地址：{{ordermodel.DestAddress}}
+备注：{{ordermodel.DisMark}}
+
+
+
+<button mat-button (click)="dialogRef.close()">关闭</button>

@@ -20,6 +20,12 @@ export class EnterpriseOrderDetailModel {
   public Originarea: string;
   public Originlinktel: string;
   public Originlinkman: string;
+  public OrigincustomVirualDeotName: string;//虚拟库位
+  public OrderZhWeight: number;
+  public OrderZhVol: number;
+  public OrderPhWeight: number;
+  public OrderPhVol: number;
+
 
 }
 export  class EnterpriseOrderItemModel {

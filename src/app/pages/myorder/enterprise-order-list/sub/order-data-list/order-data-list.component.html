@@ -15,6 +15,7 @@
     <e-column   headerText='客户单号'  width='165'>
       <ng-template #template let-data>
         <a [routerLink]="['/biz/myorder/enterprise-order-detail', data.OrderPreparedLogisticId]">{{data.CustomerOrderId }} </a>
+        <button ejs-button cssClass="e-small" (click)="choecustomer($event,data.OrderPreparedLogisticId,'50em','50em')"><i class="fas fa-search"></i></button>
       </ng-template>
     </e-column>
 <!--    <e-column field='OrderPreparedLogisticId'  [hidden]="true" ></e-column>-->

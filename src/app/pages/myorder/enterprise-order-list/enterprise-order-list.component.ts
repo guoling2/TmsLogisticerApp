@@ -111,7 +111,7 @@ export class EnterpriseOrderListComponent implements OnInit {
       return;
     }
 
-      const dialogRef = this.dialog.open(OrderAcceptComponent, {
+    const dialogRef = this.dialog.open(OrderAcceptComponent, {
         height: height,
         width: width,
         disableClose: false,

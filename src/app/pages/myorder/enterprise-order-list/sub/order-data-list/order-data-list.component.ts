@@ -7,6 +7,9 @@ import {Basereportservice} from '../../../../../services/base/basereportservice'
 import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
 import {LogistciOrderInterface} from '../../../../../pageservices/logistci-order-interface';
 import {Commonsetting} from '../../../../../help/commonsetting';
+import {MatDialog} from '@angular/material/dialog';
+import {OrderAcceptComponent} from '../order-accept/order-accept.component';
+import {OrderthumbnailComponent} from '../order-thumbnail/orderthumbnail.component';
 
 @Component({
   selector: 'app-order-data-list',
@@ -30,7 +33,7 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
   };
   public  inputfromgroup: any;
 
-  constructor(private fb: FormBuilder, private service: Basereportservice) { }
+  constructor( public dialog: MatDialog, private fb: FormBuilder, private service: Basereportservice) { }
 
 
   ngOnInit() {
@@ -73,4 +76,13 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
     this.SearchData( this.inputfromgroup);
   }
 
+  choecustomer($event: MouseEvent, xnumber: string, s: string, s2: string) {
+
+    this.dialog.open(OrderthumbnailComponent, {
+      height: s,
+      width: s2,
+      disableClose: true,
+      data: xnumber
+    });
+  }
 }
