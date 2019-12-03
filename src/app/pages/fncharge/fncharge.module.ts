@@ -15,6 +15,7 @@ import { UserchargeComponent } from './sub/usercharge/usercharge.component';
 import { AdminListViewComponent } from './admin-listview/admin-list-view.component';
 import { AcceptNodeDataGridComponent } from './admin-listview/sub/accept-node-data-grid/accept-node-data-grid.component';
 import { OpeninvoicedatagridComponent } from './admin-listview/sub/openinvoicedatagrid/openinvoicedatagrid.component';
+import { AddInvoiceProfileComponent } from './admin-listview/sub/add-invoice-profile/add-invoice-profile.component';
 
 
 
@@ -44,7 +45,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, AcceptNodeDataGridComponent, OpeninvoicedatagridComponent],
+  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, AcceptNodeDataGridComponent, OpeninvoicedatagridComponent, AddInvoiceProfileComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -55,6 +56,7 @@ const routes: Routes = [
     BasedataModule,
     BizBaseModuleModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  entryComponents:[AddInvoiceProfileComponent]
 })
 export class FnchargeModule { }

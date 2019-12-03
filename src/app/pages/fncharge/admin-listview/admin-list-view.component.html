@@ -18,7 +18,7 @@
 
   <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1"  *ngIf="SelectTabIndex==0">接单</button>
 
-  <button ejs-button cssClass="e-info mat-width"  (click)="orderaction({ActionFlag:true,ExtendData:'2'  })" *ngIf="SelectTabIndex==1">开票</button>
+  <button ejs-button cssClass="e-info mat-width"  (click)="openinvoicedialog('350px','120px','')" *ngIf="SelectTabIndex==1">开票</button>
 
   <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="1" *ngIf="SelectTabIndex==1">开票结束</button>
 </div>

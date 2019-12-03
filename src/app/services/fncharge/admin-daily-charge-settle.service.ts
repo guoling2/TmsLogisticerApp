@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {AppConfiguration} from '../../auth/config/app-configuration';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TmsResponseModle} from '../../models/tms-response.module';
 import {tap} from 'rxjs/operators';
+import {InvoiceRequest} from '../../models/fncharge/invoice-request';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,18 @@ export class AdminDailyChargeSettleService {
     }
   }
 
+  /**
+   * 开票
+   */
+  public OpenInvoice(invoiceRequest: InvoiceRequest): Observable<TmsResponseModle> {
 
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    return this.httpclient.post<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/OpenInvoice', JSON.stringify(invoiceRequest), {headers})
+      .pipe(
+        tap(heroes => console.log(heroes)));
+
+  }
   /**
    * 接单
    */
@@ -29,7 +41,6 @@ export class AdminDailyChargeSettleService {
     })
       .pipe(
         tap(heroes => console.log(heroes)));
-
   }
   /**
    * 退单

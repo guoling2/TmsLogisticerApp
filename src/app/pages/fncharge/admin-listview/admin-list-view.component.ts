@@ -15,6 +15,10 @@ import {TmssaveconfirmEvent} from '../../../directive/tmssaveconfirm.directive';
 import {EmitService} from '../../../help/emit-service';
 import {AlertMessageType, EmitAlertMessage, EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-message';
 import {OpeninvoicedatagridComponent} from './sub/openinvoicedatagrid/openinvoicedatagrid.component';
+import {UpdatecarnumberComponent} from '../../myorder/enterprise-order-list/sub/order-updatecarnumber/updatecarnumber.component';
+import {AddInvoiceProfileComponent} from './sub/add-invoice-profile/add-invoice-profile.component';
+import {MatDialog} from '@angular/material/dialog';
+import {IAddInvoiceRequest} from './sub/add-invoice-profile/iadd-invoice-request';
 
 @Component({
   selector: 'app-admin-list-view',
@@ -39,7 +43,7 @@ export class AdminListViewComponent implements OnInit {
 
 
   public SelectTabIndex:number=0;
-  constructor(private emitService: EmitService,private fb: FormBuilder,private adminDailyChargeSettleService:AdminDailyChargeSettleService) { }
+  constructor(private dialog: MatDialog,private emitService: EmitService,private fb: FormBuilder,private adminDailyChargeSettleService:AdminDailyChargeSettleService) { }
 
   ngOnInit() {
     this.searchp = this.fb.group(
@@ -97,15 +101,13 @@ export class AdminListViewComponent implements OnInit {
     }
     let result:Observable<TmsResponseModle>;
 
-
-
     switch (action.ExtendData) {
 
       case "1": //接单
         this.acceptorder(rowds,1);
         break;
       case "0": //退单
-        alert(action.ExtendData);
+
         this.acceptorder(rowds,2);
         break;
     }
@@ -126,14 +128,46 @@ export class AdminListViewComponent implements OnInit {
         });
       }
 
-      if(b==ids.length-1 &&ids.length==1){
+     if(ids.length==1){
+       this.searching();
+     }
+     else if(b==ids.length-1){
+       this.searching();
+     }
 
-        this.searching();
-      }
     });
 
 
   }
 
+
+  openinvoicedialog(width:string,height:string,panelClass:string){
+
+    var selectedrecords= this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords();
+
+    if (selectedrecords.length>1){
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息','只能选择一张费用进行开票！', MessageShowType.Toast));
+      return;
+    }
+    const profile=<IAddInvoiceRequest>selectedrecords[0];
+
+    const dialogRef = this.dialog.open(AddInvoiceProfileComponent, {
+      data:profile,
+      width:width,  //350
+      height:height,   //100
+      panelClass:panelClass,
+      disableClose:true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result!=undefined){
+        this.emitService.eventEmit.emit(
+          new EmitAlertMessage(AlertMessageType.Succeed, '系统信息','发票信息保存成功！', MessageShowType.Toast));
+        this.searching();
+      }
+
+    });
+  }
 
 }

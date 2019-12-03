@@ -2,9 +2,9 @@
 
 <!--<form [formGroup]="saveform">-->
 
-<mat-form-field>
+<mat-form-field style="margin-top:8px;width:100%!important;">
   <mat-label>{{displaylabel}}</mat-label>
-  <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect">
+  <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect" style="width:100%">
     <mat-option *ngFor="let store of logistticstores" [value]="store.StoreId">
       {{store.StoreName}}
     </mat-option>

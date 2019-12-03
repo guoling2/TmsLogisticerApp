@@ -27,7 +27,10 @@ export class NewChargeComponent implements OnInit {
   public  userchargeform:UserchargeComponent;
 
 
-  constructor(private router: Router,public emitService: EmitService,private dailyChargeSettleItemService:DailyChargeSettleItemService,private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
+  constructor(private router: Router,public emitService: EmitService,
+              private dailyChargeSettleItemService:DailyChargeSettleItemService,
+              private logisticStoreServiceService: LogisticStoreServiceService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
 

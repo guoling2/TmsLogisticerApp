@@ -10,6 +10,7 @@
   <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true" ><i class="fas fa-user-edit"></i> 订单签收</button>
     <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true"><i class="fas fa-clipboard-list"></i> 流程追踪</button>
+<!--    <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>-->
     <button ejs-button cssClass="e-outline mat-auto"  (click)="opensettingdepot(160,500)" ><i class="fas fa-warehouse"></i> 接单网点</button>
     <button ejs-button cssClass="e-outline mat-auto"  (click)="ungetorder(200,200)" ><i class="fas fa-times"></i> 客户退单</button>
     <button ejs-button cssClass="e-outline mat-auto"  (click)="updatesendcar(200,200)" ><i class="fas fa-dolly-flatbed"></i> 提货调整</button>
@@ -17,31 +18,48 @@
   </div>
 </div>
 <form class="listfrom-new" [formGroup]="searchp" >
-  <mat-form-field>
-    <label>
-      <input matInput  formControlName="CustomerOrderId" />
-    </label>
-    <span  matPrefix style="color: #888">客户单号：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field>
-    <label>
-      <input matInput  formControlName="OrigincustomPhysicalDeotName" />
-    </label>
-    <span  matPrefix style="color: #888">提货仓库: </span>
-  </mat-form-field>
-  <mat-form-field>
-    <label>
-      <input matInput  formControlName="DestCity" />
-    </label>
-    <span  matPrefix style="color: #888">到货城市: </span>
-  </mat-form-field>
-  <mat-form-field>
-    <label>
-      <input matInput  formControlName="NotifyCarNumber" />
-    </label>
-    <span  matPrefix style="color: #888">提货车牌号: </span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+  <div fxLayout="row" fxLayoutAlign="">
+    <div fxFlex="22" style="margin-right:10px">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="CustomerOrderId"/>
+        </label>
+        <span  matPrefix style="color: #888">客户单号：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="OrigincustomPhysicalDeotName" />
+        </label>
+        <span  matPrefix style="color: #888">提货仓库: </span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="DestCity" />
+        </label>
+        <span  matPrefix style="color: #888">到货城市: </span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="22">
+      <mat-form-field>
+        <label>
+          <input matInput  formControlName="NotifyCarNumber" />
+        </label>
+        <span  matPrefix style="color: #888">提货车牌号: </span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="8">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="margin-top:21px">查询</button>
+    </div>
+  </div>
+
+
+
+
+
 </form>
 
 <mat-tab-group  #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">

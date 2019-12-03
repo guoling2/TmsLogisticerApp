@@ -22,3 +22,4 @@
 .e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
 .e-grid .e-rowcell:first-child, .e-grid .e-summarycell:first-child {padding-left:15px!important;}
 .e-grid .e-rowcell {padding-left:15px!important;}
+.mat-form-field-infix {width:100%!important;}

@@ -204,4 +204,7 @@ export class EnterpriseOrderListComponent implements OnInit {
   }
 
 
+  excelout() {
+    this.GetCurrentDataGrid().CurrentDataGrid.excelExport();
+  }
 }

@@ -16,16 +16,16 @@
 
 <form  [formGroup]="searchp" class="listfrom-new">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-    <div fxFlex="22">
-      <mat-form-field>
+    <div fxFlex="21">
+      <mat-form-field style="width:100%!important;">
         <label>
           <input matInput  formControlName="OrderTrackServerId" />
         </label>
         <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
       </mat-form-field>
     </div>
-    <div fxFlex="22">
-      <mat-form-field>
+    <div fxFlex="21">
+      <mat-form-field style="width:100%!important;">
         <label>
           <input matInput  formControlName="DestCity" />
         </label>
@@ -33,11 +33,11 @@
       </mat-form-field>
     </div>
 <!--    <app-biz-mylogistiscstore2   mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>-->
-    <div fxFlex="22">
-      <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId"  ></app-biz-mylogistiscstore2>
+    <div fxFlex="21">
+      <app-biz-mylogistiscstore2  style="width:100%;" [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId"  ></app-biz-mylogistiscstore2>
     </div>
-    <div fxFlex="22">
-      <mat-form-field>
+    <div fxFlex="21">
+      <mat-form-field style="width:100%!important;">
         <label>
           <select matNativeControl  formControlName="LosigticTrackStatued">
             <option label="--状态选择 --"></option>
