@@ -37,7 +37,7 @@ export class NavigationModel {
               id: 'date-order',
               title: '企业订单',
               type: 'item',
-              url: '/biz/myorder/enterprise-order-list'
+              url: '/biz/myorder/enterprise-orders'
             },
 
             {

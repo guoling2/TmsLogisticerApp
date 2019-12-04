@@ -23,12 +23,12 @@ export class NewChargeComponent implements OnInit {
   public logistticstores: LogisticStore[]|any;
 
 
-  @ViewChild('userchargeform',{static:false})
-  public  userchargeform:UserchargeComponent;
+  @ViewChild('userchargeform', {static: false})
+  public  userchargeform: UserchargeComponent;
 
 
-  constructor(private router: Router,public emitService: EmitService,
-              private dailyChargeSettleItemService:DailyChargeSettleItemService,
+  constructor(private router: Router, public emitService: EmitService,
+              private dailyChargeSettleItemService: DailyChargeSettleItemService,
               private logisticStoreServiceService: LogisticStoreServiceService,
               private fb: FormBuilder) { }
 
@@ -43,9 +43,9 @@ export class NewChargeComponent implements OnInit {
       ChargeItem: ['', Validators.required],
       ChargeAmt: 0,
       Methodtype: ['', Validators.required],
-      Methodcount:1,
+      Methodcount: 1,
       Chargedirection: ['', Validators.required],
-      CaclType:'',
+      CaclType: '',
       PayMoneyType: '',
       IsOpenInvoice: false,
       Invoiceparty: '',  // 受票方
@@ -62,7 +62,7 @@ export class NewChargeComponent implements OnInit {
 
 
     this.userchargeform.savedata();
-    //const  control= this.form.controls['Settleorg'];
+    // const  control= this.form.controls['Settleorg'];
 
     // if (this.form.valid === false) {
     //
@@ -85,18 +85,18 @@ export class NewChargeComponent implements OnInit {
     //   }
     // });
   }
-
-  getsystemprofile($event: any) {
-
-
-    const taxmodel= <CustomerTaxModel>$event;
-    if (taxmodel!=null){
-      this.form.controls.Invoiceparty.setValue(taxmodel.Invoicetitle);
-      // this.form.controls.Invoicetype.setValidators(Validators.required);
-      this.form.controls.Partytaxno.setValue(taxmodel.Taxno);
-      // this.form.controls.Taxrate.setValidators(Validators.required);
-      // this.form.controls.FnTrxItem.setValidators(Validators.required);
-    }
-
-  }
+  //
+  // getsystemprofile($event: any) {
+  //
+  //
+  //   const taxmodel = $event as CustomerTaxModel;
+  //   if (taxmodel != null) {
+  //     this.form.controls.Invoiceparty.setValue(taxmodel.Invoicetitle);
+  //     // this.form.controls.Invoicetype.setValidators(Validators.required);
+  //     this.form.controls.Partytaxno.setValue(taxmodel.Taxno);
+  //     // this.form.controls.Taxrate.setValidators(Validators.required);
+  //     // this.form.controls.FnTrxItem.setValidators(Validators.required);
+  //   }
+  //
+  // }
 }

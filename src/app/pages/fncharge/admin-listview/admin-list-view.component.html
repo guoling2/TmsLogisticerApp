@@ -14,13 +14,17 @@
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
 <div>
-  <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定退单吗？" (onSuggest)=orderaction($event) extendata="0"  *ngIf="SelectTabIndex==0">退单</button>
+  <ng-container *ngIf="SelectTabIndex==0">
+    <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定退单吗？" (onSuggest)=orderaction($event) extendata="0" >退单</button>
+    <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1" >接单</button>
+  </ng-container>
 
-  <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1"  *ngIf="SelectTabIndex==0">接单</button>
+  <ng-container *ngIf="SelectTabIndex==1">
+    <button ejs-button cssClass="e-info mat-width"  (click)="openinvoicedialog('350px','120px','')">开票</button>
+    <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="2">开票结束</button>
+  </ng-container>
 
-  <button ejs-button cssClass="e-info mat-width"  (click)="openinvoicedialog('350px','120px','')" *ngIf="SelectTabIndex==1">开票</button>
 
-  <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="1" *ngIf="SelectTabIndex==1">开票结束</button>
 </div>
 <mat-tab-group  [(selectedIndex)]="SelectTabIndex" #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
   <mat-tab label="未接单">

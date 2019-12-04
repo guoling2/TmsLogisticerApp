@@ -32,23 +32,23 @@ import { OrderthumbnailComponent } from './enterprise-order-list/sub/order-thumb
 
 const routes: Routes = [
   {
-    'path': 'list',
+    path: 'list',
     component: MyOrderListComponent
   },
   {
-    'path': 'enterprise-order-list',
+    path: 'enterprise-orders',
     component: EnterpriseOrderListComponent
   },
   {
-    'path': 'create',
+    path: 'create',
     component: OpenMyorderComponent
   },
   {
-    'path': 'detail/:id',
+    path: 'detail/:id',
     component: DetailComponent
   },
   {
-    'path': 'enterprise-order-detail/:id',
+    path: 'enterprise-order-detail/:id',
     component: EnterpriseOrderDetailComponent
   }
 ];

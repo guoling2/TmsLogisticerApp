@@ -1,17 +1,114 @@
-<p>订单概要</p>
+<div class="opendivs">
+  <div class="opendivs_l"><h3><i class="fas fa-clipboard-list"></i> 订单概要 - <b>客户单号：{{ordermodel.CustomerOrderId}}</b></h3></div>
+  <div class="opendivs_r"><button ejs-button cssClass="e-info mat-auto mat-reject" (click)="dialogRef.close()">关闭</button></div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="100">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="收货客户" readonly value="{{ordermodel.Destcustomname}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="49">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="联系人" readonly value="{{ordermodel.Destlinkman}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="49">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="联系电话" readonly value="{{ordermodel.Desttel}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="49">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="提货仓库" readonly value="{{ordermodel.OrigincustomPhysicalDeotName}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="49">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="虚拟库位" readonly value="{{ordermodel.OrigincustomVirualDeotName}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="32">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="总件数" type="number"   readonly value="{{ordermodel.TotalCount.toFixed(2)}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="32">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="总重量(T)" type="number" readonly value="{{ordermodel.TotalWeight|tmsweightconvert:'g'}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="32">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="总体积(M3)" type="number" readonly value="{{ordermodel.TotalVolume|tmsvolumeconvert:'cm'}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="24">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="重货吨(T)" type="number" readonly value="{{ordermodel.OrderZhWeight|tmsweightconvert:'g'}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="24">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="重货体积(M3)" type="number" readonly value="{{ordermodel.OrderZhVol|tmsvolumeconvert:'cm'}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="24">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="抛货吨(T)" type="number" readonly value="{{ordermodel.OrderPhWeight|tmsweightconvert:'g'}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="24">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="抛货体积(M3)" type="number" readonly value="{{ordermodel.OrderPhVol|tmsvolumeconvert:'cm'}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="100">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="到货地址" readonly value="{{ordermodel.DestAddress}}">
+    </mat-form-field>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="100">
+    <mat-form-field class="example-full-width">
+      <textarea  matInput placeholder="订单备注" readonly>{{ordermodel.DisMark}}</textarea>
+    </mat-form-field>
+  </div>
+</div>
 
 
-<h3>客户单号：{{ordermodel.CustomerOrderId}}</h3>
-提货仓库：{{ordermodel.OrigincustomPhysicalDeotName}} {{ordermodel.OrigincustomVirualDeotName}}
-
-总件数：{{ordermodel.TotalCount}}   总重量：{{ordermodel.TotalWeight}} (T) {{ordermodel.TotalVolume}}
-
-重货重量： {{ordermodel.OrderZhWeight}}（T） 重货体积：{{ordermodel.OrderZhVol}}（M3） 抛货重量:{{ordermodel.OrderPhWeight}}(T)  抛货体积:{{ordermodel.OrderPhVol}}(M3)
-收货客户： {{ordermodel.Destcustomname}}
-收货联系：{{ordermodel.Destlinkman}}/{{ordermodel.Desttel}}
-到货地址：{{ordermodel.DestAddress}}
-备注：{{ordermodel.DisMark}}
 
 
 
-<button mat-button (click)="dialogRef.close()">关闭</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

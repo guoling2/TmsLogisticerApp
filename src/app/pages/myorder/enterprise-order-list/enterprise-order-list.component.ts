@@ -1,13 +1,8 @@
-import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
-import {DataStateChangeEventArgs} from '@syncfusion/ej2-grids';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Commonsetting} from '../../../help/commonsetting';
 import {Basereportservice} from '../../../services/base/basereportservice';
-import {Basereportconfig, EnterpriseCustomer} from '../../../services/base/basereportconfig';
-import {GridComponent} from '@syncfusion/ej2-angular-grids';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {MatTabChangeEvent, MatTabGroup} from '@angular/material/tabs';
-import {AnimationSettingsModel, ButtonPropsModel} from '@syncfusion/ej2-popups';
-import {DialogComponent} from '@syncfusion/ej2-angular-popups';
+import {MatTabGroup} from '@angular/material/tabs';
 import {OrderDataListComponent} from './sub/order-data-list/order-data-list.component';
 import {EnterpriseOrderServiceService} from '../../../services/CustomerOrder/enterprise-order-service.service';
 import {EmitService} from '../../../help/emit-service';
@@ -15,12 +10,12 @@ import {AlertMessageType, EmitAlertMessage, EmitAlertMessageHelo, MessageShowTyp
 import {OrderAcceptComponent} from './sub/order-accept/order-accept.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DefaultdepotsettingComponent} from './sub/defaultdepotsetting/defaultdepotsetting.component';
-import {ViewEncapsulation} from '@angular/core';
 import {TmsResponseModle} from '../../../models/tms-response.module';
 import {OrderUnAcceptComponent} from './sub/order-unaccept/order-un-accept.component';
 import {UpdatecarnumberComponent} from './sub/order-updatecarnumber/updatecarnumber.component';
 import {LogistciOrderInterface} from '../../../pageservices/logistci-order-interface';
-import {LogisticOrderDataListComponent} from '../list/sub/order-data-list/order-data-list.component';
+import {Unacceptorderrequest} from './sub/order-unaccept/unacceptorderrequest';
+
 @Component({
   selector: 'app-enterprise-order-list',
   templateUrl: './enterprise-order-list.component.html',
@@ -55,13 +50,13 @@ export class EnterpriseOrderListComponent implements OnInit {
 
     switch (this.currenttab.selectedIndex) {
       case  0:
-        this.searchp.patchValue({'ConfirmOrder': '0'});
+        this.searchp.patchValue({ConfirmOrder: '0'});
         break;
       case 1:
-        this.searchp.patchValue({'ConfirmOrder': '1'});
+        this.searchp.patchValue({ConfirmOrder: '1'});
         break;
       case 2:
-        this.searchp.patchValue({'ConfirmOrder': '2'});
+        this.searchp.patchValue({ConfirmOrder: '2'});
         break;
     }
 
@@ -85,14 +80,14 @@ export class EnterpriseOrderListComponent implements OnInit {
     // alert(this.currenttab.selectedIndex);
     switch (  this.currenttab.selectedIndex ) {
       case 0:
-        interfacex = <LogistciOrderInterface>this.gdi1;
+        interfacex = this.gdi1 as LogistciOrderInterface;
 
         break;
       case 1:
-        interfacex = <LogistciOrderInterface>this.gdi2;
+        interfacex = this.gdi2 as LogistciOrderInterface;
         break;
       case 2:
-        interfacex = <LogistciOrderInterface> this.gdi3;
+        interfacex = this.gdi3 as LogistciOrderInterface;
         break;
     }
 
@@ -112,8 +107,8 @@ export class EnterpriseOrderListComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(OrderAcceptComponent, {
-        height: height,
-        width: width,
+        height,
+        width,
         disableClose: false,
         data: selectrows
       });
@@ -154,49 +149,53 @@ export class EnterpriseOrderListComponent implements OnInit {
     }
 
 
+    // @ts-ignore
+    const a = selectrows[0] as Unacceptorderrequest;
     const dialogRef = this.dialog.open(OrderUnAcceptComponent, {
       minHeight: s, // 160
       minWidth: s2, // 500
-      data: {OrderPreparedLogisticId: selectrows[0]['OrderPreparedLogisticId'], CustomerOrderId: selectrows[0]['CustomerOrderId']}
+      data: a
+    //  data: {OrderPreparedLogisticId: selectrows[0]['OrderPreparedLogisticId'], CustomerOrderId: selectrows[0].CustomerOrderId}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
 
       console.log(result);
-      EmitAlertMessageHelo.ShowMessage( this.emitService, (<TmsResponseModle>result));
+      EmitAlertMessageHelo.ShowMessage( this.emitService, (result as TmsResponseModle), MessageShowType.Toast);
       // this.emitService.eventEmit.emit(
       //   new EmitAlertMessage(AlertMessageType.Info, '系统信息', (<TmsResponseModle>result).Info, MessageShowType.Toast));
       this.searching();
     });
 }
 
-  updatesendcar(number: number, number2: number) {
+  updatesendcar(number1: number, number2: number) {
 
    const  selectrows = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords();
 
-    if (selectrows.length === 0) {
+   if (selectrows.length === 0) {
       this.emitService.eventEmit.emit(
         new EmitAlertMessage(AlertMessageType.Error, '系统信息', '只能单独退单', MessageShowType.Toast));
       return;
     }
 
+    // @ts-ignore
    const  ids = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords().map((a) => {
       return a['OrderPreparedLogisticId'];
     }).reverse();
 
 
 
-    const dialogRef = this.dialog.open(UpdatecarnumberComponent, {
-      minHeight: number, // 160
+   const dialogRef = this.dialog.open(UpdatecarnumberComponent, {
+      minHeight: number1, // 160
       minWidth: number2, // 500
       data: ids
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
-      console.log(result);
-      EmitAlertMessageHelo.ShowMessage( this.emitService, (<TmsResponseModle>result));
+   dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+      //
+      // console.log(result);
+      EmitAlertMessageHelo.ShowMessage( this.emitService, (result as TmsResponseModle), MessageShowType.Toast);
       // this.emitService.eventEmit.emit(
       //   new EmitAlertMessage(AlertMessageType.Info, '系统信息', (<TmsResponseModle>result).Info, MessageShowType.Toast));
       this.searching();

@@ -16,7 +16,7 @@ import format from 'date-fns/format';
   styleUrls: ['./order-accept.component.css']
 })
 export class OrderAcceptComponent implements OnInit {
-  ErrorMsg: string;
+  public ErrorMsg= '';
   logistticstores: LogisticStore[];
   public logisticstorefiled: Object = { text: 'StoreName', value: 'StoreId' };
 

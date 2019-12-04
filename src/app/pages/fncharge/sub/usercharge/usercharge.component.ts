@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomerTaxModel} from '../../../../models/base/customer-tax-model';
 import {Formextension} from '../../../../help/formextension';
 import {DailyChargeSettleRequest} from '../../../../models/fncharge/daily-charge-settle-request';
-import {EmitAlertMessageHelo} from '../../../../help/emit-alert-message';
+import {EmitAlertMessageHelo, MessageShowType} from '../../../../help/emit-alert-message';
 import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
 import {Router} from '@angular/router';
 import {EmitService} from '../../../../help/emit-service';
@@ -21,12 +21,12 @@ export class UserchargeComponent implements OnInit {
   public form: FormGroup;
 
   @Input()
-  public ActionType:number;
+  public ActionType: number;
 
 
-  public settleId:string;
+  public settleId: string;
 
-  constructor(private router: Router,public emitService: EmitService,private dailyChargeSettleItemService:DailyChargeSettleItemService,private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
+  constructor(private router: Router, public emitService: EmitService, private dailyChargeSettleItemService: DailyChargeSettleItemService, private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
 
   ngOnInit() {
 
@@ -59,8 +59,8 @@ export class UserchargeComponent implements OnInit {
   getsystemprofile($event: any) {
 
 
-    const taxmodel= <CustomerTaxModel>$event;
-    if (taxmodel!=null){
+    const taxmodel = $event as CustomerTaxModel;
+    if (taxmodel != null) {
       this.form.controls.Invoiceparty.setValue(taxmodel.Invoicetitle);
       // this.form.controls.Invoicetype.setValidators(Validators.required);
       this.form.controls.Partytaxno.setValue(taxmodel.Taxno);
@@ -73,7 +73,7 @@ export class UserchargeComponent implements OnInit {
 
   public savedata() {
 
-    //const  control= this.form.controls['Settleorg'];
+    // const  control= this.form.controls['Settleorg'];
 
     if (this.form.valid === false) {
 
@@ -82,28 +82,27 @@ export class UserchargeComponent implements OnInit {
       Formextension.validateAllFormFields(this.form);
       return;
     }
-    const result=<DailyChargeSettleRequest>this.form.getRawValue();
+    const result = this.form.getRawValue() as DailyChargeSettleRequest;
 
-    if(result.IsOpenInvoice===false){
-      result.Taxrate=0; //不开票需要将数字类型赋值
+    if (result.IsOpenInvoice === false) {
+      result.Taxrate = 0; // 不开票需要将数字类型赋值
     }
-    if(this.ActionType===1){
-      this.dailyChargeSettleItemService.Insert(result).subscribe(a=>{
-        EmitAlertMessageHelo.ShowMessage(this.emitService,a);
+    if (this.ActionType === 1) {
+      this.dailyChargeSettleItemService.Insert(result).subscribe(a => {
+        EmitAlertMessageHelo.ShowMessage(this.emitService, a, MessageShowType.Toast);
 
-        if (a.StatusCode==TmsresponseStatusCode.Succeed()){
-          this.router.navigateByUrl('/biz/fncharge/user-detail/'+a.Data.toString());
-          //alert('成功')
+        if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
+          this.router.navigateByUrl('/biz/fncharge/user-detail/' + a.Data.toString());
+          // alert('成功')
         }
       });
-    }
-    else if(this.ActionType===2){
-      this.dailyChargeSettleItemService.Update(result).subscribe(a=>{
-        EmitAlertMessageHelo.ShowMessage(this.emitService,a);
+    } else if (this.ActionType === 2) {
+      this.dailyChargeSettleItemService.Update(result).subscribe(a => {
+        EmitAlertMessageHelo.ShowMessage(this.emitService, a, MessageShowType.Toast);
 
-        if (a.StatusCode==TmsresponseStatusCode.Succeed()){
-          this.router.navigateByUrl('/biz/fncharge/user-detail/'+a.Data.toString());
-          //alert('成功')
+        if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
+          this.router.navigateByUrl('/biz/fncharge/user-detail/' + a.Data.toString());
+          // alert('成功')
         }
       });
     }

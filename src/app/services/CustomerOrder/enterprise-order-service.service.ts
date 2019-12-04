@@ -24,9 +24,10 @@ export class EnterpriseOrderServiceService {
   /**
    * 明细
    */
-  public Detail(Id: string): Observable<EnterpriseOrderDetailModel> {
+  public Detail(Id: string, loaditem: boolean): Observable<EnterpriseOrderDetailModel> {
 
-    return this.httpclient.get<EnterpriseOrderDetailModel>(this.appConfiguration.Server + '/api/EnterpriseOrder/Detail/' + Id)
+    return this.httpclient.get<EnterpriseOrderDetailModel>(this.appConfiguration.Server + '/api/EnterpriseOrder/Detail/'
+      + Id + '/' + loaditem)
       .pipe(
         tap(heroes => console.log(heroes)));
   }

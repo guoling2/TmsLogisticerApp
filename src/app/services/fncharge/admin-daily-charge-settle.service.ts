@@ -32,12 +32,22 @@ export class AdminDailyChargeSettleService {
 
   }
   /**
+   * 开票完成
+   */
+  public FinishInvoice(settleId: string): Observable<TmsResponseModle> {
+
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/FinishInvoice/' + settleId, null)
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
+
+  /**
    * 接单
    */
   public Accept(settleId: string): Observable<TmsResponseModle> {
 
-    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/Accept/'+settleId,{
-      Action:1
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/Accept/' + settleId, {
+      Action: 1
     })
       .pipe(
         tap(heroes => console.log(heroes)));
@@ -47,8 +57,8 @@ export class AdminDailyChargeSettleService {
    */
   public UnAccept(settleId: string): Observable<TmsResponseModle> {
 
-    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/UnAccept/'+settleId,{
-      Action:2
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/AdminDailyChargeSettle/UnAccept/' + settleId, {
+      Action: 2
     })
       .pipe(
         tap(heroes => console.log(heroes)));

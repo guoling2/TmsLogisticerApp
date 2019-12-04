@@ -1,6 +1,7 @@
+<div class="opendivs"><h3><i class="fas fa-clipboard-check"></i> 客户接单</h3></div>
 <div class="matfullheight">
 <mat-dialog-content class="mat-typography">
-  <div *ngIf="ErrorMsg">{{ErrorMsg}}</div>
+  <ngb-alert *ngIf="ErrorMsg.length>0" type="danger"  (close)="ErrorMsg = '' ">{{ErrorMsg}}</ngb-alert>
   <div>
   接单网点:
   <ejs-dropdownlist
@@ -9,10 +10,10 @@
     [popupHeight]='200'
     [fields]='logisticstorefiled' ></ejs-dropdownlist>
   </div>
-  <div>
+  <div style="margin-top:10px">
     预计提货时间:
     <ejs-datetimepicker #submitdatetime [(value)]="PlanCarTime" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
-    如果当前没有安排时间，可后续在车辆预约中填写
+    <span style="font-size:13px;color:#ff0004">如果当前没有安排时间，可后续在车辆预约中填写</span>
   </div>
   <div style="margin-top:10px">
    提货车牌号:

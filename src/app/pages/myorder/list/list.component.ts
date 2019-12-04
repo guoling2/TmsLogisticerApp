@@ -47,7 +47,7 @@ export class MyOrderListComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      {BeginLogisticStoreId: '', DestCity: '', OrderTrackServerId: '', LosigticTrackStatued: '1', PrimaryDestservicedType: ''});
+      {CustomerOrderId:'',BeginLogisticStoreId: '', DestCity: '', OrderTrackServerId: '', LosigticTrackStatued: '1', PrimaryDestservicedType: ''});
     this.gridheight = Commonsetting.GridHeight2();
 
   //  this.currenttab.selectedIndex = 1;

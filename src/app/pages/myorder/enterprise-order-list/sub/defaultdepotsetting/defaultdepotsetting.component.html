@@ -1,6 +1,6 @@
 <div class="opendivs"><h3><i class="fas fa-warehouse"></i> 接单网点查询</h3></div>
 <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-  <div fxFlex="38">
+  <div fxFlex="34">
     接单网点:
     <ejs-dropdownlist
       id='games' #sample
@@ -11,14 +11,15 @@
   <div fxFlex="8" style="margin-top:17px">
     <button ejs-button cssClass="e-info mat-width"   (click)="settingdepotId()" >设置库位</button>
   </div>
-  <div fxFlex="38">
+  <div fxFlex="34">
     查询查询:
-    <label>
-      <ejs-textbox  [(value)]="searchcontent" placeholder="库位名称" floatLabelType="Never"></ejs-textbox>
-    </label>
+      <ejs-textbox style="width:100%" [(value)]="searchcontent" placeholder="库位名称" floatLabelType="Never"></ejs-textbox>
   </div>
   <div fxFlex="8" style="margin-top:17px">
     <button ejs-button cssClass="e-info mat-width"   (click)="searchdepot()" >查询</button>
+  </div>
+  <div fxFlex="8" style="margin-top:17px">
+    <button ejs-button cssClass="e-info mat-width mat-reject"  (click)="dialogRef.close()" >关闭</button>
   </div>
 </div>
 

@@ -17,7 +17,7 @@ export class EnterpriseOrderDetailComponent implements OnInit {
   ngOnInit() {
     this.systemorderId = this.route.snapshot.paramMap.get('id');
 
-    this.enterpriseOrderServiceService.Detail(this.systemorderId).subscribe(a => {
+    this.enterpriseOrderServiceService.Detail(this.systemorderId,true).subscribe(a => {
       console.log(a);
       this.ordermodel = a; });
 
