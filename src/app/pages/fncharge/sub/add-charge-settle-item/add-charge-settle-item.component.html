@@ -1,0 +1,45 @@
+<h1>费用明细新增</h1>
+<ngb-alert *ngIf="ErrorMsg.length>0" type="danger"  (close)="ErrorMsg = '' ">{{ErrorMsg}}</ngb-alert>
+
+<form [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="单据号码" formControlName="BillNo">
+
+    <mat-hint align="start"><strong>如果有单据，填写单据号码</strong></mat-hint>
+  </mat-form-field>
+
+  <div >
+
+    <ejs-datetimepicker format='yyyy-MM-dd HH:mm' placeholder="费用发生时间" floatLabelType="Auto" formControlName="BizHappendDateTime"></ejs-datetimepicker>
+
+  </div>
+
+  <div >
+    <ejs-numerictextbox  formControlName="ChargeAmt" floatLabelType="Auto" placeholder="发生金额"
+                         format="n3" decimals="3" validateDecimalOnType="true" [value]="form.value.ChargeAmt" min="0"></ejs-numerictextbox>
+    <span class="e-float-line"></span>
+  </div>
+
+  <div >
+    <ejs-numerictextbox  formControlName="Methodcount" floatLabelType="Auto" placeholder="计费数量"
+                         format="n0" decimals="3" validateDecimalOnType="true" value="1" min="1"></ejs-numerictextbox>
+    <span class="e-float-line"></span>
+  </div>
+
+  <div >
+    <app-biz-basedirectorycontent  displaylabel="计费方式" GroupType="FinanceMethodtype" formControlName="Methodtype"   ></app-biz-basedirectorycontent>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <textarea matInput placeholder="备用备注" formControlName="DetailMark"></textarea>
+    </mat-form-field>
+  </div>
+</form>
+
+
+<button ejs-button cssClass="e-info mat-width"  (click)="savedata()">创建</button>
+
+
+<button ejs-button cssClass="e-flat" (click)="dialogRef.close()">关闭</button>

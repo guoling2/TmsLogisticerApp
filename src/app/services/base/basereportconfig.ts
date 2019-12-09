@@ -134,4 +134,15 @@ export  class FinanceReport {
    * 查看需要开票流程的单子
    */
   public  static  Report_DailyChargeSettleItemForAdminAtInvoice = 'DailyChargeSettleItemForAdminAtInvoice';
+  /**
+   * 查看需要完成的单子
+   */
+  public  static  Report_DailyChargeSettleItemForAdminAtFinish = 'DailyChargeSettleItemForAdminAtFinish';
+
+  /**
+   * 财务综合查询
+   */
+  public  static  Report_DailyChargeSettleItemForAdminQueryAll = 'DailyChargeSettleItemForAdminQueryAll';
+
+
 }

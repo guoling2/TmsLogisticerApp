@@ -7,8 +7,8 @@ import {EmitAlertMessageHelo, MessageShowType} from '../../../../help/emit-alert
 import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
 import {Router} from '@angular/router';
 import {EmitService} from '../../../../help/emit-service';
-import {DailyChargeSettleItemService} from '../../../../services/fncharge/DailychargesettleItem.service';
 import {LogisticStoreServiceService} from '../../../../services/logisticstore/logisticstoreservice';
+import {DailyChargeSettleService} from '../../../../services/fncharge/daily-charge-settle.service';
 
 @Component({
   selector: 'app-biz-userchargeform',
@@ -26,7 +26,7 @@ export class UserchargeComponent implements OnInit {
 
   public settleId: string;
 
-  constructor(private router: Router, public emitService: EmitService, private dailyChargeSettleItemService: DailyChargeSettleItemService, private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
+  constructor(private router: Router, public emitService: EmitService, private dailyChargeSettleService: DailyChargeSettleService, private logisticStoreServiceService: LogisticStoreServiceService, private fb: FormBuilder) { }
 
   ngOnInit() {
 
@@ -88,7 +88,7 @@ export class UserchargeComponent implements OnInit {
       result.Taxrate = 0; // 不开票需要将数字类型赋值
     }
     if (this.ActionType === 1) {
-      this.dailyChargeSettleItemService.Insert(result).subscribe(a => {
+      this.dailyChargeSettleService.Insert(result).subscribe(a => {
         EmitAlertMessageHelo.ShowMessage(this.emitService, a, MessageShowType.Toast);
 
         if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
@@ -97,14 +97,14 @@ export class UserchargeComponent implements OnInit {
         }
       });
     } else if (this.ActionType === 2) {
-      this.dailyChargeSettleItemService.Update(result).subscribe(a => {
-        EmitAlertMessageHelo.ShowMessage(this.emitService, a, MessageShowType.Toast);
-
-        if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
-          this.router.navigateByUrl('/biz/fncharge/user-detail/' + a.Data.toString());
-          // alert('成功')
-        }
-      });
+      // this.dailyChargeSettleService.Update(result).subscribe(a => {
+      //   EmitAlertMessageHelo.ShowMessage(this.emitService, a, MessageShowType.Toast);
+      //
+      //   if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
+      //     this.router.navigateByUrl('/biz/fncharge/user-detail/' + a.Data.toString());
+      //     // alert('成功')
+      //   }
+      //});
     }
 
   }

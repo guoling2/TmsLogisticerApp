@@ -1,7 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Commonsetting} from '../../../help/commonsetting';
-import {AcceptNodeDataGridComponent} from './sub/accept-node-data-grid/accept-node-data-grid.component';
+import {
+  AcceptAndFinshNodeDataGridComponent,
+} from './sub/accept-node-data-grid/accept-node-data-grid.component';
 import {LogistciOrderInterface} from '../../../pageservices/logistci-order-interface';
 import {MatTabGroup} from '@angular/material/tabs';
 import {AdminDailyChargeSettleService} from '../../../services/fncharge/admin-daily-charge-settle.service';
@@ -28,11 +30,13 @@ export class AdminListViewComponent implements OnInit {
   public currenttab: MatTabGroup;
 
   @ViewChild('gdi1', {static: false})
-  public gdi1: AcceptNodeDataGridComponent; // 待接单
+  public gdi1: AcceptAndFinshNodeDataGridComponent; // 待接单
 
   @ViewChild('gdi2', {static: false})
   public gdi2: OpeninvoicedatagridComponent; // 待开票
 
+  @ViewChild('gdi3', {static: false})
+  public gdi3: AcceptAndFinshNodeDataGridComponent; // 待冲销
 
 
   public SelectTabIndex = 0;
@@ -56,6 +60,9 @@ export class AdminListViewComponent implements OnInit {
         break;
       case 1:
         interfacex = this.gdi2 as LogistciOrderInterface;
+        break;
+      case 2:
+        interfacex = this.gdi3 as LogistciOrderInterface;
         break;
       // case 1:
       //   interfacex = <LogistciOrderInterface>this.gdi2;
@@ -97,6 +104,10 @@ export class AdminListViewComponent implements OnInit {
 
     switch (action.ExtendData) {
 
+      case '3': // 冲销完成
+        this.finish(rowds);
+        break;
+
       case '2': // 完成开票
         this.finishinvoice(rowds);
         break;
@@ -136,25 +147,43 @@ export class AdminListViewComponent implements OnInit {
       if (type === 1) {
         this.adminDailyChargeSettleService.Accept(a).subscribe(result => {
           EmitAlertMessageHelo.ShowMessage(this.emitService, result, MessageShowType.Alert);
+          this.searching();
         });
       } else if (type === 2) {
         this.adminDailyChargeSettleService.UnAccept(a).subscribe(result => {
           EmitAlertMessageHelo.ShowMessage(this.emitService, result, MessageShowType.Alert);
+          this.searching();
         });
       }
 
-      if (ids.length === 1) {
-       this.searching();
-     } else if (b === ids.length - 1) {
-       this.searching();
-     }
+     //  if (ids.length === 1) {
+     //   this.searching();
+     // } else if (b === ids.length - 1) {
+     //   this.searching();
+     // }
 
     });
 
 
   }
 
+  private finish(ids: string[]) {
+    ids.forEach((a, b) => {
 
+      this.adminDailyChargeSettleService.Finish(a).subscribe(result => {
+        EmitAlertMessageHelo.ShowMessage(this.emitService, result, MessageShowType.Toast);
+        this.searching();
+      });
+
+      // if (ids.length === 1) {
+      //   this.searching();
+      // } else if (b === ids.length - 1) {
+      //   this.searching();
+      // }
+
+    });
+
+  }
   openinvoicedialog(width: string, height: string, panelClass: string) {
 
     const selectedrecords = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords();
@@ -183,5 +212,6 @@ export class AdminListViewComponent implements OnInit {
 
     });
   }
+
 
 }

@@ -23,18 +23,21 @@
     <button ejs-button cssClass="e-info mat-width"  (click)="openinvoicedialog('350px','120px','')">开票</button>
     <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="2">开票结束</button>
   </ng-container>
+  <ng-container *ngIf="SelectTabIndex==2">
 
+    <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="是否冲销结束？" (onSuggest)=orderaction($event) extendata="3">冲销完成</button>
+  </ng-container>
 
 </div>
 <mat-tab-group  [(selectedIndex)]="SelectTabIndex" #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
   <mat-tab label="未接单">
-    <app-fnchaege-acceptnode-datagrid #gdi1 [gridheight]="gridheight" ></app-fnchaege-acceptnode-datagrid>
+    <app-fnchaege-acceptnode-datagrid #gdi1 [reporttype]="1" [gridheight]="gridheight" ></app-fnchaege-acceptnode-datagrid>
   </mat-tab>
   <mat-tab label="财务开票">
    <app-biz-openinvoicedatagrid #gdi2 [gridheight]="gridheight"></app-biz-openinvoicedatagrid>
   </mat-tab>
   <mat-tab label="财务冲销">
-
+    <app-fnchaege-acceptnode-datagrid #gdi3 [reporttype]="2" [gridheight]="gridheight" ></app-fnchaege-acceptnode-datagrid>
   </mat-tab>
 
 </mat-tab-group>

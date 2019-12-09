@@ -188,6 +188,8 @@ export class OpenMyorderComponent implements OnInit {
       AddValueFee: '0', // 增值费用
       ExtendOtherFee: '0', // 额外费用
       RealInputLogisticFee: '0' // 实际费用
+
+
     });
     // form = new FormGroup({
     //   first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),

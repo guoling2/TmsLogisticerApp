@@ -1,0 +1,53 @@
+<div class="addbox">
+  <button ejs-button cssClass="e-info mat-width"  (click)="additem('50em','50em')" >添加明细</button>
+</div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="datasource">
+
+    <ng-container matColumnDef="ChargeSettleItemId">
+      <th mat-header-cell *matHeaderCellDef> 编号 </th>
+      <td mat-cell *matCellDef="let element"> {{element.ChargeSettleItemId}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Methodcount">
+      <th mat-header-cell *matHeaderCellDef> 数量 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Methodcount.toFixed(2)}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Methodtype">
+      <th mat-header-cell *matHeaderCellDef> 计费方式 </th>
+      <td mat-cell *matCellDef="let element"> {{element.Methodtype}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="ChargeAmt">
+      <th mat-header-cell *matHeaderCellDef> 发生金额 </th>
+      <td mat-cell *matCellDef="let element"> {{element.ChargeAmt.toFixed(2)}} </td>
+    </ng-container>
+    <ng-container matColumnDef="BizHappendDateTime">
+      <th mat-header-cell *matHeaderCellDef> 发生时间 </th>
+      <td mat-cell *matCellDef="let element"> {{element.BizHappendDateTime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="BillNo">
+      <th mat-header-cell *matHeaderCellDef> 单据号码 </th>
+      <td mat-cell *matCellDef="let element"> {{element.BillNo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> 操作 </th>
+      <td mat-cell *matCellDef="let element"><button
+        mat-icon-button
+        color="warn"
+        type="button"
+        appTmssaveconfirm
+        comfirmMessage="确定删除吗？"
+        (onSuggest)=deleteitem($event) extendata="{{element.ChargeSettleItemId}}"
+        matTooltip="删除">
+        <mat-icon>delete</mat-icon>
+      </button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

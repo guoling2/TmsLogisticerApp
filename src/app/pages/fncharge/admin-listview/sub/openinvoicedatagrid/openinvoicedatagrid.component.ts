@@ -56,4 +56,7 @@ export class OpeninvoicedatagridComponent implements OnInit,LogistciOrderInterfa
 
     this.SearchData( this.inputfromgroup);
   }
+
+  ExcelOut(paramter: any) {
+  }
 }

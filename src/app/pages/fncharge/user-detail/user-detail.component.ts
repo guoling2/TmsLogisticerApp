@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DailyChargeSettleItemService} from '../../../services/fncharge/DailychargesettleItem.service';
 import {DailyChargeSettleDetail} from '../../../models/fncharge/daily-charge-settle-detail';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TmssaveconfirmEvent} from '../../../directive/tmssaveconfirm.directive';
@@ -7,6 +6,7 @@ import {TmsResponseModle, TmsresponseStatusCode} from '../../../models/tms-respo
 import {Observable} from 'rxjs';
 import {EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-message';
 import {EmitService} from '../../../help/emit-service';
+import {DailyChargeSettleService} from '../../../services/fncharge/daily-charge-settle.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -24,7 +24,7 @@ export class UserDetailComponent implements OnInit {
 
   alldel = true;
 
-  constructor(private emitService: EmitService, private dailyChargeSettleItemService: DailyChargeSettleItemService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private emitService: EmitService, private dailyChargeSettleService: DailyChargeSettleService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -80,19 +80,19 @@ export class UserDetailComponent implements OnInit {
 
   private DelData(): Observable<TmsResponseModle> {
 
-    return  this.dailyChargeSettleItemService.Delete(this.dailycharge.SettleId);
+    return  this.dailyChargeSettleService.Delete(this.dailycharge.SettleId);
   }
 
   private  SubmitData(): Observable<TmsResponseModle> {
 
-    return  this.dailyChargeSettleItemService.Submit(this.dailycharge.SettleId);
+    return  this.dailyChargeSettleService.Submit(this.dailycharge.SettleId);
   }
 
   private  ReloadData() {
 
     const orderId = this.route.snapshot.paramMap.get('id');
 
-    this.dailyChargeSettleItemService.Detail(orderId).subscribe(a => {
+    this.dailyChargeSettleService.Detail(orderId).subscribe(a => {
       console.log(a);
 
       if (a.ProcessStatued >= 1) {
@@ -103,5 +103,9 @@ export class UserDetailComponent implements OnInit {
         this.alldel = false;
       }
       this.dailycharge = a; });
+  }
+
+  itemchanged($event: TmsResponseModle) {
+    this.ReloadData();
   }
 }

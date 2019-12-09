@@ -6,7 +6,17 @@
 
   <app-biz-mylogistiscstore2  [saveform]="form" formControlName="Settleorg"  displaylabel="结算网点" SettingFormControlName="Settleorg"></app-biz-mylogistiscstore2>
 
+  <div class="e-float-input">
 
+    <ejs-datetimepicker format='yyyy-MM-dd HH:mm' placeholder="费用发生时间" floatLabelType="Auto" formControlName="BizHappendDateTime"></ejs-datetimepicker>
+
+  </div>
+
+  <mat-form-field>
+    <input matInput placeholder="单据号码" formControlName="BillNo">
+
+    <mat-hint align="start"><strong>如果有单据，填写单据号码</strong></mat-hint>
+  </mat-form-field>
 
   <mat-form-field>
     <input matInput placeholder="收/付款对象" formControlName="Chargeparty">

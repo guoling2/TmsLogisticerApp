@@ -4,6 +4,7 @@
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
+          multiple="false"
           allowPaging='false'  class="contlistbox">
   <e-columns >
     <e-column type='checkbox' width='50'></e-column>
@@ -18,6 +19,7 @@
     <e-column field='PaymentChargeAmt' headerText='支出金额' textAlign="left"  width='160'></e-column>
     <e-column field='IsOpenInvoice' headerText='是否开票' textAlign="left"  width='160'></e-column>
     <e-column field='Invoiceparty' headerText='受票方'  textAlign="left" width=100></e-column>
+    <e-column field='Invoiceamt' headerText='开票金额'  textAlign="left" width=100></e-column>
     <e-column field='Partytaxno' headerText='税号'  textAlign="left" width=100></e-column>
     <e-column field='Taxrate' headerText='税率' format="P2" textAlign="left" width=150></e-column>
     <e-column field='InvoicetypeDesc' headerText='发票类型'  textAlign="left" width=150></e-column>

@@ -1,5 +1,12 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {DataStateChangeEventArgs, PageSettingsModel, SortDescriptorModel, Sorts, SortSettingsModel} from '@syncfusion/ej2-grids';
+import {
+  DataStateChangeEventArgs,
+  ExcelExportProperties,
+  PageSettingsModel,
+  SortDescriptorModel,
+  Sorts,
+  SortSettingsModel
+} from '@syncfusion/ej2-grids';
 import {GridComponent, SortService} from '@syncfusion/ej2-angular-grids';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Basereportconfig, EnterpriseCustomer} from '../../../../../services/base/basereportconfig';
@@ -20,6 +27,7 @@ import {OrderthumbnailComponent} from '../order-thumbnail/orderthumbnail.compone
 export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
 
 
+
   @Input()
   gridheight: number;
 
@@ -37,7 +45,7 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
 
 
   ngOnInit() {
-    this.gridheight = Commonsetting.GridHeight3s();
+    this.gridheight = Commonsetting.GridHeight5();
   }
 
 
@@ -60,6 +68,63 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
       this.grid.dataSource = result;
 
     });
+  }
+  ExcelOut(a: any) {
+
+
+    this.CurrentDataGrid.excelExport();
+
+    // const appendExcelExportProperties: ExcelExportProperties = {
+    //   exportType: 'AllPages',
+    //   dataSource:this.CurrentDataGrid.Cu
+    // };
+    //
+    // this.CurrentDataGrid.excelExport(appendExcelExportProperties);
+
+    // this.inputfromgroup.pageindex = 0;
+    // this.inputfromgroup.pagesize = 500;
+    //
+    //
+    // this.service.SearchReport(EnterpriseCustomer.Report_EnterpriseOrderList,  this.inputfromgroup).subscribe(result => {
+    //
+    //
+    // });
+
+
+    // this.service.SearchReport(EnterpriseCustomer.Report_EnterpriseOrderList,  this.inputfromgroup).subscribe(result => {
+    //
+    //    const appendExcelExportProperties: ExcelExportProperties = {
+    //      dataSource: result
+    //    };
+    //    this.CurrentDataGrid.excelExport(appendExcelExportProperties, true);
+    //
+    //    console.log(result);
+    //  // this.grid.dataSource = result;
+    //
+    // });
+    // this.inputfromgroup = a;
+    //
+    // const  pagesetting = this.grid.pageSettings;
+    // a.pageindex = 1;
+    // a.pagesize = pagesetting.pageSize;
+    //
+    // console.log(a);
+    // this.service.SearchReportExcel(EnterpriseCustomer.Report_EnterpriseOrderList, a).subscribe(result => {
+    //
+    //   console.log(result);
+    //   const link = document.createElement('a');  //用a标签进行模拟下载
+    // //  const blob = new Blob([result.body]);
+    //
+    //  // result.type
+    //
+    //   link.setAttribute('href', window.URL.createObjectURL(result.body));
+    //   link.setAttribute('download','下载的文件.xlsx');
+    //   link.style.visibility = 'hidden';
+    //   document.body.appendChild(link);
+    //   link.click();
+    //   document.body.removeChild(link);
+    //
+    // });
   }
   public Alert() {
     throw new Error("Method not implemented.");

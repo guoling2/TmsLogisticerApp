@@ -378,7 +378,7 @@ export class NavigationModel {
         },
         {
           id: 'fncharge',
-          title: '费用记账',
+          title: '日常记账',
           type: 'collapse',
           icon: 'work',
           children: [
@@ -393,6 +393,20 @@ export class NavigationModel {
               title: '费用查询',
               type: 'item',
               url: '/biz/fncharge/listview'
+            }
+          ]
+        },
+        {
+          id: 'fnQueries',
+          title: '财务查询',
+          type: 'collapse',
+          icon: 'work',
+          children: [
+            {
+              id: 'QryDailyCharge',
+              title: '日常收支查询',
+              type: 'item',
+              url: '/biz/fnQueries/QryDailyCharge'
             }
           ]
         },

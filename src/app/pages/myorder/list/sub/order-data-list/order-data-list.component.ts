@@ -70,4 +70,7 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
     this.SearchData( this.inputfromgroup);
   }
 
+  ExcelOut(paramter: any) {
+  }
+
 }

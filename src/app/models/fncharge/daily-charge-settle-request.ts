@@ -30,9 +30,6 @@ public  ChargeAmt:number;
 /// </summary>
 public  Chargedirection:boolean;
 
-
-
-
 /// <summary>
 /// 结算方式
 /// </summary>
@@ -82,4 +79,8 @@ public  Invoicetype :number;
 public  FnTrxItem  :string;
 
 public Mark:string;
+
+  public BillNo: string;
+
+  public BizHappendDateTime: Date;
 }

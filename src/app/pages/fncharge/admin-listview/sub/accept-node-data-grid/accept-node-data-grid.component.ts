@@ -11,13 +11,16 @@ import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
   templateUrl: './accept-node-data-grid.component.html',
   styleUrls: ['./accept-node-data-grid.component.css']
 })
-export class AcceptNodeDataGridComponent implements OnInit,LogistciOrderInterface {
+export class AcceptAndFinshNodeDataGridComponent implements OnInit,LogistciOrderInterface {
 
   @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
   @Input()
   gridheight: number;
+
+  @Input()
+  reporttype:number; //1 是 接单  2是结束
 
   public  inputfromgroup: any;
 
@@ -41,7 +44,15 @@ export class AcceptNodeDataGridComponent implements OnInit,LogistciOrderInterfac
 
 
     console.log(paramter);
-    this.service.SearchReport(FinanceReport.Report_DailyChargeSettleItemForAdminAtSubmit, paramter).subscribe(result => {
+
+    let retprt="";
+    if(this.reporttype==1){
+      retprt=FinanceReport.Report_DailyChargeSettleItemForAdminAtSubmit;
+    }
+    else {
+      retprt=FinanceReport.Report_DailyChargeSettleItemForAdminAtFinish;
+    }
+    this.service.SearchReport(retprt, paramter).subscribe(result => {
 
       console.log(result);
       this.grid.dataSource = result;
@@ -60,5 +71,8 @@ export class AcceptNodeDataGridComponent implements OnInit,LogistciOrderInterfac
 
   orderaction(number: number) {
 
+  }
+
+  ExcelOut(paramter: any) {
   }
 }

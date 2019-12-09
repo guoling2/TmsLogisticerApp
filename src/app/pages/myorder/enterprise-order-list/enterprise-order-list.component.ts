@@ -15,6 +15,8 @@ import {OrderUnAcceptComponent} from './sub/order-unaccept/order-un-accept.compo
 import {UpdatecarnumberComponent} from './sub/order-updatecarnumber/updatecarnumber.component';
 import {LogistciOrderInterface} from '../../../pageservices/logistci-order-interface';
 import {Unacceptorderrequest} from './sub/order-unaccept/unacceptorderrequest';
+import {ExcelExportProperties} from '@syncfusion/ej2-grids';
+import {DateTimeHelp} from '../../../help/date-forma';
 
 @Component({
   selector: 'app-enterprise-order-list',
@@ -42,12 +44,19 @@ export class EnterpriseOrderListComponent implements OnInit {
   ngOnInit() {
 
     this.searchp = this.fb.group(
-      { CustomerOrderId: '', OrigincustomPhysicalDeotName: '', DestCity: '', NotifyCarNumber: '', ConfirmOrder: '0'});
-    this.gridheight = Commonsetting.GridHeight3();
+      {
+        CustomerOrderId: '',
+        DesctcustomName: '',
+        OrigincustomPhysicalDeotName: '',
+        DestCity: '',
+        NotifyCarNumber: '',
+        ConfirmOrder: '0',
+        CreateDatetime1: '',
+        CreateDatetime2: ''});
+    this.gridheight = Commonsetting.GridHeightshort();
   }
 
-  searching() {
-
+  private GetSearchParameter(): any {
     switch (this.currenttab.selectedIndex) {
       case  0:
         this.searchp.patchValue({ConfirmOrder: '0'});
@@ -61,13 +70,33 @@ export class EnterpriseOrderListComponent implements OnInit {
     }
 
 
+    // const newCreateDatetime1 = (this.searchp.controls.CreateDatetime1.value as Date).toDateString();
+    //
+    // const  newchange1 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime1.value);
+    //
+    // this.searchp.patchValue({CreateDatetime1:  newchange1});
+    //
+    // const  newchange2 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime2.value);
+    //
+    // this.searchp.patchValue({CreateDatetime2:  newchange2});
+
+
     const searchable = this.searchp.getRawValue ();
 
-    const letgrid = this.GetCurrentDataGrid();
+    searchable.CreateDatetime1 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime1.value);
+    searchable.CreateDatetime2 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime2.value);
 
+    return searchable;
+  }
+  searching() {
 
+   const  searchable = this.GetSearchParameter();
 
-    letgrid.SearchData(searchable);
+   console.log(searchable);
+
+   const letgrid = this.GetCurrentDataGrid();
+   // alert('查询');
+   letgrid.SearchData(searchable);
 
   }
 
@@ -181,7 +210,8 @@ export class EnterpriseOrderListComponent implements OnInit {
 
     // @ts-ignore
    const  ids = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords().map((a) => {
-      return a['OrderPreparedLogisticId'];
+      // @ts-ignore
+     return a.OrderPreparedLogisticId;
     }).reverse();
 
 
@@ -204,6 +234,16 @@ export class EnterpriseOrderListComponent implements OnInit {
 
 
   excelout() {
-    this.GetCurrentDataGrid().CurrentDataGrid.excelExport();
+
+     alert('请注意只能导出本页数据');
+
+     this.GetCurrentDataGrid().ExcelOut(null);
+   //  let appendExcelExportProperties: ExcelExportProperties = {
+   //    multipleExport: { type: 'AppendToSheet', blankRows: 2 }
+   //  };
+   //  this.GetCurrentDataGrid().CurrentDataGrid.excelExport(appendExcelExportProperties, true);
+
+
+   // this.GetCurrentDataGrid().CurrentDataGrid.excelExport(appendExcelExportProperties, true);
   }
 }

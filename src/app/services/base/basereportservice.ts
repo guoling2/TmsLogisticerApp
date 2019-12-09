@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AppConfiguration} from '../../auth/config/app-configuration';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {LogisticStore} from '../../models/LogisticStore/logistic-store';
@@ -33,5 +33,27 @@ export class Basereportservice {
       {params: options});
 
   }
+  /**
+   *  通用的查询服务
+   */
+  public SearchReportExcel(reportname: string, data: any): Observable<HttpResponse<Blob>> {
 
+
+
+    const options = new HttpParams({ fromObject: data});
+
+    // return this.httpclient.get( this.appConfiguration.Server + '/api/SearchCollect/excelout?reporttype=' + reportname,null,
+    //   observe: 'response',
+    //   params: options,
+    //   reportProgress: false,
+    //   responseType: 'blob',
+    //   withCredentials?: false;
+    // });
+
+    return this.httpclient.get(
+      this.appConfiguration.Server + '/api/SearchCollect/excelout?reporttype=' + reportname,{
+        observe: 'response',  params:options,responseType: 'blob'
+      });
+
+  }
 }

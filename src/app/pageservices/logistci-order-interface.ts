@@ -4,5 +4,8 @@ export interface LogistciOrderInterface {
    CurrentDataGrid: GridComponent;
 
    SearchData(paramter: any);
+
+   ExcelOut(paramter: any);
+
    Alert();
 }

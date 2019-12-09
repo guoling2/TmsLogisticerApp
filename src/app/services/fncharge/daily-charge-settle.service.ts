@@ -11,7 +11,7 @@ import {DailyChargeSettleDetail} from '../../models/fncharge/daily-charge-settle
 @Injectable({
   providedIn: 'root'
 })
-export class DailyChargeSettleItemService {
+export class DailyChargeSettleService {
 
   constructor( private readonly appConfiguration: AppConfiguration, private  httpclient: HttpClient) {
 
@@ -55,7 +55,7 @@ export class DailyChargeSettleItemService {
   /**
    * 修改
    */
-  public  Update(data: DailyChargeSettleRequest): Observable<TmsResponseModle> {
+  public  Update(data: DailyChargeSettleDetail): Observable<TmsResponseModle> {
 
 
 

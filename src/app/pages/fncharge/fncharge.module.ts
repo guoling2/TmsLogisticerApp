@@ -13,9 +13,14 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UpdatechargeComponent } from './user-update-charge/updatecharge.component';
 import { UserchargeComponent } from './sub/usercharge/usercharge.component';
 import { AdminListViewComponent } from './admin-listview/admin-list-view.component';
-import { AcceptNodeDataGridComponent } from './admin-listview/sub/accept-node-data-grid/accept-node-data-grid.component';
+import {
+  AcceptAndFinshNodeDataGridComponent
+} from './admin-listview/sub/accept-node-data-grid/accept-node-data-grid.component';
 import { OpeninvoicedatagridComponent } from './admin-listview/sub/openinvoicedatagrid/openinvoicedatagrid.component';
 import { AddInvoiceProfileComponent } from './admin-listview/sub/add-invoice-profile/add-invoice-profile.component';
+import { ChargeSettleItemListComponent } from './sub/charge-settle-item-list/charge-settle-item-list.component';
+import { AddChargeSettleItemComponent } from './sub/add-charge-settle-item/add-charge-settle-item.component';
+import { AdminDetailComponent } from './admin-detail/admin-detail.component';
 
 
 
@@ -41,11 +46,15 @@ const routes: Routes = [
     path: 'admin-list',
     component: AdminListViewComponent
   },
+  {
+    path: 'admin-detail/:id',
+    component: AdminDetailComponent
+  },
 ];
 
 
 @NgModule({
-  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, AcceptNodeDataGridComponent, OpeninvoicedatagridComponent, AddInvoiceProfileComponent],
+  declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, OpeninvoicedatagridComponent, AddInvoiceProfileComponent, AcceptAndFinshNodeDataGridComponent, ChargeSettleItemListComponent, AddChargeSettleItemComponent, AdminDetailComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -57,6 +66,6 @@ const routes: Routes = [
     BizBaseModuleModule,
     RouterModule.forChild(routes),
   ],
-  entryComponents:[AddInvoiceProfileComponent]
+  entryComponents:[AddInvoiceProfileComponent,AddChargeSettleItemComponent]
 })
 export class FnchargeModule { }

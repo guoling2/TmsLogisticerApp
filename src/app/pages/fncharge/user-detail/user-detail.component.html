@@ -10,33 +10,35 @@
 
 
 
-  费用单号:{{dailycharge.SettleId}}
-  {{dailycharge.SettleorgName}}
-  {{dailycharge.Chargeparty}}
-  {{dailycharge.ChargeItem}}
-  {{dailycharge.ChargeAmt}}
-  {{dailycharge.Chargedirection===true?'收':'支'}}
-  {{dailycharge.CaclType}}
-  {{dailycharge.PayMoneyType}}
-  {{dailycharge.Methodtype}}
-  {{dailycharge.Methodcount}}
+  费用单号:{{dailycharge.SettleId}}<div></div>
+  结算网点：{{dailycharge.SettleorgName}}<div></div>
+  收/付款对象{{dailycharge.Chargeparty}}<div></div>
+  费用项目：{{dailycharge.ChargeItem}}<div></div>
+  发生金额：{{dailycharge.ChargeAmt}} {{dailycharge.Chargedirection===true?'收':'支'}}<div></div>
+  结算方式：{{dailycharge.CaclType}}<div></div>
+  付款方式:{{dailycharge.PayMoneyType}}<div></div>
 
   <ng-container *ngIf="dailycharge.IsOpenInvoice">
-    开票
+    开票信息
+    受票方:{{dailycharge.Invoiceparty}}<div></div>
+    开票金额:{{dailycharge.Invoiceamt}}<div></div>
+    税金:{{dailycharge.Taxrate}}<div></div>
+    发票类型:{{dailycharge.InvoicetypeDesc}}<div></div>
+    开票项目: {{dailycharge.FnTrxItem}}<div></div>
+    税号：{{dailycharge.Partytaxno}}<div></div>
+
   </ng-container>
 
-  {{dailycharge.CreateUserName}}
-  {{dailycharge.CreateDateTime}}
-  {{dailycharge.ProcessStatuedDesc}}
-  {{dailycharge.Mark}}
-  {{dailycharge.Invoiceparty}}
-  {{dailycharge.Invoiceamt}}
-  {{dailycharge.Taxrate}}
-  {{dailycharge.Invoicetype}}
-  {{dailycharge.InvoicetypeDesc}}
-  {{dailycharge.FnTrxItem}}
-  {{dailycharge.Partytaxno}}
+  创建人:{{dailycharge.CreateUserName}}<div></div>
+  创建时间:{{dailycharge.CreateDateTime}}<div></div>
+  更新时间:{{dailycharge.LastUpdateDateTime}}<div></div>
+  处理节点:{{dailycharge.ProcessStatuedDesc}}<div></div>
+  备注:{{dailycharge.Mark}}<div></div>
 
+
+
+
+  <app-biz-chargesettleitemlist [SettleId]="dailycharge.SettleId" (ItemChanged)="itemchanged($event)"></app-biz-chargesettleitemlist>
 </ng-container>
 
 

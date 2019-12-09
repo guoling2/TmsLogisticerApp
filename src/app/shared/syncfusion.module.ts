@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {Edit, GridModule, Page} from '@syncfusion/ej2-angular-grids';
 import { ButtonModule, CheckBoxModule, RadioButtonModule} from '@syncfusion/ej2-angular-buttons';
 import {ListBoxAllModule, ComboBoxModule, DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
-import { DetailRowService, PageService } from '@syncfusion/ej2-angular-grids';
+import { DetailRowService, PageService ,ResizeService,FreezeService,ReorderService } from '@syncfusion/ej2-angular-grids';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { TreeViewModule, TabModule } from '@syncfusion/ej2-angular-navigations';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
@@ -11,7 +11,7 @@ import { DropDownButtonModule, SplitButtonModule, ProgressButtonModule } from '@
 import { SwitchModule } from '@syncfusion/ej2-angular-buttons';
 import { Grid, DetailRow, Toolbar, PdfExport, ExcelExport } from '@syncfusion/ej2-grids';
 import { TextBoxModule, NumericTextBoxModule } from '@syncfusion/ej2-angular-inputs';
-import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import {DatePickerModule, DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
 import { loadCldr } from '@syncfusion/ej2-base';
 import { TooltipModule } from '@syncfusion/ej2-angular-popups';
 import { SelectionSettingsModel } from '@syncfusion/ej2-dropdowns';
@@ -28,11 +28,10 @@ import {EJAngular2Module} from 'ej-angular2';
     ListViewModule,
     TreeViewModule,
     TabModule,
-    RichTextEditorAllModule,
     ToastModule, DropDownButtonModule, RadioButtonModule, TooltipModule, SplitButtonModule, ProgressButtonModule,
     ListBoxAllModule,
-    SidebarModule, MenuAllModule, TreeViewAllModule,
-    ComboBoxModule, DialogModule
+     MenuAllModule, TreeViewAllModule,
+    ComboBoxModule, DialogModule, DatePickerModule, SidebarModule
   ],
 
   exports: [
@@ -42,13 +41,12 @@ import {EJAngular2Module} from 'ej-angular2';
     ListViewModule,
     TreeViewModule,
     TabModule,
-    RichTextEditorAllModule,
     ToastModule, DropDownButtonModule, RadioButtonModule, TooltipModule, SplitButtonModule, ProgressButtonModule,
-    SidebarModule, MenuAllModule, TreeViewAllModule,
-    ComboBoxModule, DialogModule
+     MenuAllModule, TreeViewAllModule,
+    ComboBoxModule, DialogModule, DatePickerModule, SidebarModule
   ],
    providers: [
-    DetailRowService, PageService
+    DetailRowService, PageService, ResizeService,ReorderService
   ]
 })
 

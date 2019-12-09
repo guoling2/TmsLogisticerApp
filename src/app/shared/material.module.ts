@@ -3,6 +3,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 
 import {
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -10,7 +12,7 @@ import {
   MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
-  MatChipsModule,
+  MatChipsModule, MatDatepickerIntl,
   MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
@@ -40,13 +42,14 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import {FontawesomemoduleModule} from './extensions/fontawesomemodule.module';
-import {ChinesePaginatorIntl} from '../mycomonent/tmspagination/mat-paginator-config';
+import {ChinesePaginatorIntl} from './materialconfig/mat-paginator-config';
+import {ChineseMatDatepickerIntl} from './materialconfig/mat-datepicker-intl';
 
 @NgModule({
   providers: [
-
-    { provide: MatPaginatorIntl, useValue: ChinesePaginatorIntl() }
-
+    {provide: MAT_DATE_LOCALE, useValue: 'zh-Hans'},
+    { provide: MatPaginatorIntl, useValue: ChinesePaginatorIntl() },
+    { provide: MatDatepickerIntl, useValue: ChineseMatDatepickerIntl() }
   ],
   exports: [
     CdkTableModule,
@@ -90,4 +93,5 @@ import {ChinesePaginatorIntl} from '../mycomonent/tmspagination/mat-paginator-co
   ]
 })
 
-export class MaterialComponentsModule { }
+export class MaterialComponentsModule {
+}
