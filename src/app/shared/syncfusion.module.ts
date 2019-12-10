@@ -46,7 +46,7 @@ import {EJAngular2Module} from 'ej-angular2';
     ComboBoxModule, DialogModule, DatePickerModule, SidebarModule
   ],
    providers: [
-    DetailRowService, PageService, ResizeService,ReorderService
+    DetailRowService, PageService, ResizeService, ReorderService
   ]
 })
 
