@@ -1,0 +1,42 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>计费项目列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+
+  <mat-form-field>
+    <input matInput placeholder="名称" formControlName="ItemDesc">
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput placeholder="编码" formControlName="ItemCode">
+  </mat-form-field>
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+    <e-column field='ItemCode' headerText='编码'  width=180></e-column>
+    <e-column field='ItemDesc' headerText='名称'  width=180></e-column>
+    <e-column field='ItemGroup' headerText='费用类型'  width=180></e-column>
+    <e-column field='ItemGroup' headerText='费用类型'  width=180></e-column>
+    <e-column field='IsSystem' headerText='系统预设'  width=180></e-column>
+    <e-column field='Mark' headerText='备注'  width=180></e-column>
+    <e-column field='CreateDateTime' headerText='创建时间'  width=180></e-column>
+    <e-column field='CreateUserName' headerText='创建人'  width=180></e-column>
+  </e-columns>
+</ejs-grid>
+
+
+
+
+

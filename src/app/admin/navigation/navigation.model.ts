@@ -411,6 +411,33 @@ export class NavigationModel {
           ]
         },
         {
+          id: 'FnAccount',
+          title: '财务设置',
+          type: 'collapse',
+          icon: 'work',
+          children: [
+            {
+              id: 'invoiceProfile',
+              title: '开票资料',
+              type: 'item',
+              url: '/biz/FnAccount/invoiceProfile'
+            },
+            {
+              id: 'baseChargeItem',
+              title: '计费项目',
+              type: 'item',
+              url: '/biz/FnAccount/baseChargeItem'
+            },
+            {
+              id: 'fnTrxItem',
+              title: '事务计费项目',
+              type: 'item',
+              url: '/biz/FnAccount/fnTrxItem'
+            }
+          ]
+        },
+
+        {
           id: 'baseprofile',
           title: '基础资料',
           type: 'collapse',
@@ -433,12 +460,6 @@ export class NavigationModel {
               title: '走货路径',
               type: 'item',
               url: '/biz/materials/pagination2'
-            },
-            {
-              id: 'invoiceprofile',
-              title: '开票资料',
-              type: 'item',
-              url: '/biz/base/invoiceprofile'
             },
             {
               id: 'modal',
@@ -479,9 +500,15 @@ export class NavigationModel {
 
             {
               id: 'cusbasedata-tracknumber',
-              title: '物流面单',
+              title: '物流面单管理',
               type: 'item',
               url: '/biz/base/tacknumber'
+            },
+            {
+              id: 'printdesign',
+              title: '打印模板管理',
+              type: 'item',
+              url: '/biz/base/pring-design-list'
             }
           ]
         },

@@ -75,6 +75,7 @@ const routes: Routes = [
       { path: 'logisticprice-management', loadChildren: './pages/logisticpricemanagement/logisticprice.module#LogisticpriceModule' },
       { path: 'fncharge', loadChildren: './pages/fncharge/fncharge.module#FnchargeModule' },
       { path: 'fnQueries', loadChildren: './pages/fnqueries/fn-queries.module#FnQueriesModule' },
+      { path: 'FnAccount', loadChildren: './pages/FnAccount/fn-account.module#FnAccountModule' },
 
     ]
   },

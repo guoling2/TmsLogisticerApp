@@ -6,11 +6,11 @@ import {Commonsetting} from '../../../help/commonsetting';
 import {FinanceReport} from '../../../services/base/basereportconfig';
 
 @Component({
-  selector: 'app-qry-daily-charge',
-  templateUrl: './qry-daily-charge.component.html',
-  styleUrls: ['./qry-daily-charge.component.css']
+  selector: 'app-basecharge-item',
+  templateUrl: './basecharge-item.component.html',
+  styleUrls: ['./basecharge-item.component.css']
 })
-export class QryDailyChargeComponent implements OnInit {
+export class BasechargeItemComponent implements OnInit {
 
   gridheight: number;
   searchp: FormGroup;
@@ -22,7 +22,7 @@ export class QryDailyChargeComponent implements OnInit {
   ngOnInit() {
 
     this.searchp = this.fb.group(
-      { ProcessStatued: '', Chargeparty: '', SettleId: ''});
+      { ItemDesc: '', ItemCode: ''});
     this.gridheight = Commonsetting.GridHeight6();
   }
 
