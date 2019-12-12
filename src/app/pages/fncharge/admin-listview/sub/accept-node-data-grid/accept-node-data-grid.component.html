@@ -8,7 +8,7 @@
           allowPaging='false'  class="contlistbox">
   <e-columns >
     <e-column type='checkbox' width='50'></e-column>
-    <e-column field='SettleId' headerText='费用编号'  width=80>
+    <e-column field='SettleId' headerText='费用编号'  width=160>
       <ng-template #template let-data>
         <a [routerLink]="['/biz/fncharge/user-detail', data.SettleId]">{{data.SettleId }} </a>
       </ng-template>

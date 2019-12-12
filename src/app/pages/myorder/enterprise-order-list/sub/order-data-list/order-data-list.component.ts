@@ -1,7 +1,7 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {
   DataStateChangeEventArgs,
-  ExcelExportProperties,
+  ExcelExportProperties, ExcelQueryCellInfoEventArgs,
   PageSettingsModel,
   SortDescriptorModel,
   Sorts,
@@ -127,7 +127,7 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
     // });
   }
   public Alert() {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
 
@@ -150,4 +150,21 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
       data: xnumber
     });
   }
+
+  // formatexcel($event: ExcelQueryCellInfoEventArgs) {
+  //
+  //   if($event.column.field === 'TotalWeight'){
+  //
+  //     console.log($event.cell.value);
+  //     //$event.cell.value=0;
+  //   }
+  //
+  //   console.log($event);
+  //   // switch ($event.column.field ) {
+  //   //   case 'TotalWeight':
+  //   //     $event.value = 2;
+  //   //     break;
+  //   // }
+  //
+  // }
 }

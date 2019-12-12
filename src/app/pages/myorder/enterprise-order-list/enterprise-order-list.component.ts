@@ -17,6 +17,7 @@ import {LogistciOrderInterface} from '../../../pageservices/logistci-order-inter
 import {Unacceptorderrequest} from './sub/order-unaccept/unacceptorderrequest';
 import {ExcelExportProperties} from '@syncfusion/ej2-grids';
 import {DateTimeHelp} from '../../../help/date-forma';
+import {OrderCancelSendComponent} from './sub/order-cancel-send/order-cancel-send.component';
 
 @Component({
   selector: 'app-enterprise-order-list',
@@ -26,22 +27,33 @@ import {DateTimeHelp} from '../../../help/date-forma';
 })
 export class EnterpriseOrderListComponent implements OnInit {
 
+  constructor( public dialog: MatDialog, private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
+
   gridheight: number;
   searchp: FormGroup;
 
   @ViewChild('tabgroup', {static: false})
   public currenttab: MatTabGroup;
 
-  @ViewChild('gdi1', {static: false})
-  public gdi1: OrderDataListComponent; // 待接单
-  @ViewChild('gdi2', {static: false})  // 等待安排
-  public gdi2: OrderDataListComponent;
-  @ViewChild('gdi3', {static: false})  // 等待签收
-  public gdi3: OrderDataListComponent;
 
-  constructor( public dialog: MatDialog, private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
+  @ViewChild('preordergrid', {static: false})
+  public preordergrid: OrderDataListComponent; // 订单待接
+
+  @ViewChild('seconedpreordergrid', {static: false})
+  public seconedpreordergrid: OrderDataListComponent; // 二次预约
+
+  @ViewChild('updatesendcargrid', {static: false})  // 车辆预约
+  public updatesendcargrid: OrderDataListComponent;
+
+  @ViewChild('orderissendedgrid', {static: false})  // 货物出厂
+  public orderissendedgrid: OrderDataListComponent;
+
+  exceltip = false;
+  SelectTabIndex = 0;
 
   ngOnInit() {
+
+    // this.currenttab.selectedIndex = 0;
 
     this.searchp = this.fb.group(
       {
@@ -66,6 +78,9 @@ export class EnterpriseOrderListComponent implements OnInit {
         break;
       case 2:
         this.searchp.patchValue({ConfirmOrder: '2'});
+        break;
+      case 3:
+        this.searchp.patchValue({ConfirmOrder: '3'});
         break;
     }
 
@@ -107,16 +122,20 @@ export class EnterpriseOrderListComponent implements OnInit {
 
     let interfacex = null;
     // alert(this.currenttab.selectedIndex);
+
+
     switch (  this.currenttab.selectedIndex ) {
       case 0:
-        interfacex = this.gdi1 as LogistciOrderInterface;
-
+        interfacex = this.preordergrid as LogistciOrderInterface; // 订单待接
         break;
       case 1:
-        interfacex = this.gdi2 as LogistciOrderInterface;
+        interfacex = this.seconedpreordergrid as LogistciOrderInterface; // 二次预约
         break;
       case 2:
-        interfacex = this.gdi3 as LogistciOrderInterface;
+        interfacex = this.updatesendcargrid as LogistciOrderInterface; // 车辆预约
+        break;
+      case 3:
+        interfacex = this.orderissendedgrid as LogistciOrderInterface; // 货物出厂
         break;
     }
 
@@ -204,7 +223,7 @@ export class EnterpriseOrderListComponent implements OnInit {
 
    if (selectrows.length === 0) {
       this.emitService.eventEmit.emit(
-        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '只能单独退单', MessageShowType.Toast));
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择订单', MessageShowType.Toast));
       return;
     }
 
@@ -232,12 +251,17 @@ export class EnterpriseOrderListComponent implements OnInit {
     });
   }
 
-
   excelout() {
 
-     alert('请注意只能导出本页数据');
+    if (this.exceltip === false) {
+      alert('请注意只能导出本页数据');
+    }
 
-     this.GetCurrentDataGrid().ExcelOut(null);
+    this.exceltip = true;
+
+
+
+    this.GetCurrentDataGrid().ExcelOut(null);
    //  let appendExcelExportProperties: ExcelExportProperties = {
    //    multipleExport: { type: 'AppendToSheet', blankRows: 2 }
    //  };
@@ -245,5 +269,34 @@ export class EnterpriseOrderListComponent implements OnInit {
 
 
    // this.GetCurrentDataGrid().CurrentDataGrid.excelExport(appendExcelExportProperties, true);
+  }
+
+  cancelsendorder(number1: number, number2: number) {
+
+    const  selectrows = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords();
+
+    if (selectrows.length === 0) {
+      this.emitService.eventEmit.emit(
+        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择订单', MessageShowType.Toast));
+      return;
+    }
+
+    // @ts-ignore
+    const  ids = this.GetCurrentDataGrid().CurrentDataGrid.getSelectedRecords().map((a) => {
+      // @ts-ignore
+      return a.OrderPreparedLogisticId;
+    }).reverse();
+
+
+    const dialogRef = this.dialog.open(OrderCancelSendComponent, {
+      minHeight: number1, // 160
+      minWidth: number2, // 500
+      data: {OrderPreparedLogisticIds: ids}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      EmitAlertMessageHelo.ShowMessage( this.emitService, (result as TmsResponseModle), MessageShowType.Toast);
+      this.searching();
+    });
   }
 }

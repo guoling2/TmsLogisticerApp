@@ -23,7 +23,8 @@ export class QryDailyChargeComponent implements OnInit {
 
     this.searchp = this.fb.group(
       { ProcessStatued: '', Chargeparty: '', SettleId: ''});
-    this.gridheight = Commonsetting.GridHeight6();
+
+    this.gridheight = Commonsetting.GridHeight2();
   }
 
   searching() {

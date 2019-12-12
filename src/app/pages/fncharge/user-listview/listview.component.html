@@ -1,25 +1,38 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>费用查询</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>费用查询</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>日常记账</span> ·
+      <span>费用查询</span>
+    </div>
   </div>
+  <div class="contenttex-r-new"></div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
+<form class="listfrom-new2"  [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+    <div fxFlex="42">
+      <mat-form-field class="comwidth">
+        <mat-select  placeholder="处理状态"  formControlName="ProcessStatued">
+          <mat-option value="">全部</mat-option>
+          <mat-option value="0">未申请</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="42">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
+      </mat-form-field>
+    </div>
+    <div fxFlex="12" style="padding-bottom:19px">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
 
-  <mat-form-field>
-    <mat-select  placeholder="处理状态"  formControlName="ProcessStatued">
-      <mat-option value="">全部</mat-option>
-      <mat-option value="0">未申请</mat-option>
-    </mat-select>
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
-  </mat-form-field>
 
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
-
+<div class="databoxs">
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='false'
@@ -27,23 +40,23 @@
           [enableHover]="false"
           allowPaging='false'  class="contlistbox">
   <e-columns >
-    <e-column field='SettleId' headerText='费用编号'  width=80>
+    <e-column field='SettleId' headerText='费用编号'  width=150>
       <ng-template #template let-data>
         <a [routerLink]="['/biz/fncharge/user-detail', data.SettleId]">{{data.SettleId }} </a>
       </ng-template>
     </e-column>
-    <e-column field='StoreName' headerText='费用网点'  width=120></e-column>
-    <e-column field='Chargeparty' headerText='收付款对象'  width=180></e-column>
-    <e-column field='ChargeItem' headerText='费用项目' textAlign="left"  width='200'></e-column>
-    <e-column field='ReceiveChargeAmt' headerText='收入金额' textAlign="left"  width='160'></e-column>
-    <e-column field='PaymentChargeAmt' headerText='支出金额' textAlign="left"  width='160'></e-column>
-    <e-column field='IsOpenInvoice' headerText='是否开票' textAlign="left"  width='160'></e-column>
-    <e-column field='ProcessStatued' headerText='处理状态'  textAlign="left" width=100></e-column>
+    <e-column field='StoreName' headerText='费用网点'  width=150></e-column>
+    <e-column field='Chargeparty' headerText='收付款对象'  width=160></e-column>
+    <e-column field='ChargeItem' headerText='费用项目' textAlign="left"  width='160'></e-column>
+    <e-column field='ReceiveChargeAmt' headerText='收入金额' textAlign="left"  width='130'></e-column>
+    <e-column field='PaymentChargeAmt' headerText='支出金额' textAlign="left"  width='130'></e-column>
+    <e-column field='IsOpenInvoice' headerText='是否开票' textAlign="left"  width='120'></e-column>
+    <e-column field='ProcessStatued' headerText='处理状态'  textAlign="left" width=120></e-column>
     <e-column field='CreateDateTime' headerText='创建日期'  textAlign="left" width=150></e-column>
 
   </e-columns>
 </ejs-grid>
-
+</div>
 
 
 

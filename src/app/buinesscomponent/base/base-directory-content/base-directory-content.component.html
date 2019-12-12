@@ -1,5 +1,5 @@
 
-<mat-form-field>
+<mat-form-field style="width:100%">
   <mat-label>{{displaylabel}}</mat-label>
   <mat-select (selectionChange)="change($event)" [(value)]="selected" [disabled]="disableSelect">
     <mat-option *ngFor="let store of logistticstores" [value]="store.ContentText">

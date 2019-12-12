@@ -45,7 +45,7 @@ export class AdminListViewComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { ProcessStatued: '', Chargeparty: ''});
-    this.gridheight = Commonsetting.GridHeight6();
+    this.gridheight = Commonsetting.GridHeight2l();
   }
   /**
    * 获取当前使用的表格

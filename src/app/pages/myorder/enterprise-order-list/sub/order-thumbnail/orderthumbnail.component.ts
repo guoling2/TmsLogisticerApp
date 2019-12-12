@@ -1,8 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {LogisticStoreServiceService} from '../../../../../services/logisticstore/logisticstoreservice';
 import {EnterpriseOrderDetailModel} from '../../../../../models/CustomerOrder/enterprise-order-detail-model';
 import {EnterpriseOrderServiceService} from '../../../../../services/CustomerOrder/enterprise-order-service.service';
+import {OrderDataListComponent} from '../order-data-list/order-data-list.component';
+import {GridComponent} from '@syncfusion/ej2-angular-grids';
 
 @Component({
   selector: 'app-orderthumbnail',
@@ -11,7 +13,9 @@ import {EnterpriseOrderServiceService} from '../../../../../services/CustomerOrd
 })
 export class OrderthumbnailComponent implements OnInit {
 
-  ordermodel: EnterpriseOrderDetailModel;
+  orderModel: EnterpriseOrderDetailModel;
+
+  displayedColumns: string[] = ['PackageName', 'TotalQty', 'TotalWeight', 'TotalVol','PackageType'];
 
   constructor(private enterpriseOrderServiceService: EnterpriseOrderServiceService,
               public dialogRef: MatDialogRef<OrderthumbnailComponent>,
@@ -19,9 +23,13 @@ export class OrderthumbnailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.enterpriseOrderServiceService.Detail(this.Id, false).subscribe(a => {
+
+   // this.orderModel = new EnterpriseOrderDetailModel();
+    console.log(this.dialogRef);
+    this.enterpriseOrderServiceService.Detail(this.Id, true).subscribe(a => {
       console.log(a);
-      this.ordermodel = a; });
+
+      this.orderModel = a; });
 
   }
 

@@ -19,9 +19,9 @@
 .mat-tab-label-active {color:#e21641!important;background:#fff}
 .mat-tab-labels {background:#f8f8f8}*/
 .bg-white-blue {background:#fff;margin:0 10px!important}
-.mat-tab-header {background:#0378d5;}
-.mat-tab-label {background:#0378d5;color:#fff;opacity:1!important;height:40px!important;}
-.mat-tab-label-active {color:#fff!important;}
-.mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {background:#fff;margin-top:2px}
+.tabbox-new .mat-tab-header {background:#0378d5;}
+.tabbox-new .mat-tab-label {background:#0378d5;color:#fff;opacity:1!important;height:40px!important;}
+.tabbox-new .mat-tab-label-active {color:#fff!important;}
+.tabbox-new .mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {background:#fff;margin-top:2px}
 .e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
 .mat-form-field-infix {width:100%!important;}

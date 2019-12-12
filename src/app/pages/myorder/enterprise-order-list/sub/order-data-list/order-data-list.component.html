@@ -49,21 +49,29 @@
         <e-column field='Destarea' headerText='到货区域'  width=120></e-column>
         <e-column field='TotalCount' headerText='件数' textAlign="left"  width='100'></e-column>
         <e-column field='NotifyCarNumber' headerText='提货车号' textAlign="left"  width=100></e-column>
+
+        <e-column field='TotalWeight' headerText='总吨位' textAlign="left"  width='100'>
+        </e-column>
+        <e-column field='TotalVolume' headerText='总方数' textAlign="left"  width='100'>
+        </e-column>
+
         <e-column field='OrderZhWeight' headerText='重货吨' textAlign="left"  width='100'>
-          <ng-template #template let-data>
-            {{data.OrderZhWeight | tmsweightconvert :'g'}}
-          </ng-template>
         </e-column>
+
+        <e-column field='OrderZhVol' headerText='重货方' textAlign="left"  width='100'>
+        </e-column>
+
+        <e-column field='OrderPhWeight' headerText='泡货吨'  textAlign="left" width='100'>
+        </e-column>
+
         <e-column field='OrderPhVol' headerText='泡货方'  textAlign="left" width='100'>
-          <ng-template #template let-data>
-            {{data.OrderPhVol | tmsvolumeconvert :'cm'}}
-          </ng-template>
-        </e-column>
+       </e-column>
+
         <e-column field='TotalAmount' headerText='运费'  textAlign="left" width='100'></e-column>
 
         <e-column field='OrderSendMark' headerText='订单备注' textAlign="left"  width='300'></e-column>
-
-
+        <e-column field='StoreName' headerText='预分配网点' textAlign="left"  width=130></e-column>
+        <e-column field='OrderInputCreateDatetime' headerText='下单时间' textAlign="left"  width=170></e-column>
         <e-column field='CreateDateTime' headerText='通知时间' textAlign="left"  width=170></e-column>
         <e-column field='ConfirmDateTime' headerText='接单时间'  width=170></e-column>
   </e-columns>

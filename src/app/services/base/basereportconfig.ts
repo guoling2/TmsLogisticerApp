@@ -118,6 +118,15 @@ export  class EnterpriseCustomer {
   public  static  Report_EnterpriseAcceptDepotList = 'AcceptDepotList';
 }
 
+
+export  class FnAccountReport {
+
+  /**
+   * 费用名称
+   */
+  public  static  Report_DaseChargeItem = 'baseChargeItem';
+
+}
 /**
  * 财务方面的报表
  */

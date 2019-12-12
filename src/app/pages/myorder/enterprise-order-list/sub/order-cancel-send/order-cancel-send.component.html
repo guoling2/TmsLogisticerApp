@@ -1,0 +1,11 @@
+<h2>预约取消确认取消预约吗?</h2>
+<ngb-alert *ngIf="errormsg.length>0" type="danger"  (close)="errormsg = '' ">{{errormsg}}</ngb-alert>
+<ejs-textbox  [(ngModel)]="InputCancelReason"  placeholder='取消原因' ></ejs-textbox>
+<div class="l-alert">注意：这将不会退回到客户系统中。</div>
+<div mat-dialog-actions align="end" class="btnboxs">
+  <button mat-button (click)="dialogRef.close()" color="cancel" style="padding:8px 8px!important;">关闭</button>
+  <button mat-button (click)="save()"  cdkFocusInitial color="reject"  style="padding:8px 8px!important;">退回</button>
+  <!--  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>退回</button>-->
+</div>
+
+

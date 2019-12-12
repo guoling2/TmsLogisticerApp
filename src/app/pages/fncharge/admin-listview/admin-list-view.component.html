@@ -1,35 +1,48 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>日常结算</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>日常结算</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>结算与交账</span> ·
+      <span>日常结算</span>
+    </div>
   </div>
+  <div class="contenttex-r-new"></div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-
-
-  <mat-form-field>
-    <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
-  </mat-form-field>
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="flex-start flex-end">
+    <div fxFlex="30" style="margin-right:10px">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
+      </mat-form-field>
+    </div>
+    <div fxFlex="9" class="marB-25">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <ng-container *ngIf="SelectTabIndex==0">
+      <div fxFlex="9" class="marB-25">
+        <button ejs-button cssClass="e-info mat-width mat-reject" appTmssaveconfirm comfirmMessage="确定退单吗？" (onSuggest)=orderaction($event) extendata="0" >退单</button>
+      </div>
+      <div fxFlex="9" class="marB-25">
+        <button ejs-button cssClass="e-info mat-width mat-green" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1" >接单</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="SelectTabIndex==1">
+      <div fxFlex="9" class="marB-25">
+        <button ejs-button cssClass="e-info mat-width mat-green"  (click)="openinvoicedialog('350px','120px','')">开票</button>
+      </div>
+      <div fxFlex="9" class="marB-25">
+        <button ejs-button cssClass="e-info mat-width mat-reject"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="2">开票结束</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="SelectTabIndex==2">
+      <div fxFlex="9" class="marB-25">
+       <button ejs-button cssClass="e-info mat-width mat-green"   appTmssaveconfirm comfirmMessage="是否冲销结束？" (onSuggest)=orderaction($event) extendata="3">冲销完成</button>
+      </div>
+    </ng-container>
+  </div>
 </form>
-<div>
-  <ng-container *ngIf="SelectTabIndex==0">
-    <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定退单吗？" (onSuggest)=orderaction($event) extendata="0" >退单</button>
-    <button ejs-button cssClass="e-info mat-width" appTmssaveconfirm comfirmMessage="确定接单吗？" (onSuggest)=orderaction($event) extendata="1" >接单</button>
-  </ng-container>
-
-  <ng-container *ngIf="SelectTabIndex==1">
-    <button ejs-button cssClass="e-info mat-width"  (click)="openinvoicedialog('350px','120px','')">开票</button>
-    <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="已完成开票？" (onSuggest)=orderaction($event) extendata="2">开票结束</button>
-  </ng-container>
-  <ng-container *ngIf="SelectTabIndex==2">
-
-    <button ejs-button cssClass="e-info mat-width"   appTmssaveconfirm comfirmMessage="是否冲销结束？" (onSuggest)=orderaction($event) extendata="3">冲销完成</button>
-  </ng-container>
-
-</div>
-<mat-tab-group  [(selectedIndex)]="SelectTabIndex" #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
+<mat-tab-group  class="tabbox-new2" #tabgroup  color="warn" dynamicHeight="false" disableRipple="true"  [(selectedIndex)]="SelectTabIndex">
   <mat-tab label="未接单">
     <app-fnchaege-acceptnode-datagrid #gdi1 [reporttype]="1" [gridheight]="gridheight" ></app-fnchaege-acceptnode-datagrid>
   </mat-tab>

@@ -8,13 +8,30 @@
     </div>
   </div>
   <div class="contenttex-r-new">
-    <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true" ><i class="fas fa-user-edit"></i> 订单签收</button>
-    <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true"><i class="fas fa-clipboard-list"></i> 流程追踪</button>
+
+
     <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
-    <button ejs-button cssClass="e-outline mat-auto"  (click)="opensettingdepot(160,500)" ><i class="fas fa-warehouse"></i> 接单网点</button>
-    <button ejs-button cssClass="e-outline mat-auto"  (click)="ungetorder(200,200)" ><i class="fas fa-times"></i> 客户退单</button>
-    <button ejs-button cssClass="e-outline mat-auto"  (click)="updatesendcar(200,200)" ><i class="fas fa-dolly-flatbed"></i> 提货调整</button>
-    <button ejs-button cssClass="e-outline mat-auto" (click)="getorder('200','200')"><i class="fas fa-clipboard-check"></i> 客户接单</button>
+
+    <ng-container *ngIf="SelectTabIndex===0">
+      <button ejs-button cssClass="e-outline mat-auto" (click)="getorder('200','200')"><i class="fas fa-clipboard-check"></i> 客户接单</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="ungetorder(200,200)" ><i class="fas fa-times"></i> 客户退单</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="opensettingdepot(160,500)" ><i class="fas fa-warehouse"></i> 接单网点</button>
+    </ng-container>
+    <ng-container *ngIf="SelectTabIndex==1">
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="updatesendcar(200,200)" ><i class="fas fa-dolly-flatbed"></i> 提货调整</button>
+    </ng-container>
+    <ng-container *ngIf="SelectTabIndex===2">
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="cancelsendorder(200,200)" ><i class="fas fa-dolly-flatbed"></i> 预约取消</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="updatesendcar(200,200)" ><i class="fas fa-dolly-flatbed"></i> 提货调整</button>
+    </ng-container>
+
+    <ng-container *ngIf="SelectTabIndex===3">
+      <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true" ><i class="fas fa-user-edit"></i> 订单签收</button>
+      <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true"><i class="fas fa-clipboard-list"></i> 流程追踪</button>
+    </ng-container>
+
+
+
   </div>
 </div>
 <form class="listfrom-new2" [formGroup]="searchp" >
@@ -73,14 +90,17 @@
     </div>
   </div>
 </form>
-<mat-tab-group  #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
+<mat-tab-group  [(selectedIndex)]="SelectTabIndex"  #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
     <mat-tab label="订单待接">
-      <app-order-data-list #gdi1 [gridheight]="gridheight" ></app-order-data-list>
+      <app-order-data-list #preordergrid [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
+  <mat-tab label="二次预约">
+    <app-order-data-list #seconedpreordergrid [gridheight]="gridheight" ></app-order-data-list>
+  </mat-tab>
     <mat-tab label="车辆预约">
-      <app-order-data-list #gdi2 [gridheight]="gridheight" ></app-order-data-list>
+      <app-order-data-list #updatesendcargrid [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
-    <mat-tab label="货物出厂" [hidden]="true">
-      <app-order-data-list #gdi3 [gridheight]="gridheight" ></app-order-data-list>
+    <mat-tab label="货物出厂">
+      <app-order-data-list #orderissendedgrid [gridheight]="gridheight" ></app-order-data-list>
     </mat-tab>
 </mat-tab-group>

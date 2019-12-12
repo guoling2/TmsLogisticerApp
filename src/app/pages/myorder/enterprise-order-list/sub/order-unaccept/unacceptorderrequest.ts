@@ -5,3 +5,13 @@ export class Unacceptorderrequest {
   public ClosedReason: string;
 
 }
+
+/**
+ * 预约取消
+ */
+export  class CancelSendOrderRequest {
+
+  public OrderPreparedLogisticIds: string[];
+
+  public CancelReason: string;
+}

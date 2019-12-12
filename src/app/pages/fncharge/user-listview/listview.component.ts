@@ -23,7 +23,7 @@ export class ListviewComponent implements OnInit {
 
     this.searchp = this.fb.group(
       { ProcessStatued: '',Chargeparty:''});
-    this.gridheight = Commonsetting.GridHeight6();
+    this.gridheight = Commonsetting.GridHeight2();
   }
 
   searching() {

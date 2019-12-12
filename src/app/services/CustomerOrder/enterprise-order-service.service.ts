@@ -8,6 +8,7 @@ import {tap} from 'rxjs/operators';
 import {EnterpriseOrderDetailModel} from '../../models/CustomerOrder/enterprise-order-detail-model';
 import {TmsResponseModle} from '../../models/tms-response.module';
 import {AcceptEnterpriseOrderRequest} from '../../models/CustomerOrder/accept-enterprise-order-request';
+import {CancelSendOrderRequest} from '../../pages/myorder/enterprise-order-list/sub/order-unaccept/unacceptorderrequest';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,15 @@ export class EnterpriseOrderServiceService {
       '/api/EnterpriseOrder/CancelOrder');
     // return this.httpclient.post<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId,
     //   resl);
+
+  }
+
+  /**
+   * 预约取消
+   */
+  public CancelSend(cancelSendOrderRequest: CancelSendOrderRequest): Observable<TmsResponseModle> {
+    return this.tmshttpclientService.PostAsJson(cancelSendOrderRequest,
+      '/api/EnterpriseOrder/CancelSend');
 
   }
 }

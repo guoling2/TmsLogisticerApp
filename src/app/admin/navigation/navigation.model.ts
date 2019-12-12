@@ -380,7 +380,7 @@ export class NavigationModel {
           id: 'fncharge',
           title: '日常记账',
           type: 'collapse',
-          icon: 'work',
+          icon: 'chrome_reader_mode',
           children: [
             {
               id: 'fncharge01',
@@ -400,7 +400,7 @@ export class NavigationModel {
           id: 'fnQueries',
           title: '财务查询',
           type: 'collapse',
-          icon: 'work',
+          icon: 'next_week',
           children: [
             {
               id: 'QryDailyCharge',

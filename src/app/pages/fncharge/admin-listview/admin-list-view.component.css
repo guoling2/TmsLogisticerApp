@@ -1,0 +1,22 @@
+.contentbox-new {padding:10px 10px 10px 10px;wdith:100%;height:auto;clear:both;overflow:hidden;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l-new {width:40%;height:auto;float: left;}
+.contenttex-r-new {width:60%;height:auto;float: right;}
+.contentit-l-new div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l-new a {color:#666;text-decoration: none}
+.contentit-l-new a:hover {color:#111;text-decoration:none;cursor:pointer}
+.contenttex-r-new button {margin-left:10px;margin-top:-5px;float:right}
+.listfrom-new2 {width:98.3%;height:60px!important;overflow:hidden;margin:10px auto 0 auto!important;background:none;}
+.listfrom-new2 button {margin-left:10px}
+.tabbox-new {width:98.3%;height:auto!important;overflow:hidden;margin:5px 10px 0 10px!important;background:none;}
+.contennews b{font-size:18px;color:#000;margin-right: 10px;font-weight: normal}
+.contennews span {font-size:13px;color:#666;font-weight: normal}
+.contennews span a  {font-size:13px;color:#666;font-weight: normal}
+.contennews span i {color:#888}
+.fn-box {margin:10px;border:1px #eee solid;background:#fff;padding:10px}
+.filebox {width:100%;height:auto;margin-top:10px}
+.filebox h3 {font-size:18px;color:#333;border-bottom:1px #e1e1e1 solid;padding-bottom:10px;}
+.filebox h3 i {margin-right:5px}
+.comwidth {width:100%!important;}
+.databoxs {width:98.3%;margin:0 auto 0 auto!important;}
+.marB-25 {margin-bottom:20px;}
+.mat-form-field {margin-left:0!important;}

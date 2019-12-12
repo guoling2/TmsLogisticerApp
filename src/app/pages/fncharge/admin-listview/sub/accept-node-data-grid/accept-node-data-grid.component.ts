@@ -5,6 +5,7 @@ import {Basereportservice} from '../../../../../services/base/basereportservice'
 import {DataStateChangeEventArgs, GridComponent, SortService} from '@syncfusion/ej2-angular-grids';
 import {EnterpriseCustomer, FinanceReport} from '../../../../../services/base/basereportconfig';
 import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
+import {Commonsetting} from '../../../../../help/commonsetting';
 
 @Component({
   selector: 'app-fnchaege-acceptnode-datagrid',
@@ -27,6 +28,7 @@ export class AcceptAndFinshNodeDataGridComponent implements OnInit,LogistciOrder
   constructor(private fb: FormBuilder, private service: Basereportservice) { }
 
   ngOnInit() {
+
   }
 
   public get CurrentDataGrid() {

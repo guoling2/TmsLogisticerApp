@@ -1,91 +1,135 @@
-<div class="opendivs">
-  <div class="opendivs_l"><h3><i class="fas fa-clipboard-list"></i> 订单概要 - <b>客户单号：{{ordermodel.CustomerOrderId}}</b></h3></div>
-  <div class="opendivs_r"><button ejs-button cssClass="e-info mat-auto mat-reject" (click)="dialogRef.close()">关闭</button></div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="100">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="收货客户" readonly value="{{ordermodel.Destcustomname}}">
-    </mat-form-field>
+
+<ng-container *ngIf="orderModel">
+  <div class="opendivs">
+    <div class="opendivs_l"><h3><i class="fas fa-clipboard-list"></i> 订单概要 - <b>客户单号：{{orderModel.CustomerOrderId}}</b></h3></div>
+    <div class="opendivs_r"><button ejs-button cssClass="e-info mat-auto mat-reject" (click)="dialogRef.close()">关闭</button></div>
   </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="49">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="联系人" readonly value="{{ordermodel.Destlinkman}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="49">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="联系电话" readonly value="{{ordermodel.Desttel}}">
-    </mat-form-field>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="49">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="提货仓库" readonly value="{{ordermodel.OrigincustomPhysicalDeotName}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="49">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="虚拟库位" readonly value="{{ordermodel.OrigincustomVirualDeotName}}">
-    </mat-form-field>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="32">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="总件数" type="number"   readonly value="{{ordermodel.TotalCount.toFixed(2)}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="32">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="总重量(T)" type="number" readonly value="{{ordermodel.TotalWeight|tmsweightconvert:'g'}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="32">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="总体积(M3)" type="number" readonly value="{{ordermodel.TotalVolume|tmsvolumeconvert:'cm'}}">
-    </mat-form-field>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="24">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="重货吨(T)" type="number" readonly value="{{ordermodel.OrderZhWeight|tmsweightconvert:'g'}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="24">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="重货体积(M3)" type="number" readonly value="{{ordermodel.OrderZhVol|tmsvolumeconvert:'cm'}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="24">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="抛货吨(T)" type="number" readonly value="{{ordermodel.OrderPhWeight|tmsweightconvert:'g'}}">
-    </mat-form-field>
-  </div>
-  <div fxFlex="24">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="抛货体积(M3)" type="number" readonly value="{{ordermodel.OrderPhVol|tmsvolumeconvert:'cm'}}">
-    </mat-form-field>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="100">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="到货地址" readonly value="{{ordermodel.DestAddress}}">
-    </mat-form-field>
-  </div>
-</div>
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="100">
-    <mat-form-field class="example-full-width">
-      <textarea  matInput placeholder="订单备注" readonly>{{ordermodel.DisMark}}</textarea>
-    </mat-form-field>
-  </div>
-</div>
+  <mat-tab-group  dynamicHeight="true" style="height:520px;" class="poptabs">
+    <mat-tab label="订单信息">
+      <form>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="100">
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="收货客户"   value="{{orderModel.Destcustomname}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="49">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="联系人"  value="{{orderModel.Destlinkman}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="49">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="联系电话"  value="{{orderModel.Desttel}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="49">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="提货仓库"  value="{{orderModel.OrigincustomPhysicalDeotName}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="49">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="虚拟库位"  value="{{orderModel.OrigincustomVirualDeotName}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="32">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="总件数"     value="{{orderModel.TotalCount.toFixed(2)}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="32">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="总重量(T)"  value="{{orderModel.TotalWeight|tmsweightconvert:'g'}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="32">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="总体积(M3)"  value="{{orderModel.TotalVolume|tmsvolumeconvert:'cm'}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="24">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="重货吨(T)"   value="{{orderModel.OrderZhWeight|tmsweightconvert:'g'}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="24">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="重货体积(M3)"   value="{{orderModel.OrderZhVol|tmsvolumeconvert:'cm'}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="24">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="抛货吨(T)"   value="{{orderModel.OrderPhWeight|tmsweightconvert:'g'}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="24">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="抛货体积(M3)"    value="{{orderModel.OrderPhVol|tmsvolumeconvert:'cm'}}" >
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="100">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="到货地址"  value="{{orderModel.DestAddress}}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="100">
+          <mat-form-field class="example-full-width">
+            <textarea  matInput placeholder="订单备注"  rows="2">{{orderModel.DisMark}}</textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="品相信息">
+      <table mat-table [dataSource]="orderModel.ReceivingBillItemCollections" class="tableboxs">
+        <ng-container matColumnDef="PackageName">
+          <th mat-header-cell *matHeaderCellDef> 货物名称. </th>
+          <td mat-cell *matCellDef="let element"> {{element.PackageName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalQty">
+          <th mat-header-cell *matHeaderCellDef> 货物数量 </th>
+          <td mat-cell *matCellDef="let element"> {{element.TotalQty.toFixed(3)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalWeight">
+          <th mat-header-cell *matHeaderCellDef> 重量(吨) </th>
+          <td mat-cell *matCellDef="let element"> {{element.TotalWeight|tmsweightconvert:'g'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TotalVol">
+          <th mat-header-cell *matHeaderCellDef> 体积(方) </th>
+          <td mat-cell *matCellDef="let element"> {{element.TotalVol|tmsvolumeconvert:'cm'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="PackageType">
+          <th mat-header-cell *matHeaderCellDef> 包装 </th>
+          <td mat-cell *matCellDef="let element"> {{element.PackageType}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+</ng-container>
+
 
 
 
