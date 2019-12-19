@@ -14,50 +14,38 @@
 </div>
 
 
-<form  [formGroup]="searchp" class="listfrom-new">
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-    <div fxFlex="17">
-      <mat-form-field style="width:100%!important;">
-        <label>
-          <input matInput  formControlName="OrderTrackServerId" />
-        </label>
-        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+<form  [formGroup]="searchp" class="listfrom-new2">
+  <div fxLayout="row"  class="fxbox"  fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+      <ejs-textbox placeholder="物流单号："  floatLabelType="Auto" formControlName="OrderTrackServerId"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="客户单号："  floatLabelType="Auto" formControlName="CustomerOrderId"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="到货城市："  floatLabelType="Auto" formControlName="DestCity"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="订单标记："  floatLabelType="Auto" formControlName="CustomerSpecialVehicel"></ejs-textbox>
+    </div>
+  </div>
+  <div fxLayout="row"  class="fxbox"  fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+      <app-biz-mylogistiscstore2  style="width:100%;" [saveform]="searchp" formControlName="BeginLogisticStoreId"  SettingFormControlName="BeginLogisticStoreId"></app-biz-mylogistiscstore2>
+    </div>
+    <div fxFlex="23">
+      <mat-form-field style="width:100%;margin-left:0;color:#666;">
+          <mat-select matNativeControl  formControlName="LosigticTrackStatued" placeholder="下达状态：">
+            <mat-option label="--状态选择 --">状态选择</mat-option>
+            <mat-option value="1" selected>未下达</mat-option>
+            <mat-option value="2">已下达</mat-option>
+          </mat-select>
       </mat-form-field>
     </div>
-    <div fxFlex="17">
-      <mat-form-field style="width:100%!important;">
-        <label>
-          <input matInput  formControlName="CustomerOrderId" />
-        </label>
-        <span  matPrefix style="color: #888">客户单号：&nbsp;</span>
-      </mat-form-field>
-    </div>
-    <div fxFlex="17">
-      <mat-form-field style="width:100%!important;">
-        <label>
-          <input matInput  formControlName="DestCity" />
-        </label>
-        <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
-      </mat-form-field>
-    </div>
-<!--    <app-biz-mylogistiscstore2   mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>-->
-    <div fxFlex="17">
-      <app-biz-mylogistiscstore2  style="width:100%;" [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId"  ></app-biz-mylogistiscstore2>
-    </div>
-    <div fxFlex="17">
-      <mat-form-field style="width:100%!important;">
-        <label>
-          <select matNativeControl  formControlName="LosigticTrackStatued">
-            <option label="--状态选择 --"></option>
-            <option value="1" selected>未下达</option>
-            <option value="2">已下达</option>
-          </select>
-        </label>
-        <span  matPrefix style="color: #888">下达状态：&nbsp;</span>
-      </mat-form-field>
-    </div>
-    <div fxFlex="9" style="text-align: right">
+    <div fxFlex="23" style="text-align: left;padding-bottom:10px">
       <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <div fxFlex="23">
     </div>
   </div>
 </form>

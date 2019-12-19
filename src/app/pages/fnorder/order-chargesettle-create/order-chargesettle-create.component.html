@@ -1,0 +1,83 @@
+<p>创建应收结算单</p>
+
+<ngb-alert *ngIf="errormsg.length>0" type="danger"  (close)="errormsg = '' ">{{errormsg}}</ngb-alert>
+
+<form id="customerid" [formGroup]="form" >
+
+
+  <app-biz-mylogistiscstore2  required style="margin-bottom:20px"
+                              [saveform]="form" formControlName="Settleorg"
+                              displaylabel="交账网点(*)"
+                              SettingFormControlName="Settleorg"></app-biz-mylogistiscstore2>
+
+  <app-biz-basedirectorycontent  displaylabel="付款方式(*)" GroupType="PayMoneyType" formControlName="Paymentmode" ></app-biz-basedirectorycontent>
+
+  <mat-slide-toggle formControlName="IsOpenInvoice">开票资料</mat-slide-toggle>
+
+
+  <ng-container *ngIf="form.value.IsOpenInvoice">
+    <h3><i class="fas fa-file-alt"></i>开票资料</h3>
+<!--     受票方  发票类型-->
+<!--     税号  税率-->
+<!--     开票项目-->
+    <div fxLayout="row" fxLayoutAlign="space-between flex-end" style="margin-top:15px">
+      <div fxFlex="32">
+        <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+          <div fxFlex="88">
+            <mat-form-field class="comwidth">
+              <input matInput placeholder="受票方" formControlName="Invoiceparty">
+            </mat-form-field>
+          </div>
+          <div fxFlex="10" style="margin-bottom:19px">
+            <button ejs-button cssClass="e-small" appOpeninvoiceprofile (onSuggest)="getsystemprofile($event)"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="32">
+        <mat-form-field class="comwidth">
+          <mat-select  placeholder="发票类型"  formControlName="Invoicetype">
+            <mat-option value="1">增值税专用发票</mat-option>
+            <mat-option value="2">普通发票</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['Invoicetype'].hasError('required')">请选择一种发票类型</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="32">
+        <mat-form-field class="comwidth">
+          <input matInput placeholder="税号" formControlName="Partytaxno">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+      <div fxFlex="32">
+        <mat-form-field class="comwidth">
+          <mat-select  placeholder="税率"  formControlName="Taxrate">
+            <mat-option>--</mat-option>
+            <mat-option value="0.09">9%</mat-option>
+            <mat-option value="0.1">10%</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['Taxrate'].hasError('required')">请选择一种税率</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="32">
+        <mat-form-field class="comwidth">
+          <input matInput placeholder="开票项目" formControlName="FnTrxItem">
+          <mat-hint align="end">请填写开票项目，运输，仓储 等</mat-hint>
+          <mat-error *ngIf="form.controls['FnTrxItem'].hasError('required')">请填写开票项目</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-container>
+
+  <mat-form-field class="">
+    <textarea matInput placeholder="申请备注"  rows="2"  formControlName="ApplayMark"></textarea>
+  </mat-form-field>
+
+
+
+</form>
+
+
+<button ejs-button (click)="save()"><i class="fas fa-save"></i> 创建</button>
+
+<button ejs-button (click)="dialogRef.close()"><i class="fas"></i> 关闭</button>

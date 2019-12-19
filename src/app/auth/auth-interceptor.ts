@@ -67,9 +67,11 @@ export class AuthInterceptor implements HttpInterceptor {
       // server-side error
       errorMessage = `Error Code: ${err.status}\nMessage: ${err.message}`;
     }
-    window.alert(errorMessage);
+   // window.alert(errorMessage);
     // handle your auth error or rethrow
     if (err.status === 401) {
+
+      window.alert('登录会话过期，请重新登陆');
       //navigate /delete cookies or whatever
       console.log('handled error ' + err);
      // this.router.navigate([`/login`]);

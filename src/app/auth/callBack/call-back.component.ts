@@ -15,7 +15,10 @@ export class CallBackComponent implements OnInit, OnDestroy {
 
   checksession: boolean;
 
-  constructor(private tmsoidcSecurityServivceService:TmsoidcSecurityServivceService, public oidcSecurityService: OidcSecurityService, private  router: Router) {
+  constructor(
+    private tmsoidcSecurityServivceService: TmsoidcSecurityServivceService,
+    public oidcSecurityService: OidcSecurityService,
+    private  router: Router) {
 
 
     console.log('CallBackComponent');
@@ -75,7 +78,7 @@ export class CallBackComponent implements OnInit, OnDestroy {
   }
 
   private onAuthorizationResultComplete(authorizationResult: AuthorizationResult) {
-    console.log('Auth result received:' + authorizationResult+new Date());
+    console.log('Auth result received:' + authorizationResult + new Date());
     console.log(authorizationResult);
 
     switch (authorizationResult.authorizationState) {
@@ -88,7 +91,7 @@ export class CallBackComponent implements OnInit, OnDestroy {
         // Redirects the user.
 
       //  console.log(redirectUrl);
-        this.tmsoidcSecurityServivceService.NeedLogout=false;
+        this.tmsoidcSecurityServivceService.NeedLogout = false;
 
         this.router.navigate(['/home']);
         break;

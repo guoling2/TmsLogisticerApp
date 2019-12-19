@@ -34,7 +34,7 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
 
   console.log(environment.production);
 
-   return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
+  // return () => oidcConfigService.load(`https://aliance.trandawl.cn/api/OidcSecurity/config`);
 
   if (environment.production) {
 
@@ -135,5 +135,6 @@ export class TmsAuthModuleModule {
     console.log('认证配置加载结束');
   });
 
+ // this.oidcSecurityService.re
 
 } }

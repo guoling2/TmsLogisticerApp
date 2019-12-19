@@ -1,6 +1,6 @@
 export class DateTimeHelp {
 
-  public static ChangeDate(input: string): string {
+  public static ChangeDate(input: string, includetime: boolean): string {
 
 
     if (input.length < 1) {
@@ -12,7 +12,12 @@ export class DateTimeHelp {
 
     console.log(newday);
     //
-    return  newday.getFullYear() + '-' + (newday.getMonth() + 1) + '-' + newday.getDate ();
+    if (includetime === false) {
+      return  newday.getFullYear() + '-' + (newday.getMonth() + 1) + '-' + newday.getDate ();
+    } else {
+      // tslint:disable-next-line:max-line-length
+      return  newday.getFullYear() + '-' + (newday.getMonth() + 1) + '-' + newday.getDate () + ' ' + newday.getHours() + ':' + newday.getMinutes();
+    }
   }
 
 }

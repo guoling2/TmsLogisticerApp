@@ -3,7 +3,7 @@
     <perfect-scrollbar>
       <ng-container *ngFor="let navigation of navigationModel">
         <stbui-nav-collapse *ngIf="navigation.type == 'collapse'" [item]="navigation"></stbui-nav-collapse>
-        <stbui-nav-item *ngIf="navigation.type=='item'" [item]="navigation"></stbui-nav-item>
+        <stbui-nav-item *ngIf="navigation.type=='item'" [item]="navigation">1111</stbui-nav-item>
       </ng-container>
     </perfect-scrollbar>
   </div>

@@ -7,7 +7,7 @@ import {
   Sorts,
   SortSettingsModel
 } from '@syncfusion/ej2-grids';
-import {GridComponent, SortService} from '@syncfusion/ej2-angular-grids';
+import {FilterService, GridComponent, SortService} from '@syncfusion/ej2-angular-grids';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Basereportconfig, EnterpriseCustomer} from '../../../../../services/base/basereportconfig';
 import {Basereportservice} from '../../../../../services/base/basereportservice';
@@ -17,12 +17,13 @@ import {Commonsetting} from '../../../../../help/commonsetting';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderAcceptComponent} from '../order-accept/order-accept.component';
 import {OrderthumbnailComponent} from '../order-thumbnail/orderthumbnail.component';
+import {FilterEventArgs} from '@syncfusion/ej2-grids/src/grid/base/interface';
 
 @Component({
   selector: 'app-order-data-list',
   templateUrl: './order-data-list.component.html',
   styleUrls: ['./order-data-list.component.css'],
-  providers: [SortService]
+  providers: [SortService, FilterService]
 })
 export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
 
@@ -45,7 +46,7 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
 
 
   ngOnInit() {
-    this.gridheight = Commonsetting.GridHeight5();
+    this.gridheight = Commonsetting.GridHeight5h();
   }
 
 
@@ -72,7 +73,21 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
   ExcelOut(a: any) {
 
 
-    this.CurrentDataGrid.excelExport();
+   // this.CurrentDataGrid.excelExport();
+
+    // alert(this.CurrentDataGrid.getSelectedRecords().length);
+    //
+    if (this.CurrentDataGrid.getSelectedRecords().length > 0) {
+
+      // alert('部分导出');
+      const appendExcelExportProperties: ExcelExportProperties = {
+        exportType: 'CurrentPage',
+        dataSource:  this.CurrentDataGrid.getSelectedRecords()
+      };
+      this.CurrentDataGrid.excelExport(appendExcelExportProperties);
+    } else {
+      this.CurrentDataGrid.excelExport();
+    }
 
     // const appendExcelExportProperties: ExcelExportProperties = {
     //   exportType: 'AllPages',
@@ -134,11 +149,29 @@ export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
   dataStateChange($event: DataStateChangeEventArgs) {
 
 
-    console.log($event.action);
+    // this.inputfromgroup = DataGridHelp.GetSortObject($event, this.inputfromgroup);
+    //
+    // this.SearchData( this.inputfromgroup);
 
-    this.inputfromgroup = DataGridHelp.GetSortObject($event, this.inputfromgroup);
+    if ($event.action.requestType === 'filtering') {
 
-    this.SearchData( this.inputfromgroup);
+      const filtervevnt = $event.action as FilterEventArgs;
+      //
+      // console.log(filtervevnt);
+      // console.log(filtervevnt.currentFilterObject.field);
+      // console.log(filtervevnt.currentFilteringColumn);
+      alert('过滤了');
+
+      this.grid.filterByColumn('DestCity', 'equal', '承德市');
+    } else {
+
+      this.grid.clearFiltering();
+
+      this.inputfromgroup = DataGridHelp.GetSortObject($event, this.inputfromgroup);
+
+      this.SearchData( this.inputfromgroup);
+    }
+
   }
 
   choecustomer($event: MouseEvent, xnumber: string, s: string, s2: string) {

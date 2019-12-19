@@ -1,0 +1,96 @@
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>企业订单列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>业务查询</span> ·
+      <span>企业订单</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new"></div>
+</div>
+
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row"  class="fxbox"  fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+      <ejs-textbox placeholder="客户单号："  floatLabelType="Auto" formControlName="CustomerOrderId"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="客户名称："  floatLabelType="Auto"  formControlName="DesctcustomName"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="到货城市："  floatLabelType="Auto" formControlName="DestCity"></ejs-textbox>
+    </div>
+    <div fxFlex="23">
+      <ejs-textbox placeholder="提货车牌号："  floatLabelType="Auto" formControlName="NotifyCarNumber"></ejs-textbox>
+    </div>
+  </div>
+  <div fxLayout="row" class="fxbox2" fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+      <ejs-datetimepicker placeholder="通知日期(始)：" floatLabelType="Auto" #submitdatetime locale="zh" formControlName="CreateDatetime1" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
+    </div>
+    <div fxFlex="23">
+      <ejs-datepicker placeholder="通知日期(止)：" floatLabelType="Auto"  formControlName="CreateDatetime2" locale="zh" ></ejs-datepicker>
+    </div>
+    <div fxFlex="23" style="padding-top:18px">
+      <mat-form-field style="width:100%;">
+      <mat-select placeholder="状态" formControlName="ConfirmOrder">
+        <mat-option value="0">全部</mat-option>
+        <mat-option value="1">未下达</mat-option>
+        <mat-option value="2">已下达</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="23">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()" class="btns">查询</button>
+      <button ejs-button cssClass="e-info mat-width mat-green" class="btns" (click)="excelout()">导出Excel</button>
+    </div>
+  </div>
+</form>
+<div class="tabbox-new">
+<ejs-grid #grid  height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowTextWrap]="false"
+          [allowExcelExport]='true'
+          [allowResizing]= 'true'
+          [allowSorting]='true'
+          [pageSettings]="pageSettings"
+          allowReordering="true"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column   field='CustomerOrderId' headerText='客户单号'  width='140' [isPrimaryKey]="true" >
+      <ng-template #template let-data>
+        {{data.CustomerOrderId }}
+      </ng-template>
+    </e-column>
+    <e-column field='NotifyCarNumber' headerText='提货车号' textAlign="left"  width="120"></e-column>
+    <e-column field='DesctcustomName' headerText='到货客户'  width='200'></e-column>
+    <e-column field='DestCity' headerText='到货城市'  width=100></e-column>
+    <e-column field='Destarea' headerText='到货区域'  width=120></e-column>
+    <e-column field='TotalCount' headerText='件数' textAlign="left"  width='100'></e-column>
+    <e-column field='TotalWeight' headerText='总吨位' textAlign="left"  width='100'>
+    </e-column>
+    <e-column field='TotalVolume' headerText='总方数' textAlign="left"  width='100'>
+    </e-column>
+    <e-column field='OrderZhWeight' headerText='重货吨' textAlign="left"  width='100'>
+    </e-column>
+
+    <e-column field='OrderZhVol' headerText='重货方' textAlign="left"  width='100'>
+    </e-column>
+
+    <e-column field='OrderPhWeight' headerText='泡货吨'  textAlign="left" width='100'>
+    </e-column>
+
+    <e-column field='OrderPhVol' headerText='泡货方'  textAlign="left" width='100'>
+    </e-column>
+
+    <e-column field='TotalAmount' headerText='运费'  textAlign="left" width='100'></e-column>
+    <e-column field='LogisticOrderStatuedId' headerText='运单状态'  textAlign="left" width='100'></e-column>
+
+    <e-column field='OrderInputCreateDatetime' headerText='下单时间' textAlign="left"  width=170></e-column>
+    <e-column field='CreateDateTime' headerText='通知时间' textAlign="left"  width=170></e-column>
+    <e-column field='ConfirmDateTime' headerText='接单时间'  width=170></e-column>
+  </e-columns>
+</ejs-grid>
+</div>

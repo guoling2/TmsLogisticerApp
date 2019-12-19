@@ -1,0 +1,38 @@
+
+<!--//打开页面的内容-->
+<ng-container [ngSwitch]="processstatued">
+
+  <ng-container *ngSwitchCase="10">
+    选择结算单
+
+
+    <ejs-grid #grid [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions" class="contlistbox">
+      <e-columns >
+
+        <e-column field='SettleId' headerText='结算单号'  width='120'></e-column>
+        <e-column field='CaclType' headerText='单据类型' textAlign="left"  width='60'></e-column>
+        <e-column field='Paymentmode' headerText='付款方式' textAlign="left"  width='70'></e-column>
+        <e-column field='Invoiceparty' headerText='受票方'  textAlign="left" width='140'></e-column>
+        <e-column field='CreateDateTime' headerText='创建时间'  textAlign="left" width='100'></e-column>
+      </e-columns>
+    </ejs-grid>
+
+
+    <button ejs-button (click)="processorder()" [disabled]="grid.selectedRowIndex==-1"><i class="fas"></i> 附加费用</button>
+    <button ejs-button (click)="dialogRef.close()"><i class="fas"></i> 关闭</button>
+
+  </ng-container>
+<!--  //正在处理的内容-->
+  <ng-container *ngSwitchCase="20">
+
+    <ngb-alert type="danger" >模拟错误内容</ngb-alert>
+
+    {{currentIndex+1}}/{{selectrows.length+1}}
+    正在处理数据，请稍后。
+  </ng-container>
+<!--  //处理完毕的内容-->
+  <ng-container *ngSwitchCase="30">
+     处理完毕
+    <button ejs-button (click)="dialogRef.close()"><i class="fas"></i> 关闭</button>
+  </ng-container>
+</ng-container>

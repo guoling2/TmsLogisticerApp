@@ -1,0 +1,30 @@
+.contentbox-new {padding:10px 10px 10px 10px;wdith:100%;height:auto;clear:both;overflow:hidden;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l-new {width:40%;height:auto;float: left;}
+.contenttex-r-new {width:60%;height:auto;float: right;}
+.contentit-l-new div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l-new a {color:#666;text-decoration: none}
+.contentit-l-new a:hover {color:#111;text-decoration:none;cursor:pointer}
+.contenttex-r-new button {margin-left:10px;margin-top:-5px;float:right}
+.listfrom-new2 {width:98.3%;height:125px!important;overflow:hidden;margin:0px 0!important;background:none;}
+.tabbox-new {width:98.3%;height:auto!important;overflow:hidden;margin:5px 10px 0 10px!important;background:none;}
+.contennews b{font-size:18px;color:#000;margin-right: 10px;font-weight: normal}
+.contennews span {font-size:13px;color:#666;font-weight: normal}
+.contennews span a  {font-size:13px;color:#666;font-weight: normal}
+.contennews span i {color:#888}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {}
+.bg-white-blue {background:#fff;margin:0 10px!important}
+.bg-white-blue .mat-tab-header {background:#0378d5;}
+.bg-white-blue .mat-tab-label {background:#0378d5;color:#fff;opacity:1!important;height:40px!important;}
+.bg-white-blue .mat-tab-label-active {color:#fff!important;}
+.mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {background:#fff!important;margin-top:2px}
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
+.e-grid .e-rowcell:first-child, .e-grid .e-summarycell:first-child {padding-left:15px!important;}
+.e-grid .e-rowcell {padding-left:15px!important;}
+.mat-form-field-infix {width:100%!important;}
+.datestyle input {font-size:16px!important;color:#333!important;width:92%!important;}
+.datestyle {margin-left:10px!important;}
+span.e-input-group e-control-wrapper e-datetime-wrapper::before {color:#3f51b5!important;}
+.fxbox {height:auto;overflow:hidden;margin:5px 10px 0 10px}
+.e-float-input input, .e-float-input.e-control-wrapper input {padding:0 0 2px 0!important;}
+.btns {margin-right:10px;margin-top:10px}
+.fxbox2 {height:auto;overflow:hidden;margin:-5px 10px 0 10px}

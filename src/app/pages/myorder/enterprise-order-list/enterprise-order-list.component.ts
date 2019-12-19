@@ -27,7 +27,8 @@ import {OrderCancelSendComponent} from './sub/order-cancel-send/order-cancel-sen
 })
 export class EnterpriseOrderListComponent implements OnInit {
 
-  constructor( public dialog: MatDialog, private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
+  constructor(
+    public dialog: MatDialog, private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
 
   gridheight: number;
   searchp: FormGroup;
@@ -98,8 +99,11 @@ export class EnterpriseOrderListComponent implements OnInit {
 
     const searchable = this.searchp.getRawValue ();
 
-    searchable.CreateDatetime1 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime1.value);
-    searchable.CreateDatetime2 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime2.value);
+    searchable.CreateDatetime1 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime1.value, true);
+
+    searchable.CreateDatetime2 = DateTimeHelp.ChangeDate(this.searchp.controls.CreateDatetime2.value, false);
+
+    console.log(searchable);
 
     return searchable;
   }
@@ -298,5 +302,12 @@ export class EnterpriseOrderListComponent implements OnInit {
       EmitAlertMessageHelo.ShowMessage( this.emitService, (result as TmsResponseModle), MessageShowType.Toast);
       this.searching();
     });
+  }
+
+  /**
+   * Excel报单
+   */
+  excelupcar() {
+
   }
 }

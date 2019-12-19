@@ -53,8 +53,8 @@ export class NewChargeComponent implements OnInit {
       Partytaxno: '',   // 税号
       Taxrate: '',  // 税率
       FnTrxItem: '', // 开票项目
-      BillNo:'',//单据号码
-      BizHappendDateTime:new Date()
+      BillNo: '', // 单据号码
+      BizHappendDateTime: new Date()
     });
 
 

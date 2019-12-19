@@ -12,6 +12,7 @@
 
     <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
 
+<!--    <button ejs-button cssClass="e-outline mat-auto" (click)="excelupcar()"><i class="fas fa-file-excel"></i> Excel报单</button>-->
     <ng-container *ngIf="SelectTabIndex===0">
       <button ejs-button cssClass="e-outline mat-auto" (click)="getorder('200','200')"><i class="fas fa-clipboard-check"></i> 客户接单</button>
       <button ejs-button cssClass="e-outline mat-auto"  (click)="ungetorder(200,200)" ><i class="fas fa-times"></i> 客户退单</button>
@@ -29,64 +30,50 @@
       <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true" ><i class="fas fa-user-edit"></i> 订单签收</button>
       <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true"><i class="fas fa-clipboard-list"></i> 流程追踪</button>
     </ng-container>
-
-
-
   </div>
 </div>
 <form class="listfrom-new2" [formGroup]="searchp" >
-  <div fxLayout="row" fxLayoutAlign="" style="height:50px;overflow:hidden;margin-top:-5px">
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-          <input matInput  formControlName="CustomerOrderId"/>
-        <span  matPrefix style="color: #888">客户单号：</span>
-      </mat-form-field>
+  <div fxLayout="row"  class="fxbox"  fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+        <ejs-textbox placeholder="客户单号："  floatLabelType="Auto" formControlName="CustomerOrderId"></ejs-textbox>
     </div>
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-          <input matInput  formControlName="DesctcustomName"/>
-        <span  matPrefix style="color: #888">客户名称：</span>
-      </mat-form-field>
+    <div fxFlex="23">
+        <ejs-textbox placeholder="客户名称："  floatLabelType="Auto"  formControlName="DesctcustomName"></ejs-textbox>
     </div>
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-          <input matInput  formControlName="OrigincustomPhysicalDeotName" />
-        <span  matPrefix style="color: #888">提货仓库：</span>
-      </mat-form-field>
+    <div fxFlex="23">
+        <ejs-textbox placeholder="提货仓库："  floatLabelType="Auto"  formControlName="OrigincustomPhysicalDeotName"></ejs-textbox>
     </div>
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-          <input matInput  formControlName="DestCity" />
-        <span  matPrefix style="color: #888">到货城市：</span>
-      </mat-form-field>
+    <div fxFlex="23">
+        <ejs-textbox placeholder="到货城市："  floatLabelType="Auto" formControlName="DestCity"></ejs-textbox>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="">
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-          <input matInput  formControlName="NotifyCarNumber" />
-        <span  matPrefix style="color: #888">提货车牌号：</span>
-      </mat-form-field>
+  <div fxLayout="row" class="fxbox" fxLayoutAlign="space-between center">
+    <div fxFlex="23">
+      <ejs-textbox placeholder="提货车牌号："  floatLabelType="Auto" formControlName="NotifyCarNumber"></ejs-textbox>
     </div>
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-        <input matInput [matDatepicker]="picker2" formControlName="CreateDatetime1"  placeholder="">
-        <span  matPrefix style="color: #888">通知日期(始)：</span>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2  ></mat-datepicker>
-      </mat-form-field>
+    <div fxFlex="23">
+     <ejs-datetimepicker placeholder="通知日期(始)：" floatLabelType="Auto" #submitdatetime locale="zh" formControlName="CreateDatetime1" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
+<!--      <mat-form-field style="width:92%">-->
+<!--        <input matInput [matDatepicker]="picker2" formControlName="CreateDatetime1"  placeholder="">-->
+<!--        <span  matPrefix style="color: #888">通知日期(始)：</span>-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker2  ></mat-datepicker>-->
+<!--      </mat-form-field>-->
     </div>
-    <div fxFlex="24">
-      <mat-form-field style="width:92%">
-        <input matInput [matDatepicker]="picker3" placeholder=""
-               formControlName="CreateDatetime2">
-        <span  matPrefix style="color: #888">通知日期(止)：</span>
-        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-        <mat-datepicker #picker3></mat-datepicker>
-      </mat-form-field>
+    <div fxFlex="23">
+      <ejs-datepicker placeholder="通知日期(止)：" floatLabelType="Auto"  formControlName="CreateDatetime2" locale="zh" ></ejs-datepicker>
+<!--      <mat-form-field style="width:92%">-->
+<!--        通知日期(止)：-->
+<!--        <ejs-datepicker  formControlName="CreateDatetime2" locale="zh" ></ejs-datepicker>-->
+<!--        <input matInput [matDatepicker]="picker3" placeholder=""-->
+<!--               formControlName="CreateDatetime2">-->
+<!--        <span  matPrefix style="color: #888">通知日期(止)：</span>-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker3></mat-datepicker>-->
+<!--      </mat-form-field>-->
     </div>
-    <div fxFlex="24">
-      <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="margin-top:12px">查询</button>
+    <div fxFlex="23">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="margin-top:10px">查询</button>
     </div>
   </div>
 </form>

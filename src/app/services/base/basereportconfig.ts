@@ -152,6 +152,8 @@ export  class FinanceReport {
    * 财务综合查询
    */
   public  static  Report_DailyChargeSettleItemForAdminQueryAll = 'DailyChargeSettleItemForAdminQueryAll';
-
-
+  /**
+   * 查询未申请的应收
+   */
+  public  static  Report_orderapplaylist="orderapplaylist";
 }

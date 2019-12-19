@@ -14,7 +14,7 @@ import {TmsoidcSecurityServivceService} from '../tmsoidc-security-servivce.servi
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private tmsoidcSecurityServivceService:TmsoidcSecurityServivceService,private  router: Router, private oidcSecurityService: OidcSecurityService) {
+  constructor(private tmsoidcSecurityServivceService: TmsoidcSecurityServivceService, private  router: Router, private oidcSecurityService: OidcSecurityService) {
 
     // if (this.oidcSecurityService.moduleSetup) {
     //
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
 
-    if(this.tmsoidcSecurityServivceService.NeedLogout!=true){
+    if (this.tmsoidcSecurityServivceService.NeedLogout !== true) {
       this.oidcSecurityService.authorize();
     }
    //   alert( location.href)

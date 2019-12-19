@@ -3,7 +3,7 @@
   <ngb-alert *ngIf="errormsg.length>0" type="danger"  (close)="errormsg = '' ">{{errormsg}}</ngb-alert>
   <div style="margin-top:10px">
     预计提货时间:
-    <ejs-datetimepicker #submitdatetime [(value)]="PlanCarTime" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
+    <ejs-datetimepicker #submitdatetime [(value)]="PlanCarTime" locale="zh" format='yyyy-MM-dd HH:mm'></ejs-datetimepicker>
   </div>
 
 

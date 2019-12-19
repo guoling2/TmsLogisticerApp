@@ -1,3 +1,4 @@
+import {fontSize} from '@syncfusion/ej2-richtexteditor/src/rich-text-editor/models/toolbar-settings';
 
 
 export class NavigationModel {
@@ -288,6 +289,12 @@ export class NavigationModel {
           icon: 'assignment',
           children: [
             {
+              id: 'FnAccountTrans',
+              title: '应收交款',
+              type: 'item',
+              url: '/biz/fn-order/order-trans-list'
+            },
+            {
               id: 'OrderCharge',
               title: '运单收入',
               type: 'item',
@@ -329,18 +336,11 @@ export class NavigationModel {
               type: 'item',
               url: '/biz/logisticprice-management/price-template-list'
             },
-            {
-              id: 'FnAccountTrans',
-              title: '网点交账',
-              type: 'item',
-              url: '/biz/logisticprice-management/price-template-list'
-            },
-
           ]
         },
         {
           id: 'fa-pay',
-          title: '结算与交账',
+          title: '财务结算',
           type: 'collapse',
           icon: 'assessment',
           children: [
@@ -414,7 +414,7 @@ export class NavigationModel {
           id: 'FnAccount',
           title: '财务设置',
           type: 'collapse',
-          icon: 'work',
+          icon: 'settings_applications',
           children: [
             {
               id: 'invoiceProfile',
@@ -436,7 +436,20 @@ export class NavigationModel {
             }
           ]
         },
-
+        {
+          id: 'BizSearch',
+          title: '业务查询',
+          type: 'collapse',
+          icon: 'pageview',
+          children: [
+            {
+              id: 'BizSearch01',
+              title: '企业订单',
+              type: 'item',
+              url: '/biz/BizSearch/enterprise-orders'
+            }
+          ]
+        },
         {
           id: 'baseprofile',
           title: '基础资料',

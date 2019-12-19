@@ -33,7 +33,7 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
   }
 
   ngOnInit() {
-    this.gridheight = Commonsetting.GridHeight3s();
+    this.gridheight = Commonsetting.GridHeight5h();
   }
 
   public get CurrentDataGrid() {

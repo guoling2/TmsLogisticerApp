@@ -76,6 +76,8 @@ const routes: Routes = [
       { path: 'fncharge', loadChildren: './pages/fncharge/fncharge.module#FnchargeModule' },
       { path: 'fnQueries', loadChildren: './pages/fnqueries/fn-queries.module#FnQueriesModule' },
       { path: 'FnAccount', loadChildren: './pages/FnAccount/fn-account.module#FnAccountModule' },
+      { path: 'fn-order', loadChildren: './pages/fnorder/fn-order.module#FnOrderModule' },
+      { path: 'BizSearch', loadChildren: './pages/BizSearch/biz-search.module#BizSearchModule' },
 
     ]
   },

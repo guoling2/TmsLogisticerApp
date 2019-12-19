@@ -5,8 +5,7 @@
 .contentit-l-new a {color:#666;text-decoration: none}
 .contentit-l-new a:hover {color:#111;text-decoration:none;cursor:pointer}
 .contenttex-r-new button {margin-left:10px;margin-top:-5px;float:right}
-.listfrom-new2 {width:98.3%;height:105px!important;overflow:hidden;margin:0px 0!important;background:none;}
-.listfrom-new2 button {margin-left:10px}
+.listfrom-new2 {width:98.3%;height:115px!important;overflow:hidden;margin:0px 0!important;background:none;}
 .tabbox-new {width:98.3%;height:auto!important;overflow:hidden;margin:5px 10px 0 10px!important;background:none;}
 .contennews b{font-size:18px;color:#000;margin-right: 10px;font-weight: normal}
 .contennews span {font-size:13px;color:#666;font-weight: normal}
@@ -23,3 +22,8 @@
 .e-grid .e-rowcell:first-child, .e-grid .e-summarycell:first-child {padding-left:15px!important;}
 .e-grid .e-rowcell {padding-left:15px!important;}
 .mat-form-field-infix {width:100%!important;}
+.datestyle input {font-size:16px!important;color:#333!important;width:92%!important;}
+.datestyle {margin-left:10px!important;}
+span.e-input-group e-control-wrapper e-datetime-wrapper::before {color:#3f51b5!important;}
+.fxbox {height:auto;overflow:hidden;margin:5px 10px 0 10px}
+.e-float-input input, .e-float-input.e-control-wrapper input {padding:0 0 2px 0!important;}

@@ -6,6 +6,8 @@
           [allowSorting]='true'
           [allowSelection]="true"
           [enableHover]="false"
+          [allowResizing]= 'true'
+          [allowReordering]="true"
           [sortSettings]='initialSort'
           [pageSettings]="pageSettings"
           [allowPaging]='true' >
@@ -40,8 +42,7 @@
     <e-column field='Origintel' headerText='发货联系电话' textAlign="left"  width='130'></e-column>
     <e-column field='DestLinkman' headerText='到货联系人'  textAlign="left" width='150'></e-column>
     <e-column field='Desttel' headerText='到货联系电话' textAlign="left"  width=130></e-column>
-
-
+    <e-column field='CustomerSpecialVehicel' headerText='订单标记'  width=120></e-column>
     <e-column field='CustomePaymentMethod' headerText='结算方式'  width=120></e-column>
     <e-column field='PaymentStatusId' headerText='财务状态'  width=120></e-column>
     <e-column field='TotalRealAmount' headerText='实付运费'  width=120></e-column>

@@ -21,6 +21,7 @@ import { AddInvoiceProfileComponent } from './admin-listview/sub/add-invoice-pro
 import { ChargeSettleItemListComponent } from './sub/charge-settle-item-list/charge-settle-item-list.component';
 import { AddChargeSettleItemComponent } from './sub/add-charge-settle-item/add-charge-settle-item.component';
 import { AdminDetailComponent } from './admin-detail/admin-detail.component';
+import {FnAccountModule} from '../FnAccount/fn-account.module';
 
 
 
@@ -54,18 +55,20 @@ const routes: Routes = [
 
 
 @NgModule({
+  // tslint:disable-next-line:max-line-length
   declarations: [NewChargeComponent, ListviewComponent, UserDetailComponent, UpdatechargeComponent, UserchargeComponent, AdminListViewComponent, OpeninvoicedatagridComponent, AddInvoiceProfileComponent, AcceptAndFinshNodeDataGridComponent, ChargeSettleItemListComponent, AddChargeSettleItemComponent, AdminDetailComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonbizmoduleModule,
-    LogistictoreModule,
-    BasedataModule,
-    BizBaseModuleModule,
-    RouterModule.forChild(routes),
-  ],
-  entryComponents:[AddInvoiceProfileComponent,AddChargeSettleItemComponent]
+    imports: [
+        CommonModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonbizmoduleModule,
+        LogistictoreModule,
+        BasedataModule,
+        BizBaseModuleModule,
+        RouterModule.forChild(routes),
+        FnAccountModule,
+    ],
+  entryComponents: [AddInvoiceProfileComponent, AddChargeSettleItemComponent]
 })
 export class FnchargeModule { }

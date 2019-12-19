@@ -27,7 +27,7 @@ export class OpeninvoiceprofileDirective {
       disableClose: false,
     });
 
-    dialogRef.afterClosed().subscribe(a=>{
+    dialogRef.afterClosed().subscribe(a => {
 
       this.suggestionWasClicked(a);
     });

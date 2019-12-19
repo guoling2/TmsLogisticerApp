@@ -1,19 +1,16 @@
-
 <ng-container *ngIf="ordermodel">
 <div class="contentbox">
   <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/myorder/enterprise-order-list']" >企业订单</a>  / 订单信息 <b>{{ordermodel.CustomerOrderId}}</b> 信息</div>
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/myorder/enterprise-orders']" >企业订单</a>  / 订单信息 <b>{{ordermodel.CustomerOrderId}}</b> 信息</div>
   </div>
   <div class="contenttex-r">
-
   </div>
 </div>
 <div class="m-content userbox" >
     <h3 class="examcardh3" style="margin-top:0!important"><i class="fas fa-plus-square"></i>基本信息</h3>
-      <div class="container contadeatia" >
+      <div class="contadeatia" >
         <div class="row"  fxLayout="row" fxLayout.xs="column">
           <div class="col" fxFlex="25">
-
             <label>托运单编号：</label>{{ordermodel.SystemOrderId}}
           </div>
           <div class="col" fxFlex="25">
@@ -62,18 +59,18 @@
         </div>
       </div>
     <h3 class="examcardh3"><i class="fas fa-plus-square"></i>运输品相</h3>
-      <div class="container contadeatia2"  *ngFor="let orderitem of ordermodel.ReceivingBillItemCollections">
+      <div class="contadeatia2"  *ngFor="let orderitem of ordermodel.ReceivingBillItemCollections">
         <div class="row"  fxLayout="row" fxLayout.xs="column">
-          <div class="col col-4" fxFlex="30">
+          <div class="col col-4" fxFlex="34">
             <label class="labesvhorts">品相名称：</label>{{orderitem.PackageName}}
           </div>
           <div class="col col-2" fxFlex="15">
             <label class="labesvhorts">件数：</label>{{orderitem.TotalQty.toFixed(3)}}
           </div>
-          <div class="col col-2" fxFlex="17.5">
+          <div class="col col-2" fxFlex="15.5">
             <label class="labesvhorts">重量(T)：</label>{{orderitem.TotalWeight | tmsweightconvert:'g' }}
           </div>
-          <div class="col col-2" fxFlex="17.5">
+          <div class="col col-2" fxFlex="15.5">
             <label class="labesvhorts">体积(M3)：</label>{{orderitem.TotalVol | tmsvolumeconvert:'cm'}}
           </div>
           <div class="col col-2" fxFlex="20">
@@ -82,7 +79,7 @@
         </div>
       </div>
     <h3 class="examcardh3"><i class="fas fa-plus-square"></i>其他信息</h3>
-      <div class="container contadeatia">
+      <div class="contadeatia">
         <div class="row"  fxLayout="row" fxLayout.xs="column">
           <div class="col" fxFlex="25">
             <label class="labeshorts">托运重量(T)：</label>{{ordermodel.TotalWeight | tmsweightconvert:'g'}}
@@ -94,7 +91,7 @@
             <label class="labeshorts">托运件数：</label>{{ordermodel.TotalCount.toFixed(3)}}
           </div>
           <div class="col" fxFlex="25">
-            <label class="labeshorts">收入合计：</label>{{ordermodel.DisAmount}}
+            <label class="labeshorts">收入合计：</label> ****
           </div>
         </div>
         <div class="row"  fxLayout="row" fxLayout.xs="column">
@@ -113,7 +110,6 @@
             <label class="labeshorts">订单备注：</label>{{ordermodel.DisMark}}
           </div>
         </div>
-
       </div>
 </div>
 </ng-container>

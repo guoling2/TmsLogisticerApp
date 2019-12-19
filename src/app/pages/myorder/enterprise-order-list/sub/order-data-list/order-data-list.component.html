@@ -11,17 +11,18 @@
 <!--          allowPaging='true'  class="contlistbox">-->
   <ejs-grid #grid  height="{{gridheight}}"
             (dataStateChange)="dataStateChange($event)"
+            [allowTextWrap]="false"
             [allowExcelExport]='true'
-            [allowResizing]= 'true'
             [allowSorting]='true'
             [pageSettings]="pageSettings"
             [sortSettings]='initialSort'
+            [allowResizing]= 'true'
             allowReordering="true"
             allowPaging='true'  class="contlistbox">
   <e-columns >
 
     <e-column type='checkbox' width='50'></e-column>
-    <e-column   field='CustomerOrderId' headerText='客户单号'  width='140'>
+    <e-column   field='CustomerOrderId' headerText='客户单号'  width='140' [isPrimaryKey]="true" >
       <ng-template #template let-data>
         <ejs-tooltip #tooltip position="RightBottom">
           <a [routerLink]="['/biz/myorder/enterprise-order-detail', data.OrderPreparedLogisticId]">{{data.CustomerOrderId }} </a>
@@ -71,7 +72,7 @@
 
         <e-column field='OrderSendMark' headerText='订单备注' textAlign="left"  width='300'></e-column>
         <e-column field='StoreName' headerText='预分配网点' textAlign="left"  width=130></e-column>
-        <e-column field='OrderInputCreateDatetime' headerText='下单时间' textAlign="left"  width=170></e-column>
+<!--        <e-column field='OrderInputCreateDatetime' headerText='下单时间' textAlign="left"  width=170></e-column>-->
         <e-column field='CreateDateTime' headerText='通知时间' textAlign="left"  width=170></e-column>
         <e-column field='ConfirmDateTime' headerText='接单时间'  width=170></e-column>
   </e-columns>

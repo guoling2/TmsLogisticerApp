@@ -7,12 +7,12 @@
 .contenttex-r-new button {margin-left:10px;margin-top:-5px;float:right}
 .listfrom-new {width:98.3%;height:60px!important;overflow:hidden;margin:0px 0!important;background:none;}
 .listfrom-new button {margin-left:10px}
+.listfrom-new2 {width:98.3%;height:115px!important;overflow:hidden;margin:0px 0!important;background:none;}
 .tabbox-new {width:98.3%;height:auto!important;overflow:hidden;margin:5px 10px 0 10px!important;background:none;}
 .contennews b{font-size:18px;color:#000;margin-right: 10px;font-weight: normal}
 .contennews span {font-size:13px;color:#666;font-weight: normal}
 .contennews span a  {font-size:13px;color:#666;font-weight: normal}
 .contennews span i {color:#888}
-.mat-form-field {margin-left:10px}
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {}
 /*.bg-white-blue {background:#fff;margin:0 10px!important;border:1px #e1e1e1 solid;}
 .mat-tab-label {}
@@ -25,3 +25,6 @@
 .tabbox-new .mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {background:#fff;margin-top:2px}
 .e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
 .mat-form-field-infix {width:100%!important;}
+.mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar{background:#fff;margin-top:2px}
+.fxbox {height:auto;overflow:hidden;margin:5px 10px 0 10px}
+

@@ -10,6 +10,7 @@
   cursor: pointer;
   user-select: none;
   color: currentColor;
+  font-size:14px;
 
   &-icon {
     font-size: 16px;
@@ -48,6 +49,9 @@
 .navigation-children {
   .navigation-link {
     padding-left: 56px;
+    font-size:13px
   }
   
 }
+
+

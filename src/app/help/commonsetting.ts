@@ -30,6 +30,10 @@ export class Commonsetting{
 
     return document.documentElement.clientHeight - 380;
   }
+  public static GridHeight5h(): number {
+
+    return document.documentElement.clientHeight - 390;
+  }
   public static GridHeight6(): number {
 
     return document.documentElement.clientHeight - 400;
