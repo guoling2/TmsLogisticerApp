@@ -23,7 +23,7 @@ export class OrderSettleListComponent implements OnInit {
 
     this.searchp = this.fb.group(
       { ProcessStatued: '', SettleId: ''});
-    this.gridheight = Commonsetting.GridHeight2();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   searching() {

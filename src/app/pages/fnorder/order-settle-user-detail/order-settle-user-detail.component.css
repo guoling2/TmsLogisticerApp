@@ -1,0 +1,22 @@
+.infoboxs {width:100%;background:#fff;padding:15px 20px;height:235px;}
+.navbarbox {height:auto;margin:0}
+.navbarbox span {color:#888;margin:0 5px;font-size:13px}
+.navbarbox a {color:#888;}
+.navbarbox a:hover {color:#555}
+.billbtnbox {width:100%;height:auto;margin-top:10px;overflow:auto}
+.billbox {width:60%;float:left;}
+.billbox i {color:#1c86c8}
+.billbox h2 {font-size:22px;font-weight:normal;color:#333}
+.btnbox {width:40%;height:auto;float:right;text-align: right;}
+.btnbox button {margin-left:10px}
+.infobox {width:100%;height:auto;text-align:left;clear: both;font-size:14px;line-height:35px;color:#666}
+.infobox_price h3 {font-size:26px;color:#000}
+.remarkbox {font-size:14px;line-height:35px;color:#666}
+.databox {width: 100%;height: calc(100vh - 385px);overflow: auto;margin:10px 0}
+table.mat-table {margin:0 auto 10px auto!important;width:98%!important;overflow-y:auto;}
+table.mat-table td {font-size:12px!important;}
+.box-container {height:99%;overflow: hidden!important;}
+tr.mat-header-row{height:35px!important;}
+.mat-icon-button {width:auto!important;height:auto!important;line-height:normal!important;}
+::ng-deep .mat-tab-header{background:#fff!important;}
+::ng-deep .mat-tab-label{height:40px!important;padding:0 10px!important;margin-left:13px!important;}

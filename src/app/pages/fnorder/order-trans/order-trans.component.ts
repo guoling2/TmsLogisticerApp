@@ -39,7 +39,7 @@ export class OrderTransComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { OrderTrackServerId: '', BeginLogisticStoreId: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   OpenCreateBillOrder() {

@@ -18,3 +18,6 @@
 .filebox h3 i {margin-right:5px}
 .comwidth {width:100%!important;}
 .databoxs {width:98.3%;margin:0 auto 0 auto!important; }
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
+.e-grid .e-rowcell {padding:8px 15px!important;width:auto!important;margin:0 10px!important;}
+::ng-deep .e-grid .e-gridheader .e-sortfilter .e-headercelldiv {padding:0 0.6em;}

@@ -15,5 +15,13 @@ export class OrderChargeSettleUserModel {
   public CreateDateTime: Date;
   public ApplayMark: string;
   public NoCreateUserOrder: boolean;
+  public IsOpenInvoice: boolean;
+  public Invoiceparty: string;
+  public Invoiceamt: number;
+  public Taxrate: number;
+  public InvoicetypeDesc: string;
+  public FnTrxItem: string;
+  public Partytaxno: string;
+
 
 }

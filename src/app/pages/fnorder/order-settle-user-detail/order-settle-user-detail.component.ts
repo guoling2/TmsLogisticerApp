@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {EmitService} from '../../../help/emit-service';
 import {DailyChargeSettleService} from '../../../services/fncharge/daily-charge-settle.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,6 +11,11 @@ import {EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-me
 import {Basereportservice} from '../../../services/base/basereportservice';
 import {FinanceReport} from '../../../services/base/basereportconfig';
 import {DailyChargeSettleItemModel} from '../../../models/fncharge/daily-charge-settle-detail';
+import {UploaderComponent} from '@syncfusion/ej2-angular-inputs';
+import {EmitType} from '@syncfusion/ej2-base';
+import {SelectedEventArgs} from '@syncfusion/ej2-inputs';
+import {FileInfo} from '@syncfusion/ej2-inputs/src/uploader/uploader';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-order-settle-user-detail',
@@ -23,12 +28,21 @@ export class OrderSettleUserDetailComponent implements OnInit {
 
   datasource: object[] = [];
 
+  // 'FinishAmt', 'NoFinishAmt', 'RealAmt',
   displayedColumns = [
     'Action', 'OrderTrackServerId', 'Origincustomname', 'DesctcustomName',
     'OriginCity', 'DestCity', 'Chargetype', 'Chargeitem',
-     'Innertype', 'Direction', 'ApplayAmt', 'FinishAmt', 'NoFinishAmt', 'RealAmt', 'FeeHappendTime'];
+     'Innertype', 'Direction', 'ApplayAmt', 'FeeHappendTime'];
+
+  @ViewChild('defaultupload', {static: false})
+  public uploadObj: UploaderComponent;
+
+  public selectfile: File;
+
+  public orderChargeExcelAnalysisRequestForm: FormGroup;
 
   constructor(
+            private fb: FormBuilder,
             private service: Basereportservice,
             private orderChargeSettleService: OrderChargeSettleService,
             private emitService: EmitService,
@@ -50,6 +64,10 @@ export class OrderSettleUserDetailComponent implements OnInit {
         this.datasource = a.result;
       });
 
+    this.orderChargeExcelAnalysisRequestForm = this.fb.group({
+      AnalysisModel: ['', Validators.required],
+      ExcelFile: '',
+    });
   }
 
   bizclick(action: TmssaveconfirmEvent) {
@@ -95,7 +113,29 @@ export class OrderSettleUserDetailComponent implements OnInit {
     return  this.orderChargeSettleService.Delete(this.model.SettleId);
   }
 
-  deleteitem($event: any) {
 
+  onFileSelect2($event: any ) {
+
+    console.log($event.target.files);
+     // this.selectfile = $event.files[0] as File;
+     // console.log($event);
+    this.selectfile = $event.target.files[0] as File;
+    document.getElementById('uploadname').setAttribute('value', this.selectfile.name);
+  }
+  // public onFileSelect: EmitType<Object> = (args: any) => {
+  //   this.uploadInput = args.filesData[0].name;
+  //   this.selectfile = args.filesData[0].rawFile;
+  // };
+  browseClick() {
+
+    document.getElementById('fileInput').click(); return false;
+    // console.log(x);
+   // document.getElementById('fileInput').querySelector('button').click(); return false;
+   // document.getElementById('fileInput').querySelector('button').click(); return false;
+  }
+
+  uploadfile() {
+
+     console.log(this.orderChargeExcelAnalysisRequestForm.getRawValue());
   }
 }

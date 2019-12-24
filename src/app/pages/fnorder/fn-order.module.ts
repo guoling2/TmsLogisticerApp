@@ -13,6 +13,8 @@ import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
 import {FnAccountModule} from '../FnAccount/fn-account.module';
 import { OrderSettleListComponent } from './order-settle-list/order-settle-list.component';
 import { OrderSettleUserDetailComponent } from './order-settle-user-detail/order-settle-user-detail.component';
+import {UploaderModule} from '@syncfusion/ej2-angular-inputs';
+import { OrderExcelAnalysisComponent } from './order-settle-user-detail/sub/order-excel-analysis/order-excel-analysis.component';
 
 
 const routes: Routes = [
@@ -38,18 +40,20 @@ const routes: Routes = [
     OrderChargeSettleNoApplayListComponent,
     OrderChargeSettleDetailComponent,
     OrderSettleListComponent,
-    OrderSettleUserDetailComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonbizmoduleModule,
-    RouterModule.forChild(routes),
-    LogistictoreModule,
-    BasedataModule,
-    FnAccountModule,
-  ],
+    OrderSettleUserDetailComponent,
+    OrderExcelAnalysisComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonbizmoduleModule,
+        RouterModule.forChild(routes),
+        LogistictoreModule,
+        BasedataModule,
+        FnAccountModule,
+        UploaderModule,
+    ],
    entryComponents: [OrderChargesettleCreateComponent, OrderChargeSettleNoApplayListComponent]
 })
 export class FnOrderModule { }

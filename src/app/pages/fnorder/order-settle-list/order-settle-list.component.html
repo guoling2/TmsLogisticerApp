@@ -11,12 +11,12 @@
 </div>
 <form class="listfrom-new2"  [formGroup]="searchp" >
   <div fxLayout="row" fxLayoutAlign="space-between flex-end">
-    <div fxFlex="30" style="margin-right:10px">
+    <div fxFlex="27" style="margin-right:10px">
       <mat-form-field class="comwidth">
         <input matInput placeholder="费用编号" formControlName="SettleId">
       </mat-form-field>
     </div>
-    <div fxFlex="42">
+    <div fxFlex="24">
       <mat-form-field class="comwidth">
         <mat-select  placeholder="处理状态"  formControlName="ProcessStatued">
           <mat-option value="">全部</mat-option>
@@ -24,13 +24,11 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div fxFlex="12" style="padding-bottom:19px">
+    <div fxFlex="24" style="padding-bottom:19px">
       <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
     </div>
+    <div fxFlex="24"></div>
   </div>
-
-
-
 </form>
 <div class="databoxs">
   <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
@@ -40,25 +38,25 @@
             [enableHover]="false"
             allowPaging='true'  class="contlistbox">
     <e-columns >
-      <e-column field='SettleId' headerText='费用编号'  width=150>
+      <e-column field='SettleId' headerText='费用编号'  width=200>
         <ng-template #template let-data>
           <a [routerLink]="['/biz/fn-order/order-settle-user-detail', data.SettleId]">{{data.SettleId }} </a>
         </ng-template>
       </e-column>
       <e-column field='SettleorgName' headerText='费用网点'  width=150></e-column>
-      <e-column field='AddCount' headerText='附加数量' textAlign="left"  width='160'></e-column>
-      <e-column field='ChargeAmt' headerText='应收金额' textAlign="left"  width='160'></e-column>
-      <e-column field='ProcessStatued' headerText='处理进度' textAlign="left"  width='160'></e-column>
-      <e-column field='CaclType' headerText='票据类型' textAlign="left"  width='160'></e-column>
-      <e-column field='Paymentmode' headerText='支付方式' textAlign="left"  width='160'></e-column>
-      <e-column field='IsOpenInvoice' headerText='是否开票' textAlign="left"  width='160'></e-column>
-      <e-column field='Invoiceparty' headerText='受票方' textAlign="left"  width='160'></e-column>
-      <e-column field='Invoiceamt' headerText='开票金额' textAlign="left"  width='160'></e-column>
-      <e-column field='Taxrate' headerText='税率' textAlign="left"  width='160'></e-column>
+      <e-column field='AddCount' headerText='附加数量' textAlign="left"  width='85'></e-column>
+      <e-column field='ChargeAmt' headerText='应收金额' textAlign="left"  width='95'></e-column>
+      <e-column field='ProcessStatued' headerText='处理进度' textAlign="left"  width='130'></e-column>
+      <e-column field='CaclType' headerText='票据类型' textAlign="left"  width='110'></e-column>
+      <e-column field='Paymentmode' headerText='支付方式' textAlign="left"  width='110'></e-column>
+      <e-column field='IsOpenInvoice' headerText='是否开票' textAlign="left"  width='90'></e-column>
+      <e-column field='Invoiceparty' headerText='受票方' textAlign="left"  width='190'></e-column>
+      <e-column field='Invoiceamt' headerText='开票金额' textAlign="left"  width='100'></e-column>
+      <e-column field='Taxrate' headerText='税率' textAlign="left"  width='85'></e-column>
       <e-column field='InvoicetypeDesc' headerText='发票类型' textAlign="left"  width='160'></e-column>
-      <e-column field='CreateDateTime' headerText='创建时间' textAlign="left"  width='160'></e-column>
-      <e-column field='LastUpdateDateTime' headerText='更新时间' textAlign="left"  width='160'></e-column>
-      <e-column field='LastUpdateUser' headerText='更新人' textAlign="left"  width='160'></e-column>
+      <e-column field='CreateDateTime' headerText='创建时间' textAlign="left"  width='180'></e-column>
+      <e-column field='LastUpdateDateTime' headerText='更新时间' textAlign="left"  width='180'></e-column>
+      <e-column field='LastUpdateUser' headerText='更新人' textAlign="left"  width='120'></e-column>
     </e-columns>
   </ejs-grid>
 </div>
