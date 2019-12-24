@@ -1,10 +1,10 @@
 <form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
+  <mat-form-field style="padding-left:0!important;">
     <input matInput formControlName="Invoicetitle" />
     <span  matPrefix style="color: #888">开票户头：&nbsp;</span>
   </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-  <button ejs-button cssClass="e-info mat-width" (click)="dialogRef.close()">关闭</button>
+  <button ejs-button cssClass="e-info mat-width" style="margin:0 15px" (click)="searching()">查询</button>
+  <button ejs-button cssClass="e-info mat-width mat-reject" (click)="dialogRef.close()">关闭</button>
 </form>
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"

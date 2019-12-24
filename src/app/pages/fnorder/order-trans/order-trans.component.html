@@ -1,28 +1,33 @@
-
-计费与对账/应收交款
-
-
-<button ejs-button cssClass="e-outline mat-auto" (click)="OpenCreateBillOrder()"><i class="fas fa-save"></i> 创建结账单</button>
-
-<button ejs-button cssClass="e-outline mat-auto" (click)="AttchToBillOrder()" [disabled]="!grid.getSelectedRows()?.length>0"><i class="fas fa-save"></i> 附加结算单</button>
-
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>应收交款</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>计费与对账</span> ·
+      <span>应收交款</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto" (click)="OpenCreateBillOrder()"><i class="fas fa-save"></i> 创建结账单</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="AttchToBillOrder()" [disabled]="!grid.getSelectedRows()?.length>0"><i class="fas fa-plus-square"></i> 附加结算单</button>
+  </div>
+</div>
 <form class="listfrom-new2"  [formGroup]="searchp" >
   <div fxLayout="row" fxLayoutAlign="space-between flex-end">
-    <div fxFlex="42">
+    <div fxFlex="24">
       <mat-form-field class="comwidth">
         <input matInput placeholder="物流单号" formControlName="OrderTrackServerId">
       </mat-form-field>
     </div>
-    <div fxFlex="42">
+    <div fxFlex="24">
       <app-biz-mylogistiscstore2  style="width:100%;" [saveform]="searchp" formControlName="BeginLogisticStoreId"  SettingFormControlName="BeginLogisticStoreId"></app-biz-mylogistiscstore2>
     </div>
-
-    <div fxFlex="12" style="padding-bottom:19px">
+    <div fxFlex="24" style="padding-bottom:19px">
       <button ejs-button cssClass="e-info mat-width" (click)="searching(searchp)">查询</button>
     </div>
+    <div fxFlex="24">
+    </div>
   </div>
-
-
 
 </form>
 <div class="databoxs">
@@ -40,18 +45,18 @@
       <e-column type='checkbox' width='50'></e-column>
       <e-column field='OrderLogisticDetailFeeId' headerText='费用编号'  width=150 [isPrimaryKey]="true" [visible]="false"></e-column>
       <e-column field='OrderTrackServerId' headerText='物流单号'  width=160></e-column>
-      <e-column field='CustomerOrderId' headerText='客户单号'  width=150></e-column>
-      <e-column field='Origincustomname' headerText='发货客户' textAlign="left"  width='160'></e-column>
-      <e-column field='DesctcustomName' headerText='收货客户' textAlign="left"  width='130'></e-column>
-      <e-column field='TotalRealAmount' headerText='应收金额' textAlign="left"  width='130'></e-column>
+      <e-column field='CustomerOrderId' headerText='客户单号'  width=130></e-column>
+      <e-column field='Origincustomname' headerText='发货客户' textAlign="left"  width='200'></e-column>
+      <e-column field='DesctcustomName' headerText='收货客户' textAlign="left"  width='200'></e-column>
+      <e-column field='TotalRealAmount' headerText='应收金额' textAlign="left"  width='120'></e-column>
       <e-column field='AllowReveiveAmt' headerText='可结算金额' textAlign="left"  width='120'></e-column>
-      <e-column field='Chargeitem' headerText='结算项目' textAlign="left"  width='120'></e-column>
+      <e-column field='Chargeitem' headerText='结算项目' textAlign="left"  width='95'></e-column>
       <e-column field='PayTip' headerText='结算方式'  textAlign="left" width=120></e-column>
       <e-column field='BeginLogisticStoreName' headerText='发货网点'  textAlign="left" width=150></e-column>
-      <e-column field='IsOpenInvoice' headerText='是否开票'  textAlign="left" width=150></e-column>
+      <e-column field='IsOpenInvoice' headerText='是否开票'  textAlign="left" width=100></e-column>
       <e-column field='invoicetitle' headerText='受票方'  textAlign="left" width=150></e-column>
       <e-column field='AcceptDateTime' headerText='录单时间'  textAlign="left" width=150></e-column>
-      <e-column field='AcceptUser' headerText='录单人'  textAlign="left" width=150></e-column>
+      <e-column field='AcceptUser' headerText='录单人'  textAlign="left" width=120></e-column>
     </e-columns>
   </ejs-grid>
 </div>

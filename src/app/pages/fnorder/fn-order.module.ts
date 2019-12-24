@@ -11,13 +11,24 @@ import { OrderChargeSettleDetailComponent } from './order-charge-settle-detail/o
 import {LogistictoreModule} from '../../buinesscomponent/logistore/logistictore.module';
 import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
 import {FnAccountModule} from '../FnAccount/fn-account.module';
+import { OrderSettleListComponent } from './order-settle-list/order-settle-list.component';
+import { OrderSettleUserDetailComponent } from './order-settle-user-detail/order-settle-user-detail.component';
 
 
 const routes: Routes = [
   {
     path: 'order-trans-list',
     component: OrderTransComponent
+  },
+  {
+    path: 'order-settle-list',
+    component: OrderSettleListComponent
+  },
+  {
+    path: 'order-settle-user-detail/:id',
+    component: OrderSettleUserDetailComponent
   }
+
 ];
 
 @NgModule({
@@ -25,7 +36,9 @@ const routes: Routes = [
     OrderTransComponent,
     OrderChargesettleCreateComponent,
     OrderChargeSettleNoApplayListComponent,
-    OrderChargeSettleDetailComponent],
+    OrderChargeSettleDetailComponent,
+    OrderSettleListComponent,
+    OrderSettleUserDetailComponent],
   imports: [
     CommonModule,
     SharedModule,

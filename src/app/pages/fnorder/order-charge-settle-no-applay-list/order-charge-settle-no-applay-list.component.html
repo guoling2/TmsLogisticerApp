@@ -3,36 +3,52 @@
 <ng-container [ngSwitch]="processstatued">
 
   <ng-container *ngSwitchCase="10">
-    选择结算单
-
-
-    <ejs-grid #grid [enableHover]="false" [allowSelection]="true" [selectionSettings]="selectOptions" class="contlistbox">
+    <div class="opendivs"><h3><i class="fas fa-clipboard-check"></i> 选择结算单 -  选择的结算单号: <label style="color: red">{{selectedSettleId}}</label></h3></div>
+    <ejs-grid #grid [enableHover]="false" (rowSelected)="selectrow($event)" [allowSelection]="true" [selectionSettings]="selectOptions" class="contlistbox">
       <e-columns >
-
-        <e-column field='SettleId' headerText='结算单号'  width='120'></e-column>
+        <e-column field='SettleId' headerText='结算单号'  width='120' isPrimaryKey="true"></e-column>
         <e-column field='CaclType' headerText='单据类型' textAlign="left"  width='60'></e-column>
         <e-column field='Paymentmode' headerText='付款方式' textAlign="left"  width='70'></e-column>
         <e-column field='Invoiceparty' headerText='受票方'  textAlign="left" width='140'></e-column>
         <e-column field='CreateDateTime' headerText='创建时间'  textAlign="left" width='100'></e-column>
       </e-columns>
     </ejs-grid>
-
-
-    <button ejs-button (click)="processorder()" [disabled]="grid.selectedRowIndex==-1"><i class="fas"></i> 附加费用</button>
-    <button ejs-button (click)="dialogRef.close()"><i class="fas"></i> 关闭</button>
-
+    <div class="btnbox">
+      <button ejs-button class="mat-green" (click)="processordertest()" [disabled]="grid.selectedRowIndex==-1">附加费用(测试)</button>
+      <button ejs-button class="mat-green" (click)="processorder()" [disabled]="grid.selectedRowIndex==-1">附加费用</button>
+      <button ejs-button class="mat-reject" (click)="dialogRef.close()">关闭</button>
+    </div>
   </ng-container>
 <!--  //正在处理的内容-->
   <ng-container *ngSwitchCase="20">
-
-    <ngb-alert type="danger" >模拟错误内容</ngb-alert>
-
-    {{currentIndex+1}}/{{selectrows.length+1}}
-    正在处理数据，请稍后。
+    <ngb-alert *ngIf="ErrorMsg.length>0" type="danger"  (close)="ErrorMsg = '' "><i class="fas fa-bell"></i> {{ErrorMsg}}</ngb-alert>
+    <div class="anminbox">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+    <div class="anmintit">
+      <div class="anminnub">{{currentIndex+1}}/{{selectrows.length}}</div>
+      <h3>正在处理数据，请稍后...</h3>
+    </div>
   </ng-container>
 <!--  //处理完毕的内容-->
   <ng-container *ngSwitchCase="30">
-     处理完毕
-    <button ejs-button (click)="dialogRef.close()"><i class="fas"></i> 关闭</button>
+    <div class="successbox">
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+          <div class="icon-circle"></div>
+          <div class="icon-fix"></div>
+        </div>
+      </div>
+      <div class="succetit">
+        <h2>附加成功</h2>
+        <button ejs-button class="mat-reject mat-auto" (click)="dialogRef.close()">关闭</button>
+      </div>
+    </div>
   </ng-container>
 </ng-container>

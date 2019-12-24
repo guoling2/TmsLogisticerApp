@@ -4,7 +4,10 @@ import {Router} from '@angular/router';
 import {EmitService} from '../../../help/emit-service';
 import {FormBuilder} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {GridComponent} from '@syncfusion/ej2-angular-grids';
+import {GridComponent, RowSelectEventArgs} from '@syncfusion/ej2-angular-grids';
+import {OrderChargeSettleModel} from '../../../models/fnorder/order-charge-settle-model';
+import {TmsresponseStatusCode} from '../../../models/tms-response.module';
+import {ProcessStatued} from '../../../models/process-statued.enum';
 
 @Component({
   selector: 'app-order-charge-settle-no-applay-list',
@@ -13,15 +16,6 @@ import {GridComponent} from '@syncfusion/ej2-angular-grids';
 })
 export class OrderChargeSettleNoApplayListComponent implements OnInit {
 
-  @ViewChild('grid', {static: false})
-  public grid: GridComponent;
-
-  public processstatued: number;
-
-  public selectOptions: { type?: string, mode?: string };
-
-  public currentIndex: number;
-
   constructor(private orderChargeSettleService: OrderChargeSettleService,
               private router: Router,
               private emitService: EmitService,
@@ -29,9 +23,22 @@ export class OrderChargeSettleNoApplayListComponent implements OnInit {
               public dialogRef: MatDialogRef<OrderChargeSettleNoApplayListComponent>,
               @Inject(MAT_DIALOG_DATA) public selectrows: string[]) { }
 
+  @ViewChild('grid', {static: false})
+  public grid: GridComponent;
+
+  public processstatued: ProcessStatued; // 处理的类型
+
+  public selectOptions: { type?: string, mode?: string };
+
+  public currentIndex = 0; // 当前处理的进去
+
+  public selectedSettleId: string;
+
+  public ErrorMsg = '';
+
   ngOnInit() {
 
-    this.processstatued = 10;
+    this.processstatued = ProcessStatued.Pending;
 
     this.orderChargeSettleService.NoApplaySettle().subscribe(a => {
 
@@ -41,19 +48,57 @@ export class OrderChargeSettleNoApplayListComponent implements OnInit {
 
   processorder() {
 
-    this.processstatued = 20;
+    this.processstatued = ProcessStatued.Processing;
 
-    // tslint:disable-next-line:prefer-for-of
+   // let process = 1;
     for (let i = 0; i < this.selectrows.length; i++) {
         setTimeout(() => {
-          this.currentIndex = i;
-          console.log(new Date());
-          console.log(i);
-          console.log(this.selectrows[i]);
-          if (i === this.selectrows.length - 1) {
-            this.processstatued = 30;
-          }
-        }, 1000 * i, i);
+
+
+          this.orderChargeSettleService.AttchFee({
+            OrderLogisticDetailFeeId: this.selectrows[i],
+            SettleId: this.selectedSettleId
+          }).subscribe(a => {
+
+            if (a.StatusCode !== TmsresponseStatusCode.Succeed()) {
+
+              this.ErrorMsg = a.Error.ErrorMsg;
+            }
+            this.currentIndex = i;
+            if (this.currentIndex === this.selectrows.length - 1 ) {
+              this.processstatued = ProcessStatued.Finish;
+            }
+          });
+
+        }, 300 * i, i, this.selectrows);
+    }
+  }
+  selectrow($event: RowSelectEventArgs) {
+
+    const settlemodel = $event.data as OrderChargeSettleModel;
+
+    if (settlemodel != null) {
+      this.selectedSettleId = settlemodel.SettleId;
+    }
+
+  }
+
+  processordertest() {
+    this.processstatued = ProcessStatued.Processing;
+
+    // let process = 1;
+    for (let i = 0; i < this.selectrows.length; i++) {
+      setTimeout(() => {
+
+        this.currentIndex = i;
+
+        if (i / 2 === 0) {
+          this.ErrorMsg = '随机错误';
+        }
+        if (this.currentIndex === this.selectrows.length - 1 ) {
+          this.processstatued = ProcessStatued.Finish;
+        }
+      }, 1000 * i, i, this.selectrows);
     }
   }
 }

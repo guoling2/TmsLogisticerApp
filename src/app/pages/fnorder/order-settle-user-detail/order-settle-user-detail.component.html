@@ -1,0 +1,107 @@
+<ng-container *ngIf="model">
+  Home/财务/应收结算/明细
+
+
+  <ng-container *ngIf="!model.NoCreateUserOrder">
+  <button mat-button color="primary" [disabled]="model.NoCreateUserOrder" appTmssaveconfirm comfirmMessage="确定提交财务吗？" (onSuggest)=bizclick($event) extendata="submit" >提交</button>
+  <button mat-button color="primary" [disabled]="model.NoCreateUserOrder"  appTmssaveconfirm comfirmMessage="确定删除吗？" (onSuggest)=bizclick($event) extendata="del">删除</button>
+    <button mat-button color="primary"   (click)="bizclick({ActionFlag:true,ExtendData:'print'})">修改</button>
+    <button mat-button color="primary"   (click)="bizclick({ActionFlag:true,ExtendData:'print'})">明细打印</button>
+  </ng-container>
+
+  结算单号 {{model.SettleId}}
+  创建人:{{model.CreateUser}}
+  创建时间{{model.CreateDateTime}}
+  结束时间{{model.FinishDateTime}}
+  备注{{model.ApplayMark}}
+  结算网点{{model.Settleorg}}
+  单据类型{{model.CaclType}}
+  付款方式{{model.Paymentmode}}
+  状态{{model.ProcessStatuedDesc}}
+  结算金额 ￥{{model.ChargeAmt}}
+
+  <mat-tab-group>
+    <mat-tab label="结算详情">  <table mat-table [dataSource]="datasource">
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+        <td mat-cell *matCellDef="let element"><button
+          mat-icon-button
+          color="warn"
+          type="button"
+          appTmssaveconfirm
+          comfirmMessage="确定删除吗？"
+          (onSuggest)=deleteitem($event) extendata="{{element.SettleItemId}}"
+          matTooltip="删除">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+      </ng-container>
+
+      <ng-container matColumnDef="OrderTrackServerId">
+        <th mat-header-cell *matHeaderCellDef> 物流单号 </th>
+        <td mat-cell *matCellDef="let element"> {{element.OrderTrackServerId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Origincustomname">
+        <th mat-header-cell *matHeaderCellDef> 发货客户 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Origincustomname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DesctcustomName">
+        <th mat-header-cell *matHeaderCellDef> 到货客户 </th>
+        <td mat-cell *matCellDef="let element"> {{element.DesctcustomName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="OriginCity">
+        <th mat-header-cell *matHeaderCellDef> 发货城市 </th>
+        <td mat-cell *matCellDef="let element"> {{element.OriginCity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DestCity">
+        <th mat-header-cell *matHeaderCellDef> 到货城市 </th>
+        <td mat-cell *matCellDef="let element"> {{element.DestCity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Chargetype">
+        <th mat-header-cell *matHeaderCellDef> 计费事务 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Chargetype}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Chargeitem">
+        <th mat-header-cell *matHeaderCellDef> 费用名称 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Chargeitem}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Innertype">
+        <th mat-header-cell *matHeaderCellDef> 费用类型 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Innertype}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Direction">
+        <th mat-header-cell *matHeaderCellDef> 费用方向 </th>
+        <td mat-cell *matCellDef="let element"> {{element.Direction}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ApplayAmt">
+        <th mat-header-cell *matHeaderCellDef> 结算金额 </th>
+        <td mat-cell *matCellDef="let element"> {{element.ApplayAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="FinishAmt">
+        <th mat-header-cell *matHeaderCellDef> 已结金额 </th>
+        <td mat-cell *matCellDef="let element"> {{element.FinishAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="NoFinishAmt">
+        <th mat-header-cell *matHeaderCellDef> 未结金额 </th>
+        <td mat-cell *matCellDef="let element"> {{element.NoFinishAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="RealAmt">
+        <th mat-header-cell *matHeaderCellDef> 实收金额 </th>
+        <td mat-cell *matCellDef="let element"> {{element.RealAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="FeeHappendTime">
+        <th mat-header-cell *matHeaderCellDef> 费用时间 </th>
+        <td mat-cell *matCellDef="let element"> {{element.FeeHappendTime}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> </mat-tab>
+  </mat-tab-group>
+
+
+</ng-container>

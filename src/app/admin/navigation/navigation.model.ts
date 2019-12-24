@@ -295,6 +295,12 @@ export class NavigationModel {
               url: '/biz/fn-order/order-trans-list'
             },
             {
+              id: 'FnAccountTrans01',
+              title: '应收结算单',
+              type: 'item',
+              url: '/biz/fn-order/order-settle-list'
+            },
+            {
               id: 'OrderCharge',
               title: '运单收入',
               type: 'item',

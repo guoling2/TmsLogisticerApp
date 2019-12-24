@@ -156,4 +156,13 @@ export  class FinanceReport {
    * 查询未申请的应收
    */
   public  static  Report_orderapplaylist="orderapplaylist";
+  /**
+   * 查询自己的应收单
+   */
+  public static  Report_OrderChargeSettleForSubmitUserQuery="OrderChargeSettleForSubmitUserQuery";
+
+  /**
+   * 查询订单费用项目根据结算单号
+   */
+  public static  Report_OrderChargeSettleItemForSettleIdQuery="OrderChargeSettleItemForSettleIdQuery";
 }

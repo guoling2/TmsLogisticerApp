@@ -39,7 +39,7 @@ export class OrderTransComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { OrderTrackServerId: '', BeginLogisticStoreId: ''});
-    this.gridheight = Commonsetting.GridHeight2();
+    this.gridheight = Commonsetting.GridHeight();
   }
 
   OpenCreateBillOrder() {
@@ -69,10 +69,11 @@ export class OrderTransComponent implements OnInit {
       disableClose: true, maxWidth: '900px', data: ids}).afterClosed().subscribe(
 
       (a => {
-          if (a != null) {
-            EmitAlertMessageHelo.ShowMessageWithReplaceMsg(
-              this.emitService, a, '结算单创建成功', '结算单创建失败', MessageShowType.Toast);
-          }
+        this.searching(this.searchp);
+          // if (a != null) {
+          //   EmitAlertMessageHelo.ShowMessageWithReplaceMsg(
+          //     this.emitService, a, '结算单创建成功', '结算单创建失败', MessageShowType.Toast);
+          // }
 
         }
       ));

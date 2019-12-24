@@ -1,6 +1,6 @@
 export class TmsStringContentResult {
 
-  public result: Object[] ;
+  public result: object[] ;
 
   public count: number;
 

@@ -8,6 +8,8 @@ import {Observable} from 'rxjs';
 import {ej} from '@syncfusion/ej2-data/dist/global';
 import data = ej.data;
 import {OrderChargeSettleModel} from '../../models/fnorder/order-charge-settle-model';
+import {OrderReveiveFeeAttchModel} from '../../models/fnorder/order-reveive-fee-attch-model';
+import {OrderChargeSettleUserModel} from '../../models/fnorder/order-charge-settle-user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +31,7 @@ export class OrderChargeSettleService {
 
 
 
-    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/查询地址1/Delete' + dataid)
+    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/OrderChargeSettle/Delete/' + dataid)
       .pipe(
         tap(heroes => console.log(heroes)));
   }
@@ -58,6 +60,25 @@ export class OrderChargeSettleService {
   public  NoApplaySettle(): Observable<OrderChargeSettleModel[]> {
 
     return this.httpclient.get<OrderChargeSettleModel[]>(this.appConfiguration.Server + '/api/OrderChargeSettle/NoApplaySettle')
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
+
+  /**
+   * 附加应收运费
+   */
+  public  AttchFee(orderReveiveFeeAttch: OrderReveiveFeeAttchModel): Observable<TmsResponseModle> {
+
+    return this.httpclient.post<TmsResponseModle>(this.appConfiguration.Server + '/api/OrderChargeSettle/AttchFee', orderReveiveFeeAttch)
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
+  /**
+   * 结算明细
+   */
+  public  Detail(settileId: string): Observable<OrderChargeSettleUserModel> {
+
+    return this.httpclient.get<OrderChargeSettleUserModel>(this.appConfiguration.Server + '/api/OrderChargeSettle/Detail/' + settileId)
       .pipe(
         tap(heroes => console.log(heroes)));
   }

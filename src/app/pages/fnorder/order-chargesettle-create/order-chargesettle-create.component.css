@@ -1,0 +1,14 @@
+.opendivs h3 {font-size:16px;color:#000;font-weight:normal;border-bottom:1px #ccc solid;padding:0 0 10px 0;text-align: left;margin:0 0 10px 0;width:100%}
+.margin_t_10 {font-size:14px;margin-bottom:10px}
+.e-grid .e-rowcell:first-child, .e-grid .e-summarycell:first-child {padding-left:15px!important;}
+.e-grid .e-rowcell {padding-left:15px!important;}
+.width-full {width:100%!important; }
+.comwidth  {width:100%!important;}
+.extradiv {width:100%;height:auto;margin-top:0px;border-bottom:1px #ccc solid;overflow: auto;padding-bottom:0px}
+.extradiv h3 {float:left;font-size:16px;padding-top:5px}
+.extradiv button {float:right;font-size:12px}
+.extradiv .e-btn, .e-css.e-btn {padding:6px 6px!important;}
+.mat-auto2 {height:auto!important;}
+.mat-form-field-subscript-wrapper {margin-top:2px!important; }
+.btnbox button {margin-right:10px;padding:8px 15px!important;}
+.btnbox {width:100%;height:auto;text-align: center}
