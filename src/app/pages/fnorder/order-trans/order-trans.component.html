@@ -9,7 +9,7 @@
   </div>
   <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto" (click)="OpenCreateBillOrder()"><i class="fas fa-save"></i> 创建结账单</button>
-    <button ejs-button cssClass="e-outline mat-auto" (click)="AttchToBillOrder()" [disabled]="!grid.getSelectedRows()?.length>0"><i class="fas fa-plus-square"></i> 附加结算单</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="AttchToBillOrder()" [disabled]=" grid.getSelectedRows().length<=0"><i class="fas fa-plus-square"></i> 附加结算单</button>
   </div>
 </div>
 <form class="listfrom-new2"  [formGroup]="searchp" >

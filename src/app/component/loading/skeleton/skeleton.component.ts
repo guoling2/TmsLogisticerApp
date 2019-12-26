@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'stbui-loading-skeleton',
+  selector: 'app-stbui-loading-skeleton',
   templateUrl: './skeleton.component.html',
   styleUrls: ['./skeleton.component.scss']
 })

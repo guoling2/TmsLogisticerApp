@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './auth-interceptor';
 import {AppConfiguration} from './config/app-configuration';
 import {TmsoidcSecurityServivceService} from './tmsoidc-security-servivce.service';
+import { Login1Component } from './login1/login1.component';
 
 
 export const HttpInterceptorProviders = [
@@ -22,6 +23,7 @@ export const HttpInterceptorProviders = [
 
 
 const appRoutes: Routes = [
+  { path: 'login1', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'forbidden', component: ForbiddenComponent },
@@ -58,7 +60,8 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
     ForbiddenComponent,
     CallBackComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    Login1Component
   ],
   imports: [
     CommonModule,

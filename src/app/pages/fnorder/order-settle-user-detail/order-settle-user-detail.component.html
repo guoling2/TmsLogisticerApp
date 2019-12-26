@@ -10,9 +10,9 @@
       </div>
       <div class="btnbox">
         <ng-container *ngIf="!model.NoCreateUserOrder">
-          <button ejs-button cssClass="e-outline mat-auto" [disabled]="model.NoCreateUserOrder" appTmssaveconfirm comfirmMessage="确定提交财务吗？" (onSuggest)=bizclick($event) extendata="submit" ><i class="fas fa-save"></i> 提交</button>
-          <button ejs-button cssClass="e-outline mat-auto" [disabled]="model.NoCreateUserOrder"  appTmssaveconfirm comfirmMessage="确定删除吗？" (onSuggest)=bizclick($event) extendata="del"><i class="fas fa-trash"></i> 删除</button>
-          <button ejs-button cssClass="e-outline mat-auto" (click)="bizclick({ActionFlag:true,ExtendData:'print'})"><i class="fas fa-print"></i> 明细打印</button>
+          <button ejs-button cssClass="e-outline mat-auto" [disabled]="!useractionflag" appTmssaveconfirm comfirmMessage="确定提交财务吗？" (onSuggest)=bizclick($event) extendata="submit" ><i class="fas fa-save"></i> 提交</button>
+          <button ejs-button cssClass="e-outline mat-auto" [disabled]="!useractionflag"  appTmssaveconfirm comfirmMessage="确定删除吗？" (onSuggest)=bizclick($event) extendata="del"><i class="fas fa-trash"></i> 删除</button>
+          <button ejs-button cssClass="e-outline mat-auto" (click)="printfnbill()"><i class="fas fa-print"></i> 明细打印</button>
         </ng-container>
       </div>
     </div>
@@ -57,7 +57,7 @@
             <h3>{{model.ProcessStatuedDesc}}</h3>
           </div>
           <div fxFlex="49">
-            <h3>￥{{model.ChargeAmt}}</h3>
+            <h3>￥{{model.ChargeAmt.toFixed(3)}}</h3>
           </div>
         </div>
       </div>
@@ -68,21 +68,35 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="settletabbox">
     <mat-tab-group>
       <mat-tab label="结算详情" style="background:#fff">
-
-
         <ng-container *ngIf="model.IsOpenInvoice">
-        开票资料:
-        受票方:{{model.Invoiceparty}}
-          税号：{{model.Partytaxno}}
-        金额:{{model.Invoiceamt}}
-        税率:{{(model.Taxrate*100).toFixed(2)}}%
-        类型:{{model.InvoicetypeDesc}}
-        开票项目:{{model.FnTrxItem}}
-
+          <div class="tabinfobox">
+            <h2><i class="fas fa-list-alt"></i> 开票资料</h2>
+            <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+              <div fxFlex="32">
+                <span>受票方：<b>{{model.Invoiceparty}}</b></span>
+              </div>
+              <div fxFlex="32">
+                <span>税号：<b>{{model.Partytaxno}}</b></span>
+              </div>
+              <div fxFlex="32"></div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+              <div fxFlex="32">
+                <span>税率：<b>{{(model.Taxrate*100).toFixed(2)}}%</b></span>
+              </div>
+              <div fxFlex="32">
+                <span>类型：<b>{{model.InvoicetypeDesc}}</b></span>
+              </div>
+              <div fxFlex="32">
+                <span>开票项目：<b>{{model.FnTrxItem}}</b></span>
+              </div>
+            </div>
+          </div>
         </ng-container>
+        <div class="billtit"><h2><i class="fas fa-stamp"></i> 费用明细</h2></div>
         <div class="databox">
         <table mat-table [dataSource]="datasource">
         <ng-container matColumnDef="Action">
@@ -93,7 +107,7 @@
             type="button"
             appTmssaveconfirm
             comfirmMessage="确定删除吗？"
-            (onSuggest)=deleteitem($event) extendata="{{element.SettleItemId}}"
+            (onSuggest)=itemdel($event) extendata="{{element.SettleItemId}}"
             matTooltip="删除">
             <mat-icon>delete</mat-icon>
           </button></td>
@@ -138,18 +152,6 @@
           <th mat-header-cell *matHeaderCellDef> 结算金额 </th>
           <td mat-cell *matCellDef="let element"> {{element.ApplayAmt}} </td>
         </ng-container>
-<!--        <ng-container matColumnDef="FinishAmt">-->
-<!--          <th mat-header-cell *matHeaderCellDef> 已结金额 </th>-->
-<!--          <td mat-cell *matCellDef="let element"> {{element.FinishAmt}} </td>-->
-<!--        </ng-container>-->
-<!--        <ng-container matColumnDef="NoFinishAmt">-->
-<!--          <th mat-header-cell *matHeaderCellDef> 未结金额 </th>-->
-<!--          <td mat-cell *matCellDef="let element"> {{element.NoFinishAmt}} </td>-->
-<!--        </ng-container>-->
-<!--        <ng-container matColumnDef="RealAmt">-->
-<!--          <th mat-header-cell *matHeaderCellDef> 实收金额 </th>-->
-<!--          <td mat-cell *matCellDef="let element"> {{element.RealAmt}} </td>-->
-<!--        </ng-container>-->
         <ng-container matColumnDef="FeeHappendTime">
           <th mat-header-cell *matHeaderCellDef> 费用时间 </th>
           <td mat-cell *matCellDef="let element"> {{element.FeeHappendTime}} </td>
@@ -161,33 +163,8 @@
       </div>
       </mat-tab>
       <mat-tab label="Excel导入">
-
-        <form [formGroup]="orderChargeExcelAnalysisRequestForm" >
-
-          <div>
-            检索模式
-            <mat-radio-group aria-label="检索模式" formControlName="AnalysisModel">
-              <mat-radio-button value="1">系统单号</mat-radio-button>
-              <mat-radio-button value="2">客户单号</mat-radio-button>
-              <mat-radio-button value="3">物流单号</mat-radio-button>
-            </mat-radio-group>
-          </div>
-
-          <div>
-            <div class="e-float-input upload-area">
-              <input type="text" id="uploadname" name="upload">
-              <button id="browse" class="e-control e-btn e-info" (click)='browseClick()'>浏览...</button>
-              <span class="e-float-line"></span>
-              <label class="e-float-text e-label-top" for="upload">选择文件</label>
-              <input type="file" id="fileInput" accept=".xls,.xlsx" style="display: none" formControlName="ExcelFile" (change)="onFileSelect2($event)"/>
-            </div>
-          </div>
-
-          <button ejs-button (click)="uploadfile()"><i class="fas fa-print"></i> 文件解析</button>
-        </form>
+      <app-order-excel-analysis [SettleId]="model.SettleId"  (onAttchFinished)="attchfinished()" (onItemAttchSucceed)="attchsucceed($event)"></app-order-excel-analysis>
       </mat-tab>
-
-
     </mat-tab-group>
   </div>
   </ng-container>

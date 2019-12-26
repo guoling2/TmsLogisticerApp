@@ -15,6 +15,9 @@ import { OrderSettleListComponent } from './order-settle-list/order-settle-list.
 import { OrderSettleUserDetailComponent } from './order-settle-user-detail/order-settle-user-detail.component';
 import {UploaderModule} from '@syncfusion/ej2-angular-inputs';
 import { OrderExcelAnalysisComponent } from './order-settle-user-detail/sub/order-excel-analysis/order-excel-analysis.component';
+import { OrderChargePrintComponent } from './order-charge-print/order-charge-print.component';
+import { OrderSettleAdminListComponent } from './order-settle-admin-list/order-settle-admin-list.component';
+import { OrderSettleAdminDetailComponent } from './order-settle-admin-detail/order-settle-admin-detail.component';
 
 
 const routes: Routes = [
@@ -29,7 +32,15 @@ const routes: Routes = [
   {
     path: 'order-settle-user-detail/:id',
     component: OrderSettleUserDetailComponent
-  }
+  },
+  {
+    path: 'order-settle-admin-list',
+    component: OrderSettleAdminListComponent
+  },
+  {
+    path: 'order-settle-admin-detail/:id',
+    component: OrderSettleAdminDetailComponent
+  },
 
 ];
 
@@ -41,7 +52,10 @@ const routes: Routes = [
     OrderChargeSettleDetailComponent,
     OrderSettleListComponent,
     OrderSettleUserDetailComponent,
-    OrderExcelAnalysisComponent],
+    OrderExcelAnalysisComponent,
+    OrderChargePrintComponent,
+    OrderSettleAdminListComponent,
+    OrderSettleAdminDetailComponent],
     imports: [
         CommonModule,
         SharedModule,
@@ -54,6 +68,6 @@ const routes: Routes = [
         FnAccountModule,
         UploaderModule,
     ],
-   entryComponents: [OrderChargesettleCreateComponent, OrderChargeSettleNoApplayListComponent]
+   entryComponents: [OrderChargesettleCreateComponent, OrderChargeSettleNoApplayListComponent, OrderChargePrintComponent]
 })
 export class FnOrderModule { }

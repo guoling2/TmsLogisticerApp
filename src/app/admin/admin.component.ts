@@ -69,7 +69,7 @@ export class AdminComponent implements OnInit {
 
        // this.router.navigateByUrl('/biz/home');
 
-        //this.tabs = this.tabService.tabs;
+        // this.tabs = this.tabService.tabs;
 
         // this.router.events.subscribe(event => {
         //   if (event instanceof NavigationEnd) {
@@ -123,6 +123,10 @@ export class AdminComponent implements OnInit {
     });
 
 
+    // 测试
+    // setInterval(a => {
+    //   alert('超时处理');
+    // }, 5000);
 
   }
 

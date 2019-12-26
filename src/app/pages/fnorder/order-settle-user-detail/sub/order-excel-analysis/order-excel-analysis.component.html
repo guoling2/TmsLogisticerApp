@@ -1,1 +1,65 @@
-<p>order-excel-analysis works!</p>
+<form [formGroup]="orderChargeExcelAnalysisRequestForm" >
+  <div class="uploadbox">
+    <div class="e-float-input upload-area">
+      <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+        <div fxFlex="30">
+          <input type="text" id="uploadname" name="upload">
+          <span class="e-float-line"></span>
+          <label class="e-float-text e-label-top">选择文件</label>
+          <input type="file" id="fileInput" accept=".xls,.xlsx" style="display: none" (change)="onFileSelect2($event)"/>
+        </div>
+        <div fxFlex="18" class="btndown">
+          <button id="browse"  ejs-button cssClass="e-outline mat-auton" (click)='browseClick()'><i class="fas fa-upload"></i> 浏览...</button>
+          <button class="btnmargin" ejs-button cssClass="e-outline mat-auton"><i class="fas fa-download"></i> 模板下载</button>
+        </div>
+        <div fxFlex="50"></div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between flex-end" class="searchbtn">
+      <div fxFlex="30">
+        <div class="search">
+          检索模式：
+          <mat-radio-group aria-label="检索模式" formControlName="AnalysisModel">
+            <mat-radio-button value="1">系统单号 </mat-radio-button>
+            <mat-radio-button value="2">客户单号 </mat-radio-button>
+            <mat-radio-button value="3">物流单号 </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div fxFlex="28">
+        <button ejs-button cssClass="e-outline mat-auton" (click)="uploadfile()"><i class="fas fa-file-upload"></i> 上传解析</button>
+        <button ejs-button cssClass="e-outline mat-auton" class="btnmargin" (click)="attchfiledemo()" [disabled]="analysisdatasource==null">单据附加(测试)</button>
+        <button ejs-button cssClass="e-outline mat-auton" class="btnmargin" (click)="attchfile()" [disabled]="analysisdatasource==null"><i class="fas fa-plus-circle"></i> 单据附加</button>
+      </div>
+      <div fxFlex="40"></div>
+    </div>
+  </div>
+  <div>
+<!--    上传将触发这个控件-->
+    <ng-container  *ngIf="processstatued===20">
+      <div class="resultbox">{{uploadinfo}}</div>
+    </ng-container>
+<!--    上传处理结束触发这个控件-->
+   <ng-container *ngIf="analysisdatasource"> <div class="resultbox">解析结果：共 <b>{{totalrecord}}</b> 条数据</div></ng-container>
+    <div class="databox">
+        <ejs-grid #grid
+                  [dataSource]="analysisdatasource"
+                  (dataSourceChange)="changed($event)"
+                  [allowResizing]= 'true'
+                  [allowExcelExport]='true'
+                  [allowSorting]='false'
+                  [allowSelection]="true"
+                  [enableHover]="false"
+                  [editSettings]="{allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal'}"
+                  [allowPaging]='false'  class="contlistbox"  >
+          <e-columns >
+            <e-column field='OrderLogisticDetailFeeId' headerText='费用编号'  width='160' [isPrimaryKey]="true"></e-column>
+            <e-column field='ExcelOrderId' headerText='Excel导入单号'  width='120'></e-column>
+            <e-column field='SystemAmt' headerText='系统金额' format='N3' width='50'></e-column>
+            <e-column field='HasError' headerText='错误' [visible]="false" format='N3' width='50'></e-column>
+            <e-column field='ErrorMsg' headerText='信息'  width=150></e-column>
+          </e-columns>
+        </ejs-grid>
+    </div>
+  </div>
+</form>

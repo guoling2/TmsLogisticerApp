@@ -165,4 +165,8 @@ export  class FinanceReport {
    * 查询订单费用项目根据结算单号
    */
   public static  Report_OrderChargeSettleItemForSettleIdQuery="OrderChargeSettleItemForSettleIdQuery";
+  /**
+   * 财务操作查询
+   */
+  public static Report_OrderChargeSettleForAdminQuery="OrderChargeSettleForAdminQuery";
 }

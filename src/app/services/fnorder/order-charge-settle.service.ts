@@ -74,6 +74,18 @@ export class OrderChargeSettleService {
         tap(heroes => console.log(heroes)));
   }
   /**
+   * 移除附加应收运费
+   */
+  public  RemoveAttchFee(settleId: string, settleItemId: string): Observable<TmsResponseModle> {
+
+    return this.httpclient.delete<TmsResponseModle>(
+      this.appConfiguration.Server + '/api/OrderChargeSettle/RemoveAttchFee/' + settleId + '/' + settleItemId)
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
+
+
+  /**
    * 结算明细
    */
   public  Detail(settileId: string): Observable<OrderChargeSettleUserModel> {
@@ -82,6 +94,14 @@ export class OrderChargeSettleService {
       .pipe(
         tap(heroes => console.log(heroes)));
   }
+  /**
+   * 申请结算
+   */
+  public  Submit(settileId: string): Observable<TmsResponseModle> {
 
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/OrderChargeSettle/Submit/' + settileId, '')
+      .pipe(
+        tap(heroes => console.log(heroes)));
+  }
 
 }

@@ -354,7 +354,7 @@ export class NavigationModel {
               id: 'CustSettle',
               title: '客户结算',
               type: 'item',
-              url: '/biz/logisticprice-management/price-template-list'
+              url: '/biz/fn-order/order-settle-admin-list'
             },
             {
               id: 'TransportSettle',

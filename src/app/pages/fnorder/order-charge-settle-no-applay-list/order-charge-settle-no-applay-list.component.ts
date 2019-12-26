@@ -92,7 +92,7 @@ export class OrderChargeSettleNoApplayListComponent implements OnInit {
 
         this.currentIndex = i;
 
-        if (i / 2 === 0) {
+        if (i % 2 === 0) {
           this.ErrorMsg = '随机错误';
         }
         if (this.currentIndex === this.selectrows.length - 1 ) {

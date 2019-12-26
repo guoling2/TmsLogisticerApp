@@ -22,14 +22,28 @@ export class OrderChargeSettleExcelService {
   public Analysis(AnalysisRequest: OrderChargeExcelAnalysisRequest): Observable<TmsResponseModle> {
 
 
-    const headers = new HttpHeaders({'Content-Type': 'multipart/form-data'});
+    const formData: FormData = new FormData();
 
-    // tslint:disable-next-line:max-line-length
+    Object.keys(AnalysisRequest).forEach(field => {
+      console.log(field);
+      formData.append(field, AnalysisRequest[field]);
+    });
+
+    console.log(formData);
+
     return this.httpclient.post<TmsResponseModle>(
-      this.appConfiguration.Server + '/api/OrderChargeSettleExcel/Analysis',
-      AnalysisRequest,
-      {headers})
+      this.appConfiguration.Server + '/api/OrderChargeSettleExcel/Analysis' , formData)
       .pipe(
         tap(heroes => console.log(heroes)));
+
+    // const headers = new HttpHeaders({'Content-Type': 'multipart/form-data'});
+    //
+    // // tslint:disable-next-line:max-line-length
+    // return this.httpclient.post<TmsResponseModle>(
+    //   this.appConfiguration.Server + '/api/OrderChargeSettleExcel/Analysis',
+    //   AnalysisRequest,
+    //   {headers})
+    //   .pipe(
+    //     tap(heroes => console.log(heroes)));
   }
 }

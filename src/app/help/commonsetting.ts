@@ -50,6 +50,10 @@ export class Commonsetting{
 
     return document.documentElement.clientHeight - 530;
   }
+  public static GridHeightshort3(): number {
+
+    return document.documentElement.clientHeight - 490;
+  }
   public  static HttpJsonHead(): HttpHeaders {
     return  new HttpHeaders({'Content-Type': 'application/json'});
   }
