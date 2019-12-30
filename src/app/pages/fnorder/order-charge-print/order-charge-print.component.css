@@ -1,0 +1,4 @@
+.printbox {width:100%;border-bottom:1px #eee solid;padding-bottom:0px;overflow: auto}
+.printbox h3 {font-size:14px;float: left;margin-bottom:0!important;padding-top:10px}
+.printbox button {font-size:14px;float: right;padding:8px 10px;margin-bottom:10px;}
+iframe {padding-top:10px;font-size:small}

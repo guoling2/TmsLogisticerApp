@@ -1,0 +1,60 @@
+
+<h1>操作提示</h1>
+
+<div>
+
+  <ng-container [ngSwitch]="processstatued">
+
+    <!--     初始化的内容-->
+    <ng-container *ngSwitchCase="10">
+
+      <div>
+        是否要进行{{processrequest.ShowMessage}}
+      </div>
+
+      <div>
+        <button ejs-button class="mat-green" (click)="processdatatest()">确定（测试）</button>
+        <button ejs-button class="mat-green" (click)="processdata()">确定</button>
+        <button ejs-button class="mat-reject" (click)="dialogRef.close()">取消</button>
+      </div>
+
+    </ng-container>
+    <!--  //正在处理的内容-->
+    <ng-container *ngSwitchCase="20">
+      <div>
+        <ngb-alert *ngIf="ErrorMsg.length>0" type="danger"  (close)="ErrorMsg = '' "><i class="fas fa-bell"></i> {{ErrorMsg}}</ngb-alert>
+        <div class="anminbox">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <div class="anmintit">
+          <div class="anminnub">{{currentIndex}}/{{processrequest.SettleIds.length}}</div>
+          <h3>正在处理数据</h3>
+        </div>
+      </div>
+
+    </ng-container>
+    <!--  //处理完毕的内容-->
+    <ng-container *ngSwitchCase="30">
+      <div class="successbox">
+        <div class="success-checkmark">
+          <div class="check-icon">
+            <span class="icon-line line-tip"></span>
+            <span class="icon-line line-long"></span>
+            <div class="icon-circle"></div>
+            <div class="icon-fix"></div>
+          </div>
+        </div>
+        <div class="succetit">
+          <h2>{{processrequest.SucceedMessage}}</h2>
+          <button ejs-button class="mat-reject mat-auto" (click)="dialogRef.close()">关闭</button>
+        </div>
+      </div>
+    </ng-container>
+
+  </ng-container>
+
+</div>

@@ -410,7 +410,13 @@ export class NavigationModel {
           children: [
             {
               id: 'QryDailyCharge',
-              title: '日常收支查询',
+              title: '运单结算明细',
+              type: 'item',
+              url: '/biz/fnQueries/QryOrderCharge'
+            },
+            {
+              id: 'QryDailyCharge',
+              title: '日常结算明细',
               type: 'item',
               url: '/biz/fnQueries/QryDailyCharge'
             }

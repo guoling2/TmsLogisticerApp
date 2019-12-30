@@ -7,6 +7,7 @@ import {Formextension} from '../../../../../help/formextension';
 import {DailyChargeSettleRequest} from '../../../../../models/fncharge/daily-charge-settle-request';
 import {InvoiceRequest} from '../../../../../models/fncharge/invoice-request';
 import {TmsresponseStatusCode} from '../../../../../models/tms-response.module';
+import {AdminOrderChargeSettleService} from '../../../../../services/fnorder/admin-order-charge-settle.service';
 
 @Component({
   selector: 'app-add-invoice-profile',
@@ -16,16 +17,16 @@ import {TmsresponseStatusCode} from '../../../../../models/tms-response.module';
 export class AddInvoiceProfileComponent implements OnInit {
 
   public form: FormGroup;
-  errormsg='';
+  errormsg = '';
 
-  constructor(private adminDailyChargeSettleService:AdminDailyChargeSettleService, private fb: FormBuilder, public dialogRef: MatDialogRef<AddInvoiceProfileComponent>,@Inject(MAT_DIALOG_DATA) public xselect:IAddInvoiceRequest) { }
+  constructor(private adminOrderChargeSettleService: AdminDailyChargeSettleService, private fb: FormBuilder, public dialogRef: MatDialogRef<AddInvoiceProfileComponent>, @Inject(MAT_DIALOG_DATA) public xselect: IAddInvoiceRequest) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       SettleId: [this.xselect.SettleId, Validators.required],
-      Invoicetaxno:['', Validators.required],
-      Invoiceamount:this.xselect.Invoiceamt,
-      InvoiceType:'纸质发票'
+      Invoicetaxno: ['', Validators.required],
+      Invoiceamount: this.xselect.Invoiceamt,
+      InvoiceType: '纸质发票'
     });
   }
 
@@ -39,14 +40,14 @@ export class AddInvoiceProfileComponent implements OnInit {
       Formextension.validateAllFormFields(this.form);
       return;
     }
-    const result=<InvoiceRequest>this.form.getRawValue();
+    const result = this.form.getRawValue() as InvoiceRequest;
 
-    this.adminDailyChargeSettleService.OpenInvoice(result).subscribe(a=>{
+    this.adminOrderChargeSettleService.OpenInvoice(result).subscribe(a => {
 
-      if(a.StatusCode!=TmsresponseStatusCode.Succeed()){
+      if (a.StatusCode !== TmsresponseStatusCode.Succeed()) {
 
-        this.errormsg=a.Error.ErrorMsg;
-      }else {
+        this.errormsg = a.Error.ErrorMsg;
+      } else {
 
         this.dialogRef.close(a);
       }

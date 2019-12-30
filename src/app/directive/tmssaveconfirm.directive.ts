@@ -20,7 +20,7 @@ export class TmssaveconfirmDirective {
   constructor( private  dialogx: DialogservicesService) { }
 
   @HostListener('click', ['$event'])
-     onClick(event) {
+  onClick(event) {
 
     event.preventDefault();
     event.stopPropagation();

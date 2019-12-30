@@ -10,9 +10,9 @@ export class TmsResponseModle {
   constructor(
     public statusCode: number,
 
-     public info: string,
+    public info: string,
 
-     public data: object[]= null) {
+    public data: object[]= null) {
 
     this.StatusCode = statusCode;
     this.Info = info;

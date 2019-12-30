@@ -1,0 +1,28 @@
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column field='SettleId' headerText='费用编号'  width=200>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/fn-order/order-settle-admin-detail', data.SettleId]">{{data.SettleId }} </a>
+      </ng-template>
+    </e-column>
+    <e-column field='SettleorgName' headerText='费用网点'  width=150></e-column>
+    <e-column field='CaclType' headerText='单据类型' textAlign="left"  width='85'></e-column>
+    <e-column field='ChargeAmt' headerText='结算金额' textAlign="left"  width='95'></e-column>
+    <e-column field='AlreadyOpenedInvoicedAmt' headerText='已开票金额' textAlign="left"  width='95'></e-column>
+    <e-column field='NoFinishAmt' headerText='未冲销金额' textAlign="left"  width='95'></e-column>
+    <e-column field='Invoiceparty' headerText='受票方' textAlign="left"  width='190'></e-column>
+    <e-column field='Partytaxno' headerText='税号' textAlign="left"  width='190'></e-column>
+    <e-column field='Invoiceamt' headerText='开票金额' textAlign="left"  width='100'></e-column>
+    <e-column field='Taxrate' headerText='税率' format='P2'  textAlign="left"  width='85'></e-column>
+    <e-column field='InvoicetypeDesc' headerText='发票类型' textAlign="left"  width='160'></e-column>
+    <e-column field='CreateUser' headerText='申请人' textAlign="left"  width='180'></e-column>
+    <e-column field='CreateDateTime' headerText='创建时间' textAlign="left"  width='180'></e-column>
+    <e-column field='ApplayMark' headerText='申请备注' textAlign="left"  width='120'></e-column>
+  </e-columns>
+</ejs-grid>

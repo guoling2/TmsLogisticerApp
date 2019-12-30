@@ -1,0 +1,58 @@
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>运单结算明细</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>财务查询</span> ·
+      <span>运单结算明细</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new"></div>
+</div>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+    <div fxFlex="42">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="结算单号" formControlName="SettleId">
+      </mat-form-field>
+    </div>
+    <div fxFlex="42">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="受票方" formControlName="Chargeparty">
+      </mat-form-field>
+    </div>
+    <div fxFlex="12" style="padding-bottom:19px">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
+</form>
+<div class="databoxs">
+  <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+            (dataStateChange)="dataStateChange($event)"
+            [allowExcelExport]='true'  allowSorting='false'
+            [allowSelection]="true"
+            [enableHover]="false"
+            [pageSettings]="{currentPage: 1, pageSize: 100}"
+            allowPaging='false'  class="contlistbox">
+    <e-columns >
+      <e-column field='OrderTrackServerId' headerText='物流单号'  width=180></e-column>
+      <e-column field='SettleId' headerText='结算单号'  width=180></e-column>
+      <e-column field='Origincustomname' headerText='发货客户'  width=160></e-column>
+      <e-column field='DesctcustomName' headerText='收货客户' textAlign="left"  width='170'></e-column>
+      <e-column field='Chargeitem' headerText='费用项目' textAlign="left"  width='120'></e-column>
+      <e-column field='ChargeAmt' headerText='费用' textAlign="left"  width='120'></e-column>
+      <e-column field='DeliveryMonth' headerText='财务记账月份' textAlign="left"  width='130'></e-column>
+      <e-column field='FianceNo' headerText='财务凭证号码' textAlign="left"  width='150'></e-column>
+      <e-column field='CaclType' headerText='票据类型' textAlign="left"  width='110'></e-column>
+      <e-column field='ProcessStatued' headerText='处理状态'  textAlign="left" width=110></e-column>
+      <e-column field='CreateUser' headerText='结算单创建人'  textAlign="left" width=160></e-column>
+      <e-column field='CreateDateTime' headerText='结算单创建人'  textAlign="left" width=160></e-column>
+      <e-column field='AcceptDate' headerText='接单日期'  textAlign="left" width=160></e-column>
+      <e-column field='InvoiceDate' headerText='开票日期'  textAlign="left" width=160></e-column>
+      <e-column field='SettledDate' headerText='冲销日期'  textAlign="left" width=160></e-column>
+    </e-columns>
+  </ejs-grid>
+</div>
+
+
+

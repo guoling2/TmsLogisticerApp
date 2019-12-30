@@ -169,4 +169,12 @@ export  class FinanceReport {
    * 财务操作查询
    */
   public static Report_OrderChargeSettleForAdminQuery="OrderChargeSettleForAdminQuery";
+  /**
+   *  财务开票查询操作
+   */
+  public static Report_OrderChargeSettleForAdminOpenInvoiceQuery="OrderChargeSettleForAdminOpenInvoiceQuery";
+  /**
+   * 财务整体明细查询
+   */
+  public  static  Report_OrderChargeSettleItemForAdminQueryAll="OrderChargeSettleItemForAdminQueryAll";
 }

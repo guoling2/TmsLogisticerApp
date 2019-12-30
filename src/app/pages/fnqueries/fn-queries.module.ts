@@ -13,10 +13,16 @@ import {CommonbizmoduleModule} from '../common/commonbizmodule.module';
 import {LogistictoreModule} from '../../buinesscomponent/logistore/logistictore.module';
 import {BasedataModule} from '../../buinesscomponent/base/basedata.module';
 import {BizBaseModuleModule} from '../base/bizbase.module';
+import { QryOrderChargeComponent } from './qry-order-charge/qry-order-charge.component';
 
 
 
 const routes: Routes = [
+
+  {
+    path: 'QryOrderCharge',
+    component: QryOrderChargeComponent
+  },
   {
     path: 'QryDailyCharge',
     component: QryDailyChargeComponent
@@ -25,7 +31,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [QryDailyChargeComponent],
+  declarations: [QryDailyChargeComponent, QryOrderChargeComponent],
   imports: [
     CommonModule,
     SharedModule,

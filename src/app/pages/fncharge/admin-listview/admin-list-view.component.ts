@@ -155,13 +155,6 @@ export class AdminListViewComponent implements OnInit {
           this.searching();
         });
       }
-
-     //  if (ids.length === 1) {
-     //   this.searching();
-     // } else if (b === ids.length - 1) {
-     //   this.searching();
-     // }
-
     });
 
 

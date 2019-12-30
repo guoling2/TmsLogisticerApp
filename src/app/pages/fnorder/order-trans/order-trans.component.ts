@@ -6,7 +6,7 @@ import {Commonsetting} from '../../../help/commonsetting';
 import {FinanceReport} from '../../../services/base/basereportconfig';
 import {OrderthumbnailComponent} from '../../myorder/enterprise-order-list/sub/order-thumbnail/orderthumbnail.component';
 import {MatDialog} from '@angular/material/dialog';
-import {OrderChargesettleCreateComponent} from '../order-chargesettle-create/order-chargesettle-create.component';
+import {OrderChargesettleCreateComponent} from '../order-charge-settle-create/order-chargesettle-create.component';
 import {EmitService} from '../../../help/emit-service';
 import {EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-message';
 import {SortDescriptorModel, SortSettingsModel} from '@syncfusion/ej2-grids';
@@ -67,14 +67,8 @@ export class OrderTransComponent implements OnInit {
 
     this.dialog.open(OrderChargeSettleNoApplayListComponent, {
       disableClose: true, maxWidth: '900px', data: ids}).afterClosed().subscribe(
-
       (a => {
         this.searching(this.searchp);
-          // if (a != null) {
-          //   EmitAlertMessageHelo.ShowMessageWithReplaceMsg(
-          //     this.emitService, a, '结算单创建成功', '结算单创建失败', MessageShowType.Toast);
-          // }
-
         }
       ));
   }
