@@ -1,49 +1,58 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>网点卸货列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>网点卸货列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>网点卸货列表</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-outline mat-auto" (click)="settingroutexie('500px','600px')" ><i class="fas fa-shipping-fast"></i> 中转到车</button>
-    <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/shipment/xieche-scan']"><i class="fas fa-dolly-flatbed"></i> 扫描卸车</button>
-    <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
+  <div class="contenttex-r-new">
+    <button  ejs-button cssClass="e-outline mat-auto"  (click)="settingroutexie('500px','600px')" ><i class="fas fa-shipping-fast"></i> 中转到车</button>
+    <button  ejs-button cssClass="e-outline mat-auto"  [routerLink]="['/biz/shipment/xieche-scan']"><i class="fas fa-dolly-flatbed"></i> 扫描卸车</button>
+    <button  ejs-button cssClass="e-outline mat-auto"  (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="OrderTrackServerId" />
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <label>
-      <select matNativeControl  formControlName="PlanStatuedId">
-        <option value="10">未激活</option>
-        <option value="20">等待卸车</option>
-        <option value="30">卸车完成</option>
-      </select>
-    </label>
-    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <label>
-      <select matNativeControl  formControlName="XiehuoType">
-        <option value="1">本地卸车</option>
-        <option value="2">中转卸车</option>
-      </select>
-    </label>
-    <span  matPrefix style="color: #888">任务类型：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="19">
+      <mat-form-field style="width:100%;font-size:14px!important">
+        <input matInput style="font-size:12px!important;" placeholder="物流单号"  formControlName="OrderTrackServerId" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="19">
+      <mat-form-field style="width:100%;font-size:14px!important">
+        <input matInput style="font-size:12px!important;" placeholder="到场车号"  formControlName="CarryingToolName" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="19">
+      <mat-form-field style="width:100%;font-size:14px!important">
+        <mat-select placeholder="任务状态" matNativeControl  formControlName="PlanStatuedId">
+            <mat-option value="10">未激活</mat-option>
+            <mat-option value="20">等待卸车</mat-option>
+            <mat-option value="30">卸车完成</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="19">
+      <mat-form-field style="width:100%;font-size:14px!important">
+          <mat-select placeholder="任务类型" matNativeControl  formControlName="XiehuoType">
+            <mat-option value="1">本地卸车</mat-option>
+            <mat-option value="2">中转卸车</mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="19" style="padding-bottom:10px">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
 </form>
-
-
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='true'
           [allowSelection]="true"
           [enableHover]="true"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
 <!--    <e-column  field='XiechePlanId' headerText='操作'  width='80'>-->
 <!--      <ng-template #template let-data>-->
@@ -60,11 +69,11 @@
       </ng-template>
     </e-column>
     <e-column field='DestCity' headerText='到货城市'  width=120></e-column>
-    <e-column field='OrderCount' headerText='卸车数量'  width=110></e-column>
-    <e-column field='RealOrderCount' headerText='实际数量' textAlign="left"  width='110'></e-column>
-    <e-column field='ShipmentUserDesc' headerText='运输司机' textAlign="left"  width='130'></e-column>
+    <e-column field='OrderCount' headerText='卸车数量'  width=100></e-column>
+    <e-column field='RealOrderCount' headerText='实际数量' textAlign="left"  width='100'></e-column>
+    <e-column field='ShipmentUserDesc' headerText='运输司机' textAlign="left"  width='120'></e-column>
     <e-column field='CarryingToolName' headerText='到场车号'  textAlign="left" width=130></e-column>
-    <e-column field='PlanStatuedId' headerText='任务状态'  width=130></e-column>
+    <e-column field='PlanStatuedId' headerText='任务状态'  width=120></e-column>
     <e-column field='ActionStoreIdName' headerText='操作网点'  width=150></e-column>
     <e-column field='FromStoreName' headerText='上游货站'  width=150></e-column>
     <e-column field='SendCarTime' headerText='上游发车时间' textAlign="left"  width='160'></e-column>

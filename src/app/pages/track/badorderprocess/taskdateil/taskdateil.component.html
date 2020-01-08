@@ -5,7 +5,7 @@
   <div fxFlex="90" style="height:auto;margin:10px">
   <mat-card>
   <mat-card-content>
-    <mat-tab-group>
+    <mat-tab-group style="min-height: 400px;" dynamicHeight="false">
       <mat-tab label="流程记录">
         <ng-template matTabContent>
          <app-order-abnormal-process [MessageId]="messageId"></app-order-abnormal-process>

@@ -47,13 +47,13 @@ export class GroupinsdetihuogridlistComponent implements OnInit {
   constructor(
               private innerLogisticServicesService: InnerLogisticServicesService,
               private logisticItemService: LogisticItemService,
-                private itemServiceService: LogisticItemComponentService,
-                private router: Router,
-                private shipplanGroupInsideServiceService: ShipplanGroupInsideService,
-                private  shipplanService: ShipplanService,
-                private  dialogx: DialogservicesService,
-                private  myShpipmentOrderService: MyShpipmentOrderService,
-                public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
+              private itemServiceService: LogisticItemComponentService,
+              private router: Router,
+              private shipplanGroupInsideServiceService: ShipplanGroupInsideService,
+              private  shipplanService: ShipplanService,
+              private  dialogx: DialogservicesService,
+              private  myShpipmentOrderService: MyShpipmentOrderService,
+              public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
 
   ngOnInit() {
     this.selectOptions = { persistSelection: true };
@@ -66,7 +66,7 @@ export class GroupinsdetihuogridlistComponent implements OnInit {
 
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };
   }
-  searching () {
+  searching() {
 
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
@@ -83,6 +83,8 @@ export class GroupinsdetihuogridlistComponent implements OnInit {
       default:
         break;
     }
+
+    console.log(searchable);
     //  alert(this.GroupSubItemType);
     this.service.SearchReport(reportId, searchable).subscribe(result => {
 

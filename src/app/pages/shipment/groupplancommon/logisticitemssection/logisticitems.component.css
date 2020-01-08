@@ -1,2 +1,11 @@
 button {margin-left:10px;margin-bottom:0px;margin-top:5px;}
 .itemsbtn {text-align: right;margin-top:10px}
+.margin_t_10 {margin-top:10px}
+.margin_t_10 {margin-bottom:10px}
+.billtit h2 {font-size:14px;padding:0 0 5px 0;margin:0 0 5px 0}
+.billtit {margin-bottom:8px;border-bottom:1px #eee solid;margin-top:5px}
+.commonbox {font-size:14px;background:#fff;padding:10px 15px}
+.commonform {padding:5px 15px}
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
+.e-grid .e-rowcell {padding:8px 15px!important;width:auto!important;margin:0 10px!important;}
+::ng-deep .e-grid .e-gridheader .e-sortfilter .e-headercelldiv {padding:0 0.6em;}

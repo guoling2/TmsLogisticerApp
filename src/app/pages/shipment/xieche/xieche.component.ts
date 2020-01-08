@@ -25,12 +25,12 @@ export class XiecheComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', myselectstore: '', PlanStatuedId: 10, XiehuoType: 1});
-    this.gridheight = Commonsetting.GridHeight();
+      { OrderTrackServerId: '', myselectstore: '', PlanStatuedId: '20', XiehuoType: '1', CarryingToolName: ''});
+    this.gridheight = Commonsetting.GridHeight0();
 
   }
 
-  searching () {
+  searching() {
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
     searchable.pageindex = pagesetting.currentPage - 1;
@@ -54,6 +54,9 @@ export class XiecheComponent implements OnInit {
     }
 
 
+    console.log(searchable);
+
+
     this.service.SearchReport(seelctreport, searchable).subscribe(result => {
 
       this.grid.dataSource = result;
@@ -61,11 +64,11 @@ export class XiecheComponent implements OnInit {
     });
   }
 
-  dataStateChange ( $event ) {
+  dataStateChange( $event ) {
     this.searching();
   }
 
-  excelout () {
+  excelout() {
     this.grid.excelExport();
   }
 

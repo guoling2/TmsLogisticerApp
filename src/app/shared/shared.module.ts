@@ -15,6 +15,7 @@ import {PricetemplateinsertComponent} from '../pages/logisticpricemanagement/pri
 import {TmsnumberDirective} from '../directive/tmsnumber.directive';
 import {TmsNumberFormatPipe, TmsVolumeconvertPipe, TmsweightconvertPipe} from '../pipes/tmsweightconvert.pipe';
 import {NgbootstrapModule} from './ngbootstrap.module';
+import {FncommonModule} from '../buinesscomponent/fncommon/fncommon.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import {NgbootstrapModule} from './ngbootstrap.module';
     MaterialComponentsModule,
     SyncfusionModule,
     DailogAlertModule,
-    FileerrordisplayModule
+    FileerrordisplayModule,
   ],
   exports: [
     CommonModule,

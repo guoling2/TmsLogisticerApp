@@ -1,1 +1,87 @@
-<p>order-settle-admin-detail works!</p>
+<div class="box-container">
+  <ng-container *ngIf="model">
+    <div class="infoboxs">
+      <div class="navbarbox">
+        <span style="margin:0"><a [routerLink]="['/biz/home']" >主页</a></span>/<span>财务结算</span>/<span><a  [routerLink]="['/biz/fn-order/order-settle-admin-list']" >客户结算</a></span>/<span>明细</span>
+      </div>
+      <div class="billbtnbox">
+        <div class="billbox">
+          <h2><i class="fas fa-clipboard-list"></i> 结算单号：{{model.SettleId}}</h2>
+        </div>
+        <div class="btnbox">
+          <button ejs-button cssClass="e-outline mat-auto" (click)="receiveamt()"><i class="fas fa-coins"></i> 本次收款</button>
+          <button ejs-button cssClass="e-outline mat-auto" (click)="forceamt()"><i class="fas fa-stamp"></i> 冲销</button>
+        </div>
+    </div>
+      <div class="infobox" fxLayout="row" fxLayoutAlign="space-between flex-end">
+        <div fxFlex="70">
+          <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+            <div fxFlex="49">
+              创建人：{{model.CreateUser}}
+            </div>
+            <div fxFlex="49">
+              结算网点：{{model.Settleorg}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+            <div fxFlex="49">
+              创建时间：{{model.CreateDateTime}}
+            </div>
+            <div fxFlex="49">
+              单据类型：{{model.CaclType}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+            <div fxFlex="49">
+              结束时间：{{model.FinishDateTime}}
+            </div>
+            <div fxFlex="49">
+              付款方式：{{model.Paymentmode}}
+            </div>
+          </div>
+        </div>
+        <div fxFlex="30">
+          <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+            <div fxFlex="49">
+              状态：
+            </div>
+            <div fxFlex="49">
+              结算金额：
+            </div>
+          </div>
+          <div class="infobox_price" fxLayout="row" fxLayoutAlign="space-between flex-start">
+            <div fxFlex="49">
+              <h3>{{model.ProcessStatuedDesc}}</h3>
+            </div>
+            <div fxFlex="49">
+              <h3>￥{{model.ChargeAmt.toFixed(3)}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="remarkbox" fxLayout="row" fxLayoutAlign="space-between flex-end">
+        <div fxFlex="35.7">
+          财务凭证编号:
+          <ejs-inplaceeditor (actionSuccess)="actionSuccess($event)" emptyText="未设置" mode="Popup" [popupSettings]="settings"  [model]="overviewModel"
+                             type="Text" value='{{model.FianceNo}}'></ejs-inplaceeditor>
+        </div>
+        <div fxFlex="73" style="padding-bottom:8px">
+          备注：{{model.ApplayMark}}
+        </div>
+      </div>
+    </div>
+    <div class="settletabbox">
+      <mat-tab-group>
+        <mat-tab label="结算明细">
+          <app-order-charge-item-list [SettleId]="model.SettleId"></app-order-charge-item-list>
+        </mat-tab>
+        <mat-tab label="开票&流程" style="background:#fff">
+          <ng-container *ngIf="model.IsOpenInvoice">
+            <app-settle-invoice-detail [SettleInvoiceId]="model.SettleInvoiceId"></app-settle-invoice-detail>
+          </ng-container>
+          <app-order-charge-course [SettleId]="model.SettleId"></app-order-charge-course>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </ng-container>
+</div>

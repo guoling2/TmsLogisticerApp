@@ -61,6 +61,7 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
     this.logisticStoreAuthorizeServiceService.MyStores().subscribe( (value: LogisticStore[]) => {
 
       this.logistticstores = value;
+
       this.mystoredownlist.index = 0;
 
       this.selectstore = this.logistticstores[0];
@@ -89,12 +90,12 @@ export class MylogisticstoreComponent implements OnInit, ControlValueAccessor   
   registerOnTouched() {}
 
 
-  selectchange (event: ChangeEventArgs) {
+  selectchange(event: ChangeEventArgs) {
     this.selectstore = event.previousItemData as LogisticStore;
-     if ( this.onChange != null ) {
+    if ( this.onChange != null ) {
       this.onChange(event.value);
     }
-     console.log(event.value);
+    console.log(event.value);
     // this.onChange(event.value);
 
   }

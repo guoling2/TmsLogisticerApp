@@ -9,9 +9,9 @@
 .billbox h2 {font-size:20px;font-weight:normal;color:#333;margin:0!important;}
 .btnbox {width:40%;height:auto;float:right;text-align: right;vertical-align: bottom;}
 .btnbox button {margin-left:10px}
-.infobox {width:100%;height:auto;text-align:left;clear: both;font-size:13px;line-height:26px;color:#666}
+.infobox {width:100%;height:auto;text-align:left;clear: both;font-size:13px;line-height:26px;color:#666;padding-left:20px;}
 .infobox_price h3 {font-size:20px;color:#333}
-.remarkbox {font-size:13px;line-height:26px;color:#666}
+.remarkbox {font-size:13px;line-height:26px;color:#666;padding-left:20px;}
 /*.databox {width: 100%;height: calc(100vh - 365px);overflow: auto;margin:5px 0 10px 0;overflow-y:overlay!important;}*/
 table.mat-table {margin:0 12px 10px 12px!important;width:98.3%;border:1px #eee solid}
 table.mat-table td {font-size:12px!important;}
@@ -24,8 +24,9 @@ tr.mat-header-row{height:35px!important;}
 ::ng-deep .settletabbox tr.mat-row {height:30px!important;}
 ::ng-deep .settletabbox tr.mat-row:hover {background:#f5f5f5!important;}
 .tabinfobox {margin:10px 12px 0 12px!important;background:#fff;padding:5px 10px;border:1px #eee solid}
-.tabinfobox span {font-size:12px;color:#666;margin-right:10px}
+.tabinfobox span {font-size:12px;color:#666;margin-right:10px;padding-left:17px;}
 .tabinfobox b {font-weight:normal;color:#666}
 .tabinfobox h2 {font-size:14px;margin:8px 0 5px 0}
 .billtit h2 {font-size:14px;border-top:1px #eee solid;padding:8px 0 5px 0;margin:5px 0 0 0}
 .billtit {margin:0;}
+

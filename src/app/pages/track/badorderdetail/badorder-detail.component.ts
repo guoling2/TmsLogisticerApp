@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 
 import {OrderAbnormalServiceService} from '../../../services/orderabnormal/order-abnormal-service.service';
 import {OrderAbnormalMessageViewModel} from '../../../models/badorder/OrderAbnormalMessageViewModel';
@@ -11,6 +11,7 @@ import {ButtonComponent} from '@syncfusion/ej2-angular-buttons';
 import {DialogservicesService} from '../../../help/dialogservices.service';
 import {OrderHasExceptionViewModel} from '../../../models/badorder/OrderHasExceptionViewModel';
 import {XbadorderDetailComponent} from '../command/xbaddetail/xbadorder-detail.component';
+import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-badorder-detail',
@@ -30,13 +31,15 @@ export class BadorderDetailComponent implements OnInit {
   public  btnstatued = false;
   @ViewChild('xbadorder', {static: false})
   xbadorder: XbadorderDetailComponent;
+
+
+
   ngOnInit() {
 
   }
-  ProcessOrder () {
+  ProcessOrder() {
 
-    console.log('接单处理');
-    console.log( this.xbadorder.OrderAbnormalMessageViewModel);
+
     this.issave = true;
     const alerter = {
       Title: '确认',
@@ -69,5 +72,13 @@ export class BadorderDetailComponent implements OnInit {
 
       })};
     this.dialogx.openDialog(alerter);
+  }
+
+  loaddata($event: OrderAbnormalMessageViewModel) {
+
+    if ($event.ProcessStatued === 'Processing') {
+      this.btnstatued = true;
+    }
+    console.log($event);
   }
 }

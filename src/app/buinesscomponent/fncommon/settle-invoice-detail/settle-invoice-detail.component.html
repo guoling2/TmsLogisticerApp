@@ -1,0 +1,62 @@
+<ng-container *ngIf="settleInvoiceModel">
+  <div class="tabinfobox">
+    <h2><i class="fas fa-list-alt"></i> 开票详情</h2>
+    <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+      <div fxFlex="32">
+        <span>受票方：<b>{{settleInvoiceModel.Invoiceparty}}</b></span>
+      </div>
+      <div fxFlex="32">
+        <span>税号：<b>{{settleInvoiceModel.Partytaxno}}</b></span>
+      </div>
+      <div fxFlex="32"></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+      <div fxFlex="32">
+        <span>税率：<b>{{(settleInvoiceModel.Taxrate*100).toFixed(2)}}%</b></span>
+      </div>
+      <div fxFlex="32">
+        <span>类型：<b>{{settleInvoiceModel.InvoicetypeDesc}}</b></span>
+      </div>
+      <div fxFlex="32">
+        <span>开票项目：<b>{{settleInvoiceModel.FnTrxItem}}</b></span>
+      </div>
+    </div>
+    <div class="insidebox">
+    <h2><i class="fas fa-file-invoice"></i> 已开发票</h2>
+    <ul>
+      <li *ngFor="let element of settleInvoiceModel.SettleItemInvoiceResult;index as i">
+        <span>编号：{{i+1}}</span>
+        <span>发票编号：{{element.Invoicetaxno}}</span>
+        <span>开票金额：{{element.Invoiceamount}}</span>
+        <span>开票人：{{element.Createduser}}</span>
+      </li>
+    </ul>
+  </div>
+  </div>
+<!--  <table mat-table [dataSource]="settleInvoiceModel.SettleItemInvoiceResult" class="mat-elevation-z8">-->
+
+<!--    <ng-container matColumnDef="Index">-->
+<!--      <th mat-header-cell *matHeaderCellDef> # </th>-->
+<!--      <td mat-cell *matCellDef="let element;index as i"> {{i+1}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="Invoicetaxno">-->
+<!--      <th mat-header-cell *matHeaderCellDef> 发票编号. </th>-->
+<!--      <td mat-cell *matCellDef="let element;index as i"> {{element.Invoicetaxno}}</td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="Invoiceamount">-->
+<!--      <th mat-header-cell *matHeaderCellDef> 开票金额. </th>-->
+<!--      <td mat-cell *matCellDef="let element"> {{element.Invoiceamount}} </td>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container matColumnDef="Createduser">-->
+<!--      <th mat-header-cell *matHeaderCellDef> 开票人. </th>-->
+<!--      <td mat-cell *matCellDef="let element"> {{element.Createduser}} </td>-->
+<!--    </ng-container>-->
+
+<!--    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--  </table>-->
+
+</ng-container>

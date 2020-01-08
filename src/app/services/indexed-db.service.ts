@@ -9,9 +9,13 @@ export class IndexedDBService {
   private version = 1;
   public db: IDBDatabase = null;
 
-  constructor(@Inject('DbName') private dbname) {
-    this.name = dbname;
+  constructor() {
+    // this.name = dbname;
   }
+
+  // constructor(@Inject('DbName') private dbname) {
+  //   this.name = dbname;
+  // }
 
   // 打开并创建数据库
   public open(): Promise<any> {
@@ -98,6 +102,7 @@ export class IndexedDBService {
 
       const req = store.add(data);
 
+      // tslint:disable-next-line:only-arrow-functions
       req.onsuccess = function(event) {
         resolve(req.result);
       };

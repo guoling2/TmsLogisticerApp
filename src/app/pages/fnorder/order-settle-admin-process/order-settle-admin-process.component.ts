@@ -45,24 +45,25 @@ export class OrderSettleAdminProcessComponent implements OnInit {
     // let process = 1;
     for (let i = 0; i < this.processrequest.SettleIds.length; i++) {
 
-      const processdata = this.processrequest.SettleIds[i]; // 当前处理的数据
 
       setTimeout(() => {
 
-        this.currentIndex = i;
+        this.currentIndex += 1;
 
         if (i % 4 === 0) {
           this.ErrorMsg = '随机错误';
         }
+
+        console.log(this.currentIndex);
         //
         // console.log(processdata);
         //
         // EmitAlertMessageHelo.ShowMessageWithReplaceMsg(
         //   this.emitService, new TmsResponseModle(0, '1', null), '结算单创建成功', '结算单创建失败', MessageShowType.Toast);
-        if (this.currentIndex === this.processrequest.SettleIds.length - 1 ) {
+        if (i === this.processrequest.SettleIds.length - 1 ) {
           this.processstatued = ProcessStatued.Finish;
         }
-      }, 1000 * i, i, processdata, this.processrequest);
+      }, 1000 * i, i, this.processrequest);
     }
   }
 
@@ -72,9 +73,9 @@ export class OrderSettleAdminProcessComponent implements OnInit {
     // let process = 1;
     for (let i = 0; i < this.processrequest.SettleIds.length; i++) {
 
-      const processdata = this.processrequest.SettleIds[i]; // 当前处理的数据
-
       setTimeout(() => {
+
+        const processdata = this.processrequest.SettleIds[i]; // 当前处理的数据
 
         this.processdata2(processdata, this.processrequest.OrderAction)
           .subscribe(a => {
@@ -87,11 +88,11 @@ export class OrderSettleAdminProcessComponent implements OnInit {
             }
             console.log(this.currentIndex);
             console.log(this.processrequest.SettleIds.length);
-            if (this.currentIndex === this.processrequest.SettleIds.length ) {
+            if (i === this.processrequest.SettleIds.length - 1 ) {
               this.processstatued = ProcessStatued.Finish;
             }
           });
-      }, 1000 * i, i, processdata, this.processrequest);
+      }, 1000 * i, i, this.processrequest);
     }
   }
 

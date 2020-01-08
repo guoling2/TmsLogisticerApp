@@ -1,0 +1,38 @@
+<div class="databox">
+  <ng-container *ngIf="dashbord">
+    <div class="tabinfobox">
+      <h2><i class="fas fa-list-alt"></i> 仪表盘</h2>
+      <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+        <div fxFlex="24">
+          <span>明细数量:{{dashbord.ItemCount.toFixed(2)}}</span>
+        </div>
+        <div fxFlex="24">
+          <span>实收金额：{{dashbord.RealAmt.toFixed(3)}}</span>
+        </div>
+        <div fxFlex="24">
+          <span>已结金额：{{dashbord.FinishAmt.toFixed(3)}}</span>
+        </div>
+        <div fxFlex="24">
+          <span>未结金额:{{dashbord.NoFinishAmt.toFixed(3)}}</span>
+        </div>
+      </div>
+      <div class="billtit"><h2><i class="fas fa-stamp"></i> 费用明细</h2></div>
+    </div>
+  </ng-container>
+  <ejs-grid #grid class="ejstable"
+            [allowResizing]= 'true'
+            [allowSorting]='false'
+            [allowSelection]="true"
+            [enableHover]="false"
+            [editSettings]="{allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal'}">
+    <e-columns >
+      <e-column field='OrderTrackServerId' headerText='物流编号'  width='150' [isPrimaryKey]="true"></e-column>
+      <e-column field='Chargeitem' headerText='费用项目'  width='100'></e-column>
+      <e-column field='ApplayAmt' headerText='应收金额' format='N3' width='110'></e-column>
+      <e-column field='RealAmt' headerText='实收金额'  format='N3' width='110'></e-column>
+      <e-column field='FinishAmt' headerText='已结金额'  width=120></e-column>
+      <e-column field='NoFinishAmt' headerText='未结金额'  width=120></e-column>
+      <e-column field='IsFinish' headerText='已平仓'  width=100></e-column>
+    </e-columns>
+  </ejs-grid>
+</div>

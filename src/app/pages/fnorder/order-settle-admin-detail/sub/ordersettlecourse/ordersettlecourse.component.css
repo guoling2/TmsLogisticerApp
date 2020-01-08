@@ -1,0 +1,14 @@
+table.mat-table {margin:0 12px 10px 12px!important;width:98.3%;border:1px #eee solid}
+table.mat-table td {font-size:12px!important;}
+.box-container {height:99%;overflow: auto!important;}
+tr.mat-header-row{height:35px!important;}
+.mat-icon-button {width:auto!important;height:auto!important;line-height:normal!important;}
+.settletabbox {width:100%;height:auto;background:none;padding-top:0}
+::ng-deep .settletabbox .mat-tab-header{background:#fff!important;}
+::ng-deep .settletabbox .mat-tab-label{height:40px!important;padding:0 10px!important;margin-left:13px!important;}
+::ng-deep .settletabbox tr.mat-row {height:30px!important;}
+::ng-deep .settletabbox tr.mat-row:hover {background:#f5f5f5!important;}
+.billtit h2 {font-size:14px;padding:8px 0 5px 0;margin:5px 0 5px 0}
+.billtit {margin:0;}
+.flowbox {background:#fff;margin:0 12px 0 12px!important;background:#fff;padding:5px 10px 0 10px;border:1px #eee solid;border-top:none}
+.flowbox .mat-table{margin-top:10px;box-shadow: none}

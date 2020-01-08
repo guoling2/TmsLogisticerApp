@@ -7,6 +7,6 @@ import {NgbAlert, NgbAlertModule, NgbModule, NgbTabsetModule} from '@ng-bootstra
 @NgModule({
   declarations: [],
   imports: [NgbTabsetModule, NgbAlertModule],
-  exports: [NgbTabsetModule,NgbAlertModule]
+  exports: [NgbTabsetModule, NgbAlertModule]
 })
 export class NgbootstrapModule { }

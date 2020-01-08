@@ -58,6 +58,15 @@ export class ShipplanGroupInsideService {
     return  this.httpclient.put<TmsResponseModle>
     (this.appConfiguration.Server + '/api/ShipmentPlanGroupForInside/SetIsSend?shipmentGroupId=' + shipmenggroupId, null);
   }
+
+  /**
+   * 取消发运
+   * @派车单号 shipmenggroupId
+   */
+  public SetIsNoSend(shipmenggroupId: string): Observable<TmsResponseModle> {
+    return  this.httpclient.put<TmsResponseModle>
+    (this.appConfiguration.Server + '/api/ShipmentPlanGroupForInside/SetIsNoSend?shipmentGroupId=' + shipmenggroupId, null);
+  }
    /**
    * 删除未发运的派车单
    */

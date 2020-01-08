@@ -1,0 +1,8 @@
+<h3>财务冲销</h3>
+
+<ngb-alert [dismissible]="false">
+  {{ message }}
+</ngb-alert>
+
+<button mat-button (click)="forceamt()" [hidden]="!displayforcebtn"  >强制冲销</button>
+<button mat-button (click)="dialogRef.close()" [disabled]="stopbtn">关闭</button>

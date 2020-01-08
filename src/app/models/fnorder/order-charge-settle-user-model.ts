@@ -22,6 +22,7 @@ export class OrderChargeSettleUserModel {
   public InvoicetypeDesc: string;
   public FnTrxItem: string;
   public Partytaxno: string;
-
+  public FianceNo: string;
+  public  SettleInvoiceId: string;
 
 }

@@ -6,7 +6,18 @@
       <span>财务结算</span>  <span>客户结算</span>
     </div>
   </div>
-  <div class="contenttex-r-new"></div>
+  <div class="contenttex-r-new">
+    <div [style.display]="SelectTabIndex!==0?'none':'block'" class="btnfloat">
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="processorder('接单操作','接单成功','Accept')"><i class="fas fa-link"></i> 批量接单</button>
+    </div>
+    <div [style.display]="SelectTabIndex!==1?'none':'block'" class="btnfloat">
+      <button ejs-button cssClass="e-outline mat-auto" (click)="openinvoicedialog()"><i class="fas fa-credit-card"></i> 应收开票</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="processorder('开票操作','开票成功','Invoiceed')"><i class="fas fa-check-square"></i> 开票完成</button>
+    </div>
+    <div [style.display]="SelectTabIndex!==2?'none':'block'" class="btnfloat">
+      <button ejs-button cssClass="e-outline mat-auto" (click)="processorder('冲销操作','冲销成功','Settled')"><i class="fas fa-file-invoice"></i> 批量冲帐</button>
+    </div>
+  </div>
 </div>
 <form class="listfrom-new2"  [formGroup]="searchp" >
   <div fxLayout="row" fxLayoutAlign="space-between flex-end">
@@ -15,31 +26,19 @@
         <input matInput placeholder="费用编号" formControlName="SettleId">
       </mat-form-field>
     </div>
-    <div fxFlex="24" style="padding-bottom:19px">
+    <div fxFlex="35" style="padding-bottom:19px">
       <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 <!--      <ng-container *ngIf="SelectTabIndex==0">-->
 <!--        <button ejs-button cssClass="e-info mat-width mat-green" (click)="processorder('接单操作','接单成功','Accept')">批量接单</button>-->
 <!--      </ng-container>-->
 <!--      <ng-container *ngIf="SelectTabIndex==1"></ng-container>-->
-
-      <div [style.display]="SelectTabIndex!==0?'none':'block'">
-        <button ejs-button cssClass="e-info mat-width mat-green" (click)="processorder('接单操作','接单成功','Accept')">批量接单</button>
-      </div>
-      <div [style.display]="SelectTabIndex!==1?'none':'block'">
-        <button ejs-button cssClass="e-info mat-width mat-green" (click)="openinvoicedialog()">应收开票</button>
-        <button ejs-button cssClass="e-info mat-width mat-green" (click)="processorder('开票操作','开票成功','Invoiceed')">开票完成</button>
-      </div>
-      <div [style.display]="SelectTabIndex!==2?'none':'block'">
-        <button ejs-button cssClass="e-info mat-width mat-green" (click)="processorder('冲销操作','冲销成功','Settled')">批量冲帐</button>
-      </div>
-
     </div>
-    <div fxFlex="24"></div>
+    <div fxFlex="35" style="padding-bottom:19px"></div>
   </div>
 </form>
 <div class="databoxs">
 
-  <mat-tab-group  class="tabbox-new2" #tabgroup  color="warn" dynamicHeight="false" disableRipple="true"  [(selectedIndex)]="SelectTabIndex">
+  <mat-tab-group  class="tabbox-new2" style="margin-top:0!important;" #tabgroup  color="warn" dynamicHeight="false" disableRipple="true"  [(selectedIndex)]="SelectTabIndex">
     <mat-tab label="未接单">
       <app-order-settle-data-grid #noacceptgrid [gridheight]="gridheight"></app-order-settle-data-grid>
     </mat-tab>

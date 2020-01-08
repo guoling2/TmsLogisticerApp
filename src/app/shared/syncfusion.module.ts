@@ -18,6 +18,9 @@ import { SelectionSettingsModel } from '@syncfusion/ej2-dropdowns';
 import { SidebarModule, MenuAllModule, TreeViewAllModule} from '@syncfusion/ej2-angular-navigations';
 // loadCldr(enNumberData, entimeZoneData);
 import {DialogModule} from '@syncfusion/ej2-angular-popups';
+
+
+import { InPlaceEditorModule } from '@syncfusion/ej2-angular-inplace-editor';
 import {EJAngular2Module} from 'ej-angular2';
 
 declare var require: any;
@@ -39,6 +42,7 @@ L10n.load({
 
 @NgModule({
   imports: [
+    InPlaceEditorModule,
     DateTimePickerModule,
     TextBoxModule, NumericTextBoxModule,
     GridModule, CheckBoxModule, DropDownListModule, ButtonModule, SwitchModule,
@@ -52,6 +56,7 @@ L10n.load({
   ],
 
   exports: [
+    InPlaceEditorModule,
     DateTimePickerModule,
     TextBoxModule, NumericTextBoxModule,
     GridModule, CheckBoxModule, ListBoxAllModule, DropDownListModule, ButtonModule, SwitchModule,

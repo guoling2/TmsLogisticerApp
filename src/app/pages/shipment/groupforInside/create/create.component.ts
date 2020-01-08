@@ -39,9 +39,10 @@ export class InsidePlanGroupCreateComponent implements OnInit {
 
 
   ngOnInit() {
-     this.inputtasktype = this.route.snapshot.params['id'];
 
-    this.saveform = this.fb.group({});
+     this.inputtasktype = this.route.snapshot.params.id;
+
+     this.saveform = this.fb.group({});
 
 
     // this.orderStoreSubject.subscribe((a: GroupOrderAtionModel) => {

@@ -11,19 +11,20 @@
 </div>
 <form class="listfrom-new2" [formGroup]="searchp" >
   <div fxLayout="row" fxLayoutAlign="space-between flex-end">
-    <div fxFlex="42">
+    <div fxFlex="24">
       <mat-form-field class="comwidth">
         <input matInput placeholder="结算单号" formControlName="SettleId">
       </mat-form-field>
     </div>
-    <div fxFlex="42">
+    <div fxFlex="24">
       <mat-form-field class="comwidth">
         <input matInput placeholder="收/付款对象" formControlName="Chargeparty">
       </mat-form-field>
     </div>
-    <div fxFlex="12" style="padding-bottom:19px">
+    <div fxFlex="24" style="padding-bottom:19px">
       <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
     </div>
+    <div fxFlex="24"></div>
   </div>
 </form>
 <div class="databoxs">

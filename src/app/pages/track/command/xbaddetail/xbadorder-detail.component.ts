@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DialogservicesService} from '../../../../help/dialogservices.service';
 import {TaskProcessCommands, TaskProcessRequest} from '../../../../models/badorder/task-process-request';
@@ -21,6 +21,11 @@ export class XbadorderDetailComponent implements OnInit {
               private route: ActivatedRoute) {
 
   }
+
+  @Output('onDataLoaded')
+  onDataLoaded: EventEmitter<OrderAbnormalMessageViewModel> = new EventEmitter();
+
+
  @Output()
   OrderAbnormalMessageViewModel: OrderAbnormalMessageViewModel;
 
@@ -46,6 +51,7 @@ export class XbadorderDetailComponent implements OnInit {
       this.orderAbnormalServiceService.Detail(id).subscribe(result => {
         console.log(result);
         this.OrderAbnormalMessageViewModel = result;
+        this.onDataLoaded.emit(result);
       });
 
     });

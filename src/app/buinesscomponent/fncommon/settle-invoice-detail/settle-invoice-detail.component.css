@@ -1,0 +1,15 @@
+.tabinfobox {margin:0 12px 0 12px!important;background:#fff;padding:5px 10px 10px 10px;border:1px #eee solid}
+.tabinfobox span {font-size:12px;color:#666;margin-right:10px;padding-left:17px;}
+.tabinfobox b {font-weight:normal;color:#666}
+.tabinfobox h2 {font-size:14px;margin:8px 0 5px 0}
+.billtit h2 {font-size:14px;border-top:1px #eee solid;padding:8px 0 5px 0;margin:5px 0 0 0}
+.billtit {margin:0;}
+.ejstable {margin:0 12px}
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
+.e-grid .e-rowcell {padding:8px 15px!important;width:auto!important;margin:0 10px!important;}
+::ng-deep .e-grid .e-gridheader .e-sortfilter .e-headercelldiv {padding:0 0.6em;}
+.insidebox {padding:0;border:1px #ccc solid;margin:10px 17px;border-radius:3px}
+.insidebox h2 {font-size:14px;line-height:38px;background:#f5f5f5;padding:0 10px!important;margin:0;border-bottom:1px #eee solid}
+.insidebox ul {padding:0 0 10px 0;margin:0;}
+.insidebox ul li {list-style: none;font-size:13px;color:#666;line-height:30px;margin-left:10px;border-bottom:1px #eee solid;text-align:left}
+.insidebox ul li span {margin-right:10px;padding:0!important;}

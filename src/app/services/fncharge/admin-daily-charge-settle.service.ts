@@ -27,7 +27,7 @@ export class AdminDailyChargeSettleService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '' +
-      '/api/AdminDailyChargeSettle/Finish/'+settleId, {}, {headers})
+      '/api/AdminDailyChargeSettle/Finish/' +settleId, {}, {headers})
       .pipe(
         tap(heroes => console.log(heroes)));
 

@@ -1,27 +1,37 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>客户列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>客户列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>基础资料</span> ·
+      <span>客户列表</span>
+    </div>
   </div>
-  <div class="contenttex-r">
+  <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/customer-management/create']"><i class="fas fa-user-plus"></i> 新增客户</button>
   </div>
 </div>
-
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="Name" />
-    <span  matPrefix style="color: #888">名称：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="Simplename" />
-    <span  matPrefix style="color: #888">简称：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="Code" />
-    <span  matPrefix style="color: #888">编码：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between flex-end">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="名称"  formControlName="Name" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="简称"  formControlName="Simplename" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="编码"  formControlName="Code" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24" style="padding-bottom:15px">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
 </form>
 
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
@@ -29,9 +39,9 @@
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='false'  class="contlistbox">
+          allowPaging='false'  class="databoxs">
   <e-columns >
-    <e-column field='CustomerId'  headerText='客户编号' width='130' [isPrimaryKey]='true'>
+    <e-column field='CustomerId'  headerText='客户编号' width='110' [isPrimaryKey]='true'>
       <ng-template #template let-data>
 
             <a [routerLink]="['/biz/customer-management/edit', data.CustomerId]">
@@ -40,12 +50,12 @@
 
       </ng-template>
     </e-column>
-    <e-column field='Name' headerText='客户名称'  width=120></e-column>
+    <e-column field='Name' headerText='客户名称'  width=200></e-column>
     <e-column field='Code' headerText='编码'  width=120></e-column>
-    <e-column field='Simplename' headerText='简称'  width=120></e-column>
-    <e-column field='Emp' headerText='业务' textAlign="left"  width='120'></e-column>
-    <e-column field='SendOrderCount' headerText='发货数量' textAlign="left"  width='120'></e-column>
-    <e-column field='Createdatetime' headerText='创建日期' textAlign="left"  width='120'></e-column>
+    <e-column field='Simplename' headerText='简称'  width=100></e-column>
+    <e-column field='Emp' headerText='业务' textAlign="left"  width='100'></e-column>
+    <e-column field='SendOrderCount' headerText='发货数量' textAlign="left"  width='100'></e-column>
+    <e-column field='Createdatetime' headerText='创建日期' textAlign="left"  width='150'></e-column>
   </e-columns>
 </ejs-grid>
 

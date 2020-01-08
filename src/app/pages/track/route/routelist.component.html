@@ -1,42 +1,54 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>运单时效</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>运单时效</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>过程跟踪</span> ·
+      <span>运单时效</span>
+    </div>
   </div>
-  <div class="contenttex-r"></div>
+  <div class="contenttex-r-new">
+  </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-
-
-  <mat-form-field class="col-md-3">
-    <select matNativeControl  formControlName="IsSign">
-      <option value="" label=""></option>
-      <option value="0" selected="selected">未签收</option>
-      <option value="1">已签收</option>
-    </select>
-    <span  matPrefix style="color: #888">是否签收：&nbsp;</span>
-  </mat-form-field>
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="24" style="padding-bottom:10px!important;">
+      <ejs-textbox placeholder="物流单号：" floatLabelType="Auto" formControlName="OrderTrackServerId"></ejs-textbox>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field style="width:100%;font-size:14px!important;margin-top:12px">
+        <mat-select  placeholder="是否签收" matNativeControl  formControlName="IsSign">
+          <mat-option value="" label=""></mat-option>
+          <mat-option value="0" selected="selected">未签收</mat-option>
+          <mat-option value="1">已签收</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <div fxFlex="24"></div>
+  </div>
 </form>
 <ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
           (dataStateChange)="dataStateChange($event)"
-          allowPaging='true' class="contlistbox">
+          allowPaging='true' class="tabbox-new">
   <e-columns >
 
     <e-column field='OrderTrackNumber' headerText='物流单号' textAlign="left"  width='220'>
       <ng-template #template let-data>
 
-        <a (click)="opentrackmessage(data.OrderTrackNumber)" >{{data.OrderTrackServerId}}</a>
+        {{data.OrderTrackServerId}}
+        <button ejs-button appModalPage [modal]="'SimpleorderdetailComponent'" [modal-data]="data.OrderLogisticDetailId"  class="tabbtn" cssClass="e-nones" ><i class="fas fa-file"></i></button>
 
       </ng-template>
 
     </e-column>
     <e-column field='Origincustomname' headerText='发货客户'  textAlign="left" width=200></e-column>
-    <e-column field='DesctcustomName' headerText='收货客户'  textAlign="left" width=200></e-column>
+    <e-column field='DesctcustomName' headerText='收货客户'  textAlign="left" width=250></e-column>
     <e-column field='DestLinkman' headerText='收货联系' textAlign="left"  width=120></e-column>
     <e-column field='Desttel' headerText='收货电话' textAlign="left"  width=150></e-column>
     <e-column field='IfCargoFromOrigin' headerText='发货服务'  textAlign="left" width=120></e-column>

@@ -1,33 +1,32 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>提货汇总查询</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>提货汇总查询</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>提货汇总查询</span>
+    </div>
   </div>
-  <div class="contenttex-r"></div>
+  <div class="contenttex-r-new">
+  </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
+<form class="listfrom-new2"  [formGroup]="searchp" >
   <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
     <div fxFlex="20">
-      <mat-form-field class="col-md-3">
-        <label>
-          <input matInput  formControlName="OrderTrackServerId" />
-        </label>
-        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      <mat-form-field style="width:100%;font-size:14px!important;">
+        <input matInput style="font-size:12px!important;" placeholder="物流单号"  formControlName="OrderTrackServerId" />
       </mat-form-field>
     </div>
     <div fxFlex="20">
-      <app-biz-mylogistiscstore2 [saveform]="searchp"   SettingFormControlName="ActionStoreId"   displaylabel="操作网点" mat-form-field-class="col-md-2" ></app-biz-mylogistiscstore2>
+      <app-biz-mylogistiscstore2 [saveform]="searchp"  style="width:100%" SettingFormControlName="ActionStoreId"   displaylabel="操作网点" ></app-biz-mylogistiscstore2>
     </div>
     <div fxFlex="20">
-      <mat-form-field class="col-md-3">
-        <label>
-          <select matNativeControl  formControlName="PlanStatuedId">
-            <option value="10">已安排</option>
-            <option value="20">任务中</option>
-            <option value="30">已完成</option>
-          </select>
-        </label>
-        <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+      <mat-form-field style="width:100%;font-size:14px!important;">
+          <mat-select  placeholder="任务状态" matNativeControl  formControlName="PlanStatuedId">
+            <mat-option value="10">已安排</mat-option>
+            <mat-option value="20">任务中</mat-option>
+            <mat-option value="30">已完成</mat-option>
+          </mat-select >
       </mat-form-field>
     </div>
     <div fxFlex="35">
@@ -41,7 +40,7 @@
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
 
     <e-column headerText='派车单号'  width='210'>

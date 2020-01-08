@@ -43,23 +43,33 @@ export class GroupdetailComponent implements OnInit {
 
     this.editSettings = {  allowEditing: true, allowAdding: true, allowDeleting: true , newRowPosition: 'Top' };
 
-    this.shipplanGroupInsideServiceService.InsideGroupDetail(this.route.snapshot.params['id']).subscribe(a => {
+    this.reloaddata();
+  }
+
+  public reloaddata() {
+    this.shipplanGroupInsideServiceService.InsideGroupDetail(this.route.snapshot.params.id).subscribe(a => {
       this.insideShipmentGroup = a;
     });
 
-    this.logisticItemService.list(this.route.snapshot.params['id']).subscribe(a => {
+    this.logisticItemService.list(this.route.snapshot.params.id).subscribe(a => {
       this.logisticItemDataSource = a;
     });
   }
-
   /**
    * 发运
    */
-  Send(ShipmentGroupId: string) {
+  Send(ShipmentGroupId: string, flag: boolean) {
 
+    let message = '';
+
+    if (flag === true) {
+       message = '是否发运，发运将无法修改和添加托运单,并直接传输到司机终端。';
+     } else {
+       message = '是否取消发运,任务将从司机终端删除';
+     }
     const alerter = {
       Title: '确认',
-      Message: '是否发运，发运将无法修改和添加托运单,并直接传输到司机终端。',
+      Message: message,
       ConfirmModel: true,
       Callback: ((result: boolean) => {
 
@@ -67,11 +77,21 @@ export class GroupdetailComponent implements OnInit {
           return;
         }
         try {
-          this.shipplanGroupInsideServiceService.SetIsSend(ShipmentGroupId).subscribe(a => {
-            this.emitService.eventEmit.emit(
-              new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
-              location.reload();
-          });
+
+          if (flag) {
+            this.shipplanGroupInsideServiceService.SetIsSend(ShipmentGroupId).subscribe(a => {
+              this.emitService.eventEmit.emit(
+                new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+              this.reloaddata();
+            });
+          } else {
+            this.shipplanGroupInsideServiceService.SetIsNoSend(ShipmentGroupId).subscribe(a => {
+              this.emitService.eventEmit.emit(
+                new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+              this.reloaddata();
+            });
+          }
+
         } finally {
 
         }
@@ -106,4 +126,5 @@ export class GroupdetailComponent implements OnInit {
       })};
     this.dialogx.openDialog(alerter);
   }
+
 }

@@ -66,7 +66,7 @@ export class MyOrderListComponent implements OnInit {
   //   this.searching();
   // }
 
-  searching () {
+  searching() {
 
 
 
@@ -96,10 +96,10 @@ export class MyOrderListComponent implements OnInit {
 
     switch (this.currenttab.selectedIndex) {
       case  0:
-        this.searchp.patchValue({'PrimaryDestservicedType': '1'});
+        this.searchp.patchValue({PrimaryDestservicedType: '1'});
         break;
       case 1:
-        this.searchp.patchValue({'PrimaryDestservicedType': '2'});
+        this.searchp.patchValue({PrimaryDestservicedType: '2'});
         break;
     }
     const searchable = this.searchp.getRawValue ();
@@ -133,11 +133,11 @@ export class MyOrderListComponent implements OnInit {
     let interfacex = null;
     switch (  this.currenttab.selectedIndex ) {
       case 0:
-        interfacex = <LogistciOrderInterface>this.gdi1;
+        interfacex = this.gdi1 as LogistciOrderInterface;
 
         break;
       case 1:
-        interfacex = <LogistciOrderInterface>this.gdi2;
+        interfacex = this.gdi2 as LogistciOrderInterface;
         break;
     }
     return  interfacex;
@@ -145,7 +145,7 @@ export class MyOrderListComponent implements OnInit {
   /**
    * 创建自有订单后续操作
    */
-  createmyshipmentorder () {
+  createmyshipmentorder() {
 
     const grid = this.GetCurrentDataGrid().CurrentDataGrid;
     const selectedrows =  grid.getSelectedRecords();
@@ -157,8 +157,8 @@ export class MyOrderListComponent implements OnInit {
     }
     const  ids = [];
     for (const value  of selectedrows ) {
-        console.log(value['OrderLogisticDetailId']);
-      ids.push(value['OrderLogisticDetailId']);
+      //  console.log(value.OrderLogisticDetailId);
+        ids.push(value['OrderLogisticDetailId']);
     }
 
     const alerter = {
@@ -216,15 +216,15 @@ export class MyOrderListComponent implements OnInit {
     console.log(grid.getSelectedRecords()[0]['OrderLogisticDetailId']);
 
     const dialogRef = this.dialog.open(OrderitemtagprintComponent, {
-      minHeight: minHeight,
-      minWidth: minWidth,
+      minHeight,
+      minWidth,
       disableClose: false,
       data: grid.getSelectedRecords()[0]['OrderLogisticDetailId']
     });
   }
   tabchanged($event: MatTabChangeEvent) {
 
-    const currentdatalist = <TemplatePortal<LogisticOrderDataListComponent>>$event.tab.content;
+    const currentdatalist = $event.tab.content as TemplatePortal<LogisticOrderDataListComponent>;
 
     console.log(currentdatalist);
 
@@ -248,15 +248,15 @@ export class MyOrderListComponent implements OnInit {
     }).reverse();
 
     const dialogRef = this.dialog.open(OrderchangerouteComponent, {
-      minHeight: minHeight,
-      minWidth: minWidth,
+      minHeight,
+      minWidth,
       disableClose: true,
       data: mapresult
     });
 
     dialogRef.afterClosed().subscribe(c => {
        if (c !== undefined) {
-         const result =  <TmsResponseModle>c;
+         const result =  c as TmsResponseModle;
          this.emitService.eventEmit.emit(
            new EmitAlertMessage(AlertMessageType.Info, '系统信息', result.Info, MessageShowType.Alert));
          return;

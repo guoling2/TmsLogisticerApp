@@ -177,4 +177,9 @@ export  class FinanceReport {
    * 财务整体明细查询
    */
   public  static  Report_OrderChargeSettleItemForAdminQueryAll="OrderChargeSettleItemForAdminQueryAll";
+
+  /**
+   * 用于财务使用的品相明细查询
+   */
+  public  static  Report_OrderChargeSettleItemForAdminSettleIdQuery="OrderChargeSettleItemForAdminSettleIdQuery";
 }

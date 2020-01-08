@@ -1,0 +1,25 @@
+.contentbox-new {padding:10px 10px 10px 10px;wdith:100%;height:auto;clear:both;overflow:hidden;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l-new {width:40%;height:auto;float: left;}
+.contenttex-r-new {width:60%;height:auto;float: right;}
+.contentit-l-new div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l-new a {color:#666;text-decoration: none}
+.contentit-l-new a:hover {color:#111;text-decoration:none;cursor:pointer}
+.contenttex-r-new button {margin-left:10px;margin-top:-5px;float:right}
+.listfrom-new2 {width:98.3%;height:60px!important;overflow:hidden;margin:10px auto 0 auto!important;background:none;}
+.listfrom-new2 button {margin-left:10px}
+.tabbox-new {width:98.3%;height:auto!important;overflow:hidden;margin:5px 10px 0 10px!important;background:none;}
+.contennews b{font-size:18px;color:#000;margin-right: 10px;font-weight: normal}
+.contennews span {font-size:13px;color:#666;font-weight: normal}
+.contennews span a  {font-size:13px;color:#666;font-weight: normal}
+.contennews span i {color:#888}
+.fn-box {margin:10px;border:1px #eee solid;background:#fff;padding:10px}
+.tabbtn {margin-left:5px;width: auto!important;height: auto!important;margin: 0;padding:0 5px 0 5px!important;}
+.tabbtn i {font-size:12px;margin-bottom:5px}
+.e-nones {padding:0!important;background:none!important;box-shadow:none!important;}
+.comwidth {width:100%!important;}
+.databoxs {width:98.3%;margin:0 auto 0 auto!important; }
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:32px!important;padding:0 15px 0!important;}
+.e-grid .e-rowcell {padding:8px 15px!important;width:auto!important;margin:0 10px!important;}
+::ng-deep .e-grid .e-gridheader .e-sortfilter .e-headercelldiv {padding:0 0.6em;}
+.sourcelength {height:32px;line-height:32px;float:right;border:1px #e1e1e1 solid;margin-bottom:10px;width:auto;display:block;padding:0 12px;font-size:14px;color:#666}
+.sourcelength b {color:#e21641}

@@ -51,7 +51,7 @@ export class OrderSettleAdminListComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { ProcessStatued: '1', SettleId: ''});
-    this.gridheight = Commonsetting.GridHeight0();
+    this.gridheight = Commonsetting.GridHeight2l();
   }
 
 

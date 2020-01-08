@@ -1,12 +1,17 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：配载发车 / <b>新增</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>新增</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/shipment/benditihuoclist']" >小车提货</a></span> ·
+      <span>新增</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width"  (click)="savedata()">保存</button>
+  <div class="contenttex-r-new">
+    <button  ejs-button cssClass="e-outline mat-auto"  (click)="savedata()"><i class="fas fa-save"></i> 保存</button>
     <ejs-tooltip #tooltip content='将会直接推送订单到司机终端中'  position="BottomCenter"
                  style="padding-left:0!important;padding-right:0!important;">
-      <button style="margin-left:15px;" disabled="true" ejs-button cssClass="e-info mat-width"  (click)="savedata()">保存&发运</button>
+      <button style="margin-left:15px;" disabled="true"  ejs-button cssClass="e-outline mat-auto"  (click)="savedata()"><i class="fas fa-paper-plane"></i> 保存&发运</button>
     </ejs-tooltip>
   </div>
 </div>

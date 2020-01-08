@@ -18,6 +18,7 @@ import {MatSelect, MatSelectChange} from '@angular/material';
   ]
 })
 export class Mylogistiscstore2Component implements OnInit, ControlValueAccessor {
+  constructor(private logisticStoreAuthorizeServiceService: LogisticStoreAuthorizeServiceService) { }
 
   selected = '';
   disableSelect = false;
@@ -41,19 +42,20 @@ export class Mylogistiscstore2Component implements OnInit, ControlValueAccessor 
 
 
   onChange;
-  onTouched=()=>{};
 
   public currentcontrol: AbstractControl;
 
   private touched = new Array<() => void>();
   private changed = new Array<(value: string) => void>();
-  constructor(private logisticStoreAuthorizeServiceService: LogisticStoreAuthorizeServiceService) { }
+  onTouched = () => {};
 
   ngOnInit() {
 
 
     this.currentcontrol = this.saveform.controls[this.SettingFormControlName];
 
+
+    console.log(this.currentcontrol);
 
     this.logisticStoreAuthorizeServiceService.MyStores().subscribe( (value: LogisticStore[]) => {
 
@@ -98,6 +100,9 @@ export class Mylogistiscstore2Component implements OnInit, ControlValueAccessor 
   }
   change($event: MatSelectChange) {
 
-    this.onChange($event.value);
+    if (this.onChange != null) {
+      this.onChange($event.value);
+    }
+
   }
 }

@@ -25,15 +25,15 @@ export class RoutelistComponent implements OnInit {
   ngOnInit() {
 
     this.searchp = this.fb.group(
-      { IsSign: '0'});
-    this.gridheight = Commonsetting.GridHeight();
+      { IsSign: '0', OrderTrackServerId: ''});
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   public  dataStateChange(datastate: DataStateChangeEventArgs): void {
 
     this.searching();
   }
-  searching () {
+  searching() {
 
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
@@ -46,7 +46,7 @@ export class RoutelistComponent implements OnInit {
 
     }); }
 
-  opentrackmessage ( OrderTrackNumber: string ) {
+  opentrackmessage( OrderTrackNumber: string ) {
     this.dialog.open(OrderflowmessagComponent, {
       width: '250px',
       disableClose: false,

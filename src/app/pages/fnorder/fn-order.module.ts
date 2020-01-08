@@ -22,6 +22,11 @@ import { OrderSettleAdminDetailComponent } from './order-settle-admin-detail/ord
 import { OrderSettleDataGridComponent } from './order-settle-admin-list/sub/order-settle-data-grid/order-settle-data-grid.component';
 import { OrderSettleAdminProcessComponent } from './order-settle-admin-process/order-settle-admin-process.component';
 import { OrderAddInvoiceComponent } from './order-add-invoice/order-add-invoice.component';
+import {FncommonModule} from '../../buinesscomponent/fncommon/fncommon.module';
+import { OrdersettlecourseComponent } from './order-settle-admin-detail/sub/ordersettlecourse/ordersettlecourse.component';
+import { OrderchargeitemlistComponent } from './order-settle-admin-detail/sub/orderchargeitemlist/orderchargeitemlist.component';
+import { OrderUpdateReceiveAmtComponent } from './order-settle-admin-detail/sub/order-update-receive-amt/order-update-receive-amt.component';
+import { OrderForceBlanceComponent } from './order-settle-admin-detail/sub/order-force-blance/order-force-blance.component';
 
 
 const routes: Routes = [
@@ -63,7 +68,11 @@ const routes: Routes = [
     OrderSettleDataGridComponent,
     AcceptOrderDirectiveDirective,
     OrderSettleAdminProcessComponent,
-    OrderAddInvoiceComponent],
+    OrderAddInvoiceComponent,
+    OrdersettlecourseComponent,
+    OrderchargeitemlistComponent,
+    OrderUpdateReceiveAmtComponent,
+    OrderForceBlanceComponent],
     imports: [
         CommonModule,
         SharedModule,
@@ -75,10 +84,12 @@ const routes: Routes = [
         BasedataModule,
         FnAccountModule,
         UploaderModule,
+        FncommonModule,
     ],
    entryComponents: [
      OrderChargesettleCreateComponent, OrderChargeSettleNoApplayListComponent,
      OrderChargePrintComponent, OrderSettleAdminProcessComponent,
-     OrderAddInvoiceComponent]
+     OrderAddInvoiceComponent, OrderUpdateReceiveAmtComponent,
+     OrderForceBlanceComponent]
 })
 export class FnOrderModule { }

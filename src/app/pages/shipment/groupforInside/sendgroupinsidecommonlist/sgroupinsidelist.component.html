@@ -1,12 +1,17 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>配载发车/{{Title}}</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>{{Title}}</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>{{Title}}</span>
+    </div>
   </div>
-  <div class="contenttex-r"></div>
+  <div class="contenttex-r-new">
+    
+  </div>
 </div>
-<div class="bendbox">
-
+<div>
 
   <ng-container *ngIf="GroupSubItemType!='localtihuo'">
     <app-biz-groupinsdecommomlist [orderStoreSubject]="orderStoreSubject"

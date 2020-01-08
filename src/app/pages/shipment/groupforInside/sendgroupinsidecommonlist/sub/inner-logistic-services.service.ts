@@ -15,7 +15,7 @@ export class InnerLogisticServicesService {
                 public emitService: EmitService,
                 public itemServiceService: LogisticItemComponentService,
                 public logisticItemService: LogisticItemService ) { }
-  public OpenLogistciOrder(subtype: string, datasource: Object[]) {
+  public OpenLogistciOrder(subtype: string, datasource: object[]) {
    // const alreadyloadshipmentdatasource = new GroupOrderAtionModel[] ;
 
    // const GroupSubItemType = subtype;

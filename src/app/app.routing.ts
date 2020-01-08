@@ -66,7 +66,7 @@ const routes: Routes = [
       { path: 'myorder', loadChildren: './pages/myorder/logistcimyorder.module#LogistcimyorderModule' },
       { path: 'shipment', loadChildren: './pages/shipment/shipment.module#ShipmentModule' },
       { path: 'delegateorders', loadChildren: './pages/delegateorder/delegateorder.module#DelegateorderModule' },
-      { path: 'orderserver', loadChildren: './pages/track/track.module#TrackModule' },
+      { path: 'orderserver', loadChildren: './pages/track/track.module#TrackModule' },  // 订单服务
       { path: 'base', loadChildren: './pages/base/bizbase.module#BizBaseModuleModule' },
       { path: 'user-management', loadChildren: './pages/usermanagement/user-management.module#UserManagementModule' },
       { path: 'customer-management', loadChildren: './pages/logisticcustomer/customer-management.module#CustomerManagementModule' },

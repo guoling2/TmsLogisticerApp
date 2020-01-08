@@ -23,27 +23,27 @@ import { BadorderlistComponent } from './badorderlist/badorderlist.component';
 const routes: Routes = [
 
   {
-    'path': 'ordermap',
-    'component': OrderMapComponent
+    path: 'ordermap',
+    component: OrderMapComponent
   },
   {
-    'path': 'newbadorderlist',
-    'component': NewBackorderComponent
+    path: 'newbadorderlist',
+    component: NewBackorderComponent
   },
   {
-    'path': 'badorderlist',
-    'component': BadorderlistComponent
+    path: 'badorderlist',
+    component: BadorderlistComponent
   },
   {
-    'path': 'badorderprocess',
-    'component': ProcessdashbordComponent,
-    'children': [
+    path: 'badorderprocess',
+    component: ProcessdashbordComponent,
+    children: [
       {path: ':id', component: TaskdateilComponent, outlet: 'ptd', pathMatch: 'full'}
     ]
   },
   {
-    'path': 'badorderdetail/:id',
-    'component': BadorderDetailComponent,
+    path: 'badorderdetail/:id',
+    component: BadorderDetailComponent,
     data: {
       title: '异常件明细',
       isRemove: true

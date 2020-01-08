@@ -78,6 +78,7 @@
     "@syncfusion/ej2-splitbuttons": "17.2.47",
     "@syncfusion/ej2-svg-base": "17.2.47",
     "@syncfusion/ej2-treemap": "17.2.47",
+    "@syncfusion/ej2-angular-inplace-editor": "17.2.51",
     "ajv": "^6.10.2",
     "angular-auth-oidc-client": "10.0.10",
     "bootstrap": "^4.3.1",
@@ -92,13 +93,13 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.19",
+    "@angular-devkit/build-angular": "^0.803.21",
     "@angular/cli": "~8.3.19",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
-    "@types/node": "^12.6.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.6.2",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

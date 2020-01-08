@@ -18,7 +18,6 @@ import { registerLocaleData } from '@angular/common';
 
 import localezh from '@angular/common/locales/zh';
 import localeZhExtra from '@angular/common/locales/extra/zh';
-
 registerLocaleData(localezh, 'zh-Hans', localeZhExtra);
 
 

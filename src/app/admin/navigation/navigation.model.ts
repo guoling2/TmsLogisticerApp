@@ -117,6 +117,12 @@ export class NavigationModel {
             //   'url': '/biz/shipment/outer-tihuo'
             // },
             {
+              id: 'wuliu23',
+              title: '网点卸货',
+              type: 'item',
+              url: '/biz/shipment/xieche'
+            },
+            {
               id: 'wuliu22-2',
               title: '转运外包',
               type: 'item',
@@ -145,13 +151,8 @@ export class NavigationModel {
               title: '转运外包汇总',
               type: 'item',
               url: '/biz/shipment/waibaosendlist'
-            },
-            {
-              id: 'wuliu23',
-              title: '网点卸货',
-              type: 'item',
-              url: '/biz/shipment/xieche'
             }
+
             // {
             //   'id': 'wuliu1',
             //   'title': '订单配载',

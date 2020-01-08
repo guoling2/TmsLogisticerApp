@@ -1,11 +1,15 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> / <b>客户信息</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>客户列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/customer-management/customers']" >客户列表</a> </span> ·
+      <span>客户信息</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width" class="mat-reject"   style="margin-left:20px" (click)="del()" >删除</button>
-    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()"  [disabled]="disenabelbtn">修改&保存</button>
-
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto" (click)="del()" ><i class="fas fa-trash"></i> 删除</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="saveaction()"  [disabled]="disenabelbtn"><i class="fas fa-save"></i> 修改&保存</button>
   </div>
 </div>
 <mat-card class="userbox">

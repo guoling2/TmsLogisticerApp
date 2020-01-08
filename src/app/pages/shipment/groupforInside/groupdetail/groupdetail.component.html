@@ -1,19 +1,22 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：配载发车 / <b>派车单明细</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>派车单明细</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>派车单明细</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-<!--    <ng-container *ngIf="insideShipmentGroup.IsSend">-->
-<!--      <button ejs-button cssClass="e-info mat-width" class="mat-reject" >反审</button>-->
-<!--    </ng-container>-->
+  <div class="contenttex-r-new">
     <ng-container *ngIf="insideShipmentGroup?.IsSend==false">
-      <button ejs-button cssClass="e-info mat-width" class="mat-reject" (click)="Del(insideShipmentGroup.ShipmentGroupId)" >删单</button>
-      <button ejs-button cssClass="e-info mat-width" class="mat-green"  (click)="Send(insideShipmentGroup.ShipmentGroupId)">发运</button>
-<!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
+      <button ejs-button cssClass="e-outline mat-auto"   (click)="Del(insideShipmentGroup.ShipmentGroupId)" ><i class="fas fa-trash-alt"></i> 删单</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="Send(insideShipmentGroup.ShipmentGroupId,true)"><i class="fas fa-paper-plane"></i> 发运</button>
+      <!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
     </ng-container>
-
-<!--    <button ejs-button cssClass="e-info mat-width" style="width:auto!important;">派车单打印</button>-->
-
+    <ng-container *ngIf="insideShipmentGroup?.IsSend==true">
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="Send(insideShipmentGroup.ShipmentGroupId,false)"><i class="fas fa-paper-plane"></i> 取消发运</button>
+    </ng-container>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="reloaddata()"><i class="fas fa-paper-plane"></i> 刷新</button>
   </div>
 </div>
 <div class="bendbox">

@@ -1,1 +1,5 @@
 .margin_t_10 {margin-bottom:10px}
+.billtit h2 {font-size:14px;padding:0 0 5px 0;margin:0 0 5px 0}
+.billtit {margin-bottom:8px;border-bottom:1px #eee solid}
+.commonbox {font-size:14px;background:#fff;padding:10px 10px }
+.commonform {padding:5px 15px}

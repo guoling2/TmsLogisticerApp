@@ -136,7 +136,7 @@ const routes: Routes = [
     component: PickupComponent
   },
   {
-    path: 'senditemlist',
+    path: 'senditemlist', // senditemlist 配送汇总
     component: SenditemlistComponent
   },
   {

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Priceanalysisparameter} from '../priceanalysisparameter';
 import {ShipmentOrderService} from '../../../services/logistic/order/shipment-order.service';
 import {ShipmentOrderSimpleModel} from '../../../models/shipment/shipment-order-simple-model';
@@ -19,7 +19,7 @@ export class SimpleorderdetailComponent implements OnInit {
 
   messresult: OrderFlowMessageEntity[];
 
-  constructor(private orderFlowMessageServices: OrderFlowMessageServices, private shipmentOrderService: ShipmentOrderService, @Inject(MAT_DIALOG_DATA) public parameter: string) { }
+  constructor(  public dialogRef: MatDialogRef<SimpleorderdetailComponent>, private orderFlowMessageServices: OrderFlowMessageServices, private shipmentOrderService: ShipmentOrderService, @Inject(MAT_DIALOG_DATA) public parameter: string) { }
 
   ngOnInit() {
 

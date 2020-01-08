@@ -1,1 +1,95 @@
-<app-shipment-insidegroup Title='小车提货' GroupSubItemType="localtihuo"></app-shipment-insidegroup>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>小车提货</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>小车提货</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0"><i class="fas fa-plus-square"></i> 新增提货单</button>
+  </div>
+</div>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="20">
+      <mat-form-field  class="comwidth">
+          <input matInput style="font-size:12px!important;" placeholder="物流单号"  formControlName="OrderTrackServerId" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" style="padding-top:3px">
+      <mat-form-field style="width:100%;font-size:14px!important;">
+          <mat-select  placeholder="提货单类型"  matNativeControl  formControlName="OrderGoWay">
+            <mat-option label="--全部订单 --"></mat-option>
+            <mat-option value="1" selected>同城返仓</mat-option>
+            <mat-option value="2">长途返仓</mat-option>
+          </mat-select >
+      </mat-form-field>
+    </div>
+    <div fxFlex="20" style="padding-bottom:1.25em;">
+      <app-bin-mylogisticstore formControlName="BeginLogisticStoreId" placeholder="提货网点">loading...</app-bin-mylogisticstore>
+    </div>
+    <div fxFlex="35">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+      <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
+    </div>
+  </div>
+
+</form>
+<div class="tabbox-new">
+<ejs-grid #grid
+          height="{{gridheight}}"
+          [pageSettings]='pageSettings'
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          [toolbar]="toolbar"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column type='checkbox' width='50'></e-column>
+
+    <e-column field='ShipmentId'  headerText='网点物流编号'  [visible]='false'  isPrimaryKey='true' width='165'></e-column>
+
+    <e-column field='SystemOrderId'  headerText='订单编号'  [visible]='false'  width='165'></e-column>
+
+    <e-column headerText='物流单号'  width='170'>
+      <ng-template #template let-data>
+        {{data.OrderTrackServerId}}
+        <button ejs-button appModalPage [modal]="'SimpleorderdetailComponent'" [modal-data]="data.OrderLogisticDetailId"  class="tabbtn" cssClass="e-nones" ><i class="fas fa-file"></i></button>
+      </ng-template>
+    </e-column>
+    <e-column field='OriginCity'  headerText='提货城市'  width='110'></e-column>
+    <e-column field='DestCity'  headerText='到货城市'  width='110'></e-column>
+    <e-column field='Destarea'  headerText='到货区域'  width='165'></e-column>
+    <e-column field='Origincustomname'  headerText='提货客户'  width='200'></e-column>
+    <e-column field='OrigincustomLinkman'  headerText='联系人'  width='110'></e-column>
+    <e-column field='Origintel'  headerText='联系电话'  width='135'></e-column>
+    <e-column field='TotalCount'  headerText='提货件数'  width='100'></e-column>
+    <e-column field='TotalWeight'  headerText='重货(吨)'  width='100'>
+      <ng-template #template let-data>
+        {{data.TotalWeight | tmsweightconvert :'g'}}
+      </ng-template>
+    </e-column>
+    <e-column field='TotalVolume'  headerText='抛货(方)'  width='85'>
+      <ng-template #template let-data>
+        {{data.TotalVolume | tmsvolumeconvert :'cm'}}
+      </ng-template>
+    </e-column>
+
+    <!--    <e-column field='OriginCity'  headerText='提货城市'  width='165'></e-column>-->
+    <!--    <e-column field='Originarea'  headerText='提货区域'  width='165'></e-column>-->
+
+    <e-column field='OriginAddress'  headerText='提货地址'  width='265'></e-column>
+
+    <e-column field='BeginLogisticStoreId' [visible]='false' headerText='接单网点编号'  width='165'></e-column>
+
+    <e-column field='BeginLogisticStoreName' [visible]='false' headerText='接单网点'  width='165'></e-column>
+
+    <e-column field='CreateDateTime'  headerText='下达时间'  width='165'></e-column>
+
+  </e-columns>
+</ejs-grid>
+</div>
