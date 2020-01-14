@@ -34,30 +34,27 @@ export class CustomerpaymethodComponent implements OnInit, ControlValueAccessor 
 
   }
 
-  registerOnChange ( fn: any ): void {
+  registerOnChange( fn: any ): void {
 
     this.onChange = fn;
   }
 
-  registerOnTouched ( fn: any ): void {
+  registerOnTouched( fn: any ): void {
   }
 
-  setDisabledState ( isDisabled: boolean ): void {
+  setDisabledState( isDisabled: boolean ): void {
     this.mystoredownlist.setDisabledState(isDisabled);
   }
 
-  writeValue ( value: any ): void {
+  writeValue( value: any ): void {
 
     if (value) {
 
-      this.mystoredownlist.writeValue(value);
-    } else {
-      this.mystoredownlist.writeValue(value);
+      this.mystoredownlist.value = value.toString();
     }
-
   }
 
-  selectchange (event: ChangeEventArgs) {
+  selectchange(event: ChangeEventArgs) {
 
 
     this.onChange(event.value);

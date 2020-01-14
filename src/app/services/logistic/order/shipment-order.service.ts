@@ -8,6 +8,7 @@ import {tap} from 'rxjs/operators';
 import {ShipmentOrderSimpleModel} from '../../../models/shipment/shipment-order-simple-model';
 import {ShipmentOrderComplexModel} from '../../../models/shipment/shipment-order-complex-model';
 import {OrderDestsrviceChangeRequest} from '../../../models/shipment/order-destsrvice-change-request';
+import {ShipmentOrderRequestModel} from '../../../models/shipment/shipment-order-request-model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +23,25 @@ export class ShipmentOrderService {
     }
   }
 
+  public  Edit(systemorderdetailId: string, requstmodel: ShipmentOrderRequestModel): Observable<TmsResponseModle> {
+    // const options = new HttpParams({ fromObject: shiporder});
+
+    return this.httpclient.put<TmsResponseModle>(
+      this.appConfiguration.Server + '/api/ShipmentMyOrder/EditDetail/' + systemorderdetailId, requstmodel);
+  }
+
+  public  EditDetail(systemorderdetailId: string): Observable<ShipmentOrderRequestModel> {
+    // const options = new HttpParams({ fromObject: shiporder});
+
+    return this.httpclient.get<ShipmentOrderRequestModel>(
+      this.appConfiguration.Server + '/api/ShipmentMyOrder/EditDetail/' + systemorderdetailId);
+  }
+
+
   public  CreateShipmentMyOrder(shiporder: any): Observable<TmsResponseModle> {
     // const options = new HttpParams({ fromObject: shiporder});
      const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.httpclient.post<TmsResponseModle>(
+     return this.httpclient.post<TmsResponseModle>(
       this.appConfiguration.Server + '/api/ShipmentMyOrder/CreateOrder',  shiporder, {headers})
       .pipe(
         tap(response => console.log(response.Info)));

@@ -1,23 +1,36 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>异常汇总列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>异常汇总列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>过程跟踪</span> ·
+      <span>异常汇总列表</span>
+    </div>
   </div>
+  <div class="contenttex-r-new"></div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput  formControlName="OrderTrackServerId" />
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="物流单号" formControlName="OrderTrackServerId" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <div fxFlex="24">
+    </div>
+    <div fxFlex="24">
+    </div>
+  </div>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
     <e-column field='OrderTrackServerId' headerText='物流单号'  width=160>
       <ng-template #template let-data>

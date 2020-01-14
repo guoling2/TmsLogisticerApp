@@ -29,6 +29,8 @@ import { OrderUnAcceptComponent } from './enterprise-order-list/sub/order-unacce
 import { UpdatecarnumberComponent } from './enterprise-order-list/sub/order-updatecarnumber/updatecarnumber.component';
 import { OrderthumbnailComponent } from './enterprise-order-list/sub/order-thumbnail/orderthumbnail.component';
 import { OrderCancelSendComponent } from './enterprise-order-list/sub/order-cancel-send/order-cancel-send.component';
+import { EditComponent } from './edit/edit.component';
+import { OrderoperactionComponent } from './_sub/orderoperaction/orderoperaction.component';
 
 
 const routes: Routes = [
@@ -47,6 +49,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: DetailComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent
   },
   {
     path: 'enterprise-order-detail/:id',
@@ -77,7 +83,7 @@ const routes: Routes = [
     OrderrouteplanComponent, PriceanalysisComponent, DetailComponent, OrderitemtagprintComponent,
     OrderDataListComponent,
     EnterpriseOrderListComponent, EnterpriseOrderDetailComponent,
-    OrderAcceptComponent, LogisticOrderDataListComponent, LogistictrackComponent, OrderchangerouteComponent, DefaultdepotsettingComponent, OrderUnAcceptComponent, UpdatecarnumberComponent, OrderthumbnailComponent, OrderCancelSendComponent],
+    OrderAcceptComponent, LogisticOrderDataListComponent, LogistictrackComponent, OrderchangerouteComponent, DefaultdepotsettingComponent, OrderUnAcceptComponent, UpdatecarnumberComponent, OrderthumbnailComponent, OrderCancelSendComponent, EditComponent, OrderoperactionComponent],
   entryComponents: [
     OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent, OrderthumbnailComponent,
     OrderitemtagprintComponent, OrderAcceptComponent, OrderchangerouteComponent, DefaultdepotsettingComponent, OrderUnAcceptComponent, UpdatecarnumberComponent, OrderCancelSendComponent]

@@ -87,7 +87,7 @@
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
           <div fxFlex="100">
             <div class="orderinfo">
-              <div class="infotext margin_t_10">
+              <div class="infotext margin_t_10" *ngIf="ordermodel!=null">
                 <ng-container *ngIf="ordermodel.ShipmentOrderItems.length>1; then truthyTemplate else falsyTemplate"></ng-container>
 
                 <ng-template #truthyTemplate >
@@ -341,6 +341,7 @@
 <!--          </mat-card-content>-->
 <!--        </mat-card>-->
         <div class="btnbox">
+          <button ejs-button cssClass="mat-reject pagebtn" type="button"  [routerLink]="['/biz/myorder/edit/'+ordermodel.OrderLogisticDetailId]" routerLinkActive='active' ><i class="fas fa-print"></i>编辑修改</button>
           <button ejs-button cssClass="mat-reject pagebtn" type="button"
                   appTmssaveconfirm  comfirmMessage="确认删除运单吗，你可以继续使用这个物流单号?" (onSuggest)="delorder($event)" ><i class="fas fa-print"></i>运单删除</button>
 <!--          <button ejs-button cssClass="e-info pagebtn" type="button"><i class="fas fa-print"></i>打印</button>-->

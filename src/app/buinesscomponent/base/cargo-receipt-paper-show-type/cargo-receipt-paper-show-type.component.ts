@@ -35,23 +35,26 @@ export class CargoReceiptPaperShowTypeComponent implements OnInit, ControlValueA
   ngOnInit() {
   }
 
-  registerOnChange ( fn: any ): void {
+  registerOnChange( fn: any ): void {
 
     this.onChange = fn;
   }
 
-  registerOnTouched ( fn: any ): void {
+  registerOnTouched( fn: any ): void {
   }
 
-  setDisabledState ( isDisabled: boolean ): void {
+  setDisabledState( isDisabled: boolean ): void {
     this.mystoredownlist.setDisabledState(isDisabled);
   }
 
-  writeValue ( value: any ): void {
-    this.mystoredownlist.value = value;
+  writeValue( value: any ): void {
+    if (value != null) {
+      this.mystoredownlist.value = value.toString();
+    }
+
   }
 
-  selectchange (event: ChangeEventArgs) {
+  selectchange(event: ChangeEventArgs) {
 
 
     this.onChange(event.value);

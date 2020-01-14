@@ -17,6 +17,32 @@
     <e-column   headerText='物流单号' isPrimaryKey='true' width='165'>
       <ng-template #template let-data>
         <a [routerLink]="['/biz/myorder/detail', data.OrderLogisticDetailId]">{{data.OrderTrackServerId }} </a>
+
+<!--        货签打印按钮-->
+        <ejs-tooltip #tooltip position="RightBottom">
+          <button ejs-button cssClass="e-outline mat-auto"   (click)="printordertag(data.OrderLogisticDetailId,500,1120)">
+            <i class="fas fa-print"></i> 货签打印</button>
+          <ng-template #content>
+            <div style="font-size: 12px;text-indent: each-line;">
+              货签打印
+            </div>
+
+          </ng-template>
+        </ejs-tooltip>
+
+<!--         运单修改-->
+        <ejs-tooltip #tooltip position="RightBottom">
+          <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/myorder/edit/'+data.OrderLogisticDetailId]" routerLinkActive='active'>
+            <i class="fas fa-print"></i> 运单修改</button>
+          <ng-template #content>
+            <div style="font-size: 12px;text-indent: each-line;">
+              运单修改
+            </div>
+
+          </ng-template>
+        </ejs-tooltip>
+
+
       </ng-template>
     </e-column>
     <e-column field='CustomerOrderId' headerText='客户单号'  width=120></e-column>

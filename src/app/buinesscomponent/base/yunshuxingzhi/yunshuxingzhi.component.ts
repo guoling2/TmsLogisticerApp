@@ -47,7 +47,7 @@ export class YunshuxingzhiComponent implements OnInit , ControlValueAccessor {
   writeValue(value: any): void {
     if (value) {
 
-      this.mystoredownlist.value = value;
+      this.mystoredownlist.value = value.toString();
     }
 
   }

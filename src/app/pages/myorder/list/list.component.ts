@@ -197,31 +197,7 @@ export class MyOrderListComponent implements OnInit {
 
   }
 
-  printordertag(minHeight: number, minWidth: number) {
 
-
-    const grid = this.GetCurrentDataGrid().CurrentDataGrid;
-
-    const selectedrows = grid.selectedRowIndex;
-
-    if (selectedrows === -1) {
-      return;
-    }
-
-    if ( grid.getSelectedRecords().length !== 1) {
-      this.emitService.eventEmit.emit(
-        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一条数据进行操作！', MessageShowType.Alert));
-      return;
-    }
-    console.log(grid.getSelectedRecords()[0]['OrderLogisticDetailId']);
-
-    const dialogRef = this.dialog.open(OrderitemtagprintComponent, {
-      minHeight,
-      minWidth,
-      disableClose: false,
-      data: grid.getSelectedRecords()[0]['OrderLogisticDetailId']
-    });
-  }
   tabchanged($event: MatTabChangeEvent) {
 
     const currentdatalist = $event.tab.content as TemplatePortal<LogisticOrderDataListComponent>;

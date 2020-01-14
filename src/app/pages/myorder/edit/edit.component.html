@@ -1,0 +1,7 @@
+
+<ng-container *ngIf="shipmentOrderRequestModel">
+  <app-biz-orderoperaction #orderactionforms [shipmentOrderRequestModel]="shipmentOrderRequestModel"></app-biz-orderoperaction>
+</ng-container>
+
+<button ejs-button cssClass="mat-green pagebtn" type="button" (click)="SaveOrder()"><i class="fas fa-save"></i>
+  修改保存</button>

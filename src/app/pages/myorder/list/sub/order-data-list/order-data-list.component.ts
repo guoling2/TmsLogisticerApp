@@ -6,6 +6,9 @@ import {Basereportservice} from '../../../../../services/base/basereportservice'
 import {LogistciOrderInterface} from '../../../../../pageservices/logistci-order-interface';
 import {$e} from 'codelyzer/angular/styles/chars';
 import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
+import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../../help/emit-alert-message';
+import {OrderitemtagprintComponent} from '../../../_sub/orderitemtagprint/orderitemtagprint.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-logistic-order-data-list',
@@ -28,7 +31,7 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
   };
   public pageSettings = {currentPage: 1, pageSize: 200};
 
-  constructor(private service: Basereportservice) {
+  constructor(private service: Basereportservice,  public dialog: MatDialog) {
 
   }
 
@@ -61,6 +64,33 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
 
     });
   }
+
+  printordertag(OrderLogisticDetailId: string, minHeight: number, minWidth: number) {
+
+
+   // const grid = this.GetCurrentDataGrid().CurrentDataGrid;
+
+    // const selectedrows = grid.selectedRowIndex;
+    //
+    // if (selectedrows === -1) {
+    //   return;
+    // }
+
+    // if ( grid.getSelectedRecords().length !== 1) {
+    //   this.emitService.eventEmit.emit(
+    //     new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一条数据进行操作！', MessageShowType.Alert));
+    //   return;
+    // }
+    // console.log(grid.getSelectedRecords()[0]['OrderLogisticDetailId']);
+
+    const dialogRef = this.dialog.open(OrderitemtagprintComponent, {
+      minHeight,
+      minWidth,
+      disableClose: false,
+      data: OrderLogisticDetailId
+    });
+  }
+
   dataStateChange($event: DataStateChangeEventArgs) {
 
     console.log($event.action);

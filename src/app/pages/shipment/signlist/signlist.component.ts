@@ -37,7 +37,7 @@ export class SignlistComponent implements OnInit {
       { OrderTrackServerId: '', IsSign: '-1', ChargeForOrderSignDeportmentId: ''},
 
       );
-    this.gridheight = Commonsetting.GridHeight2();
+    this.gridheight = Commonsetting.GridHeight();
 
     this.ads = this.signViewServiceService.getviews();
   }

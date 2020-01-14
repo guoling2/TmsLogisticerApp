@@ -20,9 +20,9 @@ export class TihuoTypeComponent implements OnInit, ControlValueAccessor {
 
   constructor() { }
 
-  public logisticstorefiled: Object = TihuoType.DropDownListField;
+  public logisticstorefiled: object = TihuoType.DropDownListField;
 
-  logistticstores: Object[] = TihuoType.Data;
+  logistticstores: object[] = TihuoType.Data;
 
   @Input()
   placeholder: string;
@@ -34,6 +34,8 @@ export class TihuoTypeComponent implements OnInit, ControlValueAccessor {
   private _compositionMode;
   private _elementRef;
   private _renderer;
+
+  //public
   onTouched: () => void;
 
   ngOnInit() {
@@ -52,15 +54,14 @@ export class TihuoTypeComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: any): void {
 
+    console.log('Destservice');
     console.log(value);
    // this.mystoredownlist.text=value;
     // this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
     if (value) {
 
 
-      this.mystoredownlist.writeValue(value);
-    } else {
-      this.mystoredownlist.writeValue(value);
+      this.mystoredownlist.value = value.toString();
     }
 
   }
