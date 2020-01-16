@@ -56,16 +56,16 @@ export class LogisticitemdetailComponent implements OnInit {
        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一条记录进行操作', MessageShowType.Toast));
      return;
    }
-    const selectitem = selectrods[0];
+   const selectitem = selectrods[0];
 
-    const dialogRef = this.dialog.open(SpliterorderComponent, {
+   const dialogRef = this.dialog.open(SpliterorderComponent, {
       minHeight: 500,
       minWidth: 600,
       disableClose: true,
       data: selectitem
     });
 
-    dialogRef.afterClosed().subscribe(a => {
+   dialogRef.afterClosed().subscribe(a => {
       this.SpliterResultEvent.emit(a);
     });
   }

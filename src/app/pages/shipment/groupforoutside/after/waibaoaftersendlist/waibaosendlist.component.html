@@ -1,39 +1,41 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>转运外包汇总查询</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>转运外包汇总查询</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>转运外包汇总查询</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-
+  <div class="contenttex-r-new">
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="OrderTrackServerId" />
-    </label>
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
-
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="TrincName" />
-    </label>
-    <span  matPrefix style="color: #888">承运商名称：&nbsp;</span>
-  </mat-form-field>
-
-  <mat-form-field class="col-md-3">
-
-    <select matNativeControl  formControlName="PlanStatuedId">
-      <option label="--状态选择 --"></option>
-      <option value="10">已安排</option>
-      <option value="20">任务中</option>
-      <option value="30">已完成</option>
-    </select>
-    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
-  </mat-form-field>
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="width:90px!important;">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="物流单号" formControlName="OrderTrackServerId" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="承运商名称" formControlName="TrincName" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <mat-select matNativeControl placeholder="任务状态" formControlName="PlanStatuedId">
+          <mat-option label="--状态选择 --"></mat-option>
+          <mat-option value="10">已安排</mat-option>
+          <mat-option value="20">任务中</mat-option>
+          <mat-option value="30">已完成</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="width:90px!important;">查询</button>
+    </div>
+  </div>
 </form>
 
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
@@ -41,7 +43,7 @@
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
 
 

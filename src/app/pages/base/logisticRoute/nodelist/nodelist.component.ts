@@ -23,7 +23,7 @@ export class NodelistComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       {BeginPointName: '', EndPointName: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   searching() {

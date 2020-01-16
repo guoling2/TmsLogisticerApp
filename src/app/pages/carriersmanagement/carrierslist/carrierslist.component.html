@@ -1,26 +1,37 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>运输商资料列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>运输商资料</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>基础资料</span> ·
+      <span>运输商资料</span>
+    </div>
   </div>
-  <div class="contenttex-r">
+  <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/carriers-management/carriers-insert']"><i class="fas fa-plus-square"></i> 添加外部承运商</button>
   </div>
 </div>
-
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="RName" />
-    <span  matPrefix style="color: #888">承运商名称：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="Search()" style="width:90px!important;">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="承运商名称" formControlName="RName" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="Search()" style="width:90px!important;">查询</button>
+    </div>
+    <div fxFlex="24">
+    </div>
+    <div fxFlex="24">
+    </div>
+  </div>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='false'  class="contlistbox">
+          allowPaging='false'  class="tabbox-new">
   <e-columns >
     <e-column field='ResourceId'  headerText='承运商编号' width='130' [isPrimaryKey]='true'>
       <ng-template #template let-data>

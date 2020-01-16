@@ -14,6 +14,7 @@ export class OutsideShipmentGroupModel extends AbstractShipmentGroupModel {
 
   public VehicelWeight: number;
 
+  public  UseVehicelContainerId: number;
 
 }
 

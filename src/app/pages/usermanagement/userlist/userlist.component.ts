@@ -36,7 +36,7 @@ export class UserlistComponent implements OnInit {
 
     this.searchp = this.fb.group(
   { worknumber: '', realname: ''});
-    this.gridheight = Commonsetting.GridHeight6();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   dataStateChange ( $event ) {

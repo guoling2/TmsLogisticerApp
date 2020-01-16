@@ -10,6 +10,7 @@ import {Column, ColumnModel, GridComponent} from '@syncfusion/ej2-angular-grids'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TmsDictionary} from '../../../help/Dictionary';
 import {UserTrincRoutePriceService} from '../../../services/userpricecontract/user-trinc-route-price.service';
+import {Commonsetting} from '../../../help/commonsetting';
 @Component({
   selector: 'app-userpricevaluelist',
   templateUrl: './userpricevaluelist.component.html',
@@ -17,7 +18,7 @@ import {UserTrincRoutePriceService} from '../../../services/userpricecontract/us
 })
 export class UserpricevaluelistComponent implements OnInit {
 
-
+  gridheight: number;
 
   searchp: FormGroup;
 
@@ -55,7 +56,7 @@ export class UserpricevaluelistComponent implements OnInit {
   public field: FieldsSettingsModel = {dataSource: null, id: 'nodeId', text: 'nodeText', child: 'nodeChild', iconCss: 'iconCss'};
 
   ngOnInit() {
-
+    this.gridheight = Commonsetting.GridHeight4();
     this.searchp = this.fb.group(
       {
         TemplateSettingName: '',

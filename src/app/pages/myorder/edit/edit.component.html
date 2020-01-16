@@ -2,6 +2,10 @@
 <ng-container *ngIf="shipmentOrderRequestModel">
   <app-biz-orderoperaction #orderactionforms [shipmentOrderRequestModel]="shipmentOrderRequestModel"></app-biz-orderoperaction>
 </ng-container>
+<div class="btnbox">
 
-<button ejs-button cssClass="mat-green pagebtn" type="button" (click)="SaveOrder()"><i class="fas fa-save"></i>
+<!--  cssClass="mat-green pagebtn"-->
+  <!--  <button ejs-progressbutton content="Spin Left" [isPrimary]="true" cssClass="mat-green pagebtn" ><i class="fas fa-save"></i>修改保存</button>-->
+  <button  [disabled]="submitstatued" ejs-button type="button" cssClass="e-success" (click)="SaveOrder()"><i class="fas fa-save"></i>
   修改保存</button>
+</div>

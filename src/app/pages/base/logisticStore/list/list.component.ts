@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { SearchText: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   searching () {

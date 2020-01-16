@@ -94,6 +94,104 @@ export class ShipmentOrderComplexModel {
   public DeliveryFee: number;
   public  AcceptUser: string;
   public  AcceptDateTime: Date;
+  public  LogisticOrderStatuedId: LogisticOrderStatued;
+}
 
 
+export  enum LogisticOrderStatued {
+
+  /// <summary>
+  /// 未知
+  /// </summary>
+  Unknow =0,
+  /// <summary>
+  /// 创建
+  /// </summary>
+  Create =1,
+  /// <summary>
+  /// 接受企业订单
+  /// </summary>
+  AcceptEnterpriseOrder=2,
+  /// <summary>
+  /// 取消企业订单
+  /// </summary>
+  CancelEnterpriseOrder=3,
+  /// <summary>
+  /// 预约取消
+  /// </summary>
+  CancelEnterprisePreOrder=4,
+  /// <summary>
+  /// 下达
+  /// </summary>
+  ToLogisticStore =10,
+
+  /// <summary>
+  /// 准备上门提货
+  /// </summary>
+  PreparedTihuo = 11,
+  /// <summary>
+  /// 本地提货安排车辆中
+  /// </summary>
+  BendiTihuoIng = 12,
+  /// <summary>
+  /// 本地已提货
+  /// </summary>
+  BendiTihuoEnd=19,
+  /// <summary>
+  /// 本地卸车
+  /// </summary>
+  BendiXieche = 28,
+  /// <summary>
+  /// 本地送货安排中
+  /// </summary>
+  PreBendisonghuo = 21,
+  /// <summary>
+  /// 本地送货中
+  /// </summary>
+  Bendisonghuoing=22,
+  /// <summary>
+  /// 网点中转车辆安排中
+  /// </summary>
+  WangdianzhongzhuanPrepared =30,
+  /// <summary>
+  /// 中转发车
+  /// </summary>
+  WangdianZhongzhuanIng = 31,
+  /// <summary>
+  /// 中转到车
+  /// </summary>
+  WangdianZhongzhuanDaoche =32,
+  /// <summary>
+  /// 异地卸车
+  /// </summary>
+  Yidixieche =40,
+  /// <summary>
+  /// 异地送货
+  /// </summary>
+  Yidisonghuo =41,
+  /// <summary>
+  /// 外包
+  /// </summary>
+  Waibao =50,
+  /// <summary>
+  /// 物流服务结束
+  /// </summary>
+  Finish =100,
+
+  /// <summary>
+  /// 客户下单到物流系统中
+  /// </summary>
+  CustomerSaveOrder=200,
+  /// <summary>
+  /// 客户取消物流系统中的订单
+  /// </summary>
+  CustomerCancelOrder=201,
+  /// <summary>
+  /// 客户委派通知运输商
+  /// </summary>
+  CustomerPendingLogistic=210,
+  /// <summary>
+  /// 客户取消委派通知承运商
+  /// </summary>
+  CustomerCancelPendingLogistic=211
 }

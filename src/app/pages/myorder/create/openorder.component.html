@@ -6,12 +6,16 @@
 
 
 <!--</perfect-scrollbar>-->
-
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/myorder/list']" >订单列表</a> \ <b>订单录入</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>订单录入</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/list']" >订单列表</a></span> ·
+      <span>订单录入</span>
+    </div>
   </div>
-  <div class="contenttex-r"></div>
+  <div class="contenttex-r-new"></div>
 </div>
 <div style="width:100%;height:auto;color:#666">
   <form [formGroup]="saveform">
@@ -225,7 +229,7 @@
             <div class="margin_t_10">付款方式：<app-bin-customerpaymethod formControlName="PaymentMethod"></app-bin-customerpaymethod></div>
             <div class="margin_t_10"><button ejs-button cssClass="e-info" type="button" disabled="disabled">计算总费用</button></div>
           </div>
-          <div fxFlex="1 6 calc(15em + 20px)" style="margin:0 0 0 10px background:#666"></div>
+          <div fxFlex="1 6 calc(15em + 20px)" style="margin:0 0 0 10px;"></div>
         </div>
       </mat-card-content>
     </mat-card>
@@ -252,10 +256,9 @@
     </mat-card>
   </form>
   <div class="pagebtnbox">
-    <button [disabled]="issave" ejs-button cssClass="mat-green pagebtn" type="button" (click)="SaveOrder()"><i class="fas fa-save"></i>
-    保存</button>
-    <button ejs-button cssClass="e-info pagebtn" type="button" (click)="ResetForm()" class="mat-reject"><i class="fas fa-undo-alt"></i>
-      重置表单</button>
+    <button ejs-button cssClass="mat-green pagebtn" type="button" (click)="SaveOrder()"><i class="fas fa-save"></i>保存&新增</button>
+<!--    <button ejs-button cssClass="e-info pagebtn" type="button" (click)="ResetForm()" class="mat-reject"><i class="fas fa-undo-alt"></i>-->
+<!--      重置表单</button>-->
     <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue"  (click)="openorderAnalysis('50em','50em')"><i class="fas fa-clipboard-list"></i> 报价参考</a>
     <a  ejs-button cssClass="e-info pagebtn"  class="mat-cancel"  [routerLink]="['/biz/myorder/list']" ><i class="fas fa-angle-double-left"></i>返回</a>
     <!--    <button ejs-button cssClass="e-info pagebtn" type="button" (click)="SaveOrder()" ><i class="fas fa-share"></i>保存&下达</button>-->

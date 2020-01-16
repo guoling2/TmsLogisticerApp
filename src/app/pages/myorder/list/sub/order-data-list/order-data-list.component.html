@@ -14,26 +14,25 @@
   <e-columns >
 
     <e-column type='checkbox' width='50'></e-column>
-    <e-column   headerText='物流单号' isPrimaryKey='true' width='165'>
+    <e-column   headerText='物流单号' isPrimaryKey='true' width='220'>
       <ng-template #template let-data>
         <a [routerLink]="['/biz/myorder/detail', data.OrderLogisticDetailId]">{{data.OrderTrackServerId }} </a>
 
 <!--        货签打印按钮-->
         <ejs-tooltip #tooltip position="RightBottom">
-          <button ejs-button cssClass="e-outline mat-auto"   (click)="printordertag(data.OrderLogisticDetailId,500,1120)">
-            <i class="fas fa-print"></i> 货签打印</button>
+          <button ejs-button cssClass="e-outline" class="mat-none" (click)="printordertag(data.OrderLogisticDetailId,500,1120)">
+            <i class="fas fa-print"></i></button>
           <ng-template #content>
             <div style="font-size: 12px;text-indent: each-line;">
               货签打印
             </div>
-
           </ng-template>
         </ejs-tooltip>
 
 <!--         运单修改-->
         <ejs-tooltip #tooltip position="RightBottom">
-          <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/myorder/edit/'+data.OrderLogisticDetailId]" routerLinkActive='active'>
-            <i class="fas fa-print"></i> 运单修改</button>
+          <button ejs-button cssClass="e-outline"  class="mat-none" [routerLink]="['/biz/myorder/edit/'+data.OrderLogisticDetailId]" routerLinkActive='active'>
+            <i class="fas fa-edit"></i></button>
           <ng-template #content>
             <div style="font-size: 12px;text-indent: each-line;">
               运单修改
@@ -45,21 +44,21 @@
 
       </ng-template>
     </e-column>
-    <e-column field='CustomerOrderId' headerText='客户单号'  width=120></e-column>
-    <e-column field='DesctcustomName' headerText='到货客户'  width='200'></e-column>
     <e-column field='OrderDestserviceId' headerText='交货方式'  width=120></e-column>
     <e-column field='IfCargoFromOrigin' headerText='上门提货'  width=110></e-column>
+    <e-column field='CustomerOrderId' headerText='客户单号'  width=120></e-column>
+    <e-column field='DesctcustomName' headerText='到货客户'  width='200'></e-column>
     <e-column field='LogisticOrderStatuedId' headerText='物流状态'  width=120></e-column>
     <e-column field="Originarea"  headerText='始发区域'  textAlign="left"  width=150></e-column>
     <e-column field='DestCity' headerText='到货城市' textAlign="left"  width=150></e-column>
     <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
     <e-column field='TotalCount' headerText='订单件数'  width=120></e-column>
-    <e-column field='TotalWeight' headerText='订单重量'  width=120>
+    <e-column field='TotalWeight' headerText='订单重量(吨)'  width=120>
       <ng-template #template let-data>
         {{data.TotalWeight | tmsweightconvert :'g'}}
       </ng-template>
     </e-column>
-    <e-column field='TotalVolume' headerText='订单体积'  width=130>
+    <e-column field='TotalVolume' headerText='订单体积(方)'  width=130>
       <ng-template #template let-data>
         {{data.TotalVolume | tmsvolumeconvert :'cm'}}
       </ng-template>

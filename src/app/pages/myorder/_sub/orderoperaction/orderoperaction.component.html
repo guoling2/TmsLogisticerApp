@@ -1,7 +1,18 @@
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>运单信息</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/list']" >订单列表</a></span> ·
+      <span>运单信息</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new"></div>
+</div>
 <form [formGroup]="saveform">
   <div fxLayout="row" fxLayoutAlign="space-around end" >
     <div fxFlex="1 6 calc(15em + 20px)">
-      <mat-card class="margin_10">
+      <mat-card class="margin_10-l">
         <mat-card-title class="cardborder">
           <mat-icon fontSet="fontawesome" fontIcon="fa-file-alt" class="fontacommon_18"></mat-icon>
           <b class="mat_tit_b">运单基础信息</b>
@@ -11,7 +22,6 @@
           <span class="margin_dis">客户单号：<ejs-textbox formControlName="CustomerOrderId" placeholder='客户自有单据号码'></ejs-textbox></span>
           <span class="margin_dis"><ejs-checkbox label="上门提货" formControlName="IfCargoFromOrigin"></ejs-checkbox>
           <span style="margin:0 10px;">
-
 <!--               这个不需要了-->
               <ejs-checkbox label="提货返仓" style="display: none" indeterminate="true" formControlName="TihuoReturn"></ejs-checkbox>
 

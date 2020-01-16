@@ -99,7 +99,7 @@ const routes: Routes = [
     component: SendsonghuolistforcircleriptripComponent
   },
   {
-    path: 'transfer', // 网点转运
+    path: 'transfer', // 网点转运&干线运输
     pathMatch: 'full',
     component: SendsonghuolistfortransferComponent
   },

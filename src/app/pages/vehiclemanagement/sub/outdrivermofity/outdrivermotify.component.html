@@ -1,34 +1,34 @@
-<div class="contentbox">
-  <div class="contentit-l">
-      <i class="fas fa-compass"></i>
-      <ng-container [ngSwitch]="Operate">
-
-        <ng-container *ngSwitchCase="1">   <!--新增的-->
-          当前位置：<a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a>  / <b>新增</b>
-        </ng-container>
-
-        <ng-container *ngSwitchCase="2">  <!--修改的-->
-      当前位置：
-          <a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a>  /
-          <a [routerLink]="['/biz/vehicle-management/ourdriver-detail',saverequest.ResourceId]" >{{saverequest.RName}}</a>/
-          修改
-
-        </ng-container>
-
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <ng-container [ngSwitch]="Operate">
+      <ng-container *ngSwitchCase="1">   <!--新增的-->
+        <div class="contennews">
+          <b>新增</b>
+          <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+          <span><a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a></span> ·
+          <span>新增</span>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">  <!--修改的-->
+        <div class="contennews">
+          <b>外租车</b>
+          <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+          <span> <a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a></span> ·
+          <span><a [routerLink]="['/biz/vehicle-management/ourdriver-detail',saverequest.ResourceId]" >{{saverequest.RName}}</a>/
+        修改</span>
+        </div>
       </ng-container>
 
+    </ng-container>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width"
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto"
             appTmssaveconfirm
             comfirmMessage="{{btnmessage}}?"
-            (onSuggest)="save($event)">保存</button>
+            (onSuggest)="save($event)"><i class="fas fa-save"></i> 保存</button>
   </div>
 </div>
-
-
 <div>
-
   <form [formGroup]="saveform">
     <div class="bendbox">
       <div class="serttits"><i class="fas fa-user-alt"></i>司机信息</div>

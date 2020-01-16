@@ -11,7 +11,7 @@
   <form [formGroup]="saveform">
 
 <!--    <app-shipmentplan-insert-headitem [saveform]="saveform" [tasktype]="inputtasktype"></app-shipmentplan-insert-headitem>-->
-    <app-shipmentplan-out-insert-headitem [saveform]="saveform" [tasktype]="inputtasktype"></app-shipmentplan-out-insert-headitem>
+    <app-shipmentplan-out-insert-headitem #logistichead [saveform]="saveform" [tasktype]="inputtasktype"></app-shipmentplan-out-insert-headitem>
     <app-shipment-logisticprice [saveform]="saveform"  usercheckId="TrincId"></app-shipment-logisticprice>
 
   </form>

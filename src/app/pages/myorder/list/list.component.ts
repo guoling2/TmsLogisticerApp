@@ -6,7 +6,7 @@ import {Basereportservice} from '../../../services/base/basereportservice';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
 import {EmitService} from '../../../help/emit-service';
 import {TmsResponseModle, TmsresponseStatusCode} from '../../../models/tms-response.module';
-import {MyShpipmentOrderService} from '../../../services/logistic/shipment/myshpipmentorderService';
+import {MyshpipmentorderService} from '../../../services/logistic/shipment/myshpipmentorder.service';
 import {DialogservicesService} from '../../../help/dialogservices.service';
 import {OrderitemtagprintComponent} from '../_sub/orderitemtagprint/orderitemtagprint.component';
 import {MatTabChangeEvent, MatTabGroup} from '@angular/material/tabs';
@@ -26,7 +26,7 @@ export class MyOrderListComponent implements OnInit {
   constructor(private factoryResolver: ComponentFactoryResolver,
               private renderer2: Renderer2 ,
               private  dialogx: DialogservicesService,
-              private  myShpipmentOrderService: MyShpipmentOrderService,
+              private  myShpipmentOrderService: MyshpipmentorderService,
               public emitService: EmitService,
               private fb: FormBuilder,
               public dialog: MatDialog, private service: Basereportservice ) {
@@ -57,6 +57,7 @@ export class MyOrderListComponent implements OnInit {
         PrimaryDestservicedType: ''});
     this.gridheight = Commonsetting.GridHeight2();
 
+    this.searching();
   //  this.currenttab.selectedIndex = 1;
 
   }

@@ -22,6 +22,9 @@ export class EditComponent implements OnInit {
 
   orderLogisticDetailId: string; // 系统单号
 
+
+  submitstatued = false; // 提交状态
+
   constructor( private router: Router,
                private route: ActivatedRoute,
                private emitService: EmitService,
@@ -45,6 +48,7 @@ export class EditComponent implements OnInit {
   }
   SaveOrder() {
 
+
     console.log(this.shipmentOrderRequestModel);
 
     const checkresult = this.Orderoperactionview.CheckSaveData();
@@ -56,10 +60,12 @@ export class EditComponent implements OnInit {
 
   //  alert(this.shipmentOrderRequestModel.OrderLogisticDetailId);
 
+    this.submitstatued = true;
     this.shipmentOrderService.Edit(this.orderLogisticDetailId, this.shipmentOrderRequestModel).subscribe(a => {
       EmitAlertMessageHelo.ShowMessage( this.emitService, a, MessageShowType.Toast);
       if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
 
+        this.submitstatued = false;
         this.ReLoad();
 
       }

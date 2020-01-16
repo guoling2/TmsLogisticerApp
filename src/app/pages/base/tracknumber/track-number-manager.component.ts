@@ -25,7 +25,7 @@ export class TrackNumberManagerComponent implements OnInit {
   searchp: FormGroup;
 
   constructor(public emitService: EmitService, public cTracknumberservice: CTracknumberservice, private fb: FormBuilder, private dialog: MatDialog ) {
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
     this.searchp = this.fb.group(
       { serverTrackId: '', isued: '', bindlogistic: ''});
 

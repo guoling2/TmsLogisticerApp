@@ -470,6 +470,12 @@ export class NavigationModel {
           icon: 'storage',
           children: [
             {
+              id: 'jiagehetong',
+              title: '价格合同',
+              type: 'item',
+              url: '/biz/logisticprice-management/price-value-list'
+            },
+            {
               id: 'pagination',
               title: '物流网点',
               type: 'item',

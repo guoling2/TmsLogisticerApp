@@ -1,12 +1,17 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a>  / <b>详细信息</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>详细信息</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a></span> ·
+      <span>详细信息</span>
+    </div>
   </div>
-  <div class="contenttex-r">
+  <div class="contenttex-r-new">
     <ng-container *ngIf="outsideShipmentGroup?.IsSend==false">
-      <button ejs-button cssClass="e-info mat-width" class="mat-reject"
-              appTmssaveconfirm  comfirmMessage="确认删除派车单吗?"  (onSuggest)="Del($event)"  [extendata]="outsideShipmentGroup.ShipmentGroupId">删单</button>
-      <button ejs-button cssClass="e-info mat-width" class="mat-green"  (click)="Send(outsideShipmentGroup.ShipmentGroupId)">发运</button>
+      <button ejs-button cssClass="e-outline mat-auto"
+              appTmssaveconfirm  comfirmMessage="确认删除派车单吗?"  (onSuggest)="Del($event)"  [extendata]="outsideShipmentGroup.ShipmentGroupId"><i class="fas fa-trash"></i> 删单</button>
+      <button ejs-button cssClass="e-outline mat-auto"  (click)="Send(outsideShipmentGroup.ShipmentGroupId)"><i class="fas fa-paper-plane"></i> 发运</button>
       <!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
     </ng-container>
   </div>

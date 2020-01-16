@@ -42,7 +42,7 @@ export class ChoselogistictrincComponent implements OnInit {
   }
   search(pageindex: number) {
 
-    this.form.patchValue({pageindex: pageindex + 1});
+    this.form.patchValue({pageindex});
 
 
     this.basereportservice.SearchReport(Basereportconfig.Report_carrierslist, this.form.getRawValue()).subscribe(searchresult => {

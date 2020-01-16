@@ -14,7 +14,7 @@
       <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId" displaylabel="配载网点" style="width:100%;font-size:14px!important" ></app-biz-mylogistiscstore2>
     </div>
     <div fxFlex="35" style="padding-bottom:10px">
-      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+      <button ejs-button cssClass="e-info mat-width" (click)="searching(null)">查询</button>
 
       <ng-container *ngIf="GroupSubItemType!='localtihuo'">
         <button ejs-button cssClass="e-info mat-width" class="mat-green"  style="width:auto!important;" (click)="opentihuo()" >新增派车单</button>
@@ -44,13 +44,16 @@
 
 <ejs-grid #grid
           height="{{gridheight}}"
-          [pageSettings]='pageSettings'
           (dataStateChange)="dataStateChange($event)"
-          [allowExcelExport]='true'  allowSorting='false'
-          [allowSelection]="true"
-          [enableHover]="false"
-          [toolbar]="toolbar"
-          allowPaging='true'  class="tabbox-new">
+          [allowTextWrap]="false"
+          [allowExcelExport]='true'
+          [allowSorting]='true'
+          [pageSettings]="pageSettings"
+          [sortSettings]='initialSort'
+          [allowResizing]= 'true'
+          allowReordering="true"
+          allowPaging='true'
+          class="tabbox-new">
   <e-columns >
 
 
@@ -61,12 +64,17 @@
     <e-column field='SystemOrderId'  headerText='订单编号'  [visible]='false'  width='165'></e-column>
 
 
-    <e-column headerText='物流单号'  width='165'>
+    <e-column headerText='物流单号'  width='185'>
       <ng-template #template let-data>
-        <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.OrderTrackServerId}}</a>
+        <span>
+           <span class="fontblue">{{data.OrderTrackServerId }} </span>
+           <button ejs-button class="tabbtn e-nones" appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId"><i class="fas fa-file"></i></button>
+        </span>
+<!--        <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.OrderTrackServerId}}</a>-->
       </ng-template>
     </e-column>
 
+    <e-column field='OrderCommand'  headerText='任务类型'  width='100'></e-column>
     <!--        <e-column field='ShipmentGroupId'  headerText='派车单号'  width='165'></e-column>-->
 
 
@@ -87,17 +95,17 @@
     <e-column field='DestCity'  headerText='到货城市'  width='165'></e-column>
 
 
-    <e-column field='EndStoreName'  headerText='到货网点'  width='165'></e-column>
+    <e-column field='EndStoreName'  headerText='转运网点'  width='165'></e-column>
 
-    <e-column field='StoreOrderCount'  headerText='运单件数'  width='165'></e-column>
-    <e-column field='AlreadySendOrderCount'  headerText='已发运(件)'  width='165'></e-column>
+    <e-column field='StoreOrderCount'  headerText='运单件数'  width='100'></e-column>
+    <e-column field='AlreadySendOrderCount'  headerText='已发运(件)'  width='100'></e-column>
 
-    <e-column field='StoreOrderZhWeight'  headerText='重货(吨)'  width='165'>
+    <e-column field='StoreOrderZhWeight'  headerText='重货(吨)'  width='100'>
       <ng-template #template let-data>
         {{data.StoreOrderZhWeight | tmsweightconvert :'g'}}
       </ng-template>
     </e-column>
-    <e-column field='StoreOrderPhVolume'  headerText='抛货(方)'  width='165'>
+    <e-column field='StoreOrderPhVolume'  headerText='抛货(方)'  width='100'>
       <ng-template #template let-data>
         {{data.StoreOrderPhVolume | tmsvolumeconvert :'cm'}}
       </ng-template>

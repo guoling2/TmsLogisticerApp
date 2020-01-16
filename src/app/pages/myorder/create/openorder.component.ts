@@ -15,7 +15,7 @@ import {Logistcistorefiled} from '../../../modeldata/logistcistorefiled';
 import {CustomePaymentMethod} from '../../../modeldata/customePaymentMethod';
 import {CargoReceiptPaperShowType} from '../../../modeldata/cargoReceiptPaperShowType';
 import {EmitService} from '../../../help/emit-service';
-import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
+import {AlertMessageType, EmitAlertMessage, EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-message';
 import {Formextension} from '../../../help/formextension';
 import {OpenOrdervalidationMessages} from '../openordervalidation';
 import {TmsresponseStatusCode} from '../../../models/tms-response.module';
@@ -337,8 +337,12 @@ export class OpenMyorderComponent implements OnInit {
         }
         try {
           this.shipmentOrderService.CreateShipmentMyOrder(JSON.stringify(this.saveform.value)).subscribe(a => {
-            this.emitService.eventEmit.emit(
-              new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+
+            EmitAlertMessageHelo.ShowMessage( this.emitService, a, MessageShowType.Toast);
+            // this.emitService.eventEmit.emit(
+            //   new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+
+
             if ( a.StatusCode === TmsresponseStatusCode.Succeed() ) {
 
               window.location.reload();

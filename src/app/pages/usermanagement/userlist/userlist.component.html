@@ -1,9 +1,14 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>企业员工列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>企业员工</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>用户管理</span> ·
+      <span>企业员工</span>
+    </div>
   </div>
-  <div class="contenttex-r"></div>
+  <div class="contenttex-r-new">
+  </div>
 </div>
 <div *ngIf="adminuser" class="adminuser">
   <div class="admintit">系统拥有者：</div>
@@ -19,31 +24,37 @@
     <a class="altusera" [routerLink]="['/biz/user-management/users/edit', adminuser.name]">编辑用户</a>
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-  <input matInput formControlName="worknumber" />
-  <span  matPrefix style="color: #888">工号：&nbsp;</span>
-</mat-form-field>
-  <mat-form-field class="col-md-3">
-    <input matInput formControlName="realname" />
-    <span  matPrefix style="color: #888">姓名：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input placeholder="工号" matInput formControlName="worknumber" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input placeholder="姓名" matInput formControlName="realname" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <div fxFlex="24">
+    </div>
+  </div>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='false'  class="contlistbox">
+          allowPaging='false'  class="tabbox-new">
   <e-columns >
     <e-column field='UserId' [visible]='false' headerText='系统用户编号' width='130' [isPrimaryKey]='true'></e-column>
     <e-column  headerText='登录账号'  width=100>
       <ng-template #template let-data>
         <div>
           <div class="userimgs">
-
             <a [routerLink]="['/biz/user-management/users/edit', data.UserId]">
               <img height="35" width="35" src="{{data.UserHeadUrl}}?imageMogr2/thumbnail/50x50/format/webp/blur/1x0/quality/75|imageslim" alt="用户头像" />
                <span style="margin-left: 5px;">{{data.WorkNumber}}</span>

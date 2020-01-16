@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
 import {ShipplanGroupInsideService} from '../../../../services/shiipplangroup/shipplan-group-inside.service';
 import {ShipplanService} from '../../../../services/logistic/shipment/shipplan.service';
 import {DialogservicesService} from '../../../../help/dialogservices.service';
-import {MyShpipmentOrderService} from '../../../../services/logistic/shipment/myshpipmentorderService';
+import {MyshpipmentorderService} from '../../../../services/logistic/shipment/myshpipmentorder.service';
 import {EmitService} from '../../../../help/emit-service';
 import {MatDialog} from '@angular/material/dialog';
 import {Basereportservice} from '../../../../services/base/basereportservice';

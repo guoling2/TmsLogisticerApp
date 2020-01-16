@@ -1,5 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {LogisticItemComponentService} from '../../../../../services/shiipplangroup/shipplan-item-service.service';
@@ -21,9 +30,9 @@ import {VehicleContainerModel} from '../../../../../models/vehiclemanagement/con
     { provide: NG_VALIDATORS, multi: true, useExisting: ShipOutHeaditemComponent}
   ],
 })
-export class ShipOutHeaditemComponent implements OnInit  {
+export class ShipOutHeaditemComponent implements OnInit {
 
-  private  logsiticinserthead: FormGroup;
+  private logsiticinserthead: FormGroup;
 
   @Input()
   public saveform: FormGroup;
@@ -32,16 +41,18 @@ export class ShipOutHeaditemComponent implements OnInit  {
   public tasktype: string;
 
 
-  public vehicleContainerfields: Object = { text: 'Name', value: 'Id' };
+  public vehicleContainerfields: object = {text: 'Name', value: 'Id'};
+
   public vehicleContainerData: VehicleContainerModel[];
 
   constructor(
-               private  vehicleContainerService: VehicleContainerService,
-               private itemServiceService: LogisticItemComponentService,
-               private fb: FormBuilder,
-               private dialog: MatDialog,
-               public emitService: EmitService,
-               private  dialogx: DialogservicesService) { }
+    private  vehicleContainerService: VehicleContainerService,
+    private itemServiceService: LogisticItemComponentService,
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    public emitService: EmitService,
+    private  dialogx: DialogservicesService) {
+  }
 
   ngOnInit() {
 
@@ -55,7 +66,8 @@ export class ShipOutHeaditemComponent implements OnInit  {
     this.vehicleContainerService.Search({
       pageindex: 1,
       pagesize: 100,
-      Name: ''}).subscribe(result => {
+      Name: ''
+    }).subscribe(result => {
 
       this.vehicleContainerData = result.QueryResult;
     });
@@ -64,13 +76,13 @@ export class ShipOutHeaditemComponent implements OnInit  {
     switch (this.tasktype) {
 
       case 'out-tihuo':
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '外包提货', disabled: false}));
+        this.saveform.addControl('TaskTypeDesc', new FormControl({value: '外包提货', disabled: false}));
         break;
       case 'out-send':
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '外包转运', disabled: false}));
+        this.saveform.addControl('TaskTypeDesc', new FormControl({value: '外包转运', disabled: false}));
         break;
       default:
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '未知', disabled: false}));
+        this.saveform.addControl('TaskTypeDesc', new FormControl({value: '未知', disabled: false}));
         break;
     }
 
@@ -105,8 +117,8 @@ export class ShipOutHeaditemComponent implements OnInit  {
         return;
       }
 
-      this.saveform.patchValue({SendOrderCount:  this.itemServiceService.SendOrderCount});
-      this.saveform.patchValue({SendOrderWeight:  this.itemServiceService.SendOrderWeight});
+      this.saveform.patchValue({SendOrderCount: this.itemServiceService.SendOrderCount});
+      this.saveform.patchValue({SendOrderWeight: this.itemServiceService.SendOrderWeight});
       this.saveform.patchValue({SendOrderVol: this.itemServiceService.SendOrderVol});
 
 
@@ -116,22 +128,21 @@ export class ShipOutHeaditemComponent implements OnInit  {
   /**
    * 车辆选择
    */
-  selectvehicel($event: MouseEvent, height: string, width: string) {
+  selectvehicel($event: MouseEvent, heightx: string, widthx: string) {
 
     if ($event.clientX === 0) {
       return;
     }
     const dialogRef = this.dialog.open(ChoselogistictrincComponent, {
-      height: height,
-      width: width,
+      height: heightx,
+      width: widthx,
       disableClose: false,
       data: ''
     });
-   // (value: LogisticStore[])
+    // (value: LogisticStore[])
     dialogRef.afterClosed().subscribe((result: CarriersTransportationpoolDetailModel) => {
 
       if (result != null) {
-
 
 
         this.saveform.patchValue({TrincId: result.ResourceId});
@@ -144,9 +155,8 @@ export class ShipOutHeaditemComponent implements OnInit  {
 
         console.log('CarriersTransportationpoolDetailModel');
         console.log(result);
-       // this.saveform.patchValue('CarringToolId', result);
+        // this.saveform.patchValue('CarringToolId', result);
       }
-
 
 
     });
@@ -154,4 +164,11 @@ export class ShipOutHeaditemComponent implements OnInit  {
 
   }
 
+  public Update() {
+
+    console.log('headitemerrors');
+    console.log(this.saveform.errors);
+    this.saveform.markAllAsTouched();
+
+  }
 }

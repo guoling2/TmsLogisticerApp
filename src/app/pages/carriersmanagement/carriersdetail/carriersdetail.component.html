@@ -1,17 +1,22 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/carriers-management/carriers']" >运输商资料列表</a>  / <b>{{CarriersTransportationpoolDetail?.RName}}</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>{{CarriersTransportationpoolDetail?.RName}}</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/carriers-management/carriers']" >运输商资料列表</a></span> ·
+      <span>{{CarriersTransportationpoolDetail?.RName}}</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width mat-reject"
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto"
             appTmssaveconfirm
             comfirmMessage="是否删除?"
-            (onSuggest)="del($event)">删除</button>
-    <button ejs-button cssClass="e-info mat-width"
+            (onSuggest)="del($event)"><i class="fas fa-trash"></i> 删除</button>
+    <button ejs-button cssClass="e-outline mat-auto"
             appTmssaveconfirm
             comfirmMessage="是否修改保存数据?"
             (onSuggest)="update($event)"
-    >修改/保存</button>
+    ><i class="fas fa-save"></i> 修改/保存</button>
   </div>
 </div>
 <mat-card class="userbox" *ngIf="CarriersTransportationpoolDetail">

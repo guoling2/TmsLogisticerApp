@@ -1,10 +1,17 @@
 <div class="contentbox-new">
   <div class="contentit-l-new">
     <div class="contennews">
-      <b>新增</b>
+      <b>派车单</b>
       <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
-      <span><a [routerLink]="['/biz/shipment/benditihuoclist']" >小车提货</a></span> ·
-      <span>新增</span>
+      <ng-container  [ngSwitch]="inputtasktype">
+
+        <ng-container *ngSwitchCase="'benditihuoclist'"><span ><a [routerLink]="['/biz/shipment/benditihuoclist']" >小车提货</a></span> ·</ng-container>
+        <ng-container *ngSwitchCase="'songhuo'"><span><a [routerLink]="['/biz/shipment/songhuo']" >同城配送</a></span> ·</ng-container>
+        <ng-container *ngSwitchCase="'transfer'"><span><a [routerLink]="['/biz/shipment/transfer']" >干线运输</a></span> ·</ng-container>
+
+      </ng-container>
+
+      <span>派车新增</span>
     </div>
   </div>
   <div class="contenttex-r-new">

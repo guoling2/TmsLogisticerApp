@@ -20,7 +20,7 @@ export class CarrierslistComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { RName: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
   Search () {
 

@@ -1,11 +1,13 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：
-      <a [routerLink]="['/biz/myorder/list']" >订单列表</a>/运单信息/<b>{{ordermodel.TrackOrderNumber}}</b>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>运单信息 - {{ordermodel.TrackOrderNumber}}</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/list']" >订单列表</a></span> ·
+      <span>运单信息</span>
     </div>
   </div>
-  <div class="contenttex-r">
-  </div>
+  <div class="contenttex-r-new"></div>
 </div>
 <mat-card class="orderbox">
   <mat-card-content>
@@ -88,7 +90,7 @@
           <div fxFlex="100">
             <div class="orderinfo">
               <div class="infotext margin_t_10" *ngIf="ordermodel!=null">
-                <ng-container *ngIf="ordermodel.ShipmentOrderItems.length>1; then truthyTemplate else falsyTemplate"></ng-container>
+                <ng-container *ngIf="ordermodel.ShipmentOrderItems!=null; then truthyTemplate else falsyTemplate"></ng-container>
 
                 <ng-template #truthyTemplate >
 
@@ -256,30 +258,35 @@
               </div>
           </div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-          <div fxFlex="15">
-            经办人：<ejs-textbox  placeholder="经办人" ngModel="{{ordermodel.AcceptUser}}" readonly></ejs-textbox>
-            经办时间：<ejs-textbox  placeholder="经办时间" ngModel="{{ordermodel.AcceptDateTime}}" readonly></ejs-textbox>
+        <div class="userboxnew">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="49.3">
+              经办人：<ejs-textbox  placeholder="经办人" ngModel="{{ordermodel.AcceptUser}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="49.3">
+              经办时间：<ejs-textbox  placeholder="经办时间" ngModel="{{ordermodel.AcceptDateTime}}" readonly></ejs-textbox>
+            </div>
           </div>
-          <div fxFlex="15">
-            <mat-checkbox  [(ngModel)]="ordermodel.IfCargoFromOrigin" disabled="true">上门提货</mat-checkbox>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="24">
+              <mat-checkbox class="checkmargin" [(ngModel)]="ordermodel.IfCargoFromOrigin" disabled="true">上门提货</mat-checkbox>
+              <mat-checkbox class="checkmargin"  [(ngModel)]="ordermodel.IfDesctPickUpMySelf" disabled="true">送货上门</mat-checkbox>
+            </div>
+            <div fxFlex="24">
+              送货方式：<ejs-textbox  placeholder="发站" ngModel="{{ordermodel.OrderDestserviceDesc}}" readonly></ejs-textbox>
+            </div>
 
-            <mat-checkbox  [(ngModel)]="ordermodel.IfDesctPickUpMySelf" disabled="true">送货上门</mat-checkbox>
-
-
+            <div fxFlex="24">
+              回单（份）：<ejs-textbox  placeholder="回单" ngModel="{{ordermodel.CargoReceiptPaperCount}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="24">
+              回单要求：<ejs-textbox  placeholder="回单要求" ngModel="{{ordermodel.CargoReceiptPaperShowType}}" readonly></ejs-textbox>
+            </div>
           </div>
-          <div fxFlex="15">
-            送货方式：<ejs-textbox  placeholder="发站" ngModel="{{ordermodel.OrderDestserviceDesc}}" readonly></ejs-textbox>
-          </div>
-
-          <div fxFlex="15">
-            回单（份）：<ejs-textbox  placeholder="回单" ngModel="{{ordermodel.CargoReceiptPaperCount}}" readonly></ejs-textbox>
-          </div>
-          <div fxFlex="15">
-            回单要求：<ejs-textbox  placeholder="回单要求" ngModel="{{ordermodel.CargoReceiptPaperShowType}}" readonly></ejs-textbox>
-          </div>
-          <div fxFlex="15">
-            备注：<ejs-textbox  placeholder="备注" ngModel="{{ordermodel.TransportMark}}" readonly></ejs-textbox>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="100">
+              备注：<ejs-textbox  placeholder="备注" ngModel="{{ordermodel.TransportMark}}" readonly></ejs-textbox>
+            </div>
           </div>
         </div>
 <!--        <mat-card class="userbox">-->
@@ -341,10 +348,18 @@
 <!--          </mat-card-content>-->
 <!--        </mat-card>-->
         <div class="btnbox">
-          <button ejs-button cssClass="mat-reject pagebtn" type="button"  [routerLink]="['/biz/myorder/edit/'+ordermodel.OrderLogisticDetailId]" routerLinkActive='active' ><i class="fas fa-print"></i>编辑修改</button>
           <button ejs-button cssClass="mat-reject pagebtn" type="button"
-                  appTmssaveconfirm  comfirmMessage="确认删除运单吗，你可以继续使用这个物流单号?" (onSuggest)="delorder($event)" ><i class="fas fa-print"></i>运单删除</button>
-<!--          <button ejs-button cssClass="e-info pagebtn" type="button"><i class="fas fa-print"></i>打印</button>-->
+                  appTmssaveconfirm  comfirmMessage="确认删除运单吗?" (onSuggest)="delorder($event)" ><i class="fas fa-trash"></i> 运单删除</button>
+          <button ejs-button cssClass="mat-green pagebtn" type="button"  [routerLink]="['/biz/myorder/edit/'+ordermodel.OrderLogisticDetailId]" routerLinkActive='active' ><i class="fas fa-edit"></i> 编辑修改</button>
+
+          <ng-container *ngIf="ordermodel.LogisticOrderStatuedId==logisticorderstatued.ToLogisticStore">
+            <button ejs-button cssClass="mat-reject pagebtn" type="button"
+                    appTmssaveconfirm  comfirmMessage="确认反下达吗" (onSuggest)="untoorder($event)" ><i class="fas fa-trash"></i> 反下达</button>
+          </ng-container>
+
+
+
+          <!--          <button ejs-button cssClass="e-info pagebtn" type="button"><i class="fas fa-print"></i>打印</button>-->
 <!--          <button ejs-button cssClass="mat-reject pagebtn" type="button"><i class="fas fa-shield-alt"></i>投保</button>-->
 <!--          <a  ejs-button cssClass="e-info pagebtn" ><i class="fas fa-envelope"></i> 短信通知</a>-->
 <!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-plus-square"></i> 新增配载</a>-->

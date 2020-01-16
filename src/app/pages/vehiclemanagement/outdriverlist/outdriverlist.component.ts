@@ -21,7 +21,7 @@ export class OutdriverlistComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { Trnum: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
   Search () {
 

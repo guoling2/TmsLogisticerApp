@@ -1,35 +1,32 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>配载发车/转运外包</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>转运外包</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>配载发车</span> ·
+      <span>转运外包</span>
+    </div>
   </div>
-  <div class="contenttex-r"><button ejs-button cssClass="e-info mat-width"  style="width:auto!important;"
-                                    [disabled]="grid.getSelectedRecords().length<=0"
-                                    (click)="opentihuo()" >新增派车单</button></div>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto" [disabled]="grid.getSelectedRecords().length<=0" (click)="opentihuo()" ><i class="fas fa-plus"></i> 新增派车单</button>
+   </div>
 </div>
-<div class="bendbox">
-  <form class="listfrom" [formGroup]="searchp" >
-    <div fxLayout="row" fxLayoutAlign="space-between top" class="margin_t_101" style="margin-top:-10px!important">
+  <form class="listfrom-new2" [formGroup]="searchp" >
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
       <div fxFlex="20" style="padding-top:3px">
-        <mat-form-field class="col-md-3" style="width:100%">
-          <label>
-            <input matInput  formControlName="OrderTrackServerId" />
-          </label>
-          <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+        <mat-form-field style="width:100%;font-size:14px!important">
+          <input matInput placeholder="物流单号"  formControlName="OrderTrackServerId" />
         </mat-form-field>
       </div>
       <div fxFlex="20" style="padding-top:3px">
-        <mat-form-field class="col-md-3" style="width:100%">
-          <label>
-            <input matInput  formControlName="DestCity" />
-          </label>
-          <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
+        <mat-form-field style="width:100%;font-size:14px!important">
+            <input matInput placeholder="到货城市" formControlName="DestCity" />
         </mat-form-field>
       </div>
       <div fxFlex="20">
-        <app-biz-mylogistiscstore2 [saveform]="searchp"   SettingFormControlName="ActionStoreId" mat-form-field-class="col-md-2"  ></app-biz-mylogistiscstore2>
+        <app-biz-mylogistiscstore2 [saveform]="searchp"   SettingFormControlName="ActionStoreId" style="width:100%;font-size:14px!important" ></app-biz-mylogistiscstore2>
       </div>
-      <div fxFlex="35" style="padding-top:16px">
+      <div fxFlex="35" style="padding-bottom:10px">
         <ejs-tooltip #tooltip content='如果需要安排不同的车辆提货请在提货外包或者小车提货中进行操作'  position='TopCenter'>
           <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="margin-right:15px">查询</button>
         </ejs-tooltip>
@@ -46,7 +43,7 @@
             [allowSelection]="true"
             [enableHover]="false"
             [toolbar]="toolbar"
-            allowPaging='true'  class="contlistbox">
+            allowPaging='true'  class="tabbox-new">
     <e-columns >
 
 
@@ -59,7 +56,7 @@
 
       <e-column headerText='物流单号'  width='165'>
         <ng-template #template let-data>
-          <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.OrderTrackServerId}}</a>
+          <a style="cursor: pointer" appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.OrderTrackServerId}}</a>
         </ng-template>
       </e-column>
 
@@ -67,20 +64,20 @@
 
       <e-column field='Originarea'  headerText='发货区域'  width='165'></e-column>
       <e-column field='DestCity'  headerText='到货城市'  width='165'></e-column>
-      <e-column field='TotalCount'  headerText='总件数'  width='165'></e-column>
+      <e-column field='StoreOrderCount'  headerText='货站件数'  width='165'></e-column>
 
 
-      <e-column  headerText='体积(方)'  width='165'>
-        <ng-template #template let-data>
-          {{data.TotalVolume | tmsvolumeconvert :'cm'}}
-        </ng-template>
+      <e-column  field='StoreOrderPhVolume'  headerText='体积(方)'  width='165'>
+<!--        <ng-template #template let-data>-->
+<!--          {{data.StoreOrderPhVolume | tmsvolumeconvert :'cm'}}-->
+<!--        </ng-template>-->
       </e-column>
 
 
-      <e-column  headerText='重量(吨)'  width='165'>
-        <ng-template #template let-data>
-          {{data.TotalWeight | tmsweightconvert :'g'}}
-        </ng-template>
+      <e-column field='StoreOrderZhWeight'   headerText='重量(吨)'  width='165'>
+<!--        <ng-template #template let-data>-->
+<!--          {{data.StoreOrderZhWeight | tmsweightconvert :'g'}}-->
+<!--        </ng-template>-->
       </e-column>
 
       <e-column field='Origincustomname'  headerText='发货客户'  width='165'></e-column>
@@ -131,5 +128,4 @@
     </e-columns>
   </ejs-grid>
 
-</div>
 

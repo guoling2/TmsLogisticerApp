@@ -1,14 +1,18 @@
-h1 {font-size:20px;border-bottom:1px #ccc solid;padding:10px 0;margin-top:0}
+.boxtit h1 {font-size:18px;border-bottom:1px #ccc solid;padding:10px 0;margin-top:0}
+.boxtit {overflow: auto;height:auto;margin-bottom:10px}
 .customar .mat-form-field {width:100%!important;}
-.searchtit {border:1px #ccc solid;border-bottom:none;width:97.1%;padding:10px 10px;margin-top:20px}
+.searchtit {border-bottom:1px #ccc solid;border-bottom:none;width:100%;margin-top:20px;font-size:16px;text-align:left}
 .marginT {margin-top:15px}
 .marginL {margin-right:20px}
 table {width: 100%;box-shadow: none!important;border:1px #ccc solid}
+table th {width:auto;padding:0 5px!important;font-size:12px}
+.searchtable td {font-size:12px}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {padding-left:10px!important;}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {padding-left:5px!important;}
 tr.example-detail-row {height: 0;}
 tr.example-element-row:not(.example-expanded-row):hover {background: #777;}
 tr.example-element-row:not(.example-expanded-row):active {background: #efefef;}
 .example-element-row td {border-bottom-width: 0;}
-
 .example-element-detail {
   overflow: hidden;
   display: flex;

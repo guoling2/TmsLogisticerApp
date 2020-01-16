@@ -52,7 +52,7 @@ export class SendwaibaolistComponent implements OnInit {
     // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
       { OrderTrackServerId: '', PlanStatuedId: '', ActionStoreId: '', DestCity: ''});
-    this.gridheight = Commonsetting.GridHeight2();
+    this.gridheight = Commonsetting.GridHeight0();
 
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };
   }

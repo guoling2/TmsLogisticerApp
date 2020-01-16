@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {ShipmentOrderService} from '../../../services/logistic/order/shipment-order.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EnterpriseOrderDetailModel} from '../../../models/CustomerOrder/enterprise-order-detail-model';
-import {ShipmentOrderComplexModel} from '../../../models/shipment/shipment-order-complex-model';
+import {LogisticOrderStatued, ShipmentOrderComplexModel} from '../../../models/shipment/shipment-order-complex-model';
 import {TmsresponseStatusCode} from '../../../models/tms-response.module';
 import {EmitService} from '../../../help/emit-service';
-import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
+import {AlertMessageType, EmitAlertMessage, EmitAlertMessageHelo, MessageShowType} from '../../../help/emit-alert-message';
+import {MyshpipmentorderService} from '../../../services/logistic/shipment/myshpipmentorder.service';
 
 @Component({
   selector: 'app-detail',
@@ -20,19 +21,26 @@ export class DetailComponent implements OnInit {
 
   displayedColumns = ['Package', 'PackingType', 'PackageCount', 'PackageWeightKg', 'PackageVolM' ];
 
-  constructor(private shipmentOrderService: ShipmentOrderService,
+  public logisticorderstatued = LogisticOrderStatued;
+  constructor(
+              private myshpipmentorderService: MyshpipmentorderService,
+              private shipmentOrderService: ShipmentOrderService,
               private router: Router,
               private route: ActivatedRoute,
               private emitService: EmitService) { }
 
   ngOnInit() {
 
-    const orderId = this.route.snapshot.paramMap.get('id');
-
-    this.shipmentOrderService.ComplexModel(orderId).subscribe(a => {this.ordermodel = a; });
+    this.reload();
 
   }
 
+
+  reload() {
+    const orderId = this.route.snapshot.paramMap.get('id');
+
+    this.shipmentOrderService.ComplexModel(orderId).subscribe(a => {this.ordermodel = a; });
+  }
   delorder($event: boolean) {
     if ($event) {
 
@@ -46,6 +54,19 @@ export class DetailComponent implements OnInit {
             new EmitAlertMessage(AlertMessageType.Error, '系统信息', a.Error.ErrorMsg, MessageShowType.Toast));
 
         }
+      });
+    }
+  }
+
+  /**
+   * 反下达订单
+   */
+  untoorder($event: boolean) {
+    if ($event) {
+
+      this.myshpipmentorderService.CancelMyShipment(this.ordermodel.OrderLogisticDetailId).subscribe(a => {
+        EmitAlertMessageHelo.ShowMessage( this.emitService, a, MessageShowType.Toast);
+        this.reload();
       });
     }
   }

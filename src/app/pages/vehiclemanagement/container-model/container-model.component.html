@@ -1,32 +1,39 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>车辆类型</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>车辆类型</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>基础资料</span> ·
+      <span>车辆类型</span>
+    </div>
+  </div>
+  <div class="contenttex-r-new">
   </div>
 </div>
-
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="Name" />
-    </label>
-    <span  matPrefix style="color: #888">车型名称：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="Code" />
-    </label>
-    <span  matPrefix style="color: #888">编码：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="车型名称" formControlName="Name" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="编码" formControlName="Code" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+    <div fxFlex="24"></div>
+  </div>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
     <e-column field='Name'  headerText='名称' isPrimaryKey='true' width='165'></e-column>
     <e-column field='Code' headerText='编号'  width=120></e-column>

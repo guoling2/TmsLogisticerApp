@@ -1,41 +1,48 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>物流单号管理</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>物流单号管理</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>基础资料</span> ·
+      <span>物流单号管理</span>
+    </div>
   </div>
-  <div class="contenttex-r">
+  <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
-<!--    <button ejs-button cssClass="e-info mat-width" (click)="opengenerctrackforms()" class="mat-green">单号生成</button>-->
+    <!--    <button ejs-button cssClass="e-info mat-width" (click)="opengenerctrackforms()" class="mat-green">单号生成</button>-->
     <button ejs-button cssClass="e-outline mat-auto" (click)="deleteorder()"><i class="fas fa-ban"></i> 单号作废</button>
     <!--<button ejs-button cssClass="e-info" (click)="acceptorder(true)"  hidden="hidden">接单&安排司机</button>-->
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput  formControlName="serverTrackId"/>
-    <span  matPrefix style="color: #888">物流跟踪号：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <input matInput  formControlName="bindlogistic"/>
-    <span  matPrefix style="color: #888">绑定运输商：&nbsp;</span>
-  </mat-form-field>
-  <mat-form-field class="col-md-3">
-    <select matNativeControl  formControlName="isued">
-      <option label="--状态选择 --"></option>
-      <option value="0">没使用</option>
-      <option value="1">已使用</option>
-    </select>
-    <span  matPrefix style="color: #888">是否使用：&nbsp;</span>
-  </mat-form-field>
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="物流跟踪号" formControlName="serverTrackId"/>
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input matInput placeholder="绑定运输商" formControlName="bindlogistic"/>
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <mat-select matNativeControl placeholder="是否使用" formControlName="isued">
+          <mat-option label="--状态选择 --"></mat-option>
+          <mat-option value="0">没使用</mat-option>
+          <mat-option value="1">已使用</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex="24" style="padding-bottom:5px"><button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button></div>
+  </div>
 </form>
 <ejs-grid #grid  id='Grid' allowResizing= 'true' height="{{gridheight}}"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true' class="contlistbox">
+          allowPaging='true' class="tabbox-new">
   <e-columns >
     <e-column type='checkbox' width='50'></e-column>
     <e-column field='TrackOrderNumber'  headerText='物流跟踪号' isPrimaryKey='true' width='170' style="border: 1px #ccc solid">

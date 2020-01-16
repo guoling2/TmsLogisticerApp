@@ -22,7 +22,7 @@ export class ContainerModelComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       { Name: '', Code: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight0();
   }
 
   searching () {

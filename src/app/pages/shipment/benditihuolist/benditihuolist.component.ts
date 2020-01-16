@@ -11,7 +11,7 @@ import {Commonsetting} from '../../../help/commonsetting';
 import {Basereportconfig} from '../../../services/base/basereportconfig';
 import {ShipplanService} from '../../../services/logistic/shipment/shipplan.service';
 import {DialogservicesService} from '../../../help/dialogservices.service';
-import {MyShpipmentOrderService} from '../../../services/logistic/shipment/myshpipmentorderService';
+import {MyshpipmentorderService} from '../../../services/logistic/shipment/myshpipmentorder.service';
 import {EmitService} from '../../../help/emit-service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
@@ -53,7 +53,7 @@ export class BenditihuolistComponent implements OnInit {
               private shipplanGroupInsideServiceService: ShipplanGroupInsideService,
               private  shipplanService: ShipplanService,
               private  dialogx: DialogservicesService,
-              private  myShpipmentOrderService: MyShpipmentOrderService,
+              private  myShpipmentOrderService: MyshpipmentorderService,
               public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
 
   ngOnInit() {

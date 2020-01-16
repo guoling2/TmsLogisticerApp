@@ -2,17 +2,17 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {
   CheckBoxChangeEventArgs,
-  DataStateChangeEventArgs, EditSettingsModel,
+  DataStateChangeEventArgs, EditSettingsModel, FilterService,
   GridComponent,
   PageSettingsModel, RowDeselectEventArgs,
   RowSelectEventArgs,
-  SelectionSettingsModel
+  SelectionSettingsModel, SortService
 } from '@syncfusion/ej2-angular-grids';
 import {BehaviorSubject} from 'rxjs';
 import {GroupOrderAtionModel} from '../../../group-order-ation-model';
 import {ShipplanService} from '../../../../../../services/logistic/shipment/shipplan.service';
 import {DialogservicesService} from '../../../../../../help/dialogservices.service';
-import {MyShpipmentOrderService} from '../../../../../../services/logistic/shipment/myshpipmentorderService';
+import {MyshpipmentorderService} from '../../../../../../services/logistic/shipment/myshpipmentorder.service';
 import {EmitService} from '../../../../../../help/emit-service';
 import {MatDialog} from '@angular/material';
 import {Basereportservice} from '../../../../../../services/base/basereportservice';
@@ -26,13 +26,27 @@ import {ShipplangroudattchlistComponent} from '../shipplangroudattchlist/shippla
 import {ShimentNoSendGroupView} from '../../../../../../models/shipplangroup/shiment-no-send-group-view';
 import {LogisticItemService} from '../../../../../../services/shiipplangroup/logistic-item.service';
 import {LogisticItemComponentService} from '../../../../../../services/shiipplangroup/shipplan-item-service.service';
+import {SortDescriptorModel, SortSettingsModel} from '@syncfusion/ej2-grids';
+import {DataGridHelp} from '../../../../../../SyncfusionHelp/data-grid-help';
 
 @Component({
   selector: 'app-biz-groupinsdecommomlist',
   templateUrl: './groupinsdecommomlist.component.html',
-  styleUrls: ['./groupinsdecommomlist.component.css']
+  styleUrls: ['./groupinsdecommomlist.component.css'],
+  providers: [SortService, FilterService]
 })
 export class GroupinsdecommomlistComponent implements OnInit {
+
+
+  constructor(
+    private logisticItemService: LogisticItemService,
+    private itemServiceService: LogisticItemComponentService,
+    private router: Router,
+    private shipplanGroupInsideServiceService: ShipplanGroupInsideService,
+    private  shipplanService: ShipplanService,
+    private  dialogx: DialogservicesService,
+    private  myShpipmentOrderService: MyshpipmentorderService,
+    public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
 
   gridheight: number;
   searchp: FormGroup;
@@ -43,23 +57,16 @@ export class GroupinsdecommomlistComponent implements OnInit {
   public selectOptions: SelectionSettingsModel;
   editSettings: EditSettingsModel;
   toolbar: [];
-
+  initialSort: SortSettingsModel = new class implements SortSettingsModel {
+    columns: SortDescriptorModel[];
+  };
   @Input()
   public orderStoreSubject: BehaviorSubject<GroupOrderAtionModel>;
   @Input()
   public GroupSubItemType: string;
   public alreadyloadshipmentdatasource: GroupOrderAtionModel[] = [];
 
-
-  constructor(
-    private logisticItemService: LogisticItemService,
-    private itemServiceService: LogisticItemComponentService,
-    private router: Router,
-    private shipplanGroupInsideServiceService: ShipplanGroupInsideService,
-    private  shipplanService: ShipplanService,
-    private  dialogx: DialogservicesService,
-    private  myShpipmentOrderService: MyShpipmentOrderService,
-    public emitService: EmitService, private fb: FormBuilder, public dialog: MatDialog, private service: Basereportservice) { }
+  public  inputfromgroup: any;
 
   ngOnInit() {
 
@@ -79,16 +86,24 @@ export class GroupinsdecommomlistComponent implements OnInit {
     // this.grid.pageSettings={currentPage:1,pageSize:2};
   }
 
-  searching () {
+  searching(a: any) {
+
+    if (a === null) {
+      a = this.searchp.getRawValue ();
+    }
+
+    this.inputfromgroup = a;
 
     const  pagesetting = this.grid.pageSettings;
-    const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage - 1;
-    searchable.pagesize = pagesetting.pageSize;
+   // const searchable = this.searchp.getRawValue ();
+
+    a.pageindex = pagesetting.currentPage - 1;
+    a.pagesize = pagesetting.pageSize;
 
 
     let reportId = '';
-     switch (this.GroupSubItemType) {
+
+    switch (this.GroupSubItemType) {
 
        case 'localtihuo':
          reportId = Basereportconfig.Report_localtihuolist; // 本地提货
@@ -104,7 +119,7 @@ export class GroupinsdecommomlistComponent implements OnInit {
          break;
      }
    //  alert(this.GroupSubItemType);
-    this.service.SearchReport(reportId, searchable).subscribe(result => {
+    this.service.SearchReport(reportId, a).subscribe(result => {
 
       this.grid.dataSource = result;
       console.log('加载数据了');
@@ -113,13 +128,17 @@ export class GroupinsdecommomlistComponent implements OnInit {
   }
 
 
+
   dataStateChange($event: DataStateChangeEventArgs) {
 
     console.log('dataStateChange');
 
     console.log($event);
     if ($event.action.requestType === 'paging') {
-      this.searching();
+
+      this.inputfromgroup = DataGridHelp.GetSortObject($event, this.inputfromgroup);
+
+      this.searching( this.inputfromgroup);
     }
 
 
@@ -127,112 +146,112 @@ export class GroupinsdecommomlistComponent implements OnInit {
 
 
 
-  rowselected($event: RowSelectEventArgs) {
+  // rowselected($event: RowSelectEventArgs) {
+  //
+  //
+  //
+  //   console.log('加载了rowselected');
+  //
+  //   console.log($event);
+  //
+  //   if ($event.data === undefined) {
+  //     return;
+  //   }
+  //   // this.orderStoreSubject.next({ShipmentId: $event.data['ShipmentId'], UpdateModelType: UpdateModelType.Attach});
+  //
+  //   const shipmentId = $event.data.ShipmentId;
+  //
+  //   console.log(shipmentId);
+  //
+  //   const storeshipment = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === shipmentId);
+  //
+  //
+  //   console.log(storeshipment);
+  //
+  //   if (storeshipment === -1) {
+  //     this.alreadyloadshipmentdatasource.push({ShipmentId:  $event.data.ShipmentId, UpdateModelType: UpdateModelType.Attach});
+  //   } else {
+  //     console.log('已经添加了');
+  //   }
+  //
+  // }
 
+  // rowdeselection($event: RowDeselectEventArgs) {
+  //
+  //   const shipmentOrderId = $event.data[0].ShipmentId;
+  //
+  //   const index = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === shipmentOrderId);
+  //
+  //   if (index !== -1) {
+  //     this.alreadyloadshipmentdatasource.splice(index, 1);
+  //   }
+  // }
 
-
-    console.log('加载了rowselected');
-
-    console.log($event);
-
-    if ($event.data === undefined) {
-      return;
-    }
-    // this.orderStoreSubject.next({ShipmentId: $event.data['ShipmentId'], UpdateModelType: UpdateModelType.Attach});
-
-    const shipmentId = $event.data['ShipmentId'];
-
-    console.log(shipmentId);
-
-    const storeshipment = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === shipmentId);
-
-
-    console.log(storeshipment);
-
-    if (storeshipment === -1) {
-      this.alreadyloadshipmentdatasource.push({ShipmentId:  $event.data['ShipmentId'], UpdateModelType: UpdateModelType.Attach});
-    } else {
-      console.log('已经添加了');
-    }
-
-  }
-
-  rowdeselection($event: RowDeselectEventArgs) {
-
-    const shipmentOrderId = $event.data[0]['ShipmentId'];
-
-    const index = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === shipmentOrderId);
-
-    if (index !== -1) {
-      this.alreadyloadshipmentdatasource.splice(index, 1);
-    }
-  }
-
-  checkboxchanged($event: CheckBoxChangeEventArgs) {
-
-
-
-
-    console.log($event);
-
-    const selectredord = [];
-
-
-    this.grid.getSelectedRecords().forEach(a => {
-
-      selectredord.push(a['ShipmentId']);
-    });
-
-
-    if ($event.checked === false) {
-
-      if ($event.selectedRowIndexes.length === 0) {
-        this.alreadyloadshipmentdatasource = [];
-      }
-      const deleteindex = [];
-
-
-      this.alreadyloadshipmentdatasource.forEach((item, index) => {
-
-        if (selectredord.findIndex(a => a === item.ShipmentId) === -1) {
-          deleteindex.push(index);
-        }
-      });
-
-      if (deleteindex.length !== 0) {
-        deleteindex.forEach(a => {
-          this.alreadyloadshipmentdatasource.splice(a, 1);
-        });
-      }
-
-    } else {
-
-      const addindexs = [];
-
-      selectredord.forEach(a => {
-
-        const add = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a);
-
-        if (add === -1) {
-          addindexs.push(a);
-        }
-
-      });
-
-      if (addindexs.length > 0) {
-
-        addindexs.forEach(a => {
-          if ( this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a) === -1) {
-            this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
-          }
-
-        });
-
-      }
-    }
-
-    console.log(this.alreadyloadshipmentdatasource);
-  }
+  // checkboxchanged($event: CheckBoxChangeEventArgs) {
+  //
+  //
+  //
+  //
+  //   console.log($event);
+  //
+  //   const selectredord = [];
+  //
+  //
+  //   this.grid.getSelectedRecords().forEach(a => {
+  //
+  //     selectredord.push(a.ShipmentId);
+  //   });
+  //
+  //
+  //   if ($event.checked === false) {
+  //
+  //     if ($event.selectedRowIndexes.length === 0) {
+  //       this.alreadyloadshipmentdatasource = [];
+  //     }
+  //     const deleteindex = [];
+  //
+  //
+  //     this.alreadyloadshipmentdatasource.forEach((item, index) => {
+  //
+  //       if (selectredord.findIndex(a => a === item.ShipmentId) === -1) {
+  //         deleteindex.push(index);
+  //       }
+  //     });
+  //
+  //     if (deleteindex.length !== 0) {
+  //       deleteindex.forEach(a => {
+  //         this.alreadyloadshipmentdatasource.splice(a, 1);
+  //       });
+  //     }
+  //
+  //   } else {
+  //
+  //     const addindexs = [];
+  //
+  //     selectredord.forEach(a => {
+  //
+  //       const add = this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a);
+  //
+  //       if (add === -1) {
+  //         addindexs.push(a);
+  //       }
+  //
+  //     });
+  //
+  //     if (addindexs.length > 0) {
+  //
+  //       addindexs.forEach(a => {
+  //         if ( this.alreadyloadshipmentdatasource.findIndex(t => t.ShipmentId === a) === -1) {
+  //           this.alreadyloadshipmentdatasource.push({ShipmentId: a, UpdateModelType: UpdateModelType.Attach });
+  //         }
+  //
+  //       });
+  //
+  //     }
+  //   }
+  //
+  //   console.log(this.alreadyloadshipmentdatasource);
+  // }
 
   // 添加运单服务
   attchitem(height, width) {
@@ -245,8 +264,8 @@ export class GroupinsdecommomlistComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(ShipplangroudattchlistComponent, {
-      height: height,
-      width: width,
+      height,
+      width,
       disableClose: false,
       data: 'inside'
     });
@@ -270,10 +289,12 @@ export class GroupinsdecommomlistComponent implements OnInit {
 
           resultindex++;
 
+          // @ts-ignore
+          const shipmentId = a.ShipmentId;
 
           this.shipplanGroupInsideServiceService.AttchShipmentItem({
             TaskType: '',
-            ShipmentId: a['ShipmentId'],
+            ShipmentId: shipmentId,
             ShipmentGrpupId: result.PlanGroupId,
             SquenceId: 0
           }).subscribe(resultx => {
@@ -340,7 +361,8 @@ export class GroupinsdecommomlistComponent implements OnInit {
 
     this.grid.getSelectedRecords().forEach(a => {
 
-      selectredord.push(a['ShipmentId']);
+      // @ts-ignore
+      selectredord.push(a.ShipmentId);
     });
 
     this.itemServiceService.ClearData();

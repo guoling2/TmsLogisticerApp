@@ -80,7 +80,7 @@
     "@syncfusion/ej2-treemap": "17.2.47",
     "@syncfusion/ej2-angular-inplace-editor": "17.2.51",
     "ajv": "^6.10.2",
-    "angular-auth-oidc-client": "10.0.10",
+    "angular-auth-oidc-client": "10.0.11",
     "bootstrap": "^4.3.1",
     "cldr-data": "^36.0.0",
     "core-js": "^3.4.0",

@@ -1,10 +1,15 @@
 <div *ngIf="userTrincRoutePrice">
-  <div class="contentbox">
-    <div class="contentit-l">
-      <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a>  / <b>详细信息</b></div>
+  <div class="contentbox-new">
+    <div class="contentit-l-new">
+      <div class="contennews">
+        <b>详细信息</b>
+        <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+        <span><a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a></span> ·
+        <span>详细信息</span>
+      </div>
     </div>
-    <div class="contenttex-r">
-      <button ejs-button cssClass="e-info mat-width mat-reject" (click)="del()">删除</button>
+    <div class="contenttex-r-new">
+        <button ejs-button cssClass="e-outline mat-auto" (click)="del()"><i class="fas fa-trash"></i> 删除</button>
     </div>
   </div>
   <mat-card class="userbox">

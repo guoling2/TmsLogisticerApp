@@ -1,9 +1,14 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/user-management/users']" >企业员工列表</a>  / <b>用户编辑 - {{emplayeeUser?.RealName}}</b></div>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>用户编辑 - {{emplayeeUser?.RealName}}</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/user-management/users']" >企业员工列表</a></span> ·
+      <span>用户编辑</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width"  (click)="saveaction()" >保存</button>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="saveaction()" ><i class="fas fa-save"></i> 保存</button>
   </div>
 </div>
 <mat-card class="userbox">

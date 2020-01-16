@@ -1,27 +1,37 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>外租车列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>外租车</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span>基础资料</span> ·
+      <span>外租车</span>
+    </div>
   </div>
-  <div class="contenttex-r">
+  <div class="contenttex-r-new">
     <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/vehicle-management/outdriver-insert']"><i class="fas fa-plus-square"></i> 新增外租车</button>
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="Trnum" />
-    </label>
-    <span  matPrefix style="color: #888">车牌号：&nbsp;</span>
-  </mat-form-field>
-  <button ejs-button cssClass="e-info mat-width" (click)="Search()">查询</button>
+<form class="listfrom-new2" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="24">
+      <mat-form-field class="comwidth">
+        <input placeholder="车牌号" matInput  formControlName="Trnum" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="24">
+      <button ejs-button cssClass="e-info mat-width" (click)="Search()">查询</button>
+    </div>
+    <div fxFlex="24">
+    </div>
+    <div fxFlex="24">
+    </div>
+  </div>
 </form>
-
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           [allowExcelExport]='true'  allowSorting='false'
           [allowSelection]="true"
           [enableHover]="false"
-          allowPaging='true'  class="contlistbox">
+          allowPaging='true'  class="tabbox-new">
   <e-columns >
     <e-column  headerText='资源编号' field="ResourceId" isPrimaryKey='true' width='210'>
       <ng-template #template let-data>
